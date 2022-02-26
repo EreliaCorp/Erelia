@@ -36,15 +36,25 @@
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_map_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Main application\erelia_main_application.cpp" />
+    <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_entity_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_game_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_console_parser.cpp" />
+    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_map_loader.cpp" />
+    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_updater.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\Enum\erelia_enum.h" />
@@ -70,17 +80,25 @@
     <ClInclude Include="includes\Structure\Data\Map\erelia_node.h" />
     <ClInclude Include="includes\Structure\erelia_structure.h" />
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_console_input.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_console_output.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_graphical_widget.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h" />
     <ClInclude Include="includes\Widget\erelia_widgets.h" />
     <ClInclude Include="includes\Widget\Main application\erelia_main_application.h" />
+    <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_entity_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_game_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h" />
+    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_console_parser.h" />
+    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_map_loader.h" />
+    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_updater.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ressource\shader\movable_sprite_shader.frag" />
-    <None Include="ressource\shader\movable_sprite_shader.vert" />
+    <None Include="ressource\shader\chunk_shader.frag" />
+    <None Include="ressource\shader\chunk_shader.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -170,6 +188,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32s.lib;jgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Developement\JGL\JGL\libs\$(Platform)\;C:\Developement\JGL\BUILD\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -210,6 +229,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32s.lib;jgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Developement\JGL\JGL\libs\$(Platform)\;C:\Developement\JGL\BUILD\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

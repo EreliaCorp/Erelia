@@ -32,3 +32,10 @@ void Texture_atlas::add_texture(jgl::String p_name, jgl::Image_handler* p_image_
 		_basic_frame_selected = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
 }
+
+jgl::Image_handler* Texture_atlas::get_texture(jgl::String p_name)
+{
+	if (_content.count(p_name) == 0)
+		return (nullptr);
+	return (_content[p_name]);
+}

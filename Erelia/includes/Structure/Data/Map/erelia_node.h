@@ -11,20 +11,83 @@ struct Node
 	static const jgl::Short WEST_WALKABLE		= 0b0000000000001000;
 	static const jgl::Short WALKABLE			= 0b0000000000001111;
 
-	static const jgl::Size_t SIZE = 32;
+	static jgl::Size_t C_SIZE;
 
-	jgl::Short obstacle;
-	jgl::Bool autotiled;
+	jgl::String name;
 	jgl::Vector2Int sprite;
-	jgl::Size_t animation_size;
+	jgl::Int animation_size;
+	jgl::Bool autotiled;
+	jgl::Bool obstacle;
 
-	Node(jgl::Short p_obstacle = Node::WALKABLE, jgl::Bool p_autotiled = false, jgl::Vector2Int p_sprite = 0, jgl::Size_t p_animation_size = 1u)
+	Node(jgl::String p_name, jgl::Vector2Int p_sprite, jgl::Bool p_autotiled, jgl::Bool p_obstacle, jgl::Int p_animation_size) :
+		name(p_name), sprite(p_sprite), autotiled(p_autotiled), obstacle(p_obstacle), animation_size(p_animation_size)
 	{
-		obstacle = p_obstacle;
-		autotiled = p_autotiled;
-		sprite = p_sprite;
-		animation_size = p_animation_size;
+
+	}
+};
+
+struct Prefab
+{
+public:
+	jgl::String name;
+	jgl::Vector2Int sprite;
+	jgl::Vector2Int size;
+	jgl::Int** levels;
+	jgl::Int** composition;
+
+	Prefab(jgl::String p_name, jgl::Vector2Int p_sprite, jgl::Vector2Int p_size, jgl::Array<jgl::Int> p_composition, jgl::Array<jgl::Int> p_level) :
+		name(p_name), sprite(p_sprite), size(p_size)
+	{
+		levels = new jgl::Int * [size.x];
+		for (jgl::Int i = 0; i < size.x; i++)
+			levels[i] = new jgl::Int[size.y];
+
+		composition = new jgl::Int * [size.x];
+		for (jgl::Int i = 0; i < size.x; i++)
+			composition[i] = new jgl::Int[size.y];
+
+		if (p_level.size() == 0)
+		{
+			for (jgl::Int i = 0; i < size.x; i++)
+			{
+				for (jgl::Int j = 0; j < size.y; j++)
+				{
+					levels[i][j] = 0;
+				}
+			}
+		}
+		else
+		{
+			for (jgl::Int i = 0; i < size.x; i++)
+			{
+				for (jgl::Int j = 0; j < size.y; j++)
+				{
+					levels[i][j] = p_level[i + j * size.x];
+				}
+			}
+		}
+		if (p_composition.size() == 0)
+		{
+			for (jgl::Int i = 0; i < size.x; i++)
+			{
+				for (jgl::Int j = 0; j < size.y; j++)
+				{
+					composition[i][j] = 0;
+				}
+			}
+		}
+		else
+		{
+			for (jgl::Int i = 0; i < size.x; i++)
+			{
+				for (jgl::Int j = 0; j < size.y; j++)
+				{
+					composition[i][j] = p_composition[i + j * size.x];
+				}
+			}
+		}
 	}
 };
 
 extern jgl::Array<Node*> g_node_array;
+extern jgl::Array<Prefab*> g_prefab_array;

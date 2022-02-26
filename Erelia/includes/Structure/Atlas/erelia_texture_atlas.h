@@ -18,6 +18,7 @@ public:
 	static Texture_atlas* instance();
 
 	void add_texture(jgl::String p_name, jgl::Image_handler* p_image_handler);
+	jgl::Image_handler* get_texture(jgl::String p_name);
 	jgl::Sprite_sheet* basic_frame_texture() { return (_basic_frame); }
 	jgl::Sprite_sheet* basic_frame_selected_texture() { return (_basic_frame_selected); }
 };

@@ -3,6 +3,10 @@
 #include "jgl.h"
 #include "Enum/erelia_enum.h"
 
+#include "Widget/Commun/erelia_map_renderer.h"
+
+#include "Widget/Singleplayer/erelia_singleplayer_map_loader.h"
+
 class Map_manager : public jgl::Widget
 {
 private:
@@ -19,4 +23,5 @@ private:
 public:
 	static Map_manager* instanciate(Connection_mode p_mode, jgl::Widget* p_parent = nullptr);
 	static Map_manager* instance();
+	~Map_manager();
 };

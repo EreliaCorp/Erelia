@@ -3,10 +3,14 @@
 #include "jgl.h"
 #include "Enum/erelia_enum.h"
 
+#include "Widget/Singleplayer/erelia_singleplayer_player_updater.h"
+
 class Player_manager : public jgl::Widget
 {
 private:
 	static Player_manager* _instance;
+
+	Gamemode _mode;
 
 	jgl::Array<jgl::Widget*> _widgets;
 

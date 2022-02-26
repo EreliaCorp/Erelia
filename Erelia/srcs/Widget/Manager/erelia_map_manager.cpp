@@ -22,9 +22,12 @@ void Map_manager::_change_connection_mode(Connection_mode p_mode)
 		delete _widgets[i];
 	}
 
+	//Widget commun for each game mode
+	_widgets.push_back(new Map_renderer(this));
+
 	if (p_mode == Connection_mode::Singleplayer)
 	{
-
+		_widgets.push_back(new Singleplayer::Map_loader(this));
 	}
 	else if (p_mode == Connection_mode::Multiplayer)
 	{
@@ -33,6 +36,11 @@ void Map_manager::_change_connection_mode(Connection_mode p_mode)
 	else if (p_mode == Connection_mode::Host)
 	{
 
+	}
+
+	for (jgl::Size_t i = 0; i < _widgets.size(); i++)
+	{
+		_widgets[i]->activate();
 	}
 }
 
@@ -45,6 +53,11 @@ Map_manager::Map_manager(Connection_mode p_mode, jgl::Widget* p_parent) : jgl::W
 {
 	_load_ui_file();
 	_change_connection_mode(p_mode);
+}
+
+Map_manager::~Map_manager()
+{
+
 }
 
 Map_manager* Map_manager::instanciate(Connection_mode p_mode, jgl::Widget* p_parent)

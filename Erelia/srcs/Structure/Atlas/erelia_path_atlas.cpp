@@ -5,6 +5,7 @@ const jgl::String Path_atlas::ui_configuration_path = "ressource/UI/";
 const jgl::String Path_atlas::ui_configuration_file = "ui_configuration_file.xml";
 const jgl::String Path_atlas::basic_frame_texture_path = "ressource/texture/basic_frame.png";
 const jgl::String Path_atlas::basic_frame_texture_pressed_path = "ressource/texture/basic_frame_pressed.png";
+const jgl::String Path_atlas::chunk_sprite_sheet_path = "ressource/texture/chunk_sprite_sheet.png";
 
 void Path_atlas::compose_ressource_folder()
 {

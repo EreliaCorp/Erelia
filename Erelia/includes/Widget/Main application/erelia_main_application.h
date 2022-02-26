@@ -21,6 +21,7 @@ private:
 
 public:
 	Main_application(jgl::Widget* p_parent);
+	~Main_application();
 	static Main_application* instance();
 
 	void launch_game_singleplayer(jgl::String p_world_name);

@@ -21,9 +21,14 @@ void Player_manager::_change_connection_mode(Connection_mode p_mode)
 	{
 		delete _widgets[i];
 	}
+	
+	Player* player = new Player();
+
 	if (p_mode == Connection_mode::Singleplayer)
 	{
+		_widgets.push_back(new Singleplayer::Player_updater(this));
 
+		player->set_id(0);
 	}
 	else if (p_mode == Connection_mode::Multiplayer)
 	{
@@ -32,6 +37,13 @@ void Player_manager::_change_connection_mode(Connection_mode p_mode)
 	else if (p_mode == Connection_mode::Host)
 	{
 
+	}
+
+	Engine::instance()->initialize_player(player);
+
+	for (jgl::Size_t i = 0; i < _widgets.size(); i++)
+	{
+		_widgets[i]->activate();
 	}
 }
 
@@ -42,6 +54,8 @@ void Player_manager::_load_ui_file()
 
 Player_manager::Player_manager(Connection_mode p_mode, jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
+	_mode = Gamemode::Adventure;
+
 	_load_ui_file();
 	_change_connection_mode(p_mode);
 }

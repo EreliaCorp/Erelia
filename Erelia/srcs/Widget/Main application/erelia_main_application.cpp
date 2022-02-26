@@ -82,11 +82,11 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	Texture_atlas::instanciate();
 	Texture_atlas::instance()->add_texture("Basic_frame", new jgl::Sprite_sheet(Path_atlas::basic_frame_texture_path, 3));
 	Texture_atlas::instance()->add_texture("Basic_frame_selected", new jgl::Sprite_sheet(Path_atlas::basic_frame_texture_pressed_path, 3));
+	Texture_atlas::instance()->add_texture("chunk_sprite_sheet", new jgl::Sprite_sheet(Path_atlas::chunk_sprite_sheet_path, jgl::Vector2Int(32, 66)));
 
 	_instance = this;
 	if (jgl::check_file_exist(Path_atlas::ui_configuration_path + Path_atlas::ui_configuration_file) == false)
 	{
-		jgl::cout << "Reseting configuration file" << jgl::endl;
 		Singleton_atlas::configuration_file.save(Path_atlas::ui_configuration_file);
 	}
 	Singleton_atlas::configuration_file.load(Path_atlas::ui_configuration_file);
@@ -94,6 +94,11 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	_main_menu = new Main_menu(this);
 
 	_main_menu->activate();
+}
+Main_application::~Main_application()
+{
+	if (Game_manager::instance() != nullptr)
+		delete Game_manager::instance();
 }
 
 Main_application* Main_application::instance()

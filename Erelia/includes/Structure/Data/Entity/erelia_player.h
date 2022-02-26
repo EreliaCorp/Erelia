@@ -7,7 +7,7 @@ class Player : public Entity
 private :
 
 public:
-	Player() : Entity()
+	Player() : Entity(-1)
 	{
 
 	}

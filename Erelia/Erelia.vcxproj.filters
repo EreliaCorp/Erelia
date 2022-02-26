@@ -198,6 +198,36 @@
     <ClCompile Include="srcs\Menu\erelia_main_menu.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_map_renderer.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_map_loader.cpp">
+      <Filter>Source Files\Widget\Singleplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_updater.cpp">
+      <Filter>Source Files\Widget\Singleplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp">
+      <Filter>Source Files\Widget\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_console_parser.cpp">
+      <Filter>Source Files\Widget\Singleplayer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\erelia.h">
@@ -290,12 +320,36 @@
     <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h">
       <Filter>Header Files\Structure\Data\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_map_loader.h">
+      <Filter>Header Files\Widget\Singleplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_updater.h">
+      <Filter>Header Files\Widget\Singleplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h">
+      <Filter>Header Files\Widget\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_output.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_input.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_console_parser.h">
+      <Filter>Header Files\Widget\Singleplayer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ressource\shader\movable_sprite_shader.frag">
+    <None Include="ressource\shader\chunk_shader.frag">
       <Filter>Resource Files\Shader</Filter>
     </None>
-    <None Include="ressource\shader\movable_sprite_shader.vert">
+    <None Include="ressource\shader\chunk_shader.vert">
       <Filter>Resource Files\Shader</Filter>
     </None>
   </ItemGroup>

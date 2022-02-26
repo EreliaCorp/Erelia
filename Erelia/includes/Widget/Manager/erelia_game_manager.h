@@ -8,6 +8,8 @@
 #include "Widget/Manager/erelia_map_manager.h"
 #include "Widget/Manager/erelia_entity_manager.h"
 #include "Widget/Manager/erelia_player_manager.h"
+#include "Widget/Manager/erelia_console_manager.h"
+
 
 class Game_manager : public jgl::Widget
 {
@@ -25,6 +27,7 @@ private:
 	Map_manager* _map_manager;
 	Entity_manager* _entity_manager;
 	Player_manager* _player_manager;
+	Console_manager* _console_manager;
 
 	void _on_geometry_change();
 	void _render();
@@ -38,6 +41,7 @@ public:
 	static void instanciate_multiplayer(jgl::String p_server_address, jgl::String p_player_username, jgl::String p_player_password, jgl::Widget* p_parent);
 	static void instanciate_host(jgl::String p_world_name, jgl::String p_player_username, jgl::String p_player_password, jgl::Widget* p_parent);
 
+	~Game_manager();
 	static Game_manager* instance();
 
 	void set_loading_status(Loading_status p_status);

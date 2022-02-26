@@ -9,6 +9,12 @@ enum class Connection_mode
 	Host = 2
 };
 
+enum class Gamemode
+{
+	Adventure = 0,
+	Builder = 1
+};
+
 enum class Server_message
 {
 	Error = -1,
