@@ -89,3 +89,53 @@ Node* Chunk::node(jgl::Vector3Int p_pos)
 		return (nullptr);
 	return (g_node_array[value]);
 }
+
+jgl::Vector3Int Chunk::convert_absolute_to_relative_pos(jgl::Vector2Int p_pos, jgl::Size_t p_level)
+{
+	return (convert_absolute_to_relative_pos(jgl::Vector3Int(p_pos.x, p_pos.y, p_level)));
+}
+
+jgl::Vector3Int Chunk::convert_absolute_to_relative_pos(jgl::Vector3Int p_pos)
+{
+	jgl::Vector3Int result;
+
+	jgl::Vector2Int chunk_pos = Map::convert_world_to_chunk(p_pos);
+
+	result.x = p_pos.x - chunk_pos.x * Chunk::C_SIZE;
+	result.y = p_pos.y - chunk_pos.y * Chunk::C_SIZE;
+	result.z = p_pos.z;
+
+	return (result);
+}
+
+jgl::Vector3Int Chunk::convert_relative_to_absolute_pos(jgl::Vector2Int p_chunk_pos, jgl::Vector2Int p_pos, jgl::Size_t p_level)
+{
+	jgl::Vector3Int result;
+
+	result.x = p_chunk_pos.x * Chunk::C_SIZE + p_pos.x;
+	result.y = p_chunk_pos.y * Chunk::C_SIZE + p_pos.y;
+	result.z = p_level % Chunk::C_LAYER_LENGTH;
+
+	return (result);
+}
+
+jgl::Vector3Int Chunk::convert_relative_to_absolute_pos(jgl::Vector2Int p_chunk_pos, jgl::Vector3Int p_pos)
+{
+	jgl::Vector3Int result;
+
+	result.x = p_chunk_pos.x * Chunk::C_SIZE + p_pos.x;
+	result.y = p_chunk_pos.y * Chunk::C_SIZE + p_pos.y;
+	result.z = p_pos.y % Chunk::C_LAYER_LENGTH;
+
+	return (result);
+}
+
+jgl::Vector3Int Chunk::convert_relative_to_absolute_pos(jgl::Vector2Int p_pos, jgl::Size_t p_level)
+{
+	return (convert_relative_to_absolute_pos(_pos, p_pos, p_level));
+}
+
+jgl::Vector3Int Chunk::convert_relative_to_absolute_pos(jgl::Vector3Int p_pos)
+{
+	return (convert_relative_to_absolute_pos(_pos, p_pos));
+}

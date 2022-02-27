@@ -20,6 +20,8 @@ jgl::Vector2 Graphical_widget::convert_screen_to_world(jgl::Vector2Int p_pos)
 	jgl::Vector2 result = p_pos - _area / 2;
 	result /= Node::C_SIZE;
 	result += player_pos;
+	result = result.floor();
+
 	return (result);
 }
 

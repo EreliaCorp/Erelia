@@ -38,7 +38,7 @@ void Console_output::Line::compute(jgl::Vector2Int p_area)
 	_size = jgl::Vector2Int(p_area.x, pos.y + text_size);
 }
 
-jgl::Vector2Int Console_output::Line::render(jgl::Vector2Int p_size, jgl::Vector2Int p_anchor, jgl::Float p_depth)
+jgl::Vector2Int Console_output::Line::render(jgl::Vector2Int p_size, jgl::Vector2Int p_anchor, jgl::Float p_depth, jgl::Size_t& p_nb_line_to_dodge)
 {
 	jgl::Vector2Int result = 0;
 
@@ -47,7 +47,14 @@ jgl::Vector2Int Console_output::Line::render(jgl::Vector2Int p_size, jgl::Vector
 		if (-result.y + _parts[i].size.y > p_size.y)
 			return (result);
 		
-		result.y -= jgl::draw_text(_parts[i].data, p_anchor + result, text_size, p_depth, 1.0f, jgl::Color::black(), jgl::Color::black()).y;
+		if (p_nb_line_to_dodge > 0)
+		{
+			p_nb_line_to_dodge--;
+		}
+		else
+		{
+			result.y -= jgl::draw_text(_parts[i].data, p_anchor + result, text_size, p_depth, 1.0f, jgl::Color::black(), jgl::Color::black()).y;
+		}
 	}
 
 	return (result);
@@ -59,12 +66,13 @@ void Console_output::_render()
 	jgl::Vector2Int pos = base_pos;
 
 	jgl::Vector2Int size = _area - (_frame->box().border_size() * 2);
+	jgl::Size_t nb_line_to_dodge = _nb_line_to_dodge;
 	for (jgl::Int i = 0; i < _messages.size() && pos.y - _messages[i].size().y > 0 ; i++)
 	{
 		if (_messages[i].computed() == false)
 			_messages[i].compute(size);
 
-		pos.y += _messages[i].render(size - jgl::Vector2Int(0, base_pos.y - pos.y), pos, _depth + 2).y;
+		pos.y += _messages[i].render(size - jgl::Vector2Int(0, base_pos.y - pos.y), pos, _depth + 2, nb_line_to_dodge).y;
 	}
 }
 
@@ -77,15 +85,24 @@ void Console_output::_on_geometry_change()
 	}
 }
 
+jgl::Bool Console_output::_update()
+{
+	return (false);
+}
+
 Console_output::Console_output(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
 	_frame = new jgl::Frame(this);
 	_frame->box().set_color(jgl::Color(125, 125, 125, 125), jgl::Color(95, 95, 95, 125));
 	_frame->box().set_border_size(5);
 	_frame->activate();
+
+	_nb_line_to_dodge = 0;
 }
 
 void Console_output::add_message(jgl::String p_msg)
 {
 	_messages.push_front(p_msg);
+	if (_nb_line_to_dodge != 0)
+		_nb_line_to_dodge++;
 }

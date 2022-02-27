@@ -54,6 +54,7 @@
     <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp" />
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_console_parser.cpp" />
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_map_loader.cpp" />
+    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_interacter.cpp" />
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_updater.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +95,7 @@
     <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h" />
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_console_parser.h" />
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_map_loader.h" />
+    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_interacter.h" />
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_updater.h" />
   </ItemGroup>
   <ItemGroup>

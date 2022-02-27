@@ -45,7 +45,15 @@ public:
 	void save();
 	void load(jgl::String p_world_path);
 
+	void place_node(jgl::Vector2Int p_pos, jgl::Size_t p_level, jgl::Short p_node);
+	void place_node(jgl::Vector3Int p_pos, jgl::Short p_node);
+
 	void add_chunk(jgl::Vector2Int p_pos, Chunk* p_chunk);
+
+	static jgl::Vector2Int convert_world_to_chunk(jgl::Vector2Int p_pos);
+	static jgl::Vector2Int convert_world_to_chunk(jgl::Vector3Int p_pos);
+	static jgl::Vector2Int convert_chunk_to_world(jgl::Vector2Int p_chunk_pos, jgl::Vector2Int p_pos = 0);
+	static jgl::Vector3Int convert_chunk_to_world(jgl::Vector2Int p_chunk_pos, jgl::Vector3Int p_pos = 0);
 
 	Chunk* request_chunk(jgl::Vector2Int p_chunk_pos);
 	Chunk* chunk(jgl::Vector2Int p_pos);

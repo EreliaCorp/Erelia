@@ -184,15 +184,7 @@ void Chunk::bake(Map* p_map, jgl::Bool rebake)
 					}
 				}
 			}
-
-	/*
-	for (jgl::Size_t i = 0; i < vertex_array.size(); i++)
-	{
-		vertex_array[i].x += 1;
-		vertex_array[i].y -= 1;
-	}
-	*/
-			
+	
 	_shader_data.model_space_buffer->send(vertex_array.all(), vertex_array.size());
 	_shader_data.model_uvs_buffer->send(uvs_array.all(), uvs_array.size());
 	_shader_data.animation_sprite_delta_buffer->send(animation_sprite_delta_array.all(), animation_sprite_delta_array.size());

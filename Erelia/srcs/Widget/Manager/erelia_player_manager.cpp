@@ -27,6 +27,8 @@ void Player_manager::_change_connection_mode(Connection_mode p_mode)
 	if (p_mode == Connection_mode::Singleplayer)
 	{
 		_widgets.push_back(new Singleplayer::Player_updater(this));
+		_widgets.push_back(new Singleplayer::Player_interacter(this));
+
 
 		player->set_id(0);
 	}
@@ -54,8 +56,6 @@ void Player_manager::_load_ui_file()
 
 Player_manager::Player_manager(Connection_mode p_mode, jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
-	_mode = Gamemode::Adventure;
-
 	_load_ui_file();
 	_change_connection_mode(p_mode);
 }

@@ -82,4 +82,13 @@ public:
 
 	Node* node(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	Node* node(jgl::Vector3Int p_pos);
+
+	static jgl::Vector3Int convert_absolute_to_relative_pos(jgl::Vector2Int p_pos, jgl::Size_t p_level);
+	static jgl::Vector3Int convert_absolute_to_relative_pos(jgl::Vector3Int p_pos);
+
+	static jgl::Vector3Int convert_relative_to_absolute_pos(jgl::Vector2Int p_chunk_pos, jgl::Vector2Int p_pos, jgl::Size_t p_level);
+	static jgl::Vector3Int convert_relative_to_absolute_pos(jgl::Vector2Int p_chunk_pos, jgl::Vector3Int p_pos);
+
+	jgl::Vector3Int convert_relative_to_absolute_pos(jgl::Vector2Int p_pos, jgl::Size_t p_level);
+	jgl::Vector3Int convert_relative_to_absolute_pos(jgl::Vector3Int p_pos);
 };

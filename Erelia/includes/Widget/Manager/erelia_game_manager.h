@@ -21,8 +21,11 @@ public :
 		Timeout_multiplayer_connection = 1,
 		Connection_refused = 2
 	};
+
 private:
 	Engine* _engine;
+
+	Gamemode _gamemode;
 
 	Map_manager* _map_manager;
 	Entity_manager* _entity_manager;
@@ -43,6 +46,9 @@ public:
 
 	~Game_manager();
 	static Game_manager* instance();
+
+	void set_gamemode(Gamemode p_gamemode) { _gamemode = p_gamemode; }
+	Gamemode gamemode() { return (_gamemode); }
 
 	void set_loading_status(Loading_status p_status);
 	Loading_status loading_status();

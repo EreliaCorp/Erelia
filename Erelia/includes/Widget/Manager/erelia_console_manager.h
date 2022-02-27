@@ -31,4 +31,5 @@ public:
 	static Console_manager* instanciate(Connection_mode p_mode, jgl::Widget* p_parent = nullptr);
 	static Console_manager* instance();
 	jgl::Bool console_active() { return (_console_input->is_selected()); }
+	jgl::Bool console_entry_pointed() { return (_console_input->text_entry()->is_pointed()); }
 };

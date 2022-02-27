@@ -26,7 +26,7 @@ private:
 
 		Line(jgl::String p_text);
 		void compute(jgl::Vector2Int p_area);
-		jgl::Vector2Int render(jgl::Vector2Int p_size, jgl::Vector2Int p_anchor, jgl::Float p_depth);
+		jgl::Vector2Int render(jgl::Vector2Int p_size, jgl::Vector2Int p_anchor, jgl::Float p_depth, jgl::Size_t& p_nb_line_to_dodge);
 
 		jgl::Vector2Int size() { return (_size); }
 		jgl::Bool computed() { return (_computed); }
@@ -34,9 +34,12 @@ private:
 	};
 	jgl::Frame* _frame;
 	std::deque<Line> _messages;
+	jgl::Size_t _nb_line_to_dodge;
 
 	void _render();
 	void _on_geometry_change();
+
+	jgl::Bool _update();
 
 public:
 	Console_output(jgl::Widget* p_parent);

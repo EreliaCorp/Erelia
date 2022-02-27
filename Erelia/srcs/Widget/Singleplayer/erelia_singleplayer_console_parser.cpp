@@ -10,7 +10,32 @@ namespace Singleplayer
 			_output->add_message("[Player] : " + p_text);
 		else
 		{
-			_output->add_message("[Systm.] : " + p_text);
+			static jgl::Array<jgl::String> tab;
+			p_text.split(tab, " ", true);
+			if (tab[0] == "/gamemode")
+			{
+				if (tab.size() == 2 && (tab[1] == "Adventure" || tab[1] == "Builder"))
+				{
+					if (tab[1] == "Adventure")
+					{
+						Game_manager::instance()->set_gamemode(Gamemode::Adventure);
+						_output->add_message("[Systm.] : Gamemode set to Adventure");
+					}
+					else if (tab[1] == "Builder")
+					{
+						Game_manager::instance()->set_gamemode(Gamemode::Builder);
+						_output->add_message("[Systm.] : Gamemode set to Builder");
+					}
+				}
+				else
+				{
+					_output->add_message("[Systm.] : Usage \"/gamemode [Adventure / Builder]\"");
+				}
+			}
+			else
+			{
+				_output->add_message("[Systm.] : Command unknow [" + p_text + "]");
+			}
 		}
 	}
 

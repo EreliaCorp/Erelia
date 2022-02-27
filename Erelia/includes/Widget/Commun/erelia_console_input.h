@@ -13,6 +13,7 @@ private:
 public:
 	Console_input(jgl::Widget* p_parent);
 	jgl::String text() { return (_text_entry->text());}
-	void reset_text() { _text_entry->reset_text(); _text_entry->unselect(); }
+	void reset_text() { _text_entry->reset_text();}
 	jgl::Bool is_selected() { return (_text_entry->is_selected()); }
+	jgl::Text_entry* text_entry() { return (_text_entry); }
 };
