@@ -10,7 +10,7 @@ void Main_application::_on_geometry_change()
 
 void Main_application::_render()
 {
-
+	//jgl::cout << "FPS : " << jgl::Application::active_application()->fps_render() << " / " << jgl::Application::active_application()->fps_update() << jgl::endl;
 }
 
 jgl::Bool Main_application::_update()
