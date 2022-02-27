@@ -28,12 +28,14 @@ private:
 		void compute(jgl::Vector2Int p_area);
 		jgl::Vector2Int render(jgl::Vector2Int p_size, jgl::Vector2Int p_anchor, jgl::Float p_depth, jgl::Size_t& p_nb_line_to_dodge);
 
+		jgl::Size_t nb_line() { return (_parts.size()); }
 		jgl::Vector2Int size() { return (_size); }
 		jgl::Bool computed() { return (_computed); }
 		void uncompute() { _computed = false; }
 	};
 	jgl::Frame* _frame;
 	std::deque<Line> _messages;
+	jgl::Size_t _total_nb_line;
 	jgl::Size_t _nb_line_to_dodge;
 
 	void _render();

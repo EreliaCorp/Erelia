@@ -46,7 +46,7 @@ jgl::Vector2Int Console_output::Line::render(jgl::Vector2Int p_size, jgl::Vector
 	{
 		if (-result.y + _parts[i].size.y > p_size.y)
 			return (result);
-		
+
 		if (p_nb_line_to_dodge > 0)
 		{
 			p_nb_line_to_dodge--;
@@ -67,17 +67,22 @@ void Console_output::_render()
 
 	jgl::Vector2Int size = _area - (_frame->box().border_size() * 2);
 	jgl::Size_t nb_line_to_dodge = _nb_line_to_dodge;
-	for (jgl::Int i = 0; i < _messages.size() && pos.y - _messages[i].size().y > 0 ; i++)
+	for (jgl::Int i = 0; i < _messages.size() && pos.y - _messages[i].size().y > 0; i++)
 	{
 		if (_messages[i].computed() == false)
+		{
 			_messages[i].compute(size);
-
+			_total_nb_line += _messages[i].nb_line();
+		}
+		
 		pos.y += _messages[i].render(size - jgl::Vector2Int(0, base_pos.y - pos.y), pos, _depth + 2, nb_line_to_dodge).y;
 	}
 }
 
 void Console_output::_on_geometry_change()
 {
+	_total_nb_line = 0;
+	_nb_line_to_dodge = 0;
 	_frame->set_geometry(0, _area);
 	for (jgl::Int i = 0; i < _messages.size(); i++)
 	{
@@ -87,6 +92,23 @@ void Console_output::_on_geometry_change()
 
 jgl::Bool Console_output::_update()
 {
+	if (_frame->is_pointed() == true)
+	{
+		if (jgl::Application::active_application()->mouse().wheel() != 0)
+		{
+			THROW_INFORMATION("Using mouse wheel interaction");
+			if (jgl::Application::active_application()->mouse().wheel() > 0)
+			{
+				if (_nb_line_to_dodge < _total_nb_line)
+					_nb_line_to_dodge++;
+			}
+			else if (jgl::Application::active_application()->mouse().wheel() < 0)
+			{
+				if (_nb_line_to_dodge > 0)
+					_nb_line_to_dodge--;
+			}
+		}
+	}
 	return (false);
 }
 
@@ -97,6 +119,7 @@ Console_output::Console_output(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 	_frame->box().set_border_size(5);
 	_frame->activate();
 
+	_total_nb_line = 0;
 	_nb_line_to_dodge = 0;
 }
 
