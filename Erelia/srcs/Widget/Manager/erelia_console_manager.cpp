@@ -24,9 +24,18 @@ jgl::Bool Console_manager::_update()
 {
 	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Return) == jgl::Input_status::Release)
 	{
-		_console_parser->add_command(_console_input->text());
-		_console_input->reset_text();
+		if (_console_input->is_selected() == true)
+		{
+			_console_parser->add_command(_console_input->text());
+			_console_input->reset_text();
+		}
+		else
+		{
+			_console_input->text_entry()->select();
+		}
 	}
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Escape) == jgl::Input_status::Release && _console_input->is_selected() == true)
+		_console_input->text_entry()->unselect();
 	return (false);
 }
 

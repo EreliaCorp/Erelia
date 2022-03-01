@@ -29,7 +29,6 @@ void Player_manager::_change_connection_mode(Connection_mode p_mode)
 		_widgets.push_back(new Singleplayer::Player_updater(this));
 		_widgets.push_back(new Singleplayer::Player_interacter(this));
 
-
 		player->set_id(0);
 	}
 	else if (p_mode == Connection_mode::Multiplayer)

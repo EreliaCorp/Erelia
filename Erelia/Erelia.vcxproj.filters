@@ -231,6 +231,15 @@
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_interacter.cpp">
       <Filter>Source Files\Widget\Singleplayer</Filter>
     </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp">
+      <Filter>Source Files\Structure\Data\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\erelia.h">
@@ -349,6 +358,12 @@
     </ClInclude>
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_interacter.h">
       <Filter>Header Files\Widget\Singleplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_editor_inventory.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h">
+      <Filter>Header Files\Structure\Data\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

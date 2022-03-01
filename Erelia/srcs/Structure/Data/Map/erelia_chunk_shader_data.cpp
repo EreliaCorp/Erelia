@@ -28,15 +28,15 @@ void Chunk::Shader_data::generate()
 
 void Chunk::Shader_data::cast(jgl::Vector3 p_offset, jgl::Int p_animation_state)
 {
-	if (indexes_buffer->size() != 0 && Chunk::C_TEXTURE != nullptr)
+	if (indexes_buffer->size() != 0 && Texture_atlas::instance()->node_sprite_sheet() != nullptr)
 	{
 		shader->activate();
 
-		Chunk::C_TEXTURE->activate();
+		Texture_atlas::instance()->node_sprite_sheet()->activate();
 
 		delta_model_uniform->send(p_offset);
 		animation_state_uniform->send(p_animation_state);
-		uvs_unit_uniform->send(Chunk::C_TEXTURE->unit());
+		uvs_unit_uniform->send(Texture_atlas::instance()->node_sprite_sheet()->unit());
 		texture_uniform->send(0);
 
 		model_space_buffer->activate();

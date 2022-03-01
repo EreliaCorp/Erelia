@@ -1,7 +1,6 @@
 #include "erelia.h"
 
 jgl::Shader* Chunk::Shader_data::shader = nullptr;
-jgl::Sprite_sheet* Chunk::C_TEXTURE = nullptr;
 jgl::Vector3 Chunk::_screen_node_unit = 0;
 
 void Chunk::_initialize_opengl_data()
@@ -91,10 +90,10 @@ void Chunk::_bake_autotile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<
 	for (jgl::Size_t face = 0; face < 4; face++)
 	{
 		jgl::Vector2Int sprite_value = p_node->sprite + _calc_sub_part_sprite(p_x, p_y, p_z, face);
-		jgl::Uint sprite_id = (C_TEXTURE->size().x * sprite_value.y) + sprite_value.x;
+		jgl::Uint sprite_id = (Texture_atlas::instance()->node_sprite_sheet()->size().x * sprite_value.y) + sprite_value.x;
 		jgl::Vector3 node_pos = jgl::Vector3(p_x, p_y, p_z) + _delta_autotile_position[face];
-		jgl::Vector2 sprite = C_TEXTURE->sprite(sprite_id);
-		jgl::Vector2 unit = C_TEXTURE->unit();
+		jgl::Vector2 sprite = Texture_atlas::instance()->node_sprite_sheet()->sprite(sprite_id);
+		jgl::Vector2 unit = Texture_atlas::instance()->node_sprite_sheet()->unit();
 
 		jgl::Size_t vertex_array_entry_size = p_vertex_array.size();
 
@@ -118,10 +117,10 @@ void Chunk::_bake_tile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl:
 	Node* p_node,
 	jgl::Int p_x, jgl::Int p_y, jgl::Int p_z)
 {
-	jgl::Uint sprite_id = (C_TEXTURE->size().x * p_node->sprite.y) + p_node->sprite.x;
+	jgl::Uint sprite_id = (Texture_atlas::instance()->node_sprite_sheet()->size().x * p_node->sprite.y) + p_node->sprite.x;
 	jgl::Vector3 node_pos = jgl::Vector3(p_x, p_y, p_z);
-	jgl::Vector2 sprite = C_TEXTURE->sprite(sprite_id);
-	jgl::Vector2 unit = C_TEXTURE->unit();
+	jgl::Vector2 sprite = Texture_atlas::instance()->node_sprite_sheet()->sprite(sprite_id);
+	jgl::Vector2 unit = Texture_atlas::instance()->node_sprite_sheet()->unit();
 
 	jgl::Size_t vertex_array_entry_size = p_vertex_array.size();
 
@@ -142,8 +141,8 @@ void Chunk::bake(Map* p_map, jgl::Bool rebake)
 {
 	_initialize_opengl_data();
 
-	if (C_TEXTURE == nullptr)
-		C_TEXTURE = static_cast<jgl::Sprite_sheet*>(Texture_atlas::instance()->get_texture("chunk_sprite_sheet"));
+	if (Texture_atlas::instance()->node_sprite_sheet() == nullptr)
+		return ;
 
 	for (jgl::Int i = -1; i <= 1; i++)
 	{
@@ -207,10 +206,7 @@ void Chunk::bake(Map* p_map, jgl::Bool rebake)
 
 void Chunk::render(jgl::Vector3 p_offset, jgl::Int p_animation_state)
 {
-	if (C_TEXTURE == nullptr)
-		C_TEXTURE = static_cast<jgl::Sprite_sheet*>(Texture_atlas::instance()->get_texture("chunk_sprite_sheet"));
-
-	if (C_TEXTURE != nullptr)
+	if (Texture_atlas::instance()->node_sprite_sheet() != nullptr)
 	{
 		if (_shader_data.generated == true)
 			_shader_data.cast(p_offset, p_animation_state);

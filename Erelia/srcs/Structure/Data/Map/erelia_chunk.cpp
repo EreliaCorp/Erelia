@@ -59,7 +59,7 @@ jgl::Short Chunk::content(jgl::Vector2Int p_pos, jgl::Size_t p_level)
 	if (p_pos.x < 0 || p_pos.x >= C_SIZE ||
 		p_pos.y < 0 || p_pos.y >= C_SIZE ||
 		p_level < 0 || p_level >= C_LAYER_LENGTH)
-		return (- 1);
+		return (-1);
 	return (_content[p_pos.x][p_pos.y][p_level]);
 }
 

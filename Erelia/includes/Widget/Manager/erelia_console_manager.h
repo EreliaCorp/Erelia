@@ -30,6 +30,10 @@ private:
 public:
 	static Console_manager* instanciate(Connection_mode p_mode, jgl::Widget* p_parent = nullptr);
 	static Console_manager* instance();
+
+	Console_output* console_output() { return (_console_output); }
+	Console_input* console_input() { return (_console_input); }
+
 	jgl::Bool console_active() { return (_console_input->is_selected()); }
 	jgl::Bool console_entry_pointed() { return (_console_input->text_entry()->is_pointed()); }
 };

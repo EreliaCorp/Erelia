@@ -91,14 +91,12 @@ void Map::place_node(jgl::Vector3Int p_pos, jgl::Short p_node)
 
 jgl::Vector2Int Map::convert_world_to_chunk(jgl::Vector2Int p_pos)
 {
-	jgl::Vector2Int result;
+	jgl::Vector2 result;
 
-	result = p_pos / Chunk::C_SIZE;
+	result.x = static_cast<jgl::Float>(p_pos.x) / static_cast<jgl::Float>(Chunk::C_SIZE);
+	result.y = static_cast<jgl::Float>(p_pos.y) / static_cast<jgl::Float>(Chunk::C_SIZE);
 
-	if (p_pos.x < 0)
-		result.x--;
-	if (p_pos.y < 0)
-		result.y--;
+	result = result.floor();
 
 	return (result);
 }

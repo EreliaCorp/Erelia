@@ -19,7 +19,7 @@ Game_manager::Game_manager(Connection_mode p_mode, jgl::Widget* p_parent) : jgl:
 {
 	_loading_status = Loading_status::Error;
 	_engine = Engine::instanciate();
-	_gamemode = Gamemode::Adventure;
+	_gamemode = Gamemode::Builder;
 
 	_map_manager = Map_manager::instanciate(p_mode, this);
 	_entity_manager = Entity_manager::instanciate(p_mode, this);

@@ -33,6 +33,7 @@
     <ClCompile Include="srcs\Structure\Atlas\erelia_singleton_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp" />
@@ -44,6 +45,8 @@
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_map_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Main application\erelia_main_application.cpp" />
@@ -74,6 +77,7 @@
     <ClInclude Include="includes\Structure\Atlas\erelia_singleton_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h" />
     <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h" />
+    <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h" />
@@ -84,6 +88,7 @@
     <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_console_input.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_console_output.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_editor_inventory.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_graphical_widget.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h" />
     <ClInclude Include="includes\Widget\erelia_widgets.h" />

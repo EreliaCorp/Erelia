@@ -82,7 +82,8 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	Texture_atlas::instanciate();
 	Texture_atlas::instance()->add_texture("Basic_frame", new jgl::Sprite_sheet(Path_atlas::basic_frame_texture_path, 3));
 	Texture_atlas::instance()->add_texture("Basic_frame_selected", new jgl::Sprite_sheet(Path_atlas::basic_frame_texture_pressed_path, 3));
-	Texture_atlas::instance()->add_texture("chunk_sprite_sheet", new jgl::Sprite_sheet(Path_atlas::chunk_sprite_sheet_path, jgl::Vector2Int(32, 66)));
+	Texture_atlas::instance()->add_texture("Node_sprite_sheet", new jgl::Sprite_sheet(Path_atlas::chunk_sprite_sheet_path, jgl::Vector2Int(32, 66)));
+	Texture_atlas::instance()->add_texture("Prefab_sprite_sheet", new jgl::Sprite_sheet(Path_atlas::prefab_sprite_sheet_path, jgl::Vector2Int(8, 44)));
 
 	_instance = this;
 	if (jgl::check_file_exist(Path_atlas::ui_configuration_path + Path_atlas::ui_configuration_file) == false)
