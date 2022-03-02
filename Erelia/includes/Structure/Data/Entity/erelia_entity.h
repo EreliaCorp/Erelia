@@ -22,6 +22,7 @@ public:
 	void move(jgl::Vector2 p_delta);
 
 	void set_id(jgl::Long p_id) { _id = p_id; }
+	void set_move_speed(jgl::Ulong p_move_speed) { _move_speed = p_move_speed; }
 
 	void update();
 

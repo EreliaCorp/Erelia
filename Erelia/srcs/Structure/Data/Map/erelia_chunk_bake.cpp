@@ -9,7 +9,7 @@ void Chunk::_initialize_opengl_data()
 		_shader_data.generate();
 	if (_screen_node_unit == 0)
 	{
-		_screen_node_unit = jgl::convert_screen_to_opengl(Node::C_SIZE, 1) - jgl::convert_screen_to_opengl(0, 0);
+		_screen_node_unit = jgl::convert_screen_to_opengl(Node::size, 1) - jgl::convert_screen_to_opengl(0, 0);
 	}
 }
 

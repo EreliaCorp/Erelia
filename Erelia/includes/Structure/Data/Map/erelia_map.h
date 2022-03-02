@@ -45,6 +45,8 @@ public:
 	void save();
 	void load(jgl::String p_world_path);
 
+	void set_node_size(jgl::Size_t p_node_size) { Node::size = p_node_size; unbake(); }
+
 	void place_node(jgl::Vector2Int p_pos, jgl::Size_t p_level, jgl::Short p_node);
 	void place_node(jgl::Vector3Int p_pos, jgl::Short p_node);
 

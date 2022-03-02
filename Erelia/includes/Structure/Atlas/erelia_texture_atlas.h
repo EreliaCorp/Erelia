@@ -10,6 +10,7 @@ private:
 	jgl::Sprite_sheet* _basic_frame_selected = nullptr;
 	jgl::Sprite_sheet* _node_sprite_sheet = nullptr;
 	jgl::Sprite_sheet* _prefab_sprite_sheet = nullptr;
+	jgl::Sprite_sheet* _UI_sprite_sheet = nullptr;
 
 	Texture_atlas();
 	static Texture_atlas* _instance;
@@ -25,4 +26,5 @@ public:
 	jgl::Sprite_sheet* basic_frame_selected_texture() { return (_basic_frame_selected); }
 	jgl::Sprite_sheet* node_sprite_sheet() { return (_node_sprite_sheet); }
 	jgl::Sprite_sheet* prefab_sprite_sheet() { return (_prefab_sprite_sheet); }
+	jgl::Sprite_sheet* UI_sprite_sheet() { return (_UI_sprite_sheet); }
 };

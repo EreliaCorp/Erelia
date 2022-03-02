@@ -2,7 +2,7 @@
 
 #include "erelia.h"
 
-jgl::Size_t Node::C_SIZE = 32;
+jgl::Size_t Node::size = 32;
 
 jgl::Array<Node*> g_node_array =
 {	

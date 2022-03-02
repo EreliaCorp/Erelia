@@ -12,6 +12,8 @@ namespace Singleplayer
 	private:
 		Editor_inventory* _editor_inventory;
 
+		jgl::Vector2Int _selected_first_pos;
+
 		void _render();
 		void _on_geometry_change();
 

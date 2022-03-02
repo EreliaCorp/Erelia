@@ -35,10 +35,6 @@ namespace Singleplayer
 			}
 		}
 
-		if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::F7) == jgl::Input_status::Release)
-		{
-			Engine::instance()->map()->save();
-		}
 		return (false);
 	}
 

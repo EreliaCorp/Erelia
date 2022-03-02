@@ -39,6 +39,10 @@ void Texture_atlas::add_texture(jgl::String p_name, jgl::Image_handler* p_image_
 	{
 		_prefab_sprite_sheet = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
+	else if (p_name == "UI_sprite_sheet")
+	{
+		_UI_sprite_sheet = static_cast<jgl::Sprite_sheet*>(p_image_handler);
+	}
 }
 
 jgl::Image_handler* Texture_atlas::get_texture(jgl::String p_name)

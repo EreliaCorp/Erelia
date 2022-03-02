@@ -240,6 +240,9 @@
     <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp">
       <Filter>Source Files\Widget\Commun</Filter>
     </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_entity_renderer.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\erelia.h">

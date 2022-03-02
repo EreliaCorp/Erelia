@@ -8,7 +8,7 @@ class Chunk
 {
 public:
 	static const jgl::Size_t C_SIZE = 16u;
-	static const jgl::Size_t C_LAYER_LENGTH = 5u;
+	static const jgl::Size_t C_LAYER_LENGTH = 7u;
 	static const jgl::Size_t C_NB_ANIMATION_FRAME = 4u;
 
 private:

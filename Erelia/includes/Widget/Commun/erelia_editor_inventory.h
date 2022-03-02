@@ -65,17 +65,10 @@ private:
 		jgl::Vector2 _UV_pos = 0;
 		jgl::Vector2 _UV_size = 1;
 
-		jgl::Bool _selecter_active = false;
-		jgl::Vector2Int _selecter_pos = 0;
-		jgl::Vector2Int _selecter_size = 0;
-
 		void _render();
 		void _on_geometry_change();
 	public:
 		Inventory_renderer(jgl::Widget* p_parent);
-
-		void set_selecter_icon_state(jgl::Bool p_state) { _selecter_active = p_state; }
-		void set_selecter_icon_info(jgl::Vector2Int p_pos, jgl::Vector2Int p_size) { _selecter_pos = p_pos; _selecter_size = p_size; }
 
 		void set_texture(jgl::Image* p_image) { _image = p_image; }
 		void set_UVs(jgl::Vector2 p_UV_pos, jgl::Vector2 p_UV_size) { _UV_pos = p_UV_pos; _UV_size = p_UV_size; }

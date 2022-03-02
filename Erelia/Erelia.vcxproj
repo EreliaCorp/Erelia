@@ -47,6 +47,7 @@
     <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_entity_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_map_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Main application\erelia_main_application.cpp" />

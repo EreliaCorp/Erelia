@@ -8,17 +8,12 @@ void Editor_inventory::Inventory_renderer::_render()
 	{
 		_image->draw(_anchor, _area, _UV_pos, _UV_size, _depth + 1, 1.0f);
 	}
-	if (_selecter_active == true)
-	{
-
-	}
 }
 
 void Editor_inventory::Inventory_renderer::_on_geometry_change()
 {
 	_UV_pos = 0;
 	_UV_size = 1;
-	_selecter_active = false;
 }
 
 Editor_inventory::Inventory_renderer::Inventory_renderer(jgl::Widget* p_parent) : jgl::Widget(p_parent)
@@ -33,6 +28,18 @@ void Editor_inventory::_render()
 		_pages[_inventory_page_index]->compute();
 		_inventory_frame_contener->set_texture(_pages[_inventory_page_index]->texture);
 		_inventory_frame_contener->set_UVs(_pages[_inventory_page_index]->unit * _page_offset, _pages[_inventory_page_index]->unit * _nb_element_on_screen);
+	}
+	if (_inventory_page_index == _selected_page_index && _selected_item_pos.y >= _page_offset.y)
+	{
+		jgl::Vector2Int anchor = _inventory_frame_contener->cumuled_anchor() + _element_unit * (_selected_item_pos - _page_offset) - 5;
+		jgl::Vector2Int area = _element_unit + 10;
+
+		Texture_atlas::instance()->UI_sprite_sheet()->draw(
+				jgl::Vector2Int(0, 0),
+				anchor,
+				area,
+				_inventory_frame_contener->depth() + 1,
+				1.0f);
 	}
 }
 
@@ -72,9 +79,8 @@ void Editor_inventory::_on_geometry_change()
 
 	_inventory_frame_contener->set_geometry(_previous_page_button->anchor() + jgl::Vector2Int(0, button_size.y + space.y), inventory_page_size);
 
-	_element_unit = static_cast<jgl::Float>(_inventory_frame->area().x - 20) / Inventory_page::C_NB_ITEM_PER_LINE;
-	_nb_element_on_screen = jgl::Vector2(_inventory_frame->area().x - 20.0f, _inventory_frame->area().y - 20.0f) / _element_unit;
-	_element_unit = jgl::Vector2(_inventory_frame->area().x - 20.0f, _inventory_frame->area().y - 20.0f) / _nb_element_on_screen;
+	_element_unit = static_cast<jgl::Float>(_inventory_frame_contener->area().x) / Inventory_page::C_NB_ITEM_PER_LINE;
+	_nb_element_on_screen = jgl::Vector2(_inventory_frame_contener->area()) / _element_unit;
 	_page_offset = 0;
 
 	if (_pages[_inventory_page_index] != nullptr)
@@ -356,7 +362,7 @@ void Editor_inventory::Inventory_page::add_item(jgl::Vector2Uint p_pos, Item* p_
 void Editor_inventory::Inventory_page::calc_unit()
 {
 	if (size != 0)
-		unit = jgl::Vector2(1, 1) / size;
+		unit = jgl::Vector2(1.0f, 1.0f) / size;
 	else
 		unit = 1;
 }

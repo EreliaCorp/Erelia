@@ -11,7 +11,7 @@ struct Node
 	static const jgl::Short WEST_WALKABLE		= 0b0000000000001000;
 	static const jgl::Short WALKABLE			= 0b0000000000001111;
 
-	static jgl::Size_t C_SIZE;
+	static jgl::Size_t size;
 
 	jgl::String name;
 	jgl::Vector2Int sprite;
