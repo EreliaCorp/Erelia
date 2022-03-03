@@ -33,7 +33,7 @@ private:
 		jgl::Bool computed() { return (_computed); }
 		void uncompute() { _computed = false; }
 	};
-	jgl::Frame* _frame;
+	jgl::Widget_component::Box _box;
 	std::deque<Line> _messages;
 	jgl::Size_t _total_nb_line;
 	jgl::Size_t _nb_line_to_dodge;

@@ -36,7 +36,7 @@ void Map_renderer::_render()
 				if (tmp_chunk->baked() == false)
 					tmp_chunk->bake(map, true);
 
-				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), 0), animation_state);
+				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
 			}
 		}
 	}

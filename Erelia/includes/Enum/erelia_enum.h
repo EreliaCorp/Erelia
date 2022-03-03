@@ -28,3 +28,4 @@ using Message = jgl::Message<Server_message>;
 using Client = jgl::Client<Server_message>;
 using Server = jgl::Server<Server_message>;
 using Connection = jgl::Connection<Server_message>;
+#define SERVER_ACTIVITY [&](Connection* p_connection, Message& p_msg, jgl::Data_contener& p_param)

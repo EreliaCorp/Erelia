@@ -25,7 +25,7 @@ void Entity_manager::_change_connection_mode(Connection_mode p_mode)
 
 	if (p_mode == Connection_mode::Singleplayer)
 	{
-
+		_widgets.push_back(new Entity_renderer(this));
 	}
 	else if (p_mode == Connection_mode::Multiplayer)
 	{
@@ -58,7 +58,6 @@ Entity_manager* Entity_manager::instanciate(Connection_mode p_mode, jgl::Widget*
 	if (_instance == nullptr)
 	{
 		_instance = new Entity_manager(p_mode, p_parent);
-		_instance->activate();
 	}
 	return (_instance);
 }

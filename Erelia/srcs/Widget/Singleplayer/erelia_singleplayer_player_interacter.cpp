@@ -153,6 +153,7 @@ namespace Singleplayer
 	Player_interacter::Player_interacter(jgl::Widget* p_parent) : Graphical_widget(p_parent)
 	{
 		_editor_inventory = new Editor_inventory(this);
+		_editor_inventory->set_depth(_depth + 100);
 		_editor_inventory->desactivate();
 	}
 }

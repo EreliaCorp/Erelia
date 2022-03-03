@@ -3,6 +3,8 @@
 #include "jgl.h"
 #include "Enum/erelia_enum.h"
 
+#include "Widget/Commun/erelia_entity_renderer.h"
+
 class Entity_manager : public jgl::Widget
 {
 private:

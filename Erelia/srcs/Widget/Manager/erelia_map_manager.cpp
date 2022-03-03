@@ -27,7 +27,7 @@ void Map_manager::_change_connection_mode(Connection_mode p_mode)
 
 	if (p_mode == Connection_mode::Singleplayer)
 	{
-		_widgets.push_back(new Singleplayer::Map_loader(this));
+		_widgets.push_back(new Map_loader(this));
 	}
 	else if (p_mode == Connection_mode::Multiplayer)
 	{
@@ -35,7 +35,7 @@ void Map_manager::_change_connection_mode(Connection_mode p_mode)
 	}
 	else if (p_mode == Connection_mode::Host)
 	{
-
+		_widgets.push_back(new Map_loader(this));
 	}
 
 	for (jgl::Size_t i = 0; i < _widgets.size(); i++)
@@ -65,7 +65,6 @@ Map_manager* Map_manager::instanciate(Connection_mode p_mode, jgl::Widget* p_par
 	if (_instance == nullptr)
 	{
 		_instance = new Map_manager(p_mode, p_parent);
-		_instance->activate();
 	}
 	return (_instance);
 }

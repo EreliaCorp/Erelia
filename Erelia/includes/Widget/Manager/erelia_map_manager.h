@@ -3,9 +3,9 @@
 #include "jgl.h"
 #include "Enum/erelia_enum.h"
 
+#include "Widget/Commun/erelia_map_loader.h"
 #include "Widget/Commun/erelia_map_renderer.h"
 
-#include "Widget/Singleplayer/erelia_singleplayer_map_loader.h"
 
 class Map_manager : public jgl::Widget
 {

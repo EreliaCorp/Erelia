@@ -2,7 +2,7 @@
 
 #include "erelia.h"
 
-jgl::Size_t Node::size = 32;
+jgl::Size_t Node::size = 48;
 
 jgl::Array<Node*> g_node_array =
 {	
@@ -821,10 +821,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 54), false, false,  0u), //   812
 	new Node(              "Undefined", jgl::Vector2Int(14, 54), false, false,  0u), //   813
 	new Node(              "Undefined", jgl::Vector2Int(15, 54), false, false,  0u), //   814
-	new Node(              "Undefined", jgl::Vector2Int(16, 54), false, false,  4u), //   815
-	new Node(              "Undefined", jgl::Vector2Int(20, 54), false, false,  4u), //   816
-	new Node(              "Undefined", jgl::Vector2Int(24, 54), false, false,  4u), //   817
-	new Node(              "Undefined", jgl::Vector2Int(28, 54), false, false,  4u), //   818
+	new Node(              "Undefined", jgl::Vector2Int(16, 54), false, false,  1u), //   815
+	new Node(              "Undefined", jgl::Vector2Int(20, 54), false, false,  1u), //   816
+	new Node(              "Undefined", jgl::Vector2Int(24, 54), false, false,  1u), //   817
+	new Node(              "Undefined", jgl::Vector2Int(28, 54), false, false,  1u), //   818
 	new Node(              "Undefined", jgl::Vector2Int( 0, 55), false, false,  0u), //   819
 	new Node(              "Undefined", jgl::Vector2Int( 1, 55), false, false,  0u), //   820
 	new Node(              "Undefined", jgl::Vector2Int( 2, 55), false, false,  0u), //   821
@@ -841,10 +841,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 55), false, false,  0u), //   832
 	new Node(              "Undefined", jgl::Vector2Int(14, 55), false, false,  0u), //   833
 	new Node(              "Undefined", jgl::Vector2Int(15, 55), false, false,  0u), //   834
-	new Node(              "Undefined", jgl::Vector2Int(16, 55), false, false,  4u), //   835
-	new Node(              "Undefined", jgl::Vector2Int(20, 55), false, false,  4u), //   836
-	new Node(              "Undefined", jgl::Vector2Int(24, 55), false, false,  4u), //   837
-	new Node(              "Undefined", jgl::Vector2Int(28, 55), false, false,  4u), //   838
+	new Node(              "Undefined", jgl::Vector2Int(16, 55), false, false,  1u), //   835
+	new Node(              "Undefined", jgl::Vector2Int(20, 55), false, false,  1u), //   836
+	new Node(              "Undefined", jgl::Vector2Int(24, 55), false, false,  1u), //   837
+	new Node(              "Undefined", jgl::Vector2Int(28, 55), false, false,  1u), //   838
 	new Node(              "Undefined", jgl::Vector2Int( 0, 56), false, false,  0u), //   839
 	new Node(              "Undefined", jgl::Vector2Int( 1, 56), false, false,  0u), //   840
 	new Node(              "Undefined", jgl::Vector2Int( 2, 56), false, false,  0u), //   841
@@ -861,10 +861,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 56), false, false,  0u), //   852
 	new Node(              "Undefined", jgl::Vector2Int(14, 56), false, false,  0u), //   853
 	new Node(              "Undefined", jgl::Vector2Int(15, 56), false, false,  0u), //   854
-	new Node(              "Undefined", jgl::Vector2Int(16, 56), false, false,  4u), //   855
-	new Node(              "Undefined", jgl::Vector2Int(20, 56), false, false,  4u), //   856
-	new Node(              "Undefined", jgl::Vector2Int(24, 56), false, false,  4u), //   857
-	new Node(              "Undefined", jgl::Vector2Int(28, 56), false, false,  4u), //   858
+	new Node(              "Undefined", jgl::Vector2Int(16, 56), false, false,  1u), //   855
+	new Node(              "Undefined", jgl::Vector2Int(20, 56), false, false,  1u), //   856
+	new Node(              "Undefined", jgl::Vector2Int(24, 56), false, false,  1u), //   857
+	new Node(              "Undefined", jgl::Vector2Int(28, 56), false, false,  1u), //   858
 	new Node(              "Undefined", jgl::Vector2Int( 0, 57), false, false,  0u), //   859
 	new Node(              "Undefined", jgl::Vector2Int( 1, 57), false, false,  0u), //   860
 	new Node(              "Undefined", jgl::Vector2Int( 2, 57), false, false,  0u), //   861
@@ -881,10 +881,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 57), false, false,  0u), //   872
 	new Node(              "Undefined", jgl::Vector2Int(14, 57), false, false,  0u), //   873
 	new Node(              "Undefined", jgl::Vector2Int(15, 57), false, false,  0u), //   874
-	new Node(              "Undefined", jgl::Vector2Int(16, 57), false, false,  4u), //   875
-	new Node(              "Undefined", jgl::Vector2Int(20, 57), false, false,  4u), //   876
-	new Node(              "Undefined", jgl::Vector2Int(24, 57), false, false,  4u), //   877
-	new Node(              "Undefined", jgl::Vector2Int(28, 57), false, false,  4u), //   878
+	new Node(              "Undefined", jgl::Vector2Int(16, 57), false, false,  1u), //   875
+	new Node(              "Undefined", jgl::Vector2Int(20, 57), false, false,  1u), //   876
+	new Node(              "Undefined", jgl::Vector2Int(24, 57), false, false,  1u), //   877
+	new Node(              "Undefined", jgl::Vector2Int(28, 57), false, false,  1u), //   878
 	new Node(              "Undefined", jgl::Vector2Int( 0, 58), false, false,  0u), //   879
 	new Node(              "Undefined", jgl::Vector2Int( 1, 58), false, false,  0u), //   880
 	new Node(              "Undefined", jgl::Vector2Int( 2, 58), false, false,  0u), //   881
@@ -901,10 +901,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 58), false, false,  0u), //   892
 	new Node(              "Undefined", jgl::Vector2Int(14, 58), false, false,  0u), //   893
 	new Node(              "Undefined", jgl::Vector2Int(15, 58), false, false,  0u), //   894
-	new Node(                 "Flower", jgl::Vector2Int(16, 58), false, false,  4u), //   895
-	new Node(                 "Flower", jgl::Vector2Int(20, 58), false, false,  4u), //   896
-	new Node(                 "Flower", jgl::Vector2Int(24, 58), false, false,  4u), //   897
-	new Node(                 "Flower", jgl::Vector2Int(28, 58), false, false,  4u), //   898
+	new Node(                 "Flower", jgl::Vector2Int(16, 58), false, false,  1u), //   895
+	new Node(                 "Flower", jgl::Vector2Int(20, 58), false, false,  1u), //   896
+	new Node(                 "Flower", jgl::Vector2Int(24, 58), false, false,  1u), //   897
+	new Node(                 "Flower", jgl::Vector2Int(28, 58), false, false,  1u), //   898
 	new Node(                   "Ruin", jgl::Vector2Int( 0, 59), false, false,  0u), //   899
 	new Node(                   "Ruin", jgl::Vector2Int( 1, 59), false, false,  0u), //   900
 	new Node(                   "Ruin", jgl::Vector2Int( 2, 59), false, false,  0u), //   901
@@ -921,10 +921,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 59), false, false,  0u), //   912
 	new Node(              "Undefined", jgl::Vector2Int(14, 59), false, false,  0u), //   913
 	new Node(              "Undefined", jgl::Vector2Int(15, 59), false, false,  0u), //   914
-	new Node(              "Undefined", jgl::Vector2Int(16, 59), false, false,  4u), //   915
-	new Node(              "Undefined", jgl::Vector2Int(20, 59), false, false,  4u), //   916
-	new Node(              "Undefined", jgl::Vector2Int(24, 59), false, false,  4u), //   917
-	new Node(              "Undefined", jgl::Vector2Int(28, 59), false, false,  4u), //   918
+	new Node(              "Undefined", jgl::Vector2Int(16, 59), false, false,  1u), //   915
+	new Node(              "Undefined", jgl::Vector2Int(20, 59), false, false,  1u), //   916
+	new Node(              "Undefined", jgl::Vector2Int(24, 59), false, false,  1u), //   917
+	new Node(              "Undefined", jgl::Vector2Int(28, 59), false, false,  1u), //   918
 	new Node(                   "Ruin", jgl::Vector2Int( 0, 60), false, false,  0u), //   919
 	new Node(                   "Ruin", jgl::Vector2Int( 1, 60), false, false,  0u), //   920
 	new Node(                   "Ruin", jgl::Vector2Int( 2, 60), false, false,  0u), //   921
@@ -941,10 +941,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 60), false, false,  0u), //   932
 	new Node(              "Undefined", jgl::Vector2Int(14, 60), false, false,  0u), //   933
 	new Node(              "Undefined", jgl::Vector2Int(15, 60), false, false,  0u), //   934
-	new Node(              "Undefined", jgl::Vector2Int(16, 60), false, false,  4u), //   935
-	new Node(              "Undefined", jgl::Vector2Int(20, 60), false, false,  4u), //   936
-	new Node(              "Undefined", jgl::Vector2Int(24, 60), false, false,  4u), //   937
-	new Node(              "Undefined", jgl::Vector2Int(28, 60), false, false,  4u), //   938
+	new Node(              "Undefined", jgl::Vector2Int(16, 60), false, false,  1u), //   935
+	new Node(              "Undefined", jgl::Vector2Int(20, 60), false, false,  1u), //   936
+	new Node(              "Undefined", jgl::Vector2Int(24, 60), false, false,  1u), //   937
+	new Node(              "Undefined", jgl::Vector2Int(28, 60), false, false,  1u), //   938
 	new Node(              "Undefined", jgl::Vector2Int( 0, 61), false, false,  0u), //   939
 	new Node(              "Undefined", jgl::Vector2Int( 1, 61), false, false,  0u), //   940
 	new Node(              "Undefined", jgl::Vector2Int( 2, 61), false, false,  0u), //   941
@@ -961,10 +961,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 61), false, false,  0u), //   952
 	new Node(              "Undefined", jgl::Vector2Int(14, 61), false, false,  0u), //   953
 	new Node(              "Undefined", jgl::Vector2Int(15, 61), false, false,  0u), //   954
-	new Node(                  "Torch", jgl::Vector2Int(16, 61), false, false,  4u), //   955
-	new Node(                  "Torch", jgl::Vector2Int(20, 61), false, false,  4u), //   956
-	new Node(                  "Torch", jgl::Vector2Int(24, 61), false, false,  4u), //   957
-	new Node(                  "Torch", jgl::Vector2Int(28, 61), false, false,  4u), //   958
+	new Node(                  "Torch", jgl::Vector2Int(16, 61), false, false,  1u), //   955
+	new Node(                  "Torch", jgl::Vector2Int(20, 61), false, false,  1u), //   956
+	new Node(                  "Torch", jgl::Vector2Int(24, 61), false, false,  1u), //   957
+	new Node(                  "Torch", jgl::Vector2Int(28, 61), false, false,  1u), //   958
 	new Node(              "Undefined", jgl::Vector2Int( 0, 62), false, false,  0u), //   959
 	new Node(              "Undefined", jgl::Vector2Int( 1, 62), false, false,  0u), //   960
 	new Node(              "Undefined", jgl::Vector2Int( 2, 62), false, false,  0u), //   961
@@ -981,10 +981,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 62), false, false,  0u), //   972
 	new Node(              "Undefined", jgl::Vector2Int(14, 62), false, false,  0u), //   973
 	new Node(              "Undefined", jgl::Vector2Int(15, 62), false, false,  0u), //   974
-	new Node(                   "Fire", jgl::Vector2Int(16, 62), false, false,  4u), //   975
-	new Node(                   "Fire", jgl::Vector2Int(20, 62), false, false,  4u), //   976
-	new Node(                   "Fire", jgl::Vector2Int(24, 62), false, false,  4u), //   977
-	new Node(                   "Fire", jgl::Vector2Int(28, 62), false, false,  4u), //   978
+	new Node(                   "Fire", jgl::Vector2Int(16, 62), false, false,  1u), //   975
+	new Node(                   "Fire", jgl::Vector2Int(20, 62), false, false,  1u), //   976
+	new Node(                   "Fire", jgl::Vector2Int(24, 62), false, false,  1u), //   977
+	new Node(                   "Fire", jgl::Vector2Int(28, 62), false, false,  1u), //   978
 	new Node(              "Undefined", jgl::Vector2Int( 0, 63), false, false,  0u), //   979
 	new Node(              "Undefined", jgl::Vector2Int( 1, 63), false, false,  0u), //   980
 	new Node(              "Undefined", jgl::Vector2Int( 2, 63), false, false,  0u), //   981
@@ -1001,10 +1001,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 63), false, false,  0u), //   992
 	new Node(              "Undefined", jgl::Vector2Int(14, 63), false, false,  0u), //   993
 	new Node(              "Undefined", jgl::Vector2Int(15, 63), false, false,  0u), //   994
-	new Node(                   "Fire", jgl::Vector2Int(16, 63), false, false,  4u), //   995
-	new Node(                   "Fire", jgl::Vector2Int(20, 63), false, false,  4u), //   996
-	new Node(                   "Fire", jgl::Vector2Int(24, 63), false, false,  4u), //   997
-	new Node(                   "Fire", jgl::Vector2Int(28, 63), false, false,  4u), //   998
+	new Node(                   "Fire", jgl::Vector2Int(16, 63), false, false,  1u), //   995
+	new Node(                   "Fire", jgl::Vector2Int(20, 63), false, false,  1u), //   996
+	new Node(                   "Fire", jgl::Vector2Int(24, 63), false, false,  1u), //   997
+	new Node(                   "Fire", jgl::Vector2Int(28, 63), false, false,  1u), //   998
 	new Node(              "Undefined", jgl::Vector2Int( 0, 64), false, false,  0u), //   999
 	new Node(              "Undefined", jgl::Vector2Int( 1, 64), false, false,  0u), //   1000
 	new Node(              "Undefined", jgl::Vector2Int( 2, 64), false, false,  0u), //   1001
@@ -1021,10 +1021,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 64), false, false,  0u), //   1012
 	new Node(              "Undefined", jgl::Vector2Int(14, 64), false, false,  0u), //   1013
 	new Node(              "Undefined", jgl::Vector2Int(15, 64), false, false,  0u), //   1014
-	new Node(                   "Fire", jgl::Vector2Int(16, 64), false, false,  4u), //   1015
-	new Node(                   "Fire", jgl::Vector2Int(20, 64), false, false,  4u), //   1016
-	new Node(                   "Fire", jgl::Vector2Int(24, 64), false, false,  4u), //   1017
-	new Node(                   "Fire", jgl::Vector2Int(28, 64), false, false,  4u), //   1018
+	new Node(                   "Fire", jgl::Vector2Int(16, 64), false, false,  1u), //   1015
+	new Node(                   "Fire", jgl::Vector2Int(20, 64), false, false,  1u), //   1016
+	new Node(                   "Fire", jgl::Vector2Int(24, 64), false, false,  1u), //   1017
+	new Node(                   "Fire", jgl::Vector2Int(28, 64), false, false,  1u), //   1018
 	new Node(              "Undefined", jgl::Vector2Int( 0, 65), false, false,  0u), //   1019
 	new Node(              "Undefined", jgl::Vector2Int( 1, 65), false, false,  0u), //   1020
 	new Node(              "Undefined", jgl::Vector2Int( 2, 65), false, false,  0u), //   1021
@@ -1041,10 +1041,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 65), false, false,  0u), //   1032
 	new Node(              "Undefined", jgl::Vector2Int(14, 65), false, false,  0u), //   1033
 	new Node(              "Undefined", jgl::Vector2Int(15, 65), false, false,  0u), //   1034
-	new Node(                   "Fire", jgl::Vector2Int(16, 65), false, false,  4u), //   1035
-	new Node(                   "Fire", jgl::Vector2Int(20, 65), false, false,  4u), //   1036
-	new Node(                   "Fire", jgl::Vector2Int(24, 65), false, false,  4u), //   1037
-	new Node(                   "Fire", jgl::Vector2Int(28, 65), false, false,  4u), //   1038
+	new Node(                   "Fire", jgl::Vector2Int(16, 65), false, false,  1u), //   1035
+	new Node(                   "Fire", jgl::Vector2Int(20, 65), false, false,  1u), //   1036
+	new Node(                   "Fire", jgl::Vector2Int(24, 65), false, false,  1u), //   1037
+	new Node(                   "Fire", jgl::Vector2Int(28, 65), false, false,  1u), //   1038
 };
 
 jgl::Array<Prefab*> g_prefab_array =

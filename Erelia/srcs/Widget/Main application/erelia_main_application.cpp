@@ -15,11 +15,6 @@ void Main_application::_render()
 
 jgl::Bool Main_application::_update()
 {
-	if (Singleton_atlas::client() != nullptr && Singleton_atlas::client()->is_connected() == true)
-		Singleton_atlas::client()->update();
-	if (Singleton_atlas::server() != nullptr)
-		Singleton_atlas::server()->update();
-
 	return(false);
 }
 
@@ -32,47 +27,21 @@ void Main_application::launch_game_singleplayer(jgl::String p_world_name)
 {
 	Game_manager::instanciate_singleplayer(p_world_name, this);
 
-	if (Game_manager::instance()->loading_status() == Game_manager::Loading_status::Connection_complete)
-	{
-		_main_menu->desactivate();
-		Game_manager::instance()->activate();
-	}
-	else
-	{
-		return_to_main_menu();
-	}
+	start_game();
 }
 
 void Main_application::launch_game_multiplayer(jgl::String p_server_name, jgl::String p_server_ip, jgl::String p_player_username, jgl::String p_player_password)
 {
 	Game_manager::instanciate_multiplayer(p_server_ip, p_player_username, p_player_password, this);
 
-	if (Game_manager::instance()->loading_status() == Game_manager::Loading_status::Connection_complete)
-	{
-		_main_menu->desactivate();
-		Game_manager::instance()->activate();
-	}
-	else if (Game_manager::instance()->loading_status() == Game_manager::Loading_status::Timeout_multiplayer_connection)
-	{
-		return_to_main_menu();
-		_main_menu->set_error_text("Error while connecting to server : timeout");
-	}
+	start_game();
 }
 
 void Main_application::launch_game_host(jgl::String p_world_name, jgl::String p_player_username, jgl::String p_player_password)
 {
 	Game_manager::instanciate_host(p_world_name, p_player_username, p_player_password, this);
 
-	if (Game_manager::instance()->loading_status() == Game_manager::Loading_status::Connection_complete)
-	{
-		_main_menu->desactivate();
-		Game_manager::instance()->activate();
-	}
-	else
-	{
-		return_to_main_menu();
-		_main_menu->set_error_text("Can't host a game");
-	}
+	start_game();
 }
 
 Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent)
@@ -111,6 +80,12 @@ Main_application* Main_application::instance()
 void Main_application::set_error_text(jgl::String p_text)
 {
 	_main_menu->set_error_text(p_text);
+}
+
+void Main_application::start_game()
+{
+	_main_menu->desactivate();
+	Game_manager::instance()->activate();
 }
 
 void Main_application::return_to_main_menu()

@@ -180,9 +180,6 @@
     <ClCompile Include="srcs\Structure\Atlas\erelia_path_atlas.cpp">
       <Filter>Source Files\Structure\Atlas</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Structure\Atlas\erelia_singleton_atlas.cpp">
-      <Filter>Source Files\Structure\Atlas</Filter>
-    </ClCompile>
     <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp">
       <Filter>Source Files\Structure\Atlas</Filter>
     </ClCompile>
@@ -209,9 +206,6 @@
     </ClCompile>
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp">
       <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_map_loader.cpp">
-      <Filter>Source Files\Widget\Singleplayer</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_updater.cpp">
       <Filter>Source Files\Widget\Singleplayer</Filter>
@@ -241,6 +235,12 @@
       <Filter>Source Files\Widget\Commun</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Widget\Commun\erelia_entity_renderer.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Atlas\erelia_singleton_atlas.cpp">
+      <Filter>Source Files\Structure\Atlas</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_map_loader.cpp">
       <Filter>Source Files\Widget\Commun</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,9 +305,6 @@
     <ClInclude Include="includes\Structure\Atlas\erelia_path_atlas.h">
       <Filter>Header Files\Structure\Atlas</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\Atlas\erelia_singleton_atlas.h">
-      <Filter>Header Files\Structure\Atlas</Filter>
-    </ClInclude>
     <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h">
       <Filter>Header Files\Structure\Atlas</Filter>
     </ClInclude>
@@ -338,9 +335,6 @@
     <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h">
       <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_map_loader.h">
-      <Filter>Header Files\Widget\Singleplayer</Filter>
-    </ClInclude>
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_updater.h">
       <Filter>Header Files\Widget\Singleplayer</Filter>
     </ClInclude>
@@ -367,6 +361,15 @@
     </ClInclude>
     <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h">
       <Filter>Header Files\Structure\Data\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_entity_renderer.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Atlas\erelia_singleton_atlas.h">
+      <Filter>Header Files\Structure\Atlas</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_map_loader.h">
+      <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

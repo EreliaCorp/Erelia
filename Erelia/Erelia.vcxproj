@@ -49,6 +49,7 @@
     <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_entity_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_map_loader.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_map_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Main application\erelia_main_application.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp" />
@@ -57,7 +58,6 @@
     <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp" />
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_console_parser.cpp" />
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_map_loader.cpp" />
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_interacter.cpp" />
     <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_updater.cpp" />
   </ItemGroup>
@@ -90,7 +90,9 @@
     <ClInclude Include="includes\Widget\Commun\erelia_console_input.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_console_output.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_editor_inventory.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_entity_renderer.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_graphical_widget.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_map_loader.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h" />
     <ClInclude Include="includes\Widget\erelia_widgets.h" />
     <ClInclude Include="includes\Widget\Main application\erelia_main_application.h" />
@@ -100,7 +102,6 @@
     <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h" />
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_console_parser.h" />
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_map_loader.h" />
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_interacter.h" />
     <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_updater.h" />
   </ItemGroup>

@@ -7,8 +7,6 @@
 class Main_application : public jgl::Widget
 {
 private:
-	UI_configuration_file* _configuration_file;
-
 	Main_menu* _main_menu;
 
 	static Main_application* _instance;
@@ -28,6 +26,8 @@ public:
 	void launch_game_multiplayer(jgl::String p_server_name, jgl::String p_server_ip, jgl::String p_player_username, jgl::String p_player_password);
 	void launch_game_host(jgl::String p_world_name, jgl::String p_player_username, jgl::String p_player_password);
 
+
+	void start_game();
 	void set_error_text(jgl::String p_text);
 	void return_to_main_menu();
 };

@@ -62,10 +62,12 @@ jgl::Vector2Int Console_output::Line::render(jgl::Vector2Int p_size, jgl::Vector
 
 void Console_output::_render()
 {
-	jgl::Vector2Int base_pos = _anchor + jgl::Vector2Int(0, _area.y - Line::text_size) + jgl::Vector2Int(_frame->box().border_size(), 0 - (_frame->box().border_size()));
+	_box.render();
+
+	jgl::Vector2Int base_pos = _anchor + jgl::Vector2Int(0, _area.y - Line::text_size) + jgl::Vector2Int(_box.border_size() * 2, 0 - (_box.border_size() * 2));
 	jgl::Vector2Int pos = base_pos;
 
-	jgl::Vector2Int size = _area - (_frame->box().border_size() * 2);
+	jgl::Vector2Int size = _area - (_box.border_size() * 4);
 	jgl::Size_t nb_line_to_dodge = _nb_line_to_dodge;
 	for (jgl::Int i = 0; i < _messages.size() && pos.y - _messages[i].size().y > 0; i++)
 	{
@@ -75,7 +77,7 @@ void Console_output::_render()
 			_total_nb_line += _messages[i].nb_line();
 		}
 		
-		pos.y += _messages[i].render(size - jgl::Vector2Int(0, base_pos.y - pos.y), pos, _depth + 2, nb_line_to_dodge).y;
+		pos.y += _messages[i].render(size - jgl::Vector2Int(0, base_pos.y - pos.y), pos, _depth + 1, nb_line_to_dodge).y;
 	}
 }
 
@@ -83,7 +85,7 @@ void Console_output::_on_geometry_change()
 {
 	_total_nb_line = 0;
 	_nb_line_to_dodge = 0;
-	_frame->set_geometry(0, _area);
+	_box.set_geometry(_anchor, _area, _depth);
 	for (jgl::Int i = 0; i < _messages.size(); i++)
 	{
 		_messages[i].uncompute();
@@ -92,7 +94,7 @@ void Console_output::_on_geometry_change()
 
 jgl::Bool Console_output::_update()
 {
-	if (_frame->is_pointed() == true)
+	if (is_pointed() == true)
 	{
 		if (jgl::Application::active_application()->mouse().wheel() != 0)
 		{
@@ -114,10 +116,9 @@ jgl::Bool Console_output::_update()
 
 Console_output::Console_output(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
-	_frame = new jgl::Frame(this);
-	_frame->box().set_color(jgl::Color(125, 125, 125, 125), jgl::Color(95, 95, 95, 125));
-	_frame->box().set_border_size(5);
-	_frame->activate();
+	_box = jgl::Widget_component::Box(this);
+	_box.set_color(jgl::Color(125, 125, 125, 125), jgl::Color(95, 95, 95, 125));
+	_box.set_border_size(5);
 
 	_total_nb_line = 0;
 	_nb_line_to_dodge = 0;

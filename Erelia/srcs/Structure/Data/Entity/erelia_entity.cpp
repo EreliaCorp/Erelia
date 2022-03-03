@@ -2,7 +2,10 @@
 
 Entity::Entity(jgl::Long p_id)
 {
+	_sprite_sheet = nullptr;
+	_sprite = 0;
 	_id = p_id;
+	_size = 1;
 	_destination = 0;
 	_join_destination();
 }

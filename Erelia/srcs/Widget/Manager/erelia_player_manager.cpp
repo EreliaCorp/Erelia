@@ -29,7 +29,8 @@ void Player_manager::_change_connection_mode(Connection_mode p_mode)
 		_widgets.push_back(new Singleplayer::Player_updater(this));
 		_widgets.push_back(new Singleplayer::Player_interacter(this));
 
-		player->set_id(0);
+		player->set_id(Engine::instance()->request_id());
+		Engine::instance()->initialize_player(player);
 	}
 	else if (p_mode == Connection_mode::Multiplayer)
 	{
@@ -39,8 +40,6 @@ void Player_manager::_change_connection_mode(Connection_mode p_mode)
 	{
 
 	}
-
-	Engine::instance()->initialize_player(player);
 
 	for (jgl::Size_t i = 0; i < _widgets.size(); i++)
 	{
@@ -64,7 +63,6 @@ Player_manager* Player_manager::instanciate(Connection_mode p_mode, jgl::Widget*
 	if (_instance == nullptr)
 	{
 		_instance = new Player_manager(p_mode, p_parent);
-		_instance->activate();
 	}
 	return (_instance);
 }
