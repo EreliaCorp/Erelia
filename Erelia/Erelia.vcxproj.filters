@@ -13,294 +13,126 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Shader">
-      <UniqueIdentifier>{c8d66c07-4682-49aa-936b-3d728c996a0d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Structure">
-      <UniqueIdentifier>{1cf2ed83-2521-43f1-9d7b-9ef8a94e7c43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Structure">
-      <UniqueIdentifier>{80906706-0bd6-4961-9b09-509043a8da57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Enum">
-      <UniqueIdentifier>{243a6d26-1934-4594-8bdd-35d29fbca734}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Menu">
-      <UniqueIdentifier>{9df1ea36-3c44-4933-b8b0-b6c2a40b5627}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Menu">
-      <UniqueIdentifier>{e4b29d50-c64a-4d83-b2ba-88b822c1a030}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Menu\Submenu">
-      <UniqueIdentifier>{f30d7d58-292b-47d3-a8b1-41c24d0ed52b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Menu\Submenu">
-      <UniqueIdentifier>{89f33291-020d-49db-8701-39c3df6ff7a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget">
-      <UniqueIdentifier>{f206ffbc-e59c-49d0-a870-9125a1fa7c8b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget\Commun">
-      <UniqueIdentifier>{6e2cdabd-8c72-4bf1-91db-7fabfb835497}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget\Host">
-      <UniqueIdentifier>{124e6eb2-3229-4309-b762-2508dcc64611}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget\Main application">
-      <UniqueIdentifier>{116c767e-83a9-4175-8192-edf69d689b6b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget\Manager">
-      <UniqueIdentifier>{09181a8b-3370-47b4-9921-eaad888eb799}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget\Multiplayer">
-      <UniqueIdentifier>{b1a5978f-fe9f-4c65-aee8-2c21972048e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget\Singleplayer">
-      <UniqueIdentifier>{786c1aa5-5b7f-40a9-828f-1450f3b3b708}</UniqueIdentifier>
+      <UniqueIdentifier>{948b6ae5-01f0-49ba-82b7-a9094da9a2d2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Widget">
-      <UniqueIdentifier>{24752782-b740-4ebe-84b7-e87f6fd67d59}</UniqueIdentifier>
+      <UniqueIdentifier>{09099acd-5dbd-41cf-ba39-ca944d25b29b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Widget\Commun">
-      <UniqueIdentifier>{2d82d1fd-4910-4919-916b-7864fb281e5d}</UniqueIdentifier>
+    <Filter Include="Source Files\Structure">
+      <UniqueIdentifier>{d5b209c6-267b-4bef-a495-a66fad8b3c65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Widget\Host">
-      <UniqueIdentifier>{3d4bd270-2e62-43bf-9b09-272b5fedeb6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Widget\Main application">
-      <UniqueIdentifier>{9df4f4ec-e365-427f-a712-7806115087d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Widget\Manager">
-      <UniqueIdentifier>{f84a12fa-25ec-47a9-9e84-403cadc7d56f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Widget\Multiplayer">
-      <UniqueIdentifier>{55720bd3-72e2-498f-9355-513fe65c294a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Widget\Singleplayer">
-      <UniqueIdentifier>{9c866c3f-51f5-4b67-b0f6-3c222bb65756}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Menu\Menu">
-      <UniqueIdentifier>{ab4b57dc-ce00-4089-bc1f-037ef0987454}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Structure\Data">
-      <UniqueIdentifier>{feef5dca-b740-4510-95a8-e86066417f43}</UniqueIdentifier>
+    <Filter Include="Source Files\Widget">
+      <UniqueIdentifier>{aebb74d6-d953-4add-92c6-28efb8ec4781}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Structure\Atlas">
-      <UniqueIdentifier>{c8f534f3-0306-4371-8889-aa4b5d990b7e}</UniqueIdentifier>
+      <UniqueIdentifier>{8920af95-123f-48aa-8092-6355323767d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Structure\Data">
+      <UniqueIdentifier>{3f1c757f-ec73-4791-abd5-96053bac7f3d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Structure\File">
-      <UniqueIdentifier>{62343c37-4e9c-4c35-a2c7-625096029d63}</UniqueIdentifier>
+      <UniqueIdentifier>{9b95c88f-2512-4377-97c3-81c10abb7ba6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Structure\Data\Map">
-      <UniqueIdentifier>{0f6870b8-78eb-4124-9d88-6332a048adc6}</UniqueIdentifier>
+    <Filter Include="Header Files\Structure\Data\Account">
+      <UniqueIdentifier>{c0758f1e-8b37-40be-97f4-253708d32acb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Structure\Data\Engine">
-      <UniqueIdentifier>{a1e7c212-8619-4d6e-9176-be2f164ab918}</UniqueIdentifier>
+      <UniqueIdentifier>{eaaa25d5-d9cc-4a8a-a347-6dde97bae504}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Structure\Data\Entity">
-      <UniqueIdentifier>{6c5366aa-2491-4cce-b7d4-93757abca5d9}</UniqueIdentifier>
+      <UniqueIdentifier>{cad4a303-8210-440e-ae39-a9e69c524445}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Structure\Data">
-      <UniqueIdentifier>{54fbcf77-b275-4a3f-9c7c-29afd2c24891}</UniqueIdentifier>
+    <Filter Include="Header Files\Structure\Data\Map">
+      <UniqueIdentifier>{81ece715-254e-4dd1-bb42-3f988b11ac6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Commun">
+      <UniqueIdentifier>{c81965bf-9d57-451d-9589-bd072fc5188f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Main_application">
+      <UniqueIdentifier>{4b1196ec-02c3-459b-a2c9-fa79ff1a7980}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Manager">
+      <UniqueIdentifier>{b7cfa396-e27e-4fdf-add2-4b5168c1aaff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Commun">
+      <UniqueIdentifier>{e446fe71-0ced-4edc-9df1-32403412d30d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Main_application">
+      <UniqueIdentifier>{101b9088-44e2-4e3d-94ed-20169e62f264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Manager">
+      <UniqueIdentifier>{edd79105-871b-4f70-be41-a6b08ab4761e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Structure\Atlas">
-      <UniqueIdentifier>{3a790a7d-aee7-4ed9-8e41-6ff2517db9a1}</UniqueIdentifier>
+      <UniqueIdentifier>{e25b03b0-c022-40ed-8ef2-94d77aea63e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Structure\Data">
+      <UniqueIdentifier>{b28ed07e-3f83-4047-86f7-3fe909ef356f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Structure\File">
-      <UniqueIdentifier>{1b546d68-1c36-4ad8-8ec5-1b30400f3105}</UniqueIdentifier>
+      <UniqueIdentifier>{cd95c0a1-4ccc-4972-b8c4-9782dd37224e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Structure\Data\Map">
-      <UniqueIdentifier>{eb6b35d8-0306-4118-8bb1-e58cc1eef8a1}</UniqueIdentifier>
+    <Filter Include="Source Files\Structure\Data\Account">
+      <UniqueIdentifier>{44bb64cd-1508-448f-b459-306a7e7ab625}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Structure\Data\Engine">
-      <UniqueIdentifier>{dacf41ee-ccc4-4387-b047-7be80cd7d99c}</UniqueIdentifier>
+      <UniqueIdentifier>{b0031e53-19b2-4cf0-89a0-a8a927d9509a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Structure\Data\Entity">
-      <UniqueIdentifier>{4594cb04-db81-4f39-9bef-d44b74b11f42}</UniqueIdentifier>
+      <UniqueIdentifier>{aa844384-1715-4b0c-af98-a8e0332e3eb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Structure\Data\Map">
+      <UniqueIdentifier>{bbf9359e-bd9f-4a88-a427-d589275a8d99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen">
+      <UniqueIdentifier>{b8fd06a6-ef53-4ac3-b35c-5da08e0c827b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen">
+      <UniqueIdentifier>{a5ab6bf1-42f7-436d-af48-3c77c6990b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Connection_screen">
+      <UniqueIdentifier>{f9da70ab-847a-4cd9-886f-4042173b8a00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Loading_screen">
+      <UniqueIdentifier>{b9898c88-663e-4d59-9def-9b469710919f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{d735d408-c1b6-45c0-b5e8-75059fc199bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{e3fdfc1e-3f0b-4905-ac8c-5efdc195cfa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Routine">
+      <UniqueIdentifier>{6abff730-286e-44f7-8a9c-f8efcdac6645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Routine">
+      <UniqueIdentifier>{ce9e3701-0dfc-49cf-b0ac-e1b8a7cbc5b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_screen">
+      <UniqueIdentifier>{baf3e488-d2f0-458f-9782-98dcc00e29d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enum">
+      <UniqueIdentifier>{61eecbba-8be1-476d-9229-57ea3d73ffd2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="srcs\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\erelia_host_menu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\erelia_multiplayer_menu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\erelia_singleplayer_menu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\Submenu\erelia_player_info_menu.cpp">
-      <Filter>Source Files\Menu\Submenu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\Submenu\erelia_server_creator_menu.cpp">
-      <Filter>Source Files\Menu\Submenu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\Submenu\erelia_server_selecter_menu.cpp">
-      <Filter>Source Files\Menu\Submenu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\Submenu\erelia_world_creator_menu.cpp">
-      <Filter>Source Files\Menu\Submenu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\Submenu\erelia_world_selecter_menu.cpp">
-      <Filter>Source Files\Menu\Submenu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Main application\erelia_main_application.cpp">
-      <Filter>Source Files\Widget\Main application</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp">
-      <Filter>Source Files\Widget\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp">
-      <Filter>Source Files\Widget\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Manager\erelia_entity_manager.cpp">
-      <Filter>Source Files\Widget\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Manager\erelia_game_manager.cpp">
-      <Filter>Source Files\Widget\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp">
-      <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp">
-      <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp">
-      <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp">
-      <Filter>Source Files\Structure\Data\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Atlas\erelia_path_atlas.cpp">
-      <Filter>Source Files\Structure\Atlas</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp">
-      <Filter>Source Files\Structure\Atlas</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp">
-      <Filter>Source Files\Structure\File</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp">
-      <Filter>Source Files\Structure\Data\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp">
-      <Filter>Source Files\Structure\Data\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Menu\erelia_main_menu.cpp">
-      <Filter>Source Files\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_map_renderer.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp">
-      <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp">
-      <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp">
-      <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_updater.cpp">
-      <Filter>Source Files\Widget\Singleplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp">
-      <Filter>Source Files\Widget\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_console_parser.cpp">
-      <Filter>Source Files\Widget\Singleplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_interacter.cpp">
-      <Filter>Source Files\Widget\Singleplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp">
-      <Filter>Source Files\Structure\Data\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_entity_renderer.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Atlas\erelia_singleton_atlas.cpp">
-      <Filter>Source Files\Structure\Atlas</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Commun\erelia_map_loader.cpp">
-      <Filter>Source Files\Widget\Commun</Filter>
-    </ClCompile>
+    <None Include="ressource\language\french.lang">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ressource\language\english.lang">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ressource\configuration\config.uiconf">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\erelia.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Menu\Submenu\erelia_player_info_menu.h">
-      <Filter>Header Files\Menu\Submenu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Submenu\erelia_server_creator_menu.h">
-      <Filter>Header Files\Menu\Submenu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Submenu\erelia_server_selecter_menu.h">
-      <Filter>Header Files\Menu\Submenu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Submenu\erelia_world_creator_menu.h">
-      <Filter>Header Files\Menu\Submenu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Submenu\erelia_world_selecter_menu.h">
-      <Filter>Header Files\Menu\Submenu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Enum\erelia_enum.h">
-      <Filter>Header Files\Enum</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Commun\erelia_graphical_widget.h">
-      <Filter>Header Files\Widget\Commun</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Main application\erelia_main_application.h">
-      <Filter>Header Files\Widget\Main application</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Manager\erelia_entity_manager.h">
-      <Filter>Header Files\Widget\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Manager\erelia_game_manager.h">
-      <Filter>Header Files\Widget\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h">
-      <Filter>Header Files\Widget\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h">
-      <Filter>Header Files\Widget\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\erelia_widgets.h">
-      <Filter>Header Files\Widget</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Menu\erelia_host_menu.h">
-      <Filter>Header Files\Menu\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Menu\erelia_main_menu.h">
-      <Filter>Header Files\Menu\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Menu\erelia_multiplayer_menu.h">
-      <Filter>Header Files\Menu\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\Menu\erelia_singleplayer_menu.h">
-      <Filter>Header Files\Menu\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Menu\erelia_menu.h">
-      <Filter>Header Files\Menu</Filter>
+    <ClInclude Include="includes\Structure\Atlas\erelia_account_atlas.h">
+      <Filter>Header Files\Structure\Atlas</Filter>
     </ClInclude>
     <ClInclude Include="includes\Structure\Atlas\erelia_path_atlas.h">
       <Filter>Header Files\Structure\Atlas</Filter>
@@ -308,11 +140,53 @@
     <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h">
       <Filter>Header Files\Structure\Atlas</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Structure\Atlas\erelia_translation_atlas.h">
+      <Filter>Header Files\Structure\Atlas</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Account\erelia_account.h">
+      <Filter>Header Files\Structure\Data\Account</Filter>
+    </ClInclude>
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h">
       <Filter>Header Files\Structure\File</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\erelia_structure.h">
-      <Filter>Header Files\Structure</Filter>
+    <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h">
+      <Filter>Header Files\Widget\Main_application</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\erelia_connection_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\erelia_loading_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_abstract_screen.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Network\erelia_client_manager.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Network\erelia_network_definition.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Network\erelia_server_manager.h">
+      <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Routine\erelia_connection_routine.h">
+      <Filter>Header Files\Routine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Routine\erelia_loading_routine.h">
+      <Filter>Header Files\Routine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h">
+      <Filter>Header Files\Structure\Data\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h">
+      <Filter>Header Files\Structure\Data\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h">
+      <Filter>Header Files\Structure\Data\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h">
+      <Filter>Header Files\Structure\Data\Entity</Filter>
     </ClInclude>
     <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h">
       <Filter>Header Files\Structure\Data\Map</Filter>
@@ -323,61 +197,199 @@
     <ClInclude Include="includes\Structure\Data\Map\erelia_node.h">
       <Filter>Header Files\Structure\Data\Map</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h">
-      <Filter>Header Files\Structure\Data\Entity</Filter>
+    <ClInclude Include="includes\Widget\Screen\erelia_game_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h">
-      <Filter>Header Files\Structure\Data\Entity</Filter>
+    <ClInclude Include="includes\Routine\erelia_map_routine.h">
+      <Filter>Header Files\Routine</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h">
-      <Filter>Header Files\Structure\Data\Engine</Filter>
+    <ClInclude Include="includes\Routine\erelia_entity_routine.h">
+      <Filter>Header Files\Routine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Routine\erelia_client_routine.h">
+      <Filter>Header Files\Routine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_graphical_widget.h">
+      <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
     <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h">
       <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_updater.h">
-      <Filter>Header Files\Widget\Singleplayer</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h">
+    <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h">
       <Filter>Header Files\Widget\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_map_loader.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h">
+      <Filter>Header Files\Widget\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Manager\erelia_entity_manager.h">
+      <Filter>Header Files\Widget\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_input.h">
+      <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
     <ClInclude Include="includes\Widget\Commun\erelia_console_output.h">
       <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Commun\erelia_console_input.h">
+    <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h">
+      <Filter>Header Files\Widget\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_parser.h">
       <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
     <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h">
       <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_console_parser.h">
-      <Filter>Header Files\Widget\Singleplayer</Filter>
+    <ClInclude Include="includes\Enum\erelia_enum.h">
+      <Filter>Header Files\Enum</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_interacter.h">
-      <Filter>Header Files\Widget\Singleplayer</Filter>
+    <ClInclude Include="includes\Routine\erelia_console_routine.h">
+      <Filter>Header Files\Routine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_player_interacter.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_player_controller.h">
+      <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
     <ClInclude Include="includes\Widget\Commun\erelia_editor_inventory.h">
       <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h">
-      <Filter>Header Files\Structure\Data\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Commun\erelia_entity_renderer.h">
-      <Filter>Header Files\Widget\Commun</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Structure\Atlas\erelia_singleton_atlas.h">
-      <Filter>Header Files\Structure\Atlas</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Commun\erelia_map_loader.h">
-      <Filter>Header Files\Widget\Commun</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ressource\shader\chunk_shader.frag">
-      <Filter>Resource Files\Shader</Filter>
-    </None>
-    <None Include="ressource\shader\chunk_shader.vert">
-      <Filter>Resource Files\Shader</Filter>
-    </None>
+    <ClCompile Include="srcs\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Atlas\erelia_account_atlas.cpp">
+      <Filter>Source Files\Structure\Atlas</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Atlas\erelia_path_atlas.cpp">
+      <Filter>Source Files\Structure\Atlas</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp">
+      <Filter>Source Files\Structure\Atlas</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Atlas\erelia_translation_atlas.cpp">
+      <Filter>Source Files\Structure\Atlas</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Account\erelia_account.cpp">
+      <Filter>Source Files\Structure\Data\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp">
+      <Filter>Source Files\Widget\Main_application</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp">
+      <Filter>Source Files\Structure\File</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Loading_screen\erelia_loading_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Loading_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Connection_screen\erelia_connection_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Connection_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Connection_screen\erelia_connection_screen_data_input.cpp">
+      <Filter>Source Files\Widget\Screen\Connection_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Network\erelia_client_manager.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Network\erelia_server_manager.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_abstract_screen.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Routine\erelia_connection_routine.cpp">
+      <Filter>Source Files\Routine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Routine\erelia_loading_routine.cpp">
+      <Filter>Source Files\Routine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp">
+      <Filter>Source Files\Structure\Data\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp">
+      <Filter>Source Files\Structure\Data\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp">
+      <Filter>Source Files\Structure\Data\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_sceen\erelia_game_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Game_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Routine\erelia_map_routine.cpp">
+      <Filter>Source Files\Routine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Routine\erelia_entity_routine.cpp">
+      <Filter>Source Files\Routine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp">
+      <Filter>Source Files\Structure\Data\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Routine\erelia_client_routine.cpp">
+      <Filter>Source Files\Routine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp">
+      <Filter>Source Files\Widget\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp">
+      <Filter>Source Files\Widget\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Manager\erelia_entity_manager.cpp">
+      <Filter>Source Files\Widget\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp">
+      <Filter>Source Files\Widget\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_parser.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Routine\erelia_console_routine.cpp">
+      <Filter>Source Files\Routine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_abstract_console_parser.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_player_interacter.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_player_controller.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

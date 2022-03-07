@@ -4,65 +4,59 @@ Player_manager* Player_manager::_instance = nullptr;
 
 void Player_manager::_on_geometry_change()
 {
-	for (jgl::Size_t i = 0; i < _widgets.size(); i++)
-	{
-		_widgets[i]->set_geometry(0, _area);
-	}
+	_player_controller->set_geometry(0, _area);
+	_player_interacter->set_geometry(0, _area);
 }
 
 void Player_manager::_render()
 {
-
-}
-
-void Player_manager::_change_connection_mode(Connection_mode p_mode)
-{
-	for (jgl::Size_t i = 0; i < _widgets.size(); i++)
-	{
-		delete _widgets[i];
-	}
 	
-	Player* player = new Player();
-
-	if (p_mode == Connection_mode::Singleplayer)
-	{
-		_widgets.push_back(new Singleplayer::Player_updater(this));
-		_widgets.push_back(new Singleplayer::Player_interacter(this));
-
-		player->set_id(Engine::instance()->request_id());
-		Engine::instance()->initialize_player(player);
-	}
-	else if (p_mode == Connection_mode::Multiplayer)
-	{
-
-	}
-	else if (p_mode == Connection_mode::Host)
-	{
-
-	}
-
-	for (jgl::Size_t i = 0; i < _widgets.size(); i++)
-	{
-		_widgets[i]->activate();
-	}
 }
 
-void Player_manager::_load_ui_file()
+jgl::Bool Player_manager::_update()
+{
+	return (false);
+}
+
+
+void Player_manager::_initialize_server()
+{
+	Server_manager::server()->add_activity(Server_message::Player_movement, SERVER_ACTIVITY{
+			Routine::treat_player_motion(p_client, p_msg);
+		});
+}
+
+void Player_manager::_initialize_client()
 {
 
 }
 
-Player_manager::Player_manager(Connection_mode p_mode, jgl::Widget* p_parent) : jgl::Widget(p_parent)
+void Player_manager::_initiate()
 {
-	_load_ui_file();
-	_change_connection_mode(p_mode);
+	if (Client_manager::instance() != nullptr)
+		_initialize_client();
+
+	if (Server_manager::instance() != nullptr)
+		_initialize_server();
 }
 
-Player_manager* Player_manager::instanciate(Connection_mode p_mode, jgl::Widget* p_parent)
+Player_manager::Player_manager(jgl::Widget* p_parent) : Graphical_widget(p_parent)
+{
+	_player_controller = new Player_controller(this);
+	_player_controller->activate();
+
+	_player_interacter = new Player_interacter(this);
+	_player_interacter->activate();
+
+	_initiate();
+}
+
+Player_manager* Player_manager::instanciate(jgl::Widget* p_parent)
 {
 	if (_instance == nullptr)
 	{
-		_instance = new Player_manager(p_mode, p_parent);
+		_instance = new Player_manager(p_parent);
+		_instance->activate();
 	}
 	return (_instance);
 }

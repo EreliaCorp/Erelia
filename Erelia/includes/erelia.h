@@ -2,10 +2,13 @@
 
 #include "jgl.h"
 
-#include "Enum/erelia_enum.h"
+#include <set>
 
-#include "Structure/erelia_structure.h"
+#include "Structure/File/erelia_UI_configuration_file.h"
 
-#include "Menu/erelia_menu.h"
+#include "Structure/Atlas/erelia_account_atlas.h"
+#include "Structure/Atlas/erelia_path_atlas.h"
+#include "Structure/Atlas/erelia_texture_atlas.h"
+#include "Structure/Atlas/erelia_translation_atlas.h"
 
-#include "Widget/erelia_widgets.h"
+#include "Widget/Main_application/erelia_main_application.h"

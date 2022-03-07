@@ -4,25 +4,40 @@ Engine* Engine::_instance = nullptr;
 
 Engine::Engine()
 {
-	_player = nullptr;
+	_player = new Player();
 	_map = new Map();
 }
 
-void Engine::initialize_player(Player* p_player)
+void Engine::initialize_player(jgl::Long p_id)
 {
-	_player = p_player;
-	_entities[p_player->id()] = p_player;
+	_player->set_id(p_id);
+	add_entity(_player);
 }
 
-void Engine::add_entity(jgl::Ulong p_id, Entity* p_entity)
+Entity* Engine::entity(jgl::Long p_id)
 {
-	p_entity->set_id(p_id);
-	_entities[p_id] = p_entity;
+	if (_entities.count(p_id) == 0)
+		return (nullptr);
+	return (_entities[p_id]);
 }
 
-jgl::Ulong Engine::request_id()
+void Engine::add_entity(Entity* p_entity)
 {
-	jgl::Ulong result = 0;
+	_entities[p_entity->id()] = p_entity;
+}
+
+void Engine::remove_entity(jgl::Long p_id)
+{
+	jgl::cout << "Removing entity id : " << jgl::endl;
+	if (_player->id() == p_id)
+		_player = nullptr;
+	delete _entities[p_id];
+	_entities.erase(p_id);
+}
+
+jgl::Long Engine::request_id()
+{
+	jgl::Long result = 0;
 	for (; _entities.count(result) != 0; result++) {}
 	return (result);
 }

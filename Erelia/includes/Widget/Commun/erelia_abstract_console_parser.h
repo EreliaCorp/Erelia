@@ -2,44 +2,39 @@
 
 #include "jgl.h"
 
+#include "network/erelia_network_definition.h"
+
 class Abstract_console_parser : public jgl::Widget
 {
+public:
+	struct Command
+	{
+		jgl::String text;
+		Connection* sender;
+
+		Command(jgl::String p_text, Connection* p_sender);
+	};
+
 protected:
-	std::deque<jgl::String> _command_pool;
-	Console_output* _output;
 
-	void _render()
-	{
+	std::deque<Command> _command_pool;
+	class Console_output* _output;
 
-	}
+	void _render();
 
-	void _on_geometry_change()
-	{
+	void _on_geometry_change();
 
-	}
+	jgl::Bool _update();
 
-	jgl::Bool _update()
-	{
-		if (_command_pool.size() != 0)
-		{
-			jgl::String head = _command_pool.front();
-			_command_pool.pop_front();
-			_parse_command(head);
-		}
-		return (false);
-	}
+	virtual void _parse_command(Command& p_command) = 0;
 
-	virtual void _parse_command(jgl::String& p_text) = 0;
+	void _send_gamemode_modification(Connection* p_client, Gamemode p_mode);
+
+	void _send_global_message(jgl::String p_text);
+	void _send_private_message(jgl::String p_text, Connection* p_client);
 
 public:
-	Abstract_console_parser(Console_output* p_output, jgl::Widget* p_parent) : jgl::Widget(p_parent)
-	{
-		_output = p_output;
-	}
+	Abstract_console_parser(class Console_output* p_output, jgl::Widget* p_parent);
 
-	void add_command(jgl::String p_command)
-	{
-		_command_pool.push_back(p_command);
-
-	}
+	void add_command(jgl::String p_command, Connection* p_sender);
 };

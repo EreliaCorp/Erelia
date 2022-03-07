@@ -7,8 +7,5 @@ class Player : public Entity
 private :
 
 public:
-	Player() : Entity(-1)
-	{
-
-	}
+	Player();
 };

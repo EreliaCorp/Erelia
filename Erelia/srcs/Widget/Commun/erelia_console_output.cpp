@@ -69,7 +69,7 @@ void Console_output::_render()
 
 	jgl::Vector2Int size = _area - (_box.border_size() * 4);
 	jgl::Size_t nb_line_to_dodge = _nb_line_to_dodge;
-	for (jgl::Int i = 0; i < _messages.size() && pos.y - _messages[i].size().y > 0; i++)
+	for (jgl::Size_t i = 0; i < _messages.size() && pos.y - _messages[i].size().y > 0; i++)
 	{
 		if (_messages[i].computed() == false)
 		{
@@ -86,7 +86,7 @@ void Console_output::_on_geometry_change()
 	_total_nb_line = 0;
 	_nb_line_to_dodge = 0;
 	_box.set_geometry(_anchor, _area, _depth);
-	for (jgl::Int i = 0; i < _messages.size(); i++)
+	for (jgl::Size_t i = 0; i < _messages.size(); i++)
 	{
 		_messages[i].uncompute();
 	}

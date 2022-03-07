@@ -1,24 +1,30 @@
 #pragma once
 
 #include "jgl.h"
-#include "Enum/erelia_enum.h"
 
-#include "Widget/Commun/erelia_entity_renderer.h"
+#include "Routine/erelia_entity_routine.h"
 
-class Entity_manager : public jgl::Widget
+#include "Widget/Commun/erelia_graphical_widget.h"
+
+class Entity_manager : public Graphical_widget
 {
 private:
-	static Entity_manager* _instance;
-
-	jgl::Array<jgl::Widget*> _widgets;
-
 	void _on_geometry_change();
 	void _render();
-	void _change_connection_mode(Connection_mode p_mode);
-	void _load_ui_file();
-	Entity_manager(Connection_mode p_mode, jgl::Widget* p_parent = nullptr);
 
+	jgl::Bool _update();
+	jgl::Bool _fixed_update();
+
+	void _initialize_server();
+	void _initialize_client();
+	void _initiate();
+
+	Entity_manager(jgl::Widget* p_parent = nullptr);
+
+	static Entity_manager* _instance;
 public:
-	static Entity_manager* instanciate(Connection_mode p_mode, jgl::Widget* p_parent = nullptr);
+	void receive_entity_data(Message& p_msg);
+
+	static Entity_manager* instanciate(jgl::Widget* p_parent = nullptr);
 	static Entity_manager* instance();
 };

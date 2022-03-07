@@ -2,38 +2,30 @@
 
 #include "jgl.h"
 
+#include "Structure/Atlas/erelia_path_atlas.h"
+
 class UI_configuration_file
 {
-public:
-	struct Server_info
-	{
-		jgl::String server_ip = "";
-		jgl::String server_name = "";
-	};
 private:
-	jgl::Array<Server_info> _servers_info;
-	jgl::String _player_username;
-	jgl::String _player_password;
-
-	void _load_server_info(jgl::File& intput_file);
-	void _save_server_info(jgl::File& output_file);
-
-	void _load_player_server_info(jgl::File& input_file);
-	void _save_player_server_info(jgl::File& input_file);
+	static jgl::String _language;
+	static jgl::String _username;
+	static jgl::String _password;
+	static jgl::String _server_address;
+	static jgl::Bool _server_mode;
 
 public:
-	UI_configuration_file();
+	static void load(jgl::String p_path);
+	static void save(jgl::String p_path);
 
-	const jgl::Array<Server_info>& servers_info();
-	const jgl::String& player_username();
-	const jgl::String& player_password();
+	static void set_language(jgl::String p_language) { _language = p_language; }
+	static void set_username(jgl::String p_username) { _username = p_username; }
+	static void set_password(jgl::String p_password) { _password = p_password; }
+	static void set_server_address(jgl::String p_server_address) { _server_address = p_server_address; }
+	static void set_language(jgl::Bool p_server_mode) { _server_mode = p_server_mode; }
 
-	void set_player_username(jgl::String p_username);
-	void set_player_password(jgl::String p_password);
-
-	void add_server(Server_info p_new_server);
-	void add_server(jgl::String p_server_id, jgl::String p_server_name);
-
-	void load(jgl::String p_file_name);
-	void save(jgl::String p_file_name);
+	static jgl::String language() { return (Path_atlas::language_folder_path + _language + Path_atlas::language_file_extension); }
+	static jgl::String username() { return (_username); }
+	static jgl::String password() { return (_password); }
+	static jgl::String server_address() { return (_server_address); }
+	static jgl::Bool server_mode() { return (_server_mode); }
 };

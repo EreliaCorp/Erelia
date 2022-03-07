@@ -6,6 +6,7 @@ class Entity
 {
 private:
 	jgl::Long _id;
+	jgl::Bool _is_moving;
 	jgl::Sprite_sheet* _sprite_sheet;
 	jgl::Vector2Int _sprite;
 	jgl::Vector2 _pos;
@@ -15,7 +16,7 @@ private:
 	jgl::Vector2 _starting_pos;
 	jgl::Vector2 _destination;
 	jgl::Vector2 _movement;
-	jgl::Ulong _move_speed = 100u;
+	jgl::Ulong _move_speed;
 	jgl::Ulong _start_motion_time;
 
 	void _join_destination();
@@ -37,5 +38,5 @@ public:
 	jgl::Vector2 pos() const { return (_pos); }
 	jgl::Vector2Int size() const { return (_size); }
 
-	jgl::Bool is_moving() { return (_movement != 0); }
+	jgl::Bool is_moving() { return (_is_moving); }
 };

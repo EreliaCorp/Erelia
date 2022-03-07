@@ -1,22 +1,25 @@
 #include "erelia.h"
 
-const jgl::String Path_atlas::world_path = "ressource/world/";
-const jgl::String Path_atlas::ui_configuration_path = "ressource/UI/";
-const jgl::String Path_atlas::ui_configuration_file = "ui_configuration_file.xml";
-const jgl::String Path_atlas::basic_frame_texture_path = "ressource/texture/basic_frame.png";
-const jgl::String Path_atlas::basic_frame_texture_pressed_path = "ressource/texture/basic_frame_pressed.png";
-const jgl::String Path_atlas::chunk_sprite_sheet_path = "ressource/texture/chunk_sprite_sheet.png";
-const jgl::String Path_atlas::prefab_sprite_sheet_path = "ressource/texture/prefab_sprite_sheet.png";
-const jgl::String Path_atlas::UI_sprite_sheet_path = "ressource/texture/UI_sprite_sheet.png";
+const jgl::String Path_atlas::ui_config_path = "ressource/configuration/config.uiconf";
 
-void Path_atlas::compose_ressource_folder()
-{
-	_mkdir(Path_atlas::ui_configuration_path.c_str());
-	_mkdir(Path_atlas::world_path.c_str());
-}
-void Path_atlas::compose_world_folder(jgl::String p_world_name)
-{
-	_mkdir((Path_atlas::world_path + p_world_name).c_str());
-	_mkdir((Path_atlas::world_path + p_world_name + "/chunk/").c_str());
-	_mkdir((Path_atlas::world_path + p_world_name + "/player/").c_str());
-}
+const jgl::String Path_atlas::world_path = "ressource/world/";
+
+const jgl::String Path_atlas::default_language_file = "ressource/language/english.lang";
+const jgl::String Path_atlas::language_folder_path = "ressource/language/";
+const jgl::String Path_atlas::language_file_extension = ".lang";
+const jgl::String Path_atlas::erelia_logo_path = "ressource/texture/erelia_logo.png";
+
+const jgl::String Path_atlas::basic_frame_texture_name = "Basic_frame";
+const jgl::String Path_atlas::basic_frame_texture_path = "ressource/texture/basic_frame.png";
+
+const jgl::String Path_atlas::basic_frame_texture_pressed_name = "Basic_frame_selected";
+const jgl::String Path_atlas::basic_frame_texture_pressed_path = "ressource/texture/basic_frame_pressed.png";
+
+const jgl::String Path_atlas::chunk_sprite_sheet_name = "Node_sprite_sheet";
+const jgl::String Path_atlas::chunk_sprite_sheet_path = "ressource/texture/chunk_sprite_sheet.png";
+
+const jgl::String Path_atlas::prefab_sprite_sheet_name = "Prefab_sprite_sheet";
+const jgl::String Path_atlas::prefab_sprite_sheet_path = "ressource/texture/prefab_sprite_sheet.png";
+
+const jgl::String Path_atlas::UI_sprite_sheet_name = "UI_sprite_sheet";
+const jgl::String Path_atlas::UI_sprite_sheet_path = "ressource/texture/UI_sprite_sheet.png";

@@ -1,0 +1,9 @@
+Connect;Connection
+Register;Inscription
+Username;Pseudo
+Password;Mot de passe
+Connection_accepted;Connection acceptée
+Connection_rejected;Connection rejetée
+Already_connected;Deja connecté
+Registration_accepted;Inscription acceptée
+Registration_rejected;Inscription rejetée

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -18,102 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="srcs\main.cpp" />
-    <ClCompile Include="srcs\Menu\erelia_host_menu.cpp" />
-    <ClCompile Include="srcs\Menu\erelia_main_menu.cpp" />
-    <ClCompile Include="srcs\Menu\erelia_multiplayer_menu.cpp" />
-    <ClCompile Include="srcs\Menu\erelia_singleplayer_menu.cpp" />
-    <ClCompile Include="srcs\Menu\Submenu\erelia_player_info_menu.cpp" />
-    <ClCompile Include="srcs\Menu\Submenu\erelia_server_creator_menu.cpp" />
-    <ClCompile Include="srcs\Menu\Submenu\erelia_server_selecter_menu.cpp" />
-    <ClCompile Include="srcs\Menu\Submenu\erelia_world_creator_menu.cpp" />
-    <ClCompile Include="srcs\Menu\Submenu\erelia_world_selecter_menu.cpp" />
-    <ClCompile Include="srcs\Structure\Atlas\erelia_path_atlas.cpp" />
-    <ClCompile Include="srcs\Structure\Atlas\erelia_singleton_atlas.cpp" />
-    <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp" />
-    <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_entity_renderer.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_map_loader.cpp" />
-    <ClCompile Include="srcs\Widget\Commun\erelia_map_renderer.cpp" />
-    <ClCompile Include="srcs\Widget\Main application\erelia_main_application.cpp" />
-    <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp" />
-    <ClCompile Include="srcs\Widget\Manager\erelia_entity_manager.cpp" />
-    <ClCompile Include="srcs\Widget\Manager\erelia_game_manager.cpp" />
-    <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp" />
-    <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp" />
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_console_parser.cpp" />
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_interacter.cpp" />
-    <ClCompile Include="srcs\Widget\Singleplayer\erelia_singleplayer_player_updater.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="includes\Enum\erelia_enum.h" />
-    <ClInclude Include="includes\erelia.h" />
-    <ClInclude Include="includes\Menu\erelia_menu.h" />
-    <ClInclude Include="includes\Menu\Menu\erelia_host_menu.h" />
-    <ClInclude Include="includes\Menu\Menu\erelia_main_menu.h" />
-    <ClInclude Include="includes\Menu\Menu\erelia_multiplayer_menu.h" />
-    <ClInclude Include="includes\Menu\Menu\erelia_singleplayer_menu.h" />
-    <ClInclude Include="includes\Menu\Submenu\erelia_player_info_menu.h" />
-    <ClInclude Include="includes\Menu\Submenu\erelia_server_creator_menu.h" />
-    <ClInclude Include="includes\Menu\Submenu\erelia_server_selecter_menu.h" />
-    <ClInclude Include="includes\Menu\Submenu\erelia_world_creator_menu.h" />
-    <ClInclude Include="includes\Menu\Submenu\erelia_world_selecter_menu.h" />
-    <ClInclude Include="includes\Structure\Atlas\erelia_path_atlas.h" />
-    <ClInclude Include="includes\Structure\Atlas\erelia_singleton_atlas.h" />
-    <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h" />
-    <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h" />
-    <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h" />
-    <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
-    <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h" />
-    <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h" />
-    <ClInclude Include="includes\Structure\Data\Map\erelia_map.h" />
-    <ClInclude Include="includes\Structure\Data\Map\erelia_node.h" />
-    <ClInclude Include="includes\Structure\erelia_structure.h" />
-    <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_console_input.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_console_output.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_editor_inventory.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_entity_renderer.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_graphical_widget.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_map_loader.h" />
-    <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h" />
-    <ClInclude Include="includes\Widget\erelia_widgets.h" />
-    <ClInclude Include="includes\Widget\Main application\erelia_main_application.h" />
-    <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h" />
-    <ClInclude Include="includes\Widget\Manager\erelia_entity_manager.h" />
-    <ClInclude Include="includes\Widget\Manager\erelia_game_manager.h" />
-    <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h" />
-    <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h" />
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_console_parser.h" />
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_interacter.h" />
-    <ClInclude Include="includes\Widget\Singleplayer\erelia_singleplayer_player_updater.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ressource\shader\chunk_shader.frag" />
-    <None Include="ressource\shader\chunk_shader.vert" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{410e2ae6-a294-4ebb-972d-4dff3a0004f5}</ProjectGuid>
-    <RootNamespace>Erelia</RootNamespace>
+    <ProjectGuid>{25b8824c-682d-49ec-b5a9-a0018ea29f05}</ProjectGuid>
+    <RootNamespace>Erelia_MMO</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -164,22 +73,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
-    <OutDir>./</OutDir>
+    <OutDir>$(ProjectDir)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
-    <OutDir>./</OutDir>
+    <OutDir>$(ProjectDir)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
-    <OutDir>./</OutDir>
+    <OutDir>$(ProjectDir)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
-    <OutDir>./</OutDir>
+    <OutDir>$(ProjectDir)</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -263,6 +172,107 @@
       <AdditionalLibraryDirectories>C:\Developement\JGL\JGL\libs\$(Platform)\;C:\Developement\JGL\BUILD\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ressource\configuration\config.uiconf" />
+    <None Include="ressource\language\english.lang" />
+    <None Include="ressource\language\french.lang" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\Enum\erelia_enum.h" />
+    <ClInclude Include="includes\erelia.h" />
+    <ClInclude Include="includes\Network\erelia_client_manager.h" />
+    <ClInclude Include="includes\Network\erelia_network_definition.h" />
+    <ClInclude Include="includes\Network\erelia_server_manager.h" />
+    <ClInclude Include="includes\Routine\erelia_client_routine.h" />
+    <ClInclude Include="includes\Routine\erelia_connection_routine.h" />
+    <ClInclude Include="includes\Routine\erelia_console_routine.h" />
+    <ClInclude Include="includes\Routine\erelia_entity_routine.h" />
+    <ClInclude Include="includes\Routine\erelia_map_routine.h" />
+    <ClInclude Include="includes\Routine\erelia_loading_routine.h" />
+    <ClInclude Include="includes\Structure\Atlas\erelia_account_atlas.h" />
+    <ClInclude Include="includes\Structure\Atlas\erelia_path_atlas.h" />
+    <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h" />
+    <ClInclude Include="includes\Structure\Atlas\erelia_translation_atlas.h" />
+    <ClInclude Include="includes\Structure\Data\Account\erelia_account.h" />
+    <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h" />
+    <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h" />
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h" />
+    <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h" />
+    <ClInclude Include="includes\Structure\Data\Map\erelia_map.h" />
+    <ClInclude Include="includes\Structure\Data\Map\erelia_node.h" />
+    <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_abstract_screen.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_console_input.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_console_output.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_console_parser.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_editor_inventory.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_graphical_widget.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_map_loader.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_map_renderer.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_player_interacter.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_player_controller.h" />
+    <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
+    <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h" />
+    <ClInclude Include="includes\Widget\Manager\erelia_entity_manager.h" />
+    <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h" />
+    <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_connection_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_game_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_loading_screen.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="srcs\main.cpp" />
+    <ClCompile Include="srcs\Network\erelia_client_manager.cpp" />
+    <ClCompile Include="srcs\Network\erelia_server_manager.cpp" />
+    <ClCompile Include="srcs\Routine\erelia_client_routine.cpp" />
+    <ClCompile Include="srcs\Routine\erelia_connection_routine.cpp" />
+    <ClCompile Include="srcs\Routine\erelia_console_routine.cpp" />
+    <ClCompile Include="srcs\Routine\erelia_entity_routine.cpp" />
+    <ClCompile Include="srcs\Routine\erelia_map_routine.cpp" />
+    <ClCompile Include="srcs\Routine\erelia_loading_routine.cpp" />
+    <ClCompile Include="srcs\Structure\Atlas\erelia_account_atlas.cpp" />
+    <ClCompile Include="srcs\Structure\Atlas\erelia_path_atlas.cpp" />
+    <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp" />
+    <ClCompile Include="srcs\Structure\Atlas\erelia_translation_atlas.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Account\erelia_account.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp" />
+    <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_abstract_console_parser.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_abstract_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_parser.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_graphical_widget.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_player_interacter.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_player_controller.cpp" />
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
+    <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Manager\erelia_entity_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Connection_screen\erelia_connection_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Connection_screen\erelia_connection_screen_data_input.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Game_sceen\erelia_game_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Loading_screen\erelia_loading_screen.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

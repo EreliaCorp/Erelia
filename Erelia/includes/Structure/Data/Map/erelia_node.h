@@ -33,18 +33,18 @@ public:
 	jgl::Vector2Int sprite;
 	jgl::Vector2Int size;
 	jgl::Int** levels;
-	jgl::Int** composition;
+	jgl::Short** composition;
 
-	Prefab(jgl::String p_name, jgl::Vector2Int p_sprite, jgl::Vector2Int p_size, jgl::Array<jgl::Int> p_composition, jgl::Array<jgl::Int> p_level) :
+	Prefab(jgl::String p_name, jgl::Vector2Int p_sprite, jgl::Vector2Int p_size, jgl::Array<jgl::Int> p_composition, jgl::Array<jgl::Short> p_level) :
 		name(p_name), sprite(p_sprite), size(p_size)
 	{
 		levels = new jgl::Int * [size.x];
 		for (jgl::Int i = 0; i < size.x; i++)
 			levels[i] = new jgl::Int[size.y];
 
-		composition = new jgl::Int * [size.x];
+		composition = new jgl::Short * [size.x];
 		for (jgl::Int i = 0; i < size.x; i++)
-			composition[i] = new jgl::Int[size.y];
+			composition[i] = new jgl::Short[size.y];
 
 		if (p_level.size() == 0)
 		{

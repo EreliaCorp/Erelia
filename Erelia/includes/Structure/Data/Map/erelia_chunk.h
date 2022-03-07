@@ -76,6 +76,7 @@ public:
 	void set_content(jgl::Vector2Int p_pos, jgl::Size_t p_level, jgl::Short p_value);
 	void set_content(jgl::Vector3Int p_pos, jgl::Short p_value);
 
+	jgl::Short* content() { return (&(_content[0][0][0])); }
 	jgl::Short content(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	jgl::Short content(jgl::Vector3Int p_pos);
 

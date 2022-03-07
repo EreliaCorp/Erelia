@@ -4,7 +4,6 @@
 Map::Map()
 {
 	_world_path = "";
-	_generation_data = new Map::Generation_data(0);
 }
 
 void Map::save()
@@ -18,8 +17,7 @@ void Map::save()
 void Map::load(jgl::String p_world_path)
 {
 	_world_path = p_world_path;
-	jgl::Ulong new_seed = 7846581234;
-	_generation_data->reseed(new_seed);
+	unbake();
 }
 
 void Map::unbake()
@@ -46,22 +44,72 @@ void Map::_generate_chunk(Chunk* p_chunk)
 
 Chunk* Map::request_chunk(jgl::Vector2Int p_chunk_pos)
 {
-	Chunk* result = new Chunk(p_chunk_pos);
+	Chunk* result = chunk(p_chunk_pos);
 
-	jgl::String chunk_file_path = Chunk::compose_chunk_file_name(_world_path + "/chunk/", p_chunk_pos);
-
-	if (jgl::check_file_exist(chunk_file_path) == true)
+	if (result == nullptr)
 	{
-		result->load(chunk_file_path);
-	}
-	else
-	{
-		_generate_chunk(result);
-	}
+		result = new Chunk(p_chunk_pos);
 
-	add_chunk(p_chunk_pos, result);
+		jgl::String chunk_file_path = Chunk::compose_chunk_file_name(_world_path + "/chunk/", p_chunk_pos);
+
+		if (jgl::check_file_exist(chunk_file_path) == true)
+		{
+			result->load(chunk_file_path);
+		}
+		else
+		{
+			_generate_chunk(result);
+		}
+
+		add_chunk(result);
+	}
 
 	return (result);
+}
+
+jgl::Short Map::content(jgl::Vector2Int p_pos, jgl::Size_t p_level)
+{
+	return (content(jgl::Vector3Int(p_pos.x, p_pos.y, p_level)));
+}
+
+void Map::send_edition_command(jgl::Vector3Int p_pos_start, jgl::Vector3Int p_pos_end, jgl::Short value)
+{
+	static Message msg(Server_message::Chunk_modification);
+
+	msg.clear();
+
+	for (jgl::Int x = p_pos_start.x; x <= p_pos_end.x; x++)
+	{
+		for (jgl::Int y = p_pos_start.y; y <= p_pos_end.y; y++)
+		{
+			for (jgl::Int z = p_pos_start.z; z <= p_pos_end.z; z++)
+			{
+				jgl::Vector3Int tmp_pos = jgl::Vector3Int(x, y, z);
+				if (Engine::instance()->map()->content(tmp_pos) != value)
+				{
+					Engine::instance()->map()->place_node(tmp_pos, value);
+					msg << tmp_pos << value;
+				}
+			}
+		}
+	}
+
+	if (msg.empty() == false)
+		Client_manager::client()->send(msg);
+}
+
+jgl::Short Map::content(jgl::Vector3Int p_pos)
+{
+	jgl::Vector2Int chunk_pos = convert_world_to_chunk(p_pos);
+
+	Chunk* tmp_chunk = chunk(chunk_pos);
+
+	if (tmp_chunk == nullptr)
+		return (-1);
+	
+	jgl::Vector3Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
+
+	return (tmp_chunk->content(rel_pos));
 }
 
 void Map::place_node(jgl::Vector2Int p_pos, jgl::Size_t p_level, jgl::Short p_node)
@@ -117,9 +165,11 @@ jgl::Vector3Int Map::convert_chunk_to_world(jgl::Vector2Int p_chunk_pos, jgl::Ve
 	return (converted + p_pos);
 }
 
-void Map::add_chunk(jgl::Vector2Int p_pos, Chunk* p_chunk)
+void Map::add_chunk(Chunk* p_chunk)
 {
-	_chunks[p_pos] = p_chunk;
+	if (_chunks.count(p_chunk->pos()) != 0)
+		delete _chunks[p_chunk->pos()];
+	_chunks[p_chunk->pos()] = p_chunk;
 }
 
 Chunk* Map::chunk(jgl::Vector2Int p_pos)

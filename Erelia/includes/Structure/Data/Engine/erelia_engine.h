@@ -23,10 +23,12 @@ public:
 
 	jgl::Map<jgl::Long, Entity*>& entities() { return (_entities); }
 
-	void initialize_player(Player* p_player);
-	void add_entity(jgl::Ulong p_id, Entity* p_entity);
+	void initialize_player(jgl::Long p_id);
+	Entity* entity(jgl::Long p_id);
+	void add_entity(Entity* p_entity);
+	void remove_entity(jgl::Long p_id);
 
-	jgl::Ulong request_id();
+	jgl::Long request_id();
 
 	void load_map(jgl::String p_world_path);
 

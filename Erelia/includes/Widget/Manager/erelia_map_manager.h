@@ -1,27 +1,34 @@
 #pragma once
 
 #include "jgl.h"
-#include "Enum/erelia_enum.h"
 
-#include "Widget/Commun/erelia_map_loader.h"
-#include "Widget/Commun/erelia_map_renderer.h"
+#include "Routine/erelia_map_routine.h"
 
+#include "Widget/Commun/erelia_graphical_widget.h"
 
-class Map_manager : public jgl::Widget
+class Map_manager : public Graphical_widget
 {
 private:
-	static Map_manager* _instance;
-
-	jgl::Array<jgl::Widget*> _widgets;
+	jgl::Map<jgl::Vector2Int, jgl::Bool> _asked_chunks;
+	jgl::Array<jgl::Vector2Int> _asked_chunk_list;
 
 	void _on_geometry_change();
 	void _render();
-	void _change_connection_mode(Connection_mode p_mode);
-	void _load_ui_file();
-	Map_manager(Connection_mode p_mode, jgl::Widget* p_parent = nullptr);
 
+	jgl::Bool _update();
+
+	void _request_chunk_data();
+
+	void _initialize_server();
+	void _initialize_client();
+	void _initiate();
+
+	Map_manager(jgl::Widget* p_parent = nullptr);
+
+	static Map_manager* _instance;
 public:
-	static Map_manager* instanciate(Connection_mode p_mode, jgl::Widget* p_parent = nullptr);
+	void receive_chunk(Chunk* p_chunk);
+
+	static Map_manager* instanciate(jgl::Widget* p_parent = nullptr);
 	static Map_manager* instance();
-	~Map_manager();
 };

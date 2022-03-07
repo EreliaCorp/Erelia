@@ -24,7 +24,7 @@ struct Node_item : public Item
 	jgl::Short value;
 
 	Node_item(jgl::Short p_value);
-	void use(class Map* p_map, jgl::Vector3Int p_pos);
+	void use(jgl::Vector3Int p_pos_start, jgl::Vector3Int p_pos_end);
 };
 
 struct Prefab_item : public Item
@@ -32,5 +32,5 @@ struct Prefab_item : public Item
 	jgl::Short value;
 
 	Prefab_item(jgl::Short p_value);
-	void use(class Map* p_map, jgl::Vector3Int p_pos);
+	void use(jgl::Vector3Int p_pos);
 };

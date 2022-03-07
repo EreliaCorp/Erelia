@@ -23,23 +23,23 @@ void Texture_atlas::add_texture(jgl::String p_name, jgl::Image_handler* p_image_
 	if (_content[p_name] != nullptr)
 		delete _content[p_name];
 	_content[p_name] = p_image_handler;
-	if (p_name == "Basic_frame")
+	if (p_name == Path_atlas::basic_frame_texture_name)
 	{
 		_basic_frame = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
-	else if (p_name == "Basic_frame_selected")
+	else if (p_name == Path_atlas::basic_frame_texture_pressed_name)
 	{
 		_basic_frame_selected = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
-	else if (p_name == "Node_sprite_sheet")
+	else if (p_name == Path_atlas::chunk_sprite_sheet_name)
 	{
 		_node_sprite_sheet = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
-	else if (p_name == "Prefab_sprite_sheet")
+	else if (p_name == Path_atlas::prefab_sprite_sheet_name)
 	{
 		_prefab_sprite_sheet = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
-	else if (p_name == "UI_sprite_sheet")
+	else if (p_name == Path_atlas::UI_sprite_sheet_name)
 	{
 		_UI_sprite_sheet = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
