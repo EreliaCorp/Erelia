@@ -28,7 +28,10 @@ protected:
 
 	virtual void _parse_command(Command& p_command) = 0;
 
+	void _send_brush_size_modification(Connection* p_client, jgl::Uchar p_value);
 	void _send_gamemode_modification(Connection* p_client, Gamemode p_mode);
+	void _send_brush_type_modification(Connection* p_client, Player_interacter::Brush_type p_type);
+	void _send_brush_type_data(Connection* p_client, jgl::String p_data);
 
 	void _send_global_message(jgl::String p_text);
 	void _send_private_message(jgl::String p_text, Connection* p_client);

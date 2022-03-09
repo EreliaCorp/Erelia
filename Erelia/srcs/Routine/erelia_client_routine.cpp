@@ -45,4 +45,31 @@ namespace Routine
 
 		Game_screen::instance()->set_gamemode(mode);
 	}
+
+	void receive_brush_size_change(Message& p_msg)
+	{
+		jgl::Uchar value;
+
+		p_msg >> value;
+
+		Player_manager::instance()->player_interacter()->set_brush_radius(value);
+	}
+
+	void receive_brush_type_change(Message& p_msg)
+	{
+		Player_interacter::Brush_type value;
+
+		p_msg >> value;
+
+		Player_manager::instance()->player_interacter()->set_brush_type(value);
+	}
+
+	void receive_brush_type_data_change(Message& p_msg)
+	{
+		jgl::String value;
+
+		p_msg >> value;
+
+		Player_manager::instance()->player_interacter()->set_brush_type_info(value);
+	}
 }

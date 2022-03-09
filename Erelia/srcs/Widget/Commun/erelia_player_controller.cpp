@@ -40,6 +40,27 @@ jgl::Bool Player_controller::_update()
 		_send_motion_command(delta_pos);
 	}
 
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Key_1) == jgl::Input_status::Release)
+	{
+		Engine::instance()->map()->set_node_size(4);
+	}
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Key_2) == jgl::Input_status::Release)
+	{
+		Engine::instance()->map()->set_node_size(8);
+	}
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Key_3) == jgl::Input_status::Release)
+	{
+		Engine::instance()->map()->set_node_size(16);
+	}
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Key_4) == jgl::Input_status::Release)
+	{
+		Engine::instance()->map()->set_node_size(32);
+	}
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Key_5) == jgl::Input_status::Release)
+	{
+		Engine::instance()->map()->set_node_size(64);
+	}
+
 	return (false);
 }
 

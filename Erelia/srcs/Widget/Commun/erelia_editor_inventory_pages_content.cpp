@@ -1,7 +1,7 @@
 #include "erelia.h"
 
 jgl::Map< jgl::String, jgl::Array <std::tuple <jgl::Int, jgl::Vector2Int, jgl::Size_t> > > g_page_content = {
-	{"All",
+	{"1-Inventory_page_all",
 		{
 			{0, jgl::Vector2Int(0, 0), 0},
 			{0, jgl::Vector2Int(1, 0), 1},
@@ -1044,7 +1044,7 @@ jgl::Map< jgl::String, jgl::Array <std::tuple <jgl::Int, jgl::Vector2Int, jgl::S
 			{0, jgl::Vector2Int(7, 136), 798},
 		}
 	},
-	{"Prefab",
+	{"2-Inventory_page_prefab",
 		{
 			{1, jgl::Vector2Int(0, 0), 0},
 			{1, jgl::Vector2Int(1, 0), 1},
@@ -1400,27 +1400,27 @@ jgl::Map< jgl::String, jgl::Array <std::tuple <jgl::Int, jgl::Vector2Int, jgl::S
 			{1, jgl::Vector2Int(7, 43), 351},
 		}
 	},
-	{"Plant",
+	{"3-Inventory_page_plant",
 		{
 			{0, jgl::Vector2Int(0, 0), 0},
 		}
 	},
-	{"Mineral",
+	{"4-Inventory_page_mineral",
 		{
 			{0, jgl::Vector2Int(0, 0), 0},
 		}
 	},
-	{"Housing",
+	{"5-Inventory_page_housing",
 		{
 			{0, jgl::Vector2Int(0, 0), 0},
 		}
 	},
-	{"Ruin",
+	{"6-Inventory_page_ruin",
 		{
 			{0, jgl::Vector2Int(0, 0), 0},
 		}
 	},
-	{"Fournitures",
+	{"7-Inventory_page_fournitures",
 		{
 			{0, jgl::Vector2Int(0, 0), 0},
 		}

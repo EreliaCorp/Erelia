@@ -205,7 +205,7 @@ void Editor_inventory::_compose_predefined_page()
 {
 	for (auto tmp : g_page_content)
 	{
-		Inventory_page* new_page = new Inventory_page(tmp.first);
+		Inventory_page* new_page = new Inventory_page(Translation_atlas::string(tmp.first));
 
 		for (jgl::Size_t i = 0; i < tmp.second.size(); i++)
 		{
@@ -269,12 +269,12 @@ Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent
 			else
 				set_inventory_page(_inventory_page_index - 1);
 		}, _slider_contener);
-	_previous_page_button->set_depth(_depth + 2);
+	_previous_page_button->set_depth(_depth + 40);
 	_previous_page_button->label().set_text("<");
 	_previous_page_button->activate();
 
 	_page_name_label = new jgl::Text_label("", _slider_contener);
-	_page_name_label->set_depth(_depth + 2);
+	_page_name_label->set_depth(_depth + 40);
 	_page_name_label->label().set_horizontal_align(jgl::Horizontal_alignment::Centred);
 	_page_name_label->label().set_vertical_align(jgl::Vertical_alignment::Centred);
 	_page_name_label->activate();
@@ -286,7 +286,7 @@ Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent
 			else
 				set_inventory_page(_inventory_page_index + 1);
 		}, _slider_contener);
-	_next_page_button->set_depth(_depth + 2);
+	_next_page_button->set_depth(_depth + 40);
 	_next_page_button->label().set_text(">");
 	_next_page_button->activate();
 
@@ -412,6 +412,7 @@ void Editor_inventory::Inventory_page::compute()
 				{
 					Texture_atlas::instance()->node_sprite_sheet()->draw(g_node_array[tmp_item->value]->sprite, pos * C_ITEM_SIZE, C_ITEM_SIZE, 100, 1.0f);
 				}
+				jgl::draw_text(jgl::itoa(tmp_item->value), pos* C_ITEM_SIZE, C_ITEM_SIZE / 2.5, 200, 1.0f, jgl::Color::white(), jgl::Color::white());
 			}
 			else if (item->type == Item_type::Prefab)
 			{

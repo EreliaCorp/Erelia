@@ -20,7 +20,10 @@ enum Server_message
 	Command_input = 11,
 	Console_message = 12,
 	Chunk_modification = 13,
-	Gamemode_message = 14
+	Gamemode_message = 14,
+	Brush_size_message = 15,
+	Brush_type_message = 16,
+	Brush_type_data_message = 17
 };
 
 #define SERVER_PORT 26500

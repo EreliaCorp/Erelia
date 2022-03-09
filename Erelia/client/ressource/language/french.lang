@@ -7,3 +7,10 @@ Connection_rejected;Connection rejetée
 Already_connected;Deja connecté
 Registration_accepted;Inscription acceptée
 Registration_rejected;Inscription rejetée
+1-Inventory_page_all;Tout
+2-Inventory_page_prefab;Prefabriqués
+3-Inventory_page_plant;Plantes
+4-Inventory_page_mineral;Mineraux
+5-Inventory_page_housing;Maison/Urbain
+6-Inventory_page_ruin;Ruines
+7-Inventory_page_fournitures;Autres

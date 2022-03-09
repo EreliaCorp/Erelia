@@ -29,4 +29,7 @@ private:
 public:
 	static Player_manager* instanciate(jgl::Widget* p_parent = nullptr);
 	static Player_manager* instance();
+
+	Player_controller* player_controller(){return (_player_controller);}
+	Player_interacter* player_interacter() {return (_player_interacter);}
 };

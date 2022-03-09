@@ -86,6 +86,15 @@ void Console_manager::_initialize_client()
 	Client_manager::client()->add_activity(Server_message::Ping, CLIENT_ACTIVITY{
 			Routine::receive_ping_result(p_msg);
 		});
+	Client_manager::client()->add_activity(Server_message::Brush_size_message, CLIENT_ACTIVITY{
+			Routine::receive_brush_size_change(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Brush_type_message, CLIENT_ACTIVITY{
+			Routine::receive_brush_type_change(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Brush_type_data_message, CLIENT_ACTIVITY{
+			Routine::receive_brush_type_data_change(p_msg);
+		});
 }
 
 void Console_manager::_initiate()

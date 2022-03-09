@@ -31,14 +31,51 @@ void Abstract_console_parser::_send_global_message(jgl::String p_text)
 {
 	static Message result(Server_message::Console_message);
 
+	result.clear();
+
 	result << p_text;
 
 	Server_manager::server()->send_to_all(result);
 }
 
+void Abstract_console_parser::_send_brush_size_modification(Connection* p_client, jgl::Uchar p_value)
+{
+	static Message result(Server_message::Brush_size_message);
+
+	result.clear();
+
+	result << p_value;
+
+	Server_manager::server()->send_to(p_client, result);
+}
+
+void Abstract_console_parser::_send_brush_type_modification(Connection* p_client, Player_interacter::Brush_type p_type)
+{
+	static Message result(Server_message::Brush_type_message);
+
+	result.clear();
+
+	result << p_type;
+
+	Server_manager::server()->send_to(p_client, result);
+}
+
+void Abstract_console_parser::_send_brush_type_data(Connection* p_client, jgl::String p_data)
+{
+	static Message result(Server_message::Brush_type_data_message);
+
+	result.clear();
+
+	result << p_data;
+
+	Server_manager::server()->send_to(p_client, result);
+}
+
 void Abstract_console_parser::_send_gamemode_modification(Connection* p_client, Gamemode p_mode)
 {
 	static Message result(Server_message::Gamemode_message);
+
+	result.clear();
 
 	result << p_mode;
 
@@ -48,6 +85,8 @@ void Abstract_console_parser::_send_gamemode_modification(Connection* p_client, 
 void Abstract_console_parser::_send_private_message(jgl::String p_text, Connection* p_client)
 {
 	static Message result(Server_message::Console_message);
+
+	result.clear();
 
 	result << p_text;
 
