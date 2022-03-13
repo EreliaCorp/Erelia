@@ -10,7 +10,7 @@ void Map::save()
 {
 	for (auto tmp : _chunks)
 	{
-		tmp.second->save(_world_path + "/chunk/");
+		tmp.second->save(_world_path + Path_atlas::chunk_sub_path);
 	}
 }
 
@@ -105,7 +105,7 @@ jgl::Short Map::content(jgl::Vector3Int p_pos)
 	Chunk* tmp_chunk = chunk(chunk_pos);
 
 	if (tmp_chunk == nullptr)
-		return (-1);
+		return (-2);
 	
 	jgl::Vector3Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
 

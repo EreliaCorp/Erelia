@@ -27,17 +27,6 @@ jgl::Bool Abstract_console_parser::_update()
 	return (false);
 }
 
-void Abstract_console_parser::_send_global_message(jgl::String p_text)
-{
-	static Message result(Server_message::Console_message);
-
-	result.clear();
-
-	result << p_text;
-
-	Server_manager::server()->send_to_all(result);
-}
-
 void Abstract_console_parser::_send_brush_size_modification(Connection* p_client, jgl::Uchar p_value)
 {
 	static Message result(Server_message::Brush_size_message);
@@ -78,17 +67,6 @@ void Abstract_console_parser::_send_gamemode_modification(Connection* p_client, 
 	result.clear();
 
 	result << p_mode;
-
-	Server_manager::server()->send_to(p_client, result);
-}
-
-void Abstract_console_parser::_send_private_message(jgl::String p_text, Connection* p_client)
-{
-	static Message result(Server_message::Console_message);
-
-	result.clear();
-
-	result << p_text;
 
 	Server_manager::server()->send_to(p_client, result);
 }

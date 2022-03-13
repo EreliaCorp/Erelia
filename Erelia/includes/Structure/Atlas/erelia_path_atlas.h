@@ -11,6 +11,11 @@ public:
 	static const jgl::String ui_config_path;
 
 	static const jgl::String world_path;
+	static const jgl::String player_sub_path;
+	static const jgl::String player_save_extension;
+	static const jgl::String chunk_name_file;
+	static const jgl::String chunk_sub_path;
+	static const jgl::String chunk_extension;
 
 	static const jgl::String default_language_file;
 	static const jgl::String language_folder_path;

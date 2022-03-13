@@ -18,12 +18,16 @@ jgl::Bool Console_input::_update()
 		{
 			_old_line_index--;
 			_text_entry->set_text(_old_line[_old_line_index]);
+			_text_entry->set_cursor(_old_line[_old_line_index].size());
 		}
 		else if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Down_arrow) == jgl::Input_status::Release && _old_line_index < _old_line.size())
 		{
 			_old_line_index++;
 			if (_old_line_index < _old_line.size())
+			{
 				_text_entry->set_text(_old_line[_old_line_index]);
+				_text_entry->set_cursor(_old_line[_old_line_index].size());
+			}
 			else
 				_text_entry->set_text("");
 		}

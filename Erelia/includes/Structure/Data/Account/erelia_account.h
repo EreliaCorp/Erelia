@@ -10,6 +10,7 @@ struct Account
 	jgl::String password;
 	Connection* connection;
 	jgl::Long id;
+	jgl::Vector2 pos;
 
 	Account(jgl::String p_username = "", jgl::String p_password = "");
 };

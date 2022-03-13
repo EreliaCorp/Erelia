@@ -26,28 +26,36 @@ jgl::Bool Entity_manager::_update()
 {
 	if (Server_manager::instance() != nullptr)
 	{
-		for (auto tmp : Engine::instance()->entities())
+		if (_entity_updater_timer.timeout() == true)
 		{
-			if (tmp.second->is_moving() == true)
+
+			for (auto tmp : Engine::instance()->entities())
 			{
-				tmp.second->update();
+				if (tmp.second->is_moving() == true)
+				{
+					tmp.second->update();
+				}
 			}
 
+			static Message msg(Server_message::Entity_data);
+
+			msg.clear();
+
+			for (auto tmp : Engine::instance()->entities())
+			{
+				msg << tmp.first;
+				msg << tmp.second->pos();
+				msg << tmp.second->is_moving();
+			}
+
+			Server_manager::server()->send_to_all(msg);
+			
+			_entity_updater_timer.start();
+
+			Account_atlas::instance()->actualize_player_data();
 		}
-
-		static Message msg(Server_message::Entity_data);
-
-		msg.clear();
-
-		for (auto tmp : Engine::instance()->entities())
-		{
-			msg << tmp.first;
-			msg << tmp.second->pos();
-			msg << tmp.second->is_moving();
-		}
-
-		Server_manager::server()->send_to_all(msg);
 	}
+	
 	return (false);
 }
 
@@ -106,9 +114,9 @@ void Entity_manager::receive_entity_data(Message& p_msg)
 }
 
 
-Entity_manager::Entity_manager(jgl::Widget* p_parent) : Graphical_widget(p_parent)
+Entity_manager::Entity_manager(jgl::Widget* p_parent) : Graphical_widget(p_parent) ,
+	_entity_updater_timer(4)
 {
-
 	_initiate();
 }
 

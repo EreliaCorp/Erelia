@@ -9,6 +9,8 @@
 class Entity_manager : public Graphical_widget
 {
 private:
+	jgl::Timer _entity_updater_timer;
+
 	void _on_geometry_change();
 	void _render();
 

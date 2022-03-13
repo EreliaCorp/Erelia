@@ -24,4 +24,7 @@ public:
 
 	Server* get_server() { return (_server); }
 	static Server* server() { return (_instance->get_server()); }
+
+	void send_global_message(jgl::String p_text);
+	void send_private_message(jgl::String p_text, Connection* p_client);
 };

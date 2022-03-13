@@ -13,9 +13,13 @@
 
 #include "Routine/erelia_client_routine.h"
 
+#include "erelia_main_application_debug_screen.h"
+
 class Main_application : public jgl::Widget
 {
 private:
+	Debug_screen* _debug_screen;
+
 	void _on_geometry_change();
 	void _render();
 
@@ -26,6 +30,8 @@ private:
 	void _initialize_server();
 
 	void _initiate();
+
+	jgl::Bool _update();
 
 	Main_application(jgl::Widget* p_parent = nullptr);
 

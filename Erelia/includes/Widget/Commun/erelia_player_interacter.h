@@ -11,7 +11,8 @@ public:
 	enum class Brush_type
 	{
 		Brush_place = 0,
-		Brush_replace = 1
+		Brush_replace = 1,
+		Brush_place_wall = 2
 	};
 
 	struct Block_replace_data
@@ -97,6 +98,7 @@ public:
 	static void place_multiple_node(jgl::Vector3Int p_start, jgl::Vector3Int p_end, jgl::Short p_value);
 	static void place_single_node(jgl::Vector3Int p_pos, jgl::Short p_value);
 	static void paint_node(jgl::Vector3Int p_pos, jgl::Short p_value);
+	static void paint_wall_node(jgl::Vector3Int p_pos, jgl::Short p_value);
 	static void place_circle_node(jgl::Vector3Int p_pos, jgl::Float p_radius, jgl::Short p_value);
 	static void place_random_node(Remplace_data& p_random_data, jgl::Vector3Int p_pos, jgl::Float p_radius);
 };

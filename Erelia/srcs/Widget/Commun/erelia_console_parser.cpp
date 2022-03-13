@@ -49,7 +49,7 @@ void Console_parser::_parse_command(Command& p_command)
 		if (tmp_account != nullptr)
 			account_name = tmp_account->username;
 
-		_send_global_message("[" + account_name + "] : " + p_command.text);
+		Server_manager::instance()->send_global_message("[" + account_name + "] : " + p_command.text);
 	}
 	else
 	{
@@ -62,17 +62,17 @@ void Console_parser::_parse_command(Command& p_command)
 				if (tab[1] == "Adventure")
 				{
 					_send_gamemode_modification(p_command.sender, Gamemode::Adventure);
-					_send_private_message("[Systm.] : Gamemode set to Adventure", p_command.sender);
+					Server_manager::instance()->send_private_message("[Systm.] : Gamemode set to Adventure", p_command.sender);
 				}
 				else if (tab[1] == "Builder")
 				{
 					_send_gamemode_modification(p_command.sender, Gamemode::Builder);
-					_send_private_message("[Systm.] : Gamemode set to Builder", p_command.sender);
+					Server_manager::instance()->send_private_message("[Systm.] : Gamemode set to Builder", p_command.sender);
 				}
 			}
 			else
 			{
-				_send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder]\"", p_command.sender);
+				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder]\"", p_command.sender);
 			}
 		}
 		else if (tab[0] == "/ping")
@@ -89,10 +89,10 @@ void Console_parser::_parse_command(Command& p_command)
 			if(value >= 0 && value <= 16)
 			{
 				_send_brush_size_modification(p_command.sender, value);
-				_send_private_message("[Systm.] : Brush size set to " + jgl::itoa(value), p_command.sender);
+				Server_manager::instance()->send_private_message("[Systm.] : Brush size set to " + jgl::itoa(value), p_command.sender);
 			}
 			else
-				_send_private_message("[Systm.] : Usage \"/brush_size [Radius size from 0 to 16]\"", p_command.sender);
+				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/brush_size [Radius size from 0 to 16]\"", p_command.sender);
 		}
 		else if (tab[0] == "/replace")
 		{
@@ -105,28 +105,75 @@ void Console_parser::_parse_command(Command& p_command)
 				{
 					_send_brush_type_data(p_command.sender, block_entry + " " + block_output);
 					_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_replace);
-					_send_private_message("[Systm.] : Replace tiles [" + block_entry + "] with [" + block_output + "]\"", p_command.sender);
+					Server_manager::instance()->send_private_message("[Systm.] : Replace tiles [" + block_entry + "] with [" + block_output + "]\"", p_command.sender);
 				}
 				else
 				{
-					_send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
-					_send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
+					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
+					Server_manager::instance()->send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
 				}
 			}
 			else if (tab.size() == 2 && tab[1] == "off")
 			{
 				_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_place);
-				_send_private_message("[Systm.] : Replace mode disable", p_command.sender);
+				Server_manager::instance()->send_private_message("[Systm.] : Replace mode disable", p_command.sender);
 			}
 			else
 			{
-				_send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
-				_send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
+				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
+				Server_manager::instance()->send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
+			}
+		}
+		else if (tab[0] == "/place_wall")
+		{
+			if (tab.size() == 2)
+			{
+				if (tab[1] == "on")
+				{
+					_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_place_wall);
+					Server_manager::instance()->send_private_message("[Systm.] : Place wall enable", p_command.sender);
+				}
+				else if (tab[1] == "off")
+				{
+					_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_place);
+					Server_manager::instance()->send_private_message("[Systm.] : Place wall disable", p_command.sender);
+				}
+				else
+					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/place_wall [on / off]\"", p_command.sender);
+			}
+			else
+				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/place_wall [on / off]\"", p_command.sender);
+		}
+		else if (tab[0] == "/speed")
+		{
+			if (tab.size() == 2)
+			{
+				jgl::Ulong speed = jgl::stoi(tab[1]);
+
+				if (speed < 1 || speed > 150)
+					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/speed [speed from 1 to 150]\"", p_command.sender);
+				else
+				{
+					if (Account_atlas::instance()->active_account(p_command.sender->id()) == nullptr ||
+						Engine::instance()->entity(Account_atlas::instance()->active_account(p_command.sender->id())->id) == nullptr)
+					{
+						Server_manager::instance()->send_private_message("[Systm.] : Error while parsing speed command", p_command.sender);
+					}
+					else
+					{
+						Engine::instance()->entity(Account_atlas::instance()->active_account(p_command.sender->id())->id)->set_move_speed(speed);
+						Server_manager::instance()->send_private_message("[Systm.] : Speed set to " + jgl::itoa(speed), p_command.sender);
+					}
+				}
+			}
+			else
+			{
+				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/speed [speed from 1 to 150]\"", p_command.sender);
 			}
 		}
 		else
 		{
-			_send_private_message("[Systm.] : Command unknow [" + p_command.text + "]", p_command.sender);
+			Server_manager::instance()->send_private_message("[Systm.] : Command unknow [" + p_command.text + "]", p_command.sender);
 		}
 	}
 }

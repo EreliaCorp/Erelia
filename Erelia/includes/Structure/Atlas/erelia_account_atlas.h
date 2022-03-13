@@ -2,6 +2,7 @@
 
 #include "Network/erelia_network_definition.h"
 #include "Structure/Data/Account/erelia_account.h"
+#include "Structure/File/erelia_player_save_file.h"
 
 class Account_atlas
 {
@@ -14,9 +15,16 @@ private:
 	static Account_atlas* _instance;
 
 public:
+	void load();
+	void save();
+
+	jgl::Map<jgl::String, Account*>& accounts(){return (_accounts);}
+
 	Account* account(jgl::String p_username);
+	void add_account(Account* p_account);
 	void add_account(jgl::String p_username, jgl::String p_password);
 
+	jgl::Map<jgl::Ulong, Account*>& active_accounts() { return (_active_accounts); }
 	Account* active_account(jgl::Ulong p_id);
 
 	void activate_account(Account* p_account);
@@ -26,4 +34,6 @@ public:
 	
 	static Account_atlas* instanciate();
 	static Account_atlas* instance();
+
+	void actualize_player_data();
 };

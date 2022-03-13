@@ -201,6 +201,7 @@
     <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_map.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_node.h" />
+    <ClInclude Include="includes\Structure\File\erelia_player_save_file.h" />
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_abstract_screen.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="includes\Widget\Commun\erelia_player_interacter.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_player_controller.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
+    <ClInclude Include="includes\Widget\Main_application\erelia_main_application_debug_screen.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_entity_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h" />
@@ -252,6 +254,7 @@
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp" />
+    <ClCompile Include="srcs\Structure\File\erelia_player_save_file.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_abstract_console_parser.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_abstract_screen.cpp" />
@@ -264,6 +267,7 @@
     <ClCompile Include="srcs\Widget\Commun\erelia_player_interacter.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_player_controller.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_debug_screen.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_entity_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp" />

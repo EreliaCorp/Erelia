@@ -2,7 +2,7 @@
 
 jgl::String Chunk::compose_chunk_file_name(jgl::String p_path, jgl::Vector2Int p_pos)
 {
-	return (p_path + "chunk" + jgl::itoa(p_pos.x) + "x" + jgl::itoa(p_pos.y) + "y.chk");
+	return (p_path + Path_atlas::chunk_name_file + jgl::itoa(p_pos.x) + "x" + jgl::itoa(p_pos.y) + "y" + Path_atlas::chunk_extension);
 }
 
 Chunk::Chunk(jgl::Vector2Int p_pos)

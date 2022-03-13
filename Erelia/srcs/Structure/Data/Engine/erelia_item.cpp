@@ -20,7 +20,11 @@ void Node_item::fill(jgl::Vector3Int p_pos)
 void Node_item::paint(jgl::Vector3Int p_pos, jgl::Size_t p_radius)
 {
 	Player_interacter::place_circle_node(p_pos, p_radius, value);
+}
 
+void Node_item::paint_wall(jgl::Vector3Int p_pos)
+{
+	Player_interacter::paint_wall_node(p_pos, value);
 }
 
 Prefab_item::Prefab_item(jgl::Short p_value) : Item(Item_type::Prefab)

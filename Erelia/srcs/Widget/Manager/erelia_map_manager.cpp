@@ -1,5 +1,6 @@
 #include "erelia.h"
 
+std::mutex Map_manager::_map_mutex;
 Map_manager* Map_manager::_instance = nullptr;
 
 void Map_manager::_on_geometry_change()
@@ -18,6 +19,9 @@ void Map_manager::_render()
 
 	jgl::Int animation_state = (jgl::Application::active_application()->time() % 1000) / 250;
 
+	if (Node::size < 4)
+		animation_state = 0;
+
 	if (map == nullptr)
 		return;
 
@@ -26,6 +30,7 @@ void Map_manager::_render()
 		for (jgl::Int y = start.y; y <= end.y; y++)
 		{
 			jgl::Vector2Int chunk_pos = jgl::Vector2Int(x, y);
+			_map_mutex.lock();
 			Chunk* tmp_chunk = map->chunk(chunk_pos);
 
 			if (tmp_chunk != nullptr)
@@ -35,12 +40,14 @@ void Map_manager::_render()
 
 				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
 			}
+			_map_mutex.unlock();
 		}
 	}
 }
 
 void Map_manager::receive_chunk(Chunk* p_chunk)
 {
+	_map_mutex.lock();
 	Engine::instance()->map()->add_chunk(p_chunk);
 	_asked_chunks[p_chunk->pos()] = false;
 	for (jgl::Int i = -1; i <= 1; i++)
@@ -52,6 +59,7 @@ void Map_manager::receive_chunk(Chunk* p_chunk)
 				tmp_chunk->unbake();
 
 		}
+	_map_mutex.unlock();
 }
 
 void Map_manager::_request_chunk_data()

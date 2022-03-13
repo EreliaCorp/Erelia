@@ -33,11 +33,11 @@ protected:
 	void _send_brush_type_modification(Connection* p_client, Player_interacter::Brush_type p_type);
 	void _send_brush_type_data(Connection* p_client, jgl::String p_data);
 
-	void _send_global_message(jgl::String p_text);
-	void _send_private_message(jgl::String p_text, Connection* p_client);
-
 public:
 	Abstract_console_parser(class Console_output* p_output, jgl::Widget* p_parent);
 
 	void add_command(jgl::String p_command, Connection* p_sender);
+
+	void send_global_message(jgl::String p_text);
+	void send_private_message(jgl::String p_text, Connection* p_client);
 };

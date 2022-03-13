@@ -7,11 +7,49 @@ Account_atlas::Account_atlas()
 
 }
 
+void Account_atlas::load()
+{
+	jgl::Array<jgl::String> files = jgl::list_files(Path_atlas::world_path + Path_atlas::player_sub_path, Path_atlas::player_save_extension);
+
+	for (jgl::Size_t i = 0; i < files.size(); i++)
+	{
+		add_account(Player_file::load(files[i]));
+	}
+}
+
+void Account_atlas::save()
+{
+	for (auto tmp : _accounts)
+	{
+		Player_file::save(Path_atlas::world_path + Path_atlas::player_sub_path, tmp.second);
+	}
+}
+
+void Account_atlas::actualize_player_data()
+{
+	for (auto tmp : _active_accounts)
+	{
+		Entity* tmp_entity = Engine::instance()->entity(tmp.second->id);
+		if (tmp_entity != nullptr)
+		{
+			tmp.second->pos = tmp_entity->pos();
+		}
+	}
+}
+
 Account* Account_atlas::account(jgl::String p_username)
 {
 	if (_accounts.count(p_username) == 0)
 		return (nullptr);
 	return (_accounts[p_username]);
+}
+
+void Account_atlas::add_account(Account* p_account)
+{
+	if (_accounts.count(p_account->username) != 0)
+		delete _accounts[p_account->username];
+
+	_accounts[p_account->username] = p_account;
 }
 
 void Account_atlas::add_account(jgl::String p_username, jgl::String p_password)

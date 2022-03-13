@@ -22,6 +22,8 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	Connection_screen::instanciate(this);
 	Loading_screen::instanciate(this);
 	Game_screen::instanciate(this);
+	Debug_screen::instanciate(this);
+	Debug_screen::instance()->set_depth(1000);
 
 	_initiate();
 
@@ -31,6 +33,7 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 Main_application::~Main_application()
 {
 	UI_configuration_file::save(Path_atlas::ui_config_path);
+	Account_atlas::instance()->save();
 }
 
 Main_application* Main_application::instanciate(jgl::Widget* p_parent)
@@ -47,6 +50,7 @@ void Main_application::_on_geometry_change()
 	Connection_screen::instance()->set_geometry(0, _area);
 	Loading_screen::instance()->set_geometry(0, _area);
 	Game_screen::instance()->set_geometry(0, _area);
+	Debug_screen::instance()->set_geometry(0, _area);
 }
 
 void Main_application::_render()
@@ -58,6 +62,13 @@ void Main_application::_start_server()
 {
 	Server_manager::instantiate(this);
 	Account_atlas::instanciate();
+	Account_atlas::instance()->load();
+
+
+	for (auto tmp : Account_atlas::instance()->accounts())
+	{
+		jgl::cout << "Account loaded : " << tmp.first << " / " << tmp.second->username << jgl::endl;
+	}
 }
 
 void Main_application::_start_client()
@@ -107,6 +118,15 @@ void Main_application::_initialize_server()
 	Server_manager::server()->set_logout_function([&](Connection* p_client, jgl::Data_contener& p_param) {
 		Routine::client_logout_routine(p_client);
 		});
+}
+
+jgl::Bool Main_application::_update()
+{
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::F3) == jgl::Input_status::Release)
+	{
+		Debug_screen::instance()->set_active(!(Debug_screen::instance()->active()));
+	}
+	return (false);
 }
 
 void Main_application::_initiate()

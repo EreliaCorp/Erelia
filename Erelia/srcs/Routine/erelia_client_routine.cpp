@@ -4,6 +4,7 @@ namespace Routine
 {
 	void treat_ping_request(Connection* p_client, Message& p_msg)
 	{
+		jgl::cout << "Server - Treating ping message" << jgl::endl;
 		p_client->send(p_msg);
 	}
 
@@ -11,6 +12,8 @@ namespace Routine
 	{
 		jgl::Ulong time;
 		jgl::Ulong delta_time;
+
+		jgl::cout << "Client - Treating ping message" << jgl::endl;
 
 		p_msg >> time;
 		delta_time = jgl::Application::active_application()->time() - time;

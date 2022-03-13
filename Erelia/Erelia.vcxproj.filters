@@ -257,6 +257,12 @@
     <ClInclude Include="includes\Widget\Commun\erelia_editor_inventory.h">
       <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Main_application\erelia_main_application_debug_screen.h">
+      <Filter>Header Files\Widget\Main_application</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\File\erelia_player_save_file.h">
+      <Filter>Header Files\Structure\File</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -390,6 +396,12 @@
     </ClCompile>
     <ClCompile Include="srcs\Widget\Commun\erelia_editor_inventory_pages_content.cpp">
       <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_debug_screen.cpp">
+      <Filter>Source Files\Widget\Main_application</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\File\erelia_player_save_file.cpp">
+      <Filter>Source Files\Structure\File</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 class Map_manager : public Graphical_widget
 {
 private:
+	static std::mutex _map_mutex;
 	jgl::Map<jgl::Vector2Int, jgl::Bool> _asked_chunks;
 	jgl::Array<jgl::Vector2Int> _asked_chunk_list;
 

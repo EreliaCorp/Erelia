@@ -27,6 +27,7 @@ struct Node_item : public Item
 	void fill(jgl::Vector3Int p_pos);
 	void use(jgl::Vector3Int p_pos_start, jgl::Vector3Int p_pos_end);
 	void paint(jgl::Vector3Int p_pos, jgl::Size_t p_radius);
+	void paint_wall(jgl::Vector3Int p_pos);
 };
 
 struct Prefab_item : public Item
