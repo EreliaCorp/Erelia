@@ -10,14 +10,28 @@ namespace Routine
 		p_msg >> id;
 		p_msg >> delta;
 
-		if (true)
+		Entity* tmp_entity = Engine::instance()->entity(id);
+
+		if (tmp_entity != nullptr && tmp_entity->is_moving() == false)
 		{
-			Entity* tmp_entity = Engine::instance()->entity(id);
+			jgl::Vector2Int result = 0;
 		
-			if (tmp_entity != nullptr && tmp_entity->is_moving() == false)
+			jgl::Vector2Int delta_value[2] = { jgl::Vector2Int(1, 0), jgl::Vector2Int(0, 1) };
+
+			for (jgl::Size_t i = 0; i < 2; i++)
 			{
-				tmp_entity->move(delta);
+				if (Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), delta * delta_value[i]) == true)
+				{
+					result += delta * delta_value[i];
+				}
 			}
+
+			if (result != delta || Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), delta) == true)
+			{
+				tmp_entity->move(result);
+
+			}
+
 		}
 	}
 

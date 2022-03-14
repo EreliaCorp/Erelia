@@ -171,6 +171,32 @@ void Console_parser::_parse_command(Command& p_command)
 				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/speed [speed from 1 to 150]\"", p_command.sender);
 			}
 		}
+		else if (tab[0] == "/fly")
+		{
+			if (tab.size() == 2)
+			{
+				Account* send_account = Account_atlas::instance()->active_account(p_command.sender->id());
+				Entity* tmp_entity = Engine::instance()->entity(send_account->id);
+				if (tab[1] == "on")
+				{
+					tmp_entity->set_fly_mode(true);
+					Server_manager::instance()->send_private_message("[Systm.] : Fly set to true", p_command.sender);
+				}
+				else if (tab[1] == "off")
+				{
+					tmp_entity->set_fly_mode(false);
+					Server_manager::instance()->send_private_message("[Systm.] : Fly set to false", p_command.sender);
+				}
+				else
+				{
+					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
+				}
+			}
+			else
+			{
+				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
+			}
+		}
 		else
 		{
 			Server_manager::instance()->send_private_message("[Systm.] : Command unknow [" + p_command.text + "]", p_command.sender);

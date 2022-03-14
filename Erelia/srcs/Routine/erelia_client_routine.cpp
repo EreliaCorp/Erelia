@@ -37,6 +37,16 @@ namespace Routine
 			msg << entity_id;
 
 			Server_manager::server()->send_to_all(msg, p_client);
+
+			static Message msg2(Server_message::Console_message);
+
+			msg2.clear();
+
+			jgl::String msg_text = Translation_atlas::string("logout_pre_name") + tmp_account->username + Translation_atlas::string("logout_post_name");
+
+			msg2 << msg_text;
+
+			Server_manager::server()->send_to_all(msg2, p_client);
 		}
 	}
 

@@ -43,4 +43,6 @@ public:
 	void unbake();
 
 	static void send_edition_command(jgl::Vector3Int p_pos_start, jgl::Vector3Int p_pos_end, jgl::Short value);
+
+	jgl::Bool can_move(class Entity* p_entity, jgl::Vector2 p_start, jgl::Vector2 p_direction);
 };

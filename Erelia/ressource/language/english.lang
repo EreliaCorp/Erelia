@@ -14,3 +14,7 @@ Registration_rejected;Register rejected
 5-Inventory_page_housing;Housing
 6-Inventory_page_ruin;Ruin
 7-Inventory_page_fournitures;Other
+login_pre_name;
+login_post_name; just log in !
+logout_pre_name;
+logout_post_name; log out !

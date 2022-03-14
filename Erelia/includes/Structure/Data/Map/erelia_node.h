@@ -17,9 +17,9 @@ struct Node
 	jgl::Vector2Int sprite;
 	jgl::Int animation_size;
 	jgl::Bool autotiled;
-	jgl::Bool obstacle;
+	jgl::Short obstacle;
 
-	Node(jgl::String p_name, jgl::Vector2Int p_sprite, jgl::Bool p_autotiled, jgl::Bool p_obstacle, jgl::Int p_animation_size) :
+	Node(jgl::String p_name, jgl::Vector2Int p_sprite, jgl::Bool p_autotiled, jgl::Short p_obstacle, jgl::Int p_animation_size) :
 		name(p_name), sprite(p_sprite), autotiled(p_autotiled), obstacle(p_obstacle), animation_size(p_animation_size)
 	{
 

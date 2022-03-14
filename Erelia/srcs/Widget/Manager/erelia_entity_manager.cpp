@@ -13,10 +13,11 @@ void Entity_manager::_render()
 	{
 		if (tmp.second != nullptr)
 		{
+			jgl::Float depth = _depth + (tmp.second->is_flying() == true ? Chunk::C_LAYER_LENGTH + 1: Chunk::C_LAYER_LENGTH / 2);
 			if (tmp.second->sprite_sheet() != nullptr)
-				tmp.second->sprite_sheet()->draw(tmp.second->sprite(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, _depth + Chunk::C_LAYER_LENGTH / 2, 1.0f);
+				tmp.second->sprite_sheet()->draw(tmp.second->sprite(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth, 1.0f);
 			else
-				jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, _depth + Chunk::C_LAYER_LENGTH / 2);
+				jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
 
 		}
 	}

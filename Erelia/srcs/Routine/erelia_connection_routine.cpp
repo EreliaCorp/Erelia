@@ -64,6 +64,12 @@ namespace Routine
 				Account_atlas::instance()->activate_account(tmp_account);
 
 				p_client->send(result);
+
+				static Message info(Server_message::Console_message);
+				info.clear();
+				jgl::String info_text = Translation_atlas::string("login_pre_name") + tmp_account->username + Translation_atlas::string("login_post_name");
+				info << info_text;
+				Server_manager::server()->send_to_all(info, p_client);
 			}
 			else
 			{
