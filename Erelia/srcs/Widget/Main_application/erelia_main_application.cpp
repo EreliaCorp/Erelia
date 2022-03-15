@@ -31,9 +31,10 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 }
 
 Main_application::~Main_application()
-{
+{ 
 	UI_configuration_file::save(Path_atlas::ui_config_path);
-	Account_atlas::instance()->save();
+	if (Account_atlas::instance() != nullptr)
+		Account_atlas::instance()->save();
 }
 
 Main_application* Main_application::instanciate(jgl::Widget* p_parent)
@@ -63,12 +64,6 @@ void Main_application::_start_server()
 	Server_manager::instantiate(this);
 	Account_atlas::instanciate();
 	Account_atlas::instance()->load();
-
-
-	for (auto tmp : Account_atlas::instance()->accounts())
-	{
-		jgl::cout << "Account loaded : " << tmp.first << " / " << tmp.second->username << jgl::endl;
-	}
 }
 
 void Main_application::_start_client()

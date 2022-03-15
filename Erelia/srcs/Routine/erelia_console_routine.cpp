@@ -17,6 +17,8 @@ namespace Routine
 
 		p_msg >> message;
 
+		jgl::cout << "String receive : " << message << jgl::endl;
+
 		Console_manager::instance()->console_output()->add_message(message);
 	}
 }

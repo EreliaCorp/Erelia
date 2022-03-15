@@ -11,9 +11,9 @@ int main(int argc, char **argv)
 	win_app->set_geometry(0, app.size());
 	win_app->activate();
 
-	int result = app.run();
+	int run = app.run();
 
 	delete win_app;
 
-	return (result);
+	return (run);
 }

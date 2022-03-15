@@ -37,6 +37,7 @@ private:
 
 	static Main_application* _instance;
 public:
+
 	static Main_application* instanciate(jgl::Widget* p_parent);
 	static Main_application* instance() { return (_instance); }
 

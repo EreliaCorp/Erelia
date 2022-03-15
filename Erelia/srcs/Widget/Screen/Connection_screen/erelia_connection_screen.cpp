@@ -53,6 +53,25 @@ jgl::Bool Connection_screen::_update()
 		_initiate_state = true;
 		return (true);
 	}
+	if (_initiate_state == false)
+		return (false);
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Tab) == jgl::Input_status::Release)
+	{
+		if (_username_input.entry->is_selected() == true)
+		{
+			_username_input.entry->unselect();
+			_password_input.entry->select();
+		}
+		else if (_password_input.entry->is_selected() == true)
+		{
+			_password_input.entry->unselect();
+			_username_input.entry->select();
+		}
+	}
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Return) == jgl::Input_status::Release)
+	{
+		_connect_button->cast();
+	}
 	return (false);
 }
 
