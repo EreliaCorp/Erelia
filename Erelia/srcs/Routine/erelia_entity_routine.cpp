@@ -30,6 +30,18 @@ namespace Routine
 			{
 				tmp_entity->move(result);
 
+				jgl::Vector3Int pos = jgl::Vector3Int(tmp_entity->pos().x + result.x, tmp_entity->pos().y + result.y, 0);
+
+				for (jgl::Size_t i = 0; i < Chunk::C_LAYER_LENGTH; i++)
+				{
+					jgl::Short tmp_value = Engine::instance()->map()->content(pos + jgl::Vector3Int(0, 0, i));
+
+					if (tmp_value != -1 && (g_node_array[tmp_value]->obstacle & Node::BUSH) == Node::BUSH)
+					{
+						i = Chunk::C_LAYER_LENGTH;
+						jgl::cout << "Walking in bush" << jgl::endl;
+					}
+				}
 			}
 
 		}

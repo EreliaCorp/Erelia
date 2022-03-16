@@ -437,14 +437,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(13, 42), false,  Node::OBSTACLE,  0u), //   428
 	new Node(              "Undefined", jgl::Vector2Int(14, 42), false,  Node::OBSTACLE,  0u), //   429
 	new Node(              "Undefined", jgl::Vector2Int(15, 42), false,  Node::OBSTACLE,  0u), //   430
-	new Node(              "Undefined", jgl::Vector2Int(16, 42), false,  Node::WALKABLE,  0u), //   431
-	new Node(              "Undefined", jgl::Vector2Int(17, 42), false,  Node::WALKABLE,  0u), //   432
-	new Node(              "Undefined", jgl::Vector2Int(18, 42), false,  Node::WALKABLE,  0u), //   433
-	new Node(              "Undefined", jgl::Vector2Int(19, 42), false,  Node::WALKABLE,  0u), //   434
-	new Node(              "Undefined", jgl::Vector2Int(20, 42), false,  Node::WALKABLE,  0u), //   435
-	new Node(              "Undefined", jgl::Vector2Int(21, 42), false,  Node::WALKABLE,  0u), //   436
-	new Node(              "Undefined", jgl::Vector2Int(22, 42), false,  Node::WALKABLE,  0u), //   437
-	new Node(              "Undefined", jgl::Vector2Int(23, 42), false,  Node::WALKABLE,  0u), //   438
+	new Node(             "Bush green", jgl::Vector2Int(16, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   431
+	new Node(            "Bush orange", jgl::Vector2Int(17, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   432
+	new Node(              "Bush pink", jgl::Vector2Int(18, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   433
+	new Node(             "Bush brown", jgl::Vector2Int(19, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   434
+	new Node(        "Bush dark green", jgl::Vector2Int(20, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   435
+	new Node(              "Bush blue", jgl::Vector2Int(21, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   436
+	new Node(            "Bush purple", jgl::Vector2Int(22, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   437
+	new Node(             "Bush white", jgl::Vector2Int(23, 42), false,  Node::WALKABLE | Node::BUSH,  0u), //   438
 	new Node(              "Undefined", jgl::Vector2Int(24, 42), false,  Node::OBSTACLE,  0u), //   439
 	new Node(              "Undefined", jgl::Vector2Int(25, 42), false,  Node::OBSTACLE,  0u), //   440
 	new Node(              "Undefined", jgl::Vector2Int(26, 42), false,  Node::OBSTACLE,  0u), //   441
@@ -541,14 +541,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 45), false,  Node::WALKABLE,  0u), //   532
 	new Node(              "Undefined", jgl::Vector2Int(22, 45), false,  Node::WALKABLE,  0u), //   533
 	new Node(              "Undefined", jgl::Vector2Int(23, 45), false,  Node::WALKABLE,  0u), //   534
-	new Node(              "Undefined", jgl::Vector2Int(24, 45), false,  Node::WALKABLE,  0u), //   535
-	new Node(              "Undefined", jgl::Vector2Int(25, 45), false,  Node::WALKABLE,  0u), //   536
-	new Node(              "Undefined", jgl::Vector2Int(26, 45), false,  Node::WALKABLE,  0u), //   537
-	new Node(              "Undefined", jgl::Vector2Int(27, 45), false,  Node::WALKABLE,  0u), //   538
-	new Node(              "Undefined", jgl::Vector2Int(28, 45), false,  Node::WALKABLE,  0u), //   539
-	new Node(              "Undefined", jgl::Vector2Int(29, 45), false,  Node::WALKABLE,  0u), //   540
-	new Node(              "Undefined", jgl::Vector2Int(30, 45), false,  Node::WALKABLE,  0u), //   541
-	new Node(              "Undefined", jgl::Vector2Int(31, 45), false,  Node::WALKABLE,  0u), //   542
+	new Node(              "Undefined", jgl::Vector2Int(24, 45), false,  Node::OBSTACLE,  0u), //   535
+	new Node(              "Undefined", jgl::Vector2Int(25, 45), false,  Node::OBSTACLE,  0u), //   536
+	new Node(              "Undefined", jgl::Vector2Int(26, 45), false,  Node::OBSTACLE,  0u), //   537
+	new Node(              "Undefined", jgl::Vector2Int(27, 45), false,  Node::OBSTACLE,  0u), //   538
+	new Node(              "Undefined", jgl::Vector2Int(28, 45), false,  Node::OBSTACLE,  0u), //   539
+	new Node(              "Undefined", jgl::Vector2Int(29, 45), false,  Node::OBSTACLE,  0u), //   540
+	new Node(              "Undefined", jgl::Vector2Int(30, 45), false,  Node::OBSTACLE,  0u), //   541
+	new Node(              "Undefined", jgl::Vector2Int(31, 45), false,  Node::OBSTACLE,  0u), //   542
 	new Node(              "Undefined", jgl::Vector2Int( 0, 46), false,  Node::OBSTACLE,  0u), //   543
 	new Node(              "Undefined", jgl::Vector2Int( 1, 46), false,  Node::OBSTACLE,  0u), //   544
 	new Node(              "Undefined", jgl::Vector2Int( 2, 46), false,  Node::OBSTACLE,  0u), //   545
@@ -573,14 +573,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 46), false,  Node::WALKABLE,  0u), //   564
 	new Node(              "Undefined", jgl::Vector2Int(22, 46), false,  Node::WALKABLE,  0u), //   565
 	new Node(              "Undefined", jgl::Vector2Int(23, 46), false,  Node::WALKABLE,  0u), //   566
-	new Node(              "Undefined", jgl::Vector2Int(24, 46), false,  Node::WALKABLE,  0u), //   567
-	new Node(              "Undefined", jgl::Vector2Int(25, 46), false,  Node::WALKABLE,  0u), //   568
-	new Node(              "Undefined", jgl::Vector2Int(26, 46), false,  Node::WALKABLE,  0u), //   569
-	new Node(              "Undefined", jgl::Vector2Int(27, 46), false,  Node::WALKABLE,  0u), //   570
-	new Node(              "Undefined", jgl::Vector2Int(28, 46), false,  Node::WALKABLE,  0u), //   571
-	new Node(              "Undefined", jgl::Vector2Int(29, 46), false,  Node::WALKABLE,  0u), //   572
-	new Node(              "Undefined", jgl::Vector2Int(30, 46), false,  Node::WALKABLE,  0u), //   573
-	new Node(              "Undefined", jgl::Vector2Int(31, 46), false,  Node::WALKABLE,  0u), //   574
+	new Node(              "Undefined", jgl::Vector2Int(24, 46), false,  Node::OBSTACLE,  0u), //   567
+	new Node(              "Undefined", jgl::Vector2Int(25, 46), false,  Node::OBSTACLE,  0u), //   568
+	new Node(              "Undefined", jgl::Vector2Int(26, 46), false,  Node::OBSTACLE,  0u), //   569
+	new Node(              "Undefined", jgl::Vector2Int(27, 46), false,  Node::OBSTACLE,  0u), //   570
+	new Node(              "Undefined", jgl::Vector2Int(28, 46), false,  Node::OBSTACLE,  0u), //   571
+	new Node(              "Undefined", jgl::Vector2Int(29, 46), false,  Node::OBSTACLE,  0u), //   572
+	new Node(              "Undefined", jgl::Vector2Int(30, 46), false,  Node::OBSTACLE,  0u), //   573
+	new Node(              "Undefined", jgl::Vector2Int(31, 46), false,  Node::OBSTACLE,  0u), //   574
 	new Node(              "Undefined", jgl::Vector2Int( 0, 47), false,  Node::WALKABLE,  0u), //   575
 	new Node(              "Undefined", jgl::Vector2Int( 1, 47), false,  Node::WALKABLE,  0u), //   576
 	new Node(              "Undefined", jgl::Vector2Int( 2, 47), false,  Node::WALKABLE,  0u), //   577
@@ -605,14 +605,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 47), false,  Node::WALKABLE,  0u), //   596
 	new Node(              "Undefined", jgl::Vector2Int(22, 47), false,  Node::WALKABLE,  0u), //   597
 	new Node(              "Undefined", jgl::Vector2Int(23, 47), false,  Node::WALKABLE,  0u), //   598
-	new Node(              "Undefined", jgl::Vector2Int(24, 47), false,  Node::WALKABLE,  0u), //   599
-	new Node(              "Undefined", jgl::Vector2Int(25, 47), false,  Node::WALKABLE,  0u), //   600
-	new Node(              "Undefined", jgl::Vector2Int(26, 47), false,  Node::WALKABLE,  0u), //   601
-	new Node(              "Undefined", jgl::Vector2Int(27, 47), false,  Node::WALKABLE,  0u), //   602
-	new Node(              "Undefined", jgl::Vector2Int(28, 47), false,  Node::WALKABLE,  0u), //   603
-	new Node(              "Undefined", jgl::Vector2Int(29, 47), false,  Node::WALKABLE,  0u), //   604
-	new Node(              "Undefined", jgl::Vector2Int(30, 47), false,  Node::WALKABLE,  0u), //   605
-	new Node(              "Undefined", jgl::Vector2Int(31, 47), false,  Node::WALKABLE,  0u), //   606
+	new Node(              "Undefined", jgl::Vector2Int(24, 47), false,  Node::OBSTACLE,  0u), //   599
+	new Node(              "Undefined", jgl::Vector2Int(25, 47), false,  Node::OBSTACLE,  0u), //   600
+	new Node(              "Undefined", jgl::Vector2Int(26, 47), false,  Node::OBSTACLE,  0u), //   601
+	new Node(              "Undefined", jgl::Vector2Int(27, 47), false,  Node::OBSTACLE,  0u), //   602
+	new Node(              "Undefined", jgl::Vector2Int(28, 47), false,  Node::OBSTACLE,  0u), //   603
+	new Node(              "Undefined", jgl::Vector2Int(29, 47), false,  Node::OBSTACLE,  0u), //   604
+	new Node(              "Undefined", jgl::Vector2Int(30, 47), false,  Node::OBSTACLE,  0u), //   605
+	new Node(              "Undefined", jgl::Vector2Int(31, 47), false,  Node::OBSTACLE,  0u), //   606
 	new Node(              "Undefined", jgl::Vector2Int( 0, 48), false,  Node::OBSTACLE,  0u), //   607
 	new Node(              "Undefined", jgl::Vector2Int( 1, 48), false,  Node::OBSTACLE,  0u), //   608
 	new Node(              "Undefined", jgl::Vector2Int( 2, 48), false,  Node::OBSTACLE,  0u), //   609
@@ -637,14 +637,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 48), false,  Node::WALKABLE,  0u), //   628
 	new Node(              "Undefined", jgl::Vector2Int(22, 48), false,  Node::WALKABLE,  0u), //   629
 	new Node(              "Undefined", jgl::Vector2Int(23, 48), false,  Node::WALKABLE,  0u), //   630
-	new Node(              "Undefined", jgl::Vector2Int(24, 48), false,  Node::WALKABLE,  0u), //   631
-	new Node(              "Undefined", jgl::Vector2Int(25, 48), false,  Node::WALKABLE,  0u), //   632
-	new Node(              "Undefined", jgl::Vector2Int(26, 48), false,  Node::WALKABLE,  0u), //   633
-	new Node(              "Undefined", jgl::Vector2Int(27, 48), false,  Node::WALKABLE,  0u), //   634
-	new Node(              "Undefined", jgl::Vector2Int(28, 48), false,  Node::WALKABLE,  0u), //   635
-	new Node(              "Undefined", jgl::Vector2Int(29, 48), false,  Node::WALKABLE,  0u), //   636
-	new Node(              "Undefined", jgl::Vector2Int(30, 48), false,  Node::WALKABLE,  0u), //   637
-	new Node(              "Undefined", jgl::Vector2Int(31, 48), false,  Node::WALKABLE,  0u), //   638
+	new Node(              "Undefined", jgl::Vector2Int(24, 48), false,  Node::OBSTACLE,  0u), //   631
+	new Node(              "Undefined", jgl::Vector2Int(25, 48), false,  Node::OBSTACLE,  0u), //   632
+	new Node(              "Undefined", jgl::Vector2Int(26, 48), false,  Node::OBSTACLE,  0u), //   633
+	new Node(              "Undefined", jgl::Vector2Int(27, 48), false,  Node::OBSTACLE,  0u), //   634
+	new Node(              "Undefined", jgl::Vector2Int(28, 48), false,  Node::OBSTACLE,  0u), //   635
+	new Node(              "Undefined", jgl::Vector2Int(29, 48), false,  Node::OBSTACLE,  0u), //   636
+	new Node(              "Undefined", jgl::Vector2Int(30, 48), false,  Node::OBSTACLE,  0u), //   637
+	new Node(              "Undefined", jgl::Vector2Int(31, 48), false,  Node::OBSTACLE,  0u), //   638
 	new Node(              "Undefined", jgl::Vector2Int( 0, 49), false,  Node::WALKABLE,  0u), //   639
 	new Node(              "Undefined", jgl::Vector2Int( 1, 49), false,  Node::WALKABLE,  0u), //   640
 	new Node(              "Undefined", jgl::Vector2Int( 2, 49), false,  Node::WALKABLE,  0u), //   641
@@ -657,10 +657,10 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int( 9, 49), false,  Node::WALKABLE,  0u), //   648
 	new Node(              "Undefined", jgl::Vector2Int(10, 49), false,  Node::WALKABLE,  0u), //   649
 	new Node(              "Undefined", jgl::Vector2Int(11, 49), false,  Node::WALKABLE,  0u), //   650
-	new Node(              "Undefined", jgl::Vector2Int(12, 49), false,  Node::WALKABLE,  0u), //   651
-	new Node(              "Undefined", jgl::Vector2Int(13, 49), false,  Node::WALKABLE,  0u), //   652
-	new Node(              "Undefined", jgl::Vector2Int(14, 49), false,  Node::WALKABLE,  0u), //   653
-	new Node(              "Undefined", jgl::Vector2Int(15, 49), false,  Node::WALKABLE,  0u), //   654
+	new Node(              "Undefined", jgl::Vector2Int(12, 49), false,  Node::OBSTACLE,  0u), //   651
+	new Node(              "Undefined", jgl::Vector2Int(13, 49), false,  Node::OBSTACLE,  0u), //   652
+	new Node(              "Undefined", jgl::Vector2Int(14, 49), false,  Node::OBSTACLE,  0u), //   653
+	new Node(              "Undefined", jgl::Vector2Int(15, 49), false,  Node::OBSTACLE,  0u), //   654
 	new Node(              "Undefined", jgl::Vector2Int(16, 49), false,  Node::WALKABLE,  0u), //   655
 	new Node(              "Undefined", jgl::Vector2Int(17, 49), false,  Node::WALKABLE,  0u), //   656
 	new Node(              "Undefined", jgl::Vector2Int(18, 49), false,  Node::WALKABLE,  0u), //   657
@@ -701,14 +701,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 50), false,  Node::WALKABLE,  0u), //   692
 	new Node(              "Undefined", jgl::Vector2Int(22, 50), false,  Node::WALKABLE,  0u), //   693
 	new Node(              "Undefined", jgl::Vector2Int(23, 50), false,  Node::WALKABLE,  0u), //   694
-	new Node(              "Undefined", jgl::Vector2Int(24, 50), false,  Node::WALKABLE,  0u), //   695
-	new Node(              "Undefined", jgl::Vector2Int(25, 50), false,  Node::WALKABLE,  0u), //   696
-	new Node(              "Undefined", jgl::Vector2Int(26, 50), false,  Node::WALKABLE,  0u), //   697
-	new Node(              "Undefined", jgl::Vector2Int(27, 50), false,  Node::WALKABLE,  0u), //   698
-	new Node(              "Undefined", jgl::Vector2Int(28, 50), false,  Node::WALKABLE,  0u), //   699
-	new Node(              "Undefined", jgl::Vector2Int(29, 50), false,  Node::WALKABLE,  0u), //   700
-	new Node(              "Undefined", jgl::Vector2Int(30, 50), false,  Node::WALKABLE,  0u), //   701
-	new Node(              "Undefined", jgl::Vector2Int(31, 50), false,  Node::WALKABLE,  0u), //   702
+	new Node(              "Undefined", jgl::Vector2Int(24, 50), false,  Node::OBSTACLE,  0u), //   695
+	new Node(              "Undefined", jgl::Vector2Int(25, 50), false,  Node::OBSTACLE,  0u), //   696
+	new Node(              "Undefined", jgl::Vector2Int(26, 50), false,  Node::OBSTACLE,  0u), //   697
+	new Node(              "Undefined", jgl::Vector2Int(27, 50), false,  Node::OBSTACLE,  0u), //   698
+	new Node(              "Undefined", jgl::Vector2Int(28, 50), false,  Node::OBSTACLE,  0u), //   699
+	new Node(              "Undefined", jgl::Vector2Int(29, 50), false,  Node::OBSTACLE,  0u), //   700
+	new Node(              "Undefined", jgl::Vector2Int(30, 50), false,  Node::OBSTACLE,  0u), //   701
+	new Node(              "Undefined", jgl::Vector2Int(31, 50), false,  Node::OBSTACLE,  0u), //   702
 	new Node(              "Undefined", jgl::Vector2Int( 0, 51), false,  Node::WALKABLE,  0u), //   703
 	new Node(              "Undefined", jgl::Vector2Int( 1, 51), false,  Node::WALKABLE,  0u), //   704
 	new Node(              "Undefined", jgl::Vector2Int( 2, 51), false,  Node::WALKABLE,  0u), //   705
@@ -717,14 +717,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int( 5, 51), false,  Node::WALKABLE,  0u), //   708
 	new Node(              "Undefined", jgl::Vector2Int( 6, 51), false,  Node::WALKABLE,  0u), //   709
 	new Node(              "Undefined", jgl::Vector2Int( 7, 51), false,  Node::WALKABLE,  0u), //   710
-	new Node(              "Undefined", jgl::Vector2Int( 8, 51), false,  Node::WALKABLE,  0u), //   711
-	new Node(              "Undefined", jgl::Vector2Int( 9, 51), false,  Node::WALKABLE,  0u), //   712
-	new Node(              "Undefined", jgl::Vector2Int(10, 51), false,  Node::WALKABLE,  0u), //   713
-	new Node(              "Undefined", jgl::Vector2Int(11, 51), false,  Node::WALKABLE,  0u), //   714
-	new Node(              "Undefined", jgl::Vector2Int(12, 51), false,  Node::WALKABLE,  0u), //   715
-	new Node(              "Undefined", jgl::Vector2Int(13, 51), false,  Node::WALKABLE,  0u), //   716
-	new Node(              "Undefined", jgl::Vector2Int(14, 51), false,  Node::WALKABLE,  0u), //   717
-	new Node(              "Undefined", jgl::Vector2Int(15, 51), false,  Node::WALKABLE,  0u), //   718
+	new Node(              "Undefined", jgl::Vector2Int( 8, 51), false,  Node::OBSTACLE,  0u), //   711
+	new Node(              "Undefined", jgl::Vector2Int( 9, 51), false,  Node::OBSTACLE,  0u), //   712
+	new Node(              "Undefined", jgl::Vector2Int(10, 51), false,  Node::OBSTACLE,  0u), //   713
+	new Node(              "Undefined", jgl::Vector2Int(11, 51), false,  Node::OBSTACLE,  0u), //   714
+	new Node(              "Undefined", jgl::Vector2Int(12, 51), false,  Node::OBSTACLE,  0u), //   715
+	new Node(              "Undefined", jgl::Vector2Int(13, 51), false,  Node::OBSTACLE,  0u), //   716
+	new Node(              "Undefined", jgl::Vector2Int(14, 51), false,  Node::OBSTACLE,  0u), //   717
+	new Node(              "Undefined", jgl::Vector2Int(15, 51), false,  Node::OBSTACLE,  0u), //   718
 	new Node(              "Undefined", jgl::Vector2Int(16, 51), false,  Node::WALKABLE,  0u), //   719
 	new Node(              "Undefined", jgl::Vector2Int(17, 51), false,  Node::WALKABLE,  0u), //   720
 	new Node(              "Undefined", jgl::Vector2Int(18, 51), false,  Node::WALKABLE,  0u), //   721
@@ -733,30 +733,30 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 51), false,  Node::WALKABLE,  0u), //   724
 	new Node(              "Undefined", jgl::Vector2Int(22, 51), false,  Node::WALKABLE,  0u), //   725
 	new Node(              "Undefined", jgl::Vector2Int(23, 51), false,  Node::WALKABLE,  0u), //   726
-	new Node(              "Undefined", jgl::Vector2Int(24, 51), false,  Node::WALKABLE,  0u), //   727
-	new Node(              "Undefined", jgl::Vector2Int(25, 51), false,  Node::WALKABLE,  0u), //   728
-	new Node(              "Undefined", jgl::Vector2Int(26, 51), false,  Node::WALKABLE,  0u), //   729
-	new Node(              "Undefined", jgl::Vector2Int(27, 51), false,  Node::WALKABLE,  0u), //   730
-	new Node(              "Undefined", jgl::Vector2Int(28, 51), false,  Node::WALKABLE,  0u), //   731
-	new Node(              "Undefined", jgl::Vector2Int(29, 51), false,  Node::WALKABLE,  0u), //   732
-	new Node(              "Undefined", jgl::Vector2Int(30, 51), false,  Node::WALKABLE,  0u), //   733
-	new Node(              "Undefined", jgl::Vector2Int(31, 51), false,  Node::WALKABLE,  0u), //   734
-	new Node(              "Undefined", jgl::Vector2Int( 0, 52), false,  Node::WALKABLE,  0u), //   735
-	new Node(              "Undefined", jgl::Vector2Int( 1, 52), false,  Node::WALKABLE,  0u), //   736
-	new Node(              "Undefined", jgl::Vector2Int( 2, 52), false,  Node::WALKABLE,  0u), //   737
-	new Node(              "Undefined", jgl::Vector2Int( 3, 52), false,  Node::WALKABLE,  0u), //   738
-	new Node(              "Undefined", jgl::Vector2Int( 4, 52), false,  Node::WALKABLE,  0u), //   739
-	new Node(              "Undefined", jgl::Vector2Int( 5, 52), false,  Node::WALKABLE,  0u), //   740
-	new Node(              "Undefined", jgl::Vector2Int( 6, 52), false,  Node::WALKABLE,  0u), //   741
-	new Node(              "Undefined", jgl::Vector2Int( 7, 52), false,  Node::WALKABLE,  0u), //   742
-	new Node(              "Undefined", jgl::Vector2Int( 8, 52), false,  Node::WALKABLE,  0u), //   743
-	new Node(              "Undefined", jgl::Vector2Int( 9, 52), false,  Node::WALKABLE,  0u), //   744
-	new Node(              "Undefined", jgl::Vector2Int(10, 52), false,  Node::WALKABLE,  0u), //   745
-	new Node(              "Undefined", jgl::Vector2Int(11, 52), false,  Node::WALKABLE,  0u), //   746
-	new Node(              "Undefined", jgl::Vector2Int(12, 52), false,  Node::WALKABLE,  0u), //   747
-	new Node(              "Undefined", jgl::Vector2Int(13, 52), false,  Node::WALKABLE,  0u), //   748
-	new Node(              "Undefined", jgl::Vector2Int(14, 52), false,  Node::WALKABLE,  0u), //   749
-	new Node(              "Undefined", jgl::Vector2Int(15, 52), false,  Node::WALKABLE,  0u), //   750
+	new Node(              "Undefined", jgl::Vector2Int(24, 51), false,  Node::OBSTACLE,  0u), //   727
+	new Node(              "Undefined", jgl::Vector2Int(25, 51), false,  Node::OBSTACLE,  0u), //   728
+	new Node(              "Undefined", jgl::Vector2Int(26, 51), false,  Node::OBSTACLE,  0u), //   729
+	new Node(              "Undefined", jgl::Vector2Int(27, 51), false,  Node::OBSTACLE,  0u), //   730
+	new Node(              "Undefined", jgl::Vector2Int(28, 51), false,  Node::OBSTACLE,  0u), //   731
+	new Node(              "Undefined", jgl::Vector2Int(29, 51), false,  Node::OBSTACLE,  0u), //   732
+	new Node(              "Undefined", jgl::Vector2Int(30, 51), false,  Node::OBSTACLE,  0u), //   733
+	new Node(              "Undefined", jgl::Vector2Int(31, 51), false,  Node::OBSTACLE,  0u), //   734
+	new Node(              "Undefined", jgl::Vector2Int( 0, 52), false,  Node::OBSTACLE,  0u), //   735
+	new Node(              "Undefined", jgl::Vector2Int( 1, 52), false,  Node::OBSTACLE,  0u), //   736
+	new Node(              "Undefined", jgl::Vector2Int( 2, 52), false,  Node::OBSTACLE,  0u), //   737
+	new Node(              "Undefined", jgl::Vector2Int( 3, 52), false,  Node::OBSTACLE,  0u), //   738
+	new Node(              "Undefined", jgl::Vector2Int( 4, 52), false,  Node::OBSTACLE,  0u), //   739
+	new Node(              "Undefined", jgl::Vector2Int( 5, 52), false,  Node::OBSTACLE,  0u), //   740
+	new Node(              "Undefined", jgl::Vector2Int( 6, 52), false,  Node::OBSTACLE,  0u), //   741
+	new Node(              "Undefined", jgl::Vector2Int( 7, 52), false,  Node::OBSTACLE,  0u), //   742
+	new Node(              "Undefined", jgl::Vector2Int( 8, 52), false,  Node::OBSTACLE,  0u), //   743
+	new Node(              "Undefined", jgl::Vector2Int( 9, 52), false,  Node::OBSTACLE,  0u), //   744
+	new Node(              "Undefined", jgl::Vector2Int(10, 52), false,  Node::OBSTACLE,  0u), //   745
+	new Node(              "Undefined", jgl::Vector2Int(11, 52), false,  Node::OBSTACLE,  0u), //   746
+	new Node(              "Undefined", jgl::Vector2Int(12, 52), false,  Node::OBSTACLE,  0u), //   747
+	new Node(              "Undefined", jgl::Vector2Int(13, 52), false,  Node::OBSTACLE,  0u), //   748
+	new Node(              "Undefined", jgl::Vector2Int(14, 52), false,  Node::OBSTACLE,  0u), //   749
+	new Node(              "Undefined", jgl::Vector2Int(15, 52), false,  Node::OBSTACLE,  0u), //   750
 	new Node(              "Undefined", jgl::Vector2Int(16, 52), false,  Node::WALKABLE,  0u), //   751
 	new Node(              "Undefined", jgl::Vector2Int(17, 52), false,  Node::WALKABLE,  0u), //   752
 	new Node(              "Undefined", jgl::Vector2Int(18, 52), false,  Node::WALKABLE,  0u), //   753
@@ -765,14 +765,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 52), false,  Node::WALKABLE,  0u), //   756
 	new Node(              "Undefined", jgl::Vector2Int(22, 52), false,  Node::WALKABLE,  0u), //   757
 	new Node(              "Undefined", jgl::Vector2Int(23, 52), false,  Node::WALKABLE,  0u), //   758
-	new Node(              "Undefined", jgl::Vector2Int(24, 52), false,  Node::WALKABLE,  0u), //   759
-	new Node(              "Undefined", jgl::Vector2Int(25, 52), false,  Node::WALKABLE,  0u), //   760
-	new Node(              "Undefined", jgl::Vector2Int(26, 52), false,  Node::WALKABLE,  0u), //   761
-	new Node(              "Undefined", jgl::Vector2Int(27, 52), false,  Node::WALKABLE,  0u), //   762
-	new Node(              "Undefined", jgl::Vector2Int(28, 52), false,  Node::WALKABLE,  0u), //   763
-	new Node(              "Undefined", jgl::Vector2Int(29, 52), false,  Node::WALKABLE,  0u), //   764
-	new Node(              "Undefined", jgl::Vector2Int(30, 52), false,  Node::WALKABLE,  0u), //   765
-	new Node(              "Undefined", jgl::Vector2Int(31, 52), false,  Node::WALKABLE,  0u), //   766
+	new Node(              "Undefined", jgl::Vector2Int(24, 52), false,  Node::OBSTACLE,  0u), //   759
+	new Node(              "Undefined", jgl::Vector2Int(25, 52), false,  Node::OBSTACLE,  0u), //   760
+	new Node(              "Undefined", jgl::Vector2Int(26, 52), false,  Node::OBSTACLE,  0u), //   761
+	new Node(              "Undefined", jgl::Vector2Int(27, 52), false,  Node::OBSTACLE,  0u), //   762
+	new Node(              "Undefined", jgl::Vector2Int(28, 52), false,  Node::OBSTACLE,  0u), //   763
+	new Node(              "Undefined", jgl::Vector2Int(29, 52), false,  Node::OBSTACLE,  0u), //   764
+	new Node(              "Undefined", jgl::Vector2Int(30, 52), false,  Node::OBSTACLE,  0u), //   765
+	new Node(              "Undefined", jgl::Vector2Int(31, 52), false,  Node::OBSTACLE,  0u), //   766
 	new Node(              "Undefined", jgl::Vector2Int( 0, 53), false,  Node::WALKABLE,  0u), //   767
 	new Node(              "Undefined", jgl::Vector2Int( 1, 53), false,  Node::WALKABLE,  0u), //   768
 	new Node(              "Undefined", jgl::Vector2Int( 2, 53), false,  Node::WALKABLE,  0u), //   769
@@ -781,14 +781,14 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int( 5, 53), false,  Node::WALKABLE,  0u), //   772
 	new Node(              "Undefined", jgl::Vector2Int( 6, 53), false,  Node::WALKABLE,  0u), //   773
 	new Node(              "Undefined", jgl::Vector2Int( 7, 53), false,  Node::WALKABLE,  0u), //   774
-	new Node(              "Undefined", jgl::Vector2Int( 8, 53), false,  Node::WALKABLE,  0u), //   775
-	new Node(              "Undefined", jgl::Vector2Int( 9, 53), false,  Node::WALKABLE,  0u), //   776
-	new Node(              "Undefined", jgl::Vector2Int(10, 53), false,  Node::WALKABLE,  0u), //   777
-	new Node(              "Undefined", jgl::Vector2Int(11, 53), false,  Node::WALKABLE,  0u), //   778
-	new Node(              "Undefined", jgl::Vector2Int(12, 53), false,  Node::WALKABLE,  0u), //   779
-	new Node(              "Undefined", jgl::Vector2Int(13, 53), false,  Node::WALKABLE,  0u), //   780
-	new Node(              "Undefined", jgl::Vector2Int(14, 53), false,  Node::WALKABLE,  0u), //   781
-	new Node(              "Undefined", jgl::Vector2Int(15, 53), false,  Node::WALKABLE,  0u), //   782
+	new Node(              "Undefined", jgl::Vector2Int( 8, 53), false,  Node::OBSTACLE,  0u), //   775
+	new Node(              "Undefined", jgl::Vector2Int( 9, 53), false,  Node::OBSTACLE,  0u), //   776
+	new Node(              "Undefined", jgl::Vector2Int(10, 53), false,  Node::OBSTACLE,  0u), //   777
+	new Node(              "Undefined", jgl::Vector2Int(11, 53), false,  Node::OBSTACLE,  0u), //   778
+	new Node(              "Undefined", jgl::Vector2Int(12, 53), false,  Node::OBSTACLE,  0u), //   779
+	new Node(              "Undefined", jgl::Vector2Int(13, 53), false,  Node::OBSTACLE,  0u), //   780
+	new Node(              "Undefined", jgl::Vector2Int(14, 53), false,  Node::OBSTACLE,  0u), //   781
+	new Node(              "Undefined", jgl::Vector2Int(15, 53), false,  Node::OBSTACLE,  0u), //   782
 	new Node(              "Undefined", jgl::Vector2Int(16, 53), false,  Node::WALKABLE,  0u), //   783
 	new Node(              "Undefined", jgl::Vector2Int(17, 53), false,  Node::WALKABLE,  0u), //   784
 	new Node(              "Undefined", jgl::Vector2Int(18, 53), false,  Node::WALKABLE,  0u), //   785
@@ -797,28 +797,28 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(21, 53), false,  Node::WALKABLE,  0u), //   788
 	new Node(              "Undefined", jgl::Vector2Int(22, 53), false,  Node::WALKABLE,  0u), //   789
 	new Node(              "Undefined", jgl::Vector2Int(23, 53), false,  Node::WALKABLE,  0u), //   790
-	new Node(              "Undefined", jgl::Vector2Int(24, 53), false,  Node::WALKABLE,  0u), //   791
-	new Node(              "Undefined", jgl::Vector2Int(25, 53), false,  Node::WALKABLE,  0u), //   792
-	new Node(              "Undefined", jgl::Vector2Int(26, 53), false,  Node::WALKABLE,  0u), //   793
-	new Node(              "Undefined", jgl::Vector2Int(27, 53), false,  Node::WALKABLE,  0u), //   794
-	new Node(              "Undefined", jgl::Vector2Int(28, 53), false,  Node::WALKABLE,  0u), //   795
-	new Node(              "Undefined", jgl::Vector2Int(29, 53), false,  Node::WALKABLE,  0u), //   796
-	new Node(              "Undefined", jgl::Vector2Int(30, 53), false,  Node::WALKABLE,  0u), //   797
-	new Node(              "Undefined", jgl::Vector2Int(31, 53), false,  Node::WALKABLE,  0u), //   798
-	new Node(              "Undefined", jgl::Vector2Int( 0, 54), false,  Node::WALKABLE,  0u), //   799
-	new Node(              "Undefined", jgl::Vector2Int( 1, 54), false,  Node::WALKABLE,  0u), //   800
-	new Node(              "Undefined", jgl::Vector2Int( 2, 54), false,  Node::WALKABLE,  0u), //   801
-	new Node(              "Undefined", jgl::Vector2Int( 3, 54), false,  Node::WALKABLE,  0u), //   802
-	new Node(              "Undefined", jgl::Vector2Int( 4, 54), false,  Node::WALKABLE,  0u), //   803
-	new Node(              "Undefined", jgl::Vector2Int( 5, 54), false,  Node::WALKABLE,  0u), //   804
-	new Node(              "Undefined", jgl::Vector2Int( 6, 54), false,  Node::WALKABLE,  0u), //   805
-	new Node(              "Undefined", jgl::Vector2Int( 7, 54), false,  Node::WALKABLE,  0u), //   806
-	new Node(              "Undefined", jgl::Vector2Int( 8, 54), false,  Node::WALKABLE,  0u), //   807
-	new Node(              "Undefined", jgl::Vector2Int( 9, 54), false,  Node::WALKABLE,  0u), //   808
-	new Node(              "Undefined", jgl::Vector2Int(10, 54), false,  Node::WALKABLE,  0u), //   809
-	new Node(              "Undefined", jgl::Vector2Int(11, 54), false,  Node::WALKABLE,  0u), //   810
-	new Node(              "Undefined", jgl::Vector2Int(12, 54), false,  Node::WALKABLE,  0u), //   811
-	new Node(              "Undefined", jgl::Vector2Int(13, 54), false,  Node::WALKABLE,  0u), //   812
+	new Node(              "Undefined", jgl::Vector2Int(24, 53), false,  Node::OBSTACLE,  0u), //   791
+	new Node(              "Undefined", jgl::Vector2Int(25, 53), false,  Node::OBSTACLE,  0u), //   792
+	new Node(              "Undefined", jgl::Vector2Int(26, 53), false,  Node::OBSTACLE,  0u), //   793
+	new Node(              "Undefined", jgl::Vector2Int(27, 53), false,  Node::OBSTACLE,  0u), //   794
+	new Node(              "Undefined", jgl::Vector2Int(28, 53), false,  Node::OBSTACLE,  0u), //   795
+	new Node(              "Undefined", jgl::Vector2Int(29, 53), false,  Node::OBSTACLE,  0u), //   796
+	new Node(              "Undefined", jgl::Vector2Int(30, 53), false,  Node::OBSTACLE,  0u), //   797
+	new Node(              "Undefined", jgl::Vector2Int(31, 53), false,  Node::OBSTACLE,  0u), //   798
+	new Node(              "Undefined", jgl::Vector2Int( 0, 54), false,  Node::OBSTACLE,  0u), //   799
+	new Node(              "Undefined", jgl::Vector2Int( 1, 54), false,  Node::OBSTACLE,  0u), //   800
+	new Node(              "Undefined", jgl::Vector2Int( 2, 54), false,  Node::OBSTACLE,  0u), //   801
+	new Node(              "Undefined", jgl::Vector2Int( 3, 54), false,  Node::OBSTACLE,  0u), //   802
+	new Node(              "Undefined", jgl::Vector2Int( 4, 54), false,  Node::OBSTACLE,  0u), //   803
+	new Node(              "Undefined", jgl::Vector2Int( 5, 54), false,  Node::OBSTACLE,  0u), //   804
+	new Node(              "Undefined", jgl::Vector2Int( 6, 54), false,  Node::OBSTACLE,  0u), //   805
+	new Node(              "Undefined", jgl::Vector2Int( 7, 54), false,  Node::OBSTACLE,  0u), //   806
+	new Node(              "Undefined", jgl::Vector2Int( 8, 54), false,  Node::OBSTACLE,  0u), //   807
+	new Node(              "Undefined", jgl::Vector2Int( 9, 54), false,  Node::OBSTACLE,  0u), //   808
+	new Node(              "Undefined", jgl::Vector2Int(10, 54), false,  Node::OBSTACLE,  0u), //   809
+	new Node(              "Undefined", jgl::Vector2Int(11, 54), false,  Node::OBSTACLE,  0u), //   810
+	new Node(              "Undefined", jgl::Vector2Int(12, 54), false,  Node::OBSTACLE,  0u), //   811
+	new Node(              "Undefined", jgl::Vector2Int(13, 54), false,  Node::OBSTACLE,  0u), //   812
 	new Node(              "Undefined", jgl::Vector2Int(14, 54), false,  Node::WALKABLE,  0u), //   813
 	new Node(              "Undefined", jgl::Vector2Int(15, 54), false,  Node::WALKABLE,  0u), //   814
 	new Node(              "Undefined", jgl::Vector2Int(16, 54), false,  Node::WALKABLE,  1u), //   815
@@ -831,16 +831,16 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int( 3, 55), false,  Node::WALKABLE,  0u), //   822
 	new Node(              "Undefined", jgl::Vector2Int( 4, 55), false,  Node::WALKABLE,  0u), //   823
 	new Node(              "Undefined", jgl::Vector2Int( 5, 55), false,  Node::WALKABLE,  0u), //   824
-	new Node(              "Undefined", jgl::Vector2Int( 6, 55), false,  Node::WALKABLE,  0u), //   825
-	new Node(              "Undefined", jgl::Vector2Int( 7, 55), false,  Node::WALKABLE,  0u), //   826
-	new Node(              "Undefined", jgl::Vector2Int( 8, 55), false,  Node::WALKABLE,  0u), //   827
-	new Node(              "Undefined", jgl::Vector2Int( 9, 55), false,  Node::WALKABLE,  0u), //   828
-	new Node(              "Undefined", jgl::Vector2Int(10, 55), false,  Node::WALKABLE,  0u), //   829
-	new Node(              "Undefined", jgl::Vector2Int(11, 55), false,  Node::WALKABLE,  0u), //   830
-	new Node(              "Undefined", jgl::Vector2Int(12, 55), false,  Node::WALKABLE,  0u), //   831
-	new Node(              "Undefined", jgl::Vector2Int(13, 55), false,  Node::WALKABLE,  0u), //   832
-	new Node(              "Undefined", jgl::Vector2Int(14, 55), false,  Node::WALKABLE,  0u), //   833
-	new Node(              "Undefined", jgl::Vector2Int(15, 55), false,  Node::WALKABLE,  0u), //   834
+	new Node(              "Undefined", jgl::Vector2Int( 6, 55), false,  Node::OBSTACLE,  0u), //   825
+	new Node(              "Undefined", jgl::Vector2Int( 7, 55), false,  Node::OBSTACLE,  0u), //   826
+	new Node(              "Undefined", jgl::Vector2Int( 8, 55), false,  Node::OBSTACLE,  0u), //   827
+	new Node(              "Undefined", jgl::Vector2Int( 9, 55), false,  Node::OBSTACLE,  0u), //   828
+	new Node(              "Undefined", jgl::Vector2Int(10, 55), false,  Node::OBSTACLE,  0u), //   829
+	new Node(              "Undefined", jgl::Vector2Int(11, 55), false,  Node::OBSTACLE,  0u), //   830
+	new Node(              "Undefined", jgl::Vector2Int(12, 55), false,  Node::OBSTACLE,  0u), //   831
+	new Node(              "Undefined", jgl::Vector2Int(13, 55), false,  Node::OBSTACLE,  0u), //   832
+	new Node(              "Undefined", jgl::Vector2Int(14, 55), false,  Node::OBSTACLE,  0u), //   833
+	new Node(              "Undefined", jgl::Vector2Int(15, 55), false,  Node::OBSTACLE,  0u), //   834
 	new Node(              "Undefined", jgl::Vector2Int(16, 55), false,  Node::WALKABLE,  1u), //   835
 	new Node(              "Undefined", jgl::Vector2Int(20, 55), false,  Node::WALKABLE,  1u), //   836
 	new Node(              "Undefined", jgl::Vector2Int(24, 55), false,  Node::WALKABLE,  1u), //   837
@@ -851,8 +851,8 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int( 3, 56), false,  Node::WALKABLE,  0u), //   842
 	new Node(              "Undefined", jgl::Vector2Int( 4, 56), false,  Node::WALKABLE,  0u), //   843
 	new Node(              "Undefined", jgl::Vector2Int( 5, 56), false,  Node::WALKABLE,  0u), //   844
-	new Node(              "Undefined", jgl::Vector2Int( 6, 56), false,  Node::WALKABLE,  0u), //   845
-	new Node(              "Undefined", jgl::Vector2Int( 7, 56), false,  Node::WALKABLE,  0u), //   846
+	new Node(              "Undefined", jgl::Vector2Int( 6, 56), false,  Node::OBSTACLE,  0u), //   845
+	new Node(              "Undefined", jgl::Vector2Int( 7, 56), false,  Node::OBSTACLE,  0u), //   846
 	new Node(              "Undefined", jgl::Vector2Int( 8, 56), false,  Node::WALKABLE,  0u), //   847
 	new Node(              "Undefined", jgl::Vector2Int( 9, 56), false,  Node::WALKABLE,  0u), //   848
 	new Node(              "Undefined", jgl::Vector2Int(10, 56), false,  Node::WALKABLE,  0u), //   849
@@ -885,34 +885,34 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(20, 57), false,  Node::WALKABLE,  1u), //   876
 	new Node(              "Undefined", jgl::Vector2Int(24, 57), false,  Node::WALKABLE,  1u), //   877
 	new Node(              "Undefined", jgl::Vector2Int(28, 57), false,  Node::WALKABLE,  1u), //   878
-	new Node(              "Undefined", jgl::Vector2Int( 0, 58), false,  Node::WALKABLE,  0u), //   879
-	new Node(              "Undefined", jgl::Vector2Int( 1, 58), false,  Node::WALKABLE,  0u), //   880
-	new Node(              "Undefined", jgl::Vector2Int( 2, 58), false,  Node::WALKABLE,  0u), //   881
-	new Node(              "Undefined", jgl::Vector2Int( 3, 58), false,  Node::WALKABLE,  0u), //   882
-	new Node(              "Undefined", jgl::Vector2Int( 4, 58), false,  Node::WALKABLE,  0u), //   883
-	new Node(              "Undefined", jgl::Vector2Int( 5, 58), false,  Node::WALKABLE,  0u), //   884
-	new Node(              "Undefined", jgl::Vector2Int( 6, 58), false,  Node::WALKABLE,  0u), //   885
-	new Node(              "Undefined", jgl::Vector2Int( 7, 58), false,  Node::WALKABLE,  0u), //   886
-	new Node(              "Undefined", jgl::Vector2Int( 8, 58), false,  Node::WALKABLE,  0u), //   887
-	new Node(              "Undefined", jgl::Vector2Int( 9, 58), false,  Node::WALKABLE,  0u), //   888
-	new Node(              "Undefined", jgl::Vector2Int(10, 58), false,  Node::WALKABLE,  0u), //   889
-	new Node(              "Undefined", jgl::Vector2Int(11, 58), false,  Node::WALKABLE,  0u), //   890
-	new Node(              "Undefined", jgl::Vector2Int(12, 58), false,  Node::WALKABLE,  0u), //   891
-	new Node(              "Undefined", jgl::Vector2Int(13, 58), false,  Node::WALKABLE,  0u), //   892
-	new Node(              "Undefined", jgl::Vector2Int(14, 58), false,  Node::WALKABLE,  0u), //   893
-	new Node(              "Undefined", jgl::Vector2Int(15, 58), false,  Node::WALKABLE,  0u), //   894
+	new Node(              "Undefined", jgl::Vector2Int( 0, 58), false,  Node::OBSTACLE,  0u), //   879
+	new Node(              "Undefined", jgl::Vector2Int( 1, 58), false,  Node::OBSTACLE,  0u), //   880
+	new Node(              "Undefined", jgl::Vector2Int( 2, 58), false,  Node::OBSTACLE,  0u), //   881
+	new Node(              "Undefined", jgl::Vector2Int( 3, 58), false,  Node::OBSTACLE,  0u), //   882
+	new Node(              "Undefined", jgl::Vector2Int( 4, 58), false,  Node::OBSTACLE,  0u), //   883
+	new Node(              "Undefined", jgl::Vector2Int( 5, 58), false,  Node::OBSTACLE,  0u), //   884
+	new Node(              "Undefined", jgl::Vector2Int( 6, 58), false,  Node::OBSTACLE,  0u), //   885
+	new Node(              "Undefined", jgl::Vector2Int( 7, 58), false,  Node::OBSTACLE,  0u), //   886
+	new Node(              "Undefined", jgl::Vector2Int( 8, 58), false,  Node::OBSTACLE,  0u), //   887
+	new Node(              "Undefined", jgl::Vector2Int( 9, 58), false,  Node::OBSTACLE,  0u), //   888
+	new Node(              "Undefined", jgl::Vector2Int(10, 58), false,  Node::OBSTACLE,  0u), //   889
+	new Node(              "Undefined", jgl::Vector2Int(11, 58), false,  Node::OBSTACLE,  0u), //   890
+	new Node(              "Undefined", jgl::Vector2Int(12, 58), false,  Node::OBSTACLE,  0u), //   891
+	new Node(              "Undefined", jgl::Vector2Int(13, 58), false,  Node::OBSTACLE,  0u), //   892
+	new Node(              "Undefined", jgl::Vector2Int(14, 58), false,  Node::OBSTACLE,  0u), //   893
+	new Node(              "Undefined", jgl::Vector2Int(15, 58), false,  Node::OBSTACLE,  0u), //   894
 	new Node(                 "Flower", jgl::Vector2Int(16, 58), false,  Node::WALKABLE,  1u), //   895
 	new Node(                 "Flower", jgl::Vector2Int(20, 58), false,  Node::WALKABLE,  1u), //   896
 	new Node(                 "Flower", jgl::Vector2Int(24, 58), false,  Node::WALKABLE,  1u), //   897
 	new Node(                 "Flower", jgl::Vector2Int(28, 58), false,  Node::WALKABLE,  1u), //   898
-	new Node(                   "Ruin", jgl::Vector2Int( 0, 59), false,  Node::WALKABLE,  0u), //   899
-	new Node(                   "Ruin", jgl::Vector2Int( 1, 59), false,  Node::WALKABLE,  0u), //   900
-	new Node(                   "Ruin", jgl::Vector2Int( 2, 59), false,  Node::WALKABLE,  0u), //   901
-	new Node(                   "Ruin", jgl::Vector2Int( 3, 59), false,  Node::WALKABLE,  0u), //   902
-	new Node(                   "Ruin", jgl::Vector2Int( 4, 59), false,  Node::WALKABLE,  0u), //   903
-	new Node(                   "Ruin", jgl::Vector2Int( 5, 59), false,  Node::WALKABLE,  0u), //   904
-	new Node(                   "Ruin", jgl::Vector2Int( 6, 59), false,  Node::WALKABLE,  0u), //   905
-	new Node(                   "Ruin", jgl::Vector2Int( 7, 59), false,  Node::WALKABLE,  0u), //   906
+	new Node(                   "Ruin", jgl::Vector2Int( 0, 59), false,  Node::OBSTACLE,  0u), //   899
+	new Node(                   "Ruin", jgl::Vector2Int( 1, 59), false,  Node::OBSTACLE,  0u), //   900
+	new Node(                   "Ruin", jgl::Vector2Int( 2, 59), false,  Node::OBSTACLE,  0u), //   901
+	new Node(                   "Ruin", jgl::Vector2Int( 3, 59), false,  Node::OBSTACLE,  0u), //   902
+	new Node(                   "Ruin", jgl::Vector2Int( 4, 59), false,  Node::OBSTACLE,  0u), //   903
+	new Node(                   "Ruin", jgl::Vector2Int( 5, 59), false,  Node::OBSTACLE,  0u), //   904
+	new Node(                   "Ruin", jgl::Vector2Int( 6, 59), false,  Node::OBSTACLE,  0u), //   905
+	new Node(                   "Ruin", jgl::Vector2Int( 7, 59), false,  Node::OBSTACLE,  0u), //   906
 	new Node(              "Undefined", jgl::Vector2Int( 8, 59), false,  Node::WALKABLE,  0u), //   907
 	new Node(              "Undefined", jgl::Vector2Int( 9, 59), false,  Node::WALKABLE,  0u), //   908
 	new Node(              "Undefined", jgl::Vector2Int(10, 59), false,  Node::WALKABLE,  0u), //   909
@@ -925,122 +925,122 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(20, 59), false,  Node::WALKABLE,  1u), //   916
 	new Node(              "Undefined", jgl::Vector2Int(24, 59), false,  Node::WALKABLE,  1u), //   917
 	new Node(              "Undefined", jgl::Vector2Int(28, 59), false,  Node::WALKABLE,  1u), //   918
-	new Node(                   "Ruin", jgl::Vector2Int( 0, 60), false,  Node::WALKABLE,  0u), //   919
-	new Node(                   "Ruin", jgl::Vector2Int( 1, 60), false,  Node::WALKABLE,  0u), //   920
-	new Node(                   "Ruin", jgl::Vector2Int( 2, 60), false,  Node::WALKABLE,  0u), //   921
-	new Node(                   "Ruin", jgl::Vector2Int( 3, 60), false,  Node::WALKABLE,  0u), //   922
-	new Node(                   "Ruin", jgl::Vector2Int( 4, 60), false,  Node::WALKABLE,  0u), //   923
-	new Node(                   "Ruin", jgl::Vector2Int( 5, 60), false,  Node::WALKABLE,  0u), //   924
-	new Node(                   "Ruin", jgl::Vector2Int( 6, 60), false,  Node::WALKABLE,  0u), //   925
-	new Node(                   "Ruin", jgl::Vector2Int( 7, 60), false,  Node::WALKABLE,  0u), //   926
-	new Node(              "Undefined", jgl::Vector2Int( 8, 60), false,  Node::WALKABLE,  0u), //   927
-	new Node(              "Undefined", jgl::Vector2Int( 9, 60), false,  Node::WALKABLE,  0u), //   928
-	new Node(              "Undefined", jgl::Vector2Int(10, 60), false,  Node::WALKABLE,  0u), //   929
-	new Node(              "Undefined", jgl::Vector2Int(11, 60), false,  Node::WALKABLE,  0u), //   930
-	new Node(              "Undefined", jgl::Vector2Int(12, 60), false,  Node::WALKABLE,  0u), //   931
-	new Node(              "Undefined", jgl::Vector2Int(13, 60), false,  Node::WALKABLE,  0u), //   932
-	new Node(              "Undefined", jgl::Vector2Int(14, 60), false,  Node::WALKABLE,  0u), //   933
+	new Node(                   "Ruin", jgl::Vector2Int( 0, 60), false,  Node::OBSTACLE,  0u), //   919
+	new Node(                   "Ruin", jgl::Vector2Int( 1, 60), false,  Node::OBSTACLE,  0u), //   920
+	new Node(                   "Ruin", jgl::Vector2Int( 2, 60), false,  Node::OBSTACLE,  0u), //   921
+	new Node(                   "Ruin", jgl::Vector2Int( 3, 60), false,  Node::OBSTACLE,  0u), //   922
+	new Node(                   "Ruin", jgl::Vector2Int( 4, 60), false,  Node::OBSTACLE,  0u), //   923
+	new Node(                   "Ruin", jgl::Vector2Int( 5, 60), false,  Node::OBSTACLE,  0u), //   924
+	new Node(                   "Ruin", jgl::Vector2Int( 6, 60), false,  Node::OBSTACLE,  0u), //   925
+	new Node(                   "Ruin", jgl::Vector2Int( 7, 60), false,  Node::OBSTACLE,  0u), //   926
+	new Node(              "Undefined", jgl::Vector2Int( 8, 60), false,  Node::OBSTACLE,  0u), //   927
+	new Node(              "Undefined", jgl::Vector2Int( 9, 60), false,  Node::OBSTACLE,  0u), //   928
+	new Node(              "Undefined", jgl::Vector2Int(10, 60), false,  Node::OBSTACLE,  0u), //   929
+	new Node(              "Undefined", jgl::Vector2Int(11, 60), false,  Node::OBSTACLE,  0u), //   930
+	new Node(              "Undefined", jgl::Vector2Int(12, 60), false,  Node::OBSTACLE,  0u), //   931
+	new Node(              "Undefined", jgl::Vector2Int(13, 60), false,  Node::OBSTACLE,  0u), //   932
+	new Node(              "Undefined", jgl::Vector2Int(14, 60), false,  Node::OBSTACLE,  0u), //   933
 	new Node(              "Undefined", jgl::Vector2Int(15, 60), false,  Node::WALKABLE,  0u), //   934
-	new Node(              "Undefined", jgl::Vector2Int(16, 60), false,  Node::WALKABLE,  1u), //   935
-	new Node(              "Undefined", jgl::Vector2Int(20, 60), false,  Node::WALKABLE,  1u), //   936
-	new Node(              "Undefined", jgl::Vector2Int(24, 60), false,  Node::WALKABLE,  1u), //   937
-	new Node(              "Undefined", jgl::Vector2Int(28, 60), false,  Node::WALKABLE,  1u), //   938
-	new Node(              "Undefined", jgl::Vector2Int( 0, 61), false,  Node::WALKABLE,  0u), //   939
-	new Node(              "Undefined", jgl::Vector2Int( 1, 61), false,  Node::WALKABLE,  0u), //   940
-	new Node(              "Undefined", jgl::Vector2Int( 2, 61), false,  Node::WALKABLE,  0u), //   941
-	new Node(              "Undefined", jgl::Vector2Int( 3, 61), false,  Node::WALKABLE,  0u), //   942
-	new Node(              "Undefined", jgl::Vector2Int( 4, 61), false,  Node::WALKABLE,  0u), //   943
-	new Node(              "Undefined", jgl::Vector2Int( 5, 61), false,  Node::WALKABLE,  0u), //   944
-	new Node(              "Undefined", jgl::Vector2Int( 6, 61), false,  Node::WALKABLE,  0u), //   945
-	new Node(              "Undefined", jgl::Vector2Int( 7, 61), false,  Node::WALKABLE,  0u), //   946
-	new Node(              "Undefined", jgl::Vector2Int( 8, 61), false,  Node::WALKABLE,  0u), //   947
-	new Node(              "Undefined", jgl::Vector2Int( 9, 61), false,  Node::WALKABLE,  0u), //   948
-	new Node(              "Undefined", jgl::Vector2Int(10, 61), false,  Node::WALKABLE,  0u), //   949
-	new Node(              "Undefined", jgl::Vector2Int(11, 61), false,  Node::WALKABLE,  0u), //   950
-	new Node(              "Undefined", jgl::Vector2Int(12, 61), false,  Node::WALKABLE,  0u), //   951
-	new Node(              "Undefined", jgl::Vector2Int(13, 61), false,  Node::WALKABLE,  0u), //   952
-	new Node(              "Undefined", jgl::Vector2Int(14, 61), false,  Node::WALKABLE,  0u), //   953
-	new Node(              "Undefined", jgl::Vector2Int(15, 61), false,  Node::WALKABLE,  0u), //   954
-	new Node(                  "Torch", jgl::Vector2Int(16, 61), false,  Node::WALKABLE,  1u), //   955
-	new Node(                  "Torch", jgl::Vector2Int(20, 61), false,  Node::WALKABLE,  1u), //   956
-	new Node(                  "Torch", jgl::Vector2Int(24, 61), false,  Node::WALKABLE,  1u), //   957
-	new Node(                  "Torch", jgl::Vector2Int(28, 61), false,  Node::WALKABLE,  1u), //   958
-	new Node(              "Undefined", jgl::Vector2Int( 0, 62), false,  Node::WALKABLE,  0u), //   959
-	new Node(              "Undefined", jgl::Vector2Int( 1, 62), false,  Node::WALKABLE,  0u), //   960
-	new Node(              "Undefined", jgl::Vector2Int( 2, 62), false,  Node::WALKABLE,  0u), //   961
-	new Node(              "Undefined", jgl::Vector2Int( 3, 62), false,  Node::WALKABLE,  0u), //   962
-	new Node(              "Undefined", jgl::Vector2Int( 4, 62), false,  Node::WALKABLE,  0u), //   963
-	new Node(              "Undefined", jgl::Vector2Int( 5, 62), false,  Node::WALKABLE,  0u), //   964
-	new Node(              "Undefined", jgl::Vector2Int( 6, 62), false,  Node::WALKABLE,  0u), //   965
-	new Node(              "Undefined", jgl::Vector2Int( 7, 62), false,  Node::WALKABLE,  0u), //   966
-	new Node(              "Undefined", jgl::Vector2Int( 8, 62), false,  Node::WALKABLE,  0u), //   967
-	new Node(              "Undefined", jgl::Vector2Int( 9, 62), false,  Node::WALKABLE,  0u), //   968
-	new Node(              "Undefined", jgl::Vector2Int(10, 62), false,  Node::WALKABLE,  0u), //   969
-	new Node(              "Undefined", jgl::Vector2Int(11, 62), false,  Node::WALKABLE,  0u), //   970
-	new Node(              "Undefined", jgl::Vector2Int(12, 62), false,  Node::WALKABLE,  0u), //   971
-	new Node(              "Undefined", jgl::Vector2Int(13, 62), false,  Node::WALKABLE,  0u), //   972
-	new Node(              "Undefined", jgl::Vector2Int(14, 62), false,  Node::WALKABLE,  0u), //   973
-	new Node(              "Undefined", jgl::Vector2Int(15, 62), false,  Node::WALKABLE,  0u), //   974
-	new Node(                   "Fire", jgl::Vector2Int(16, 62), false,  Node::WALKABLE,  1u), //   975
-	new Node(                   "Fire", jgl::Vector2Int(20, 62), false,  Node::WALKABLE,  1u), //   976
-	new Node(                   "Fire", jgl::Vector2Int(24, 62), false,  Node::WALKABLE,  1u), //   977
-	new Node(                   "Fire", jgl::Vector2Int(28, 62), false,  Node::WALKABLE,  1u), //   978
-	new Node(              "Undefined", jgl::Vector2Int( 0, 63), false,  Node::WALKABLE,  0u), //   979
-	new Node(              "Undefined", jgl::Vector2Int( 1, 63), false,  Node::WALKABLE,  0u), //   980
-	new Node(              "Undefined", jgl::Vector2Int( 2, 63), false,  Node::WALKABLE,  0u), //   981
-	new Node(              "Undefined", jgl::Vector2Int( 3, 63), false,  Node::WALKABLE,  0u), //   982
-	new Node(              "Undefined", jgl::Vector2Int( 4, 63), false,  Node::WALKABLE,  0u), //   983
-	new Node(              "Undefined", jgl::Vector2Int( 5, 63), false,  Node::WALKABLE,  0u), //   984
-	new Node(              "Undefined", jgl::Vector2Int( 6, 63), false,  Node::WALKABLE,  0u), //   985
-	new Node(              "Undefined", jgl::Vector2Int( 7, 63), false,  Node::WALKABLE,  0u), //   986
-	new Node(              "Undefined", jgl::Vector2Int( 8, 63), false,  Node::WALKABLE,  0u), //   987
-	new Node(              "Undefined", jgl::Vector2Int( 9, 63), false,  Node::WALKABLE,  0u), //   988
-	new Node(              "Undefined", jgl::Vector2Int(10, 63), false,  Node::WALKABLE,  0u), //   989
-	new Node(              "Undefined", jgl::Vector2Int(11, 63), false,  Node::WALKABLE,  0u), //   990
-	new Node(              "Undefined", jgl::Vector2Int(12, 63), false,  Node::WALKABLE,  0u), //   991
-	new Node(              "Undefined", jgl::Vector2Int(13, 63), false,  Node::WALKABLE,  0u), //   992
-	new Node(              "Undefined", jgl::Vector2Int(14, 63), false,  Node::WALKABLE,  0u), //   993
-	new Node(              "Undefined", jgl::Vector2Int(15, 63), false,  Node::WALKABLE,  0u), //   994
+	new Node(              "Undefined", jgl::Vector2Int(16, 60), false,  Node::OBSTACLE,  1u), //   935
+	new Node(              "Undefined", jgl::Vector2Int(20, 60), false,  Node::OBSTACLE,  1u), //   936
+	new Node(              "Undefined", jgl::Vector2Int(24, 60), false,  Node::OBSTACLE,  1u), //   937
+	new Node(              "Undefined", jgl::Vector2Int(28, 60), false,  Node::OBSTACLE,  1u), //   938
+	new Node(              "Undefined", jgl::Vector2Int( 0, 61), false,  Node::OBSTACLE,  0u), //   939
+	new Node(              "Undefined", jgl::Vector2Int( 1, 61), false,  Node::OBSTACLE,  0u), //   940
+	new Node(              "Undefined", jgl::Vector2Int( 2, 61), false,  Node::OBSTACLE,  0u), //   941
+	new Node(              "Undefined", jgl::Vector2Int( 3, 61), false,  Node::OBSTACLE,  0u), //   942
+	new Node(              "Undefined", jgl::Vector2Int( 4, 61), false,  Node::OBSTACLE,  0u), //   943
+	new Node(              "Undefined", jgl::Vector2Int( 5, 61), false,  Node::OBSTACLE,  0u), //   944
+	new Node(              "Undefined", jgl::Vector2Int( 6, 61), false,  Node::OBSTACLE,  0u), //   945
+	new Node(              "Undefined", jgl::Vector2Int( 7, 61), false,  Node::OBSTACLE,  0u), //   946
+	new Node(              "Undefined", jgl::Vector2Int( 8, 61), false,  Node::OBSTACLE,  0u), //   947
+	new Node(              "Undefined", jgl::Vector2Int( 9, 61), false,  Node::OBSTACLE,  0u), //   948
+	new Node(              "Undefined", jgl::Vector2Int(10, 61), false,  Node::OBSTACLE,  0u), //   949
+	new Node(              "Undefined", jgl::Vector2Int(11, 61), false,  Node::OBSTACLE,  0u), //   950
+	new Node(              "Undefined", jgl::Vector2Int(12, 61), false,  Node::OBSTACLE,  0u), //   951
+	new Node(              "Undefined", jgl::Vector2Int(13, 61), false,  Node::OBSTACLE,  0u), //   952
+	new Node(              "Undefined", jgl::Vector2Int(14, 61), false,  Node::OBSTACLE,  0u), //   953
+	new Node(              "Undefined", jgl::Vector2Int(15, 61), false,  Node::OBSTACLE,  0u), //   954
+	new Node(                  "Torch", jgl::Vector2Int(16, 61), false,  Node::OBSTACLE,  1u), //   955
+	new Node(                  "Torch", jgl::Vector2Int(20, 61), false,  Node::OBSTACLE,  1u), //   956
+	new Node(                  "Torch", jgl::Vector2Int(24, 61), false,  Node::OBSTACLE,  1u), //   957
+	new Node(                  "Torch", jgl::Vector2Int(28, 61), false,  Node::OBSTACLE,  1u), //   958
+	new Node(              "Undefined", jgl::Vector2Int( 0, 62), false,  Node::OBSTACLE,  0u), //   959
+	new Node(              "Undefined", jgl::Vector2Int( 1, 62), false,  Node::OBSTACLE,  0u), //   960
+	new Node(              "Undefined", jgl::Vector2Int( 2, 62), false,  Node::OBSTACLE,  0u), //   961
+	new Node(              "Undefined", jgl::Vector2Int( 3, 62), false,  Node::OBSTACLE,  0u), //   962
+	new Node(              "Undefined", jgl::Vector2Int( 4, 62), false,  Node::OBSTACLE,  0u), //   963
+	new Node(              "Undefined", jgl::Vector2Int( 5, 62), false,  Node::OBSTACLE,  0u), //   964
+	new Node(              "Undefined", jgl::Vector2Int( 6, 62), false,  Node::OBSTACLE,  0u), //   965
+	new Node(              "Undefined", jgl::Vector2Int( 7, 62), false,  Node::OBSTACLE,  0u), //   966
+	new Node(              "Undefined", jgl::Vector2Int( 8, 62), false,  Node::OBSTACLE,  0u), //   967
+	new Node(              "Undefined", jgl::Vector2Int( 9, 62), false,  Node::OBSTACLE,  0u), //   968
+	new Node(              "Undefined", jgl::Vector2Int(10, 62), false,  Node::OBSTACLE,  0u), //   969
+	new Node(              "Undefined", jgl::Vector2Int(11, 62), false,  Node::OBSTACLE,  0u), //   970
+	new Node(              "Undefined", jgl::Vector2Int(12, 62), false,  Node::OBSTACLE,  0u), //   971
+	new Node(              "Undefined", jgl::Vector2Int(13, 62), false,  Node::OBSTACLE,  0u), //   972
+	new Node(              "Undefined", jgl::Vector2Int(14, 62), false,  Node::OBSTACLE,  0u), //   973
+	new Node(              "Undefined", jgl::Vector2Int(15, 62), false,  Node::OBSTACLE,  0u), //   974
+	new Node(                   "Fire", jgl::Vector2Int(16, 62), false,  Node::OBSTACLE,  1u), //   975
+	new Node(                   "Fire", jgl::Vector2Int(20, 62), false,  Node::OBSTACLE,  1u), //   976
+	new Node(                   "Fire", jgl::Vector2Int(24, 62), false,  Node::OBSTACLE,  1u), //   977
+	new Node(                   "Fire", jgl::Vector2Int(28, 62), false,  Node::OBSTACLE,  1u), //   978
+	new Node(              "Undefined", jgl::Vector2Int( 0, 63), false,  Node::OBSTACLE,  0u), //   979
+	new Node(              "Undefined", jgl::Vector2Int( 1, 63), false,  Node::OBSTACLE,  0u), //   980
+	new Node(              "Undefined", jgl::Vector2Int( 2, 63), false,  Node::OBSTACLE,  0u), //   981
+	new Node(              "Undefined", jgl::Vector2Int( 3, 63), false,  Node::OBSTACLE,  0u), //   982
+	new Node(              "Undefined", jgl::Vector2Int( 4, 63), false,  Node::OBSTACLE,  0u), //   983
+	new Node(              "Undefined", jgl::Vector2Int( 5, 63), false,  Node::OBSTACLE,  0u), //   984
+	new Node(              "Undefined", jgl::Vector2Int( 6, 63), false,  Node::OBSTACLE,  0u), //   985
+	new Node(              "Undefined", jgl::Vector2Int( 7, 63), false,  Node::OBSTACLE,  0u), //   986
+	new Node(              "Undefined", jgl::Vector2Int( 8, 63), false,  Node::OBSTACLE,  0u), //   987
+	new Node(              "Undefined", jgl::Vector2Int( 9, 63), false,  Node::OBSTACLE,  0u), //   988
+	new Node(              "Undefined", jgl::Vector2Int(10, 63), false,  Node::OBSTACLE,  0u), //   989
+	new Node(              "Undefined", jgl::Vector2Int(11, 63), false,  Node::OBSTACLE,  0u), //   990
+	new Node(              "Undefined", jgl::Vector2Int(12, 63), false,  Node::OBSTACLE,  0u), //   991
+	new Node(              "Undefined", jgl::Vector2Int(13, 63), false,  Node::OBSTACLE,  0u), //   992
+	new Node(              "Undefined", jgl::Vector2Int(14, 63), false,  Node::OBSTACLE,  0u), //   993
+	new Node(              "Undefined", jgl::Vector2Int(15, 63), false,  Node::OBSTACLE,  0u), //   994
 	new Node(                   "Fire", jgl::Vector2Int(16, 63), false,  Node::WALKABLE,  1u), //   995
 	new Node(                   "Fire", jgl::Vector2Int(20, 63), false,  Node::WALKABLE,  1u), //   996
 	new Node(                   "Fire", jgl::Vector2Int(24, 63), false,  Node::WALKABLE,  1u), //   997
 	new Node(                   "Fire", jgl::Vector2Int(28, 63), false,  Node::WALKABLE,  1u), //   998
-	new Node(              "Undefined", jgl::Vector2Int( 0, 64), false,  Node::WALKABLE,  0u), //   999
-	new Node(              "Undefined", jgl::Vector2Int( 1, 64), false,  Node::WALKABLE,  0u), //   1000
-	new Node(              "Undefined", jgl::Vector2Int( 2, 64), false,  Node::WALKABLE,  0u), //   1001
-	new Node(              "Undefined", jgl::Vector2Int( 3, 64), false,  Node::WALKABLE,  0u), //   1002
-	new Node(              "Undefined", jgl::Vector2Int( 4, 64), false,  Node::WALKABLE,  0u), //   1003
-	new Node(              "Undefined", jgl::Vector2Int( 5, 64), false,  Node::WALKABLE,  0u), //   1004
-	new Node(              "Undefined", jgl::Vector2Int( 6, 64), false,  Node::WALKABLE,  0u), //   1005
-	new Node(              "Undefined", jgl::Vector2Int( 7, 64), false,  Node::WALKABLE,  0u), //   1006
-	new Node(              "Undefined", jgl::Vector2Int( 8, 64), false,  Node::WALKABLE,  0u), //   1007
-	new Node(              "Undefined", jgl::Vector2Int( 9, 64), false,  Node::WALKABLE,  0u), //   1008
-	new Node(              "Undefined", jgl::Vector2Int(10, 64), false,  Node::WALKABLE,  0u), //   1009
-	new Node(              "Undefined", jgl::Vector2Int(11, 64), false,  Node::WALKABLE,  0u), //   1010
-	new Node(              "Undefined", jgl::Vector2Int(12, 64), false,  Node::WALKABLE,  0u), //   1011
-	new Node(              "Undefined", jgl::Vector2Int(13, 64), false,  Node::WALKABLE,  0u), //   1012
-	new Node(              "Undefined", jgl::Vector2Int(14, 64), false,  Node::WALKABLE,  0u), //   1013
-	new Node(              "Undefined", jgl::Vector2Int(15, 64), false,  Node::WALKABLE,  0u), //   1014
+	new Node(              "Undefined", jgl::Vector2Int( 0, 64), false,  Node::OBSTACLE,  0u), //   999
+	new Node(              "Undefined", jgl::Vector2Int( 1, 64), false,  Node::OBSTACLE,  0u), //   1000
+	new Node(              "Undefined", jgl::Vector2Int( 2, 64), false,  Node::OBSTACLE,  0u), //   1001
+	new Node(              "Undefined", jgl::Vector2Int( 3, 64), false,  Node::OBSTACLE,  0u), //   1002
+	new Node(              "Undefined", jgl::Vector2Int( 4, 64), false,  Node::OBSTACLE,  0u), //   1003
+	new Node(              "Undefined", jgl::Vector2Int( 5, 64), false,  Node::OBSTACLE,  0u), //   1004
+	new Node(              "Undefined", jgl::Vector2Int( 6, 64), false,  Node::OBSTACLE,  0u), //   1005
+	new Node(              "Undefined", jgl::Vector2Int( 7, 64), false,  Node::OBSTACLE,  0u), //   1006
+	new Node(              "Undefined", jgl::Vector2Int( 8, 64), false,  Node::OBSTACLE,  0u), //   1007
+	new Node(              "Undefined", jgl::Vector2Int( 9, 64), false,  Node::OBSTACLE,  0u), //   1008
+	new Node(              "Undefined", jgl::Vector2Int(10, 64), false,  Node::OBSTACLE,  0u), //   1009
+	new Node(              "Undefined", jgl::Vector2Int(11, 64), false,  Node::OBSTACLE,  0u), //   1010
+	new Node(              "Undefined", jgl::Vector2Int(12, 64), false,  Node::OBSTACLE,  0u), //   1011
+	new Node(              "Undefined", jgl::Vector2Int(13, 64), false,  Node::OBSTACLE,  0u), //   1012
+	new Node(              "Undefined", jgl::Vector2Int(14, 64), false,  Node::OBSTACLE,  0u), //   1013
+	new Node(              "Undefined", jgl::Vector2Int(15, 64), false,  Node::OBSTACLE,  0u), //   1014
 	new Node(                   "Fire", jgl::Vector2Int(16, 64), false,  Node::WALKABLE,  1u), //   1015
 	new Node(                   "Fire", jgl::Vector2Int(20, 64), false,  Node::WALKABLE,  1u), //   1016
 	new Node(                   "Fire", jgl::Vector2Int(24, 64), false,  Node::WALKABLE,  1u), //   1017
 	new Node(                   "Fire", jgl::Vector2Int(28, 64), false,  Node::WALKABLE,  1u), //   1018
-	new Node(              "Undefined", jgl::Vector2Int( 0, 65), false,  Node::WALKABLE,  0u), //   1019
-	new Node(              "Undefined", jgl::Vector2Int( 1, 65), false,  Node::WALKABLE,  0u), //   1020
-	new Node(              "Undefined", jgl::Vector2Int( 2, 65), false,  Node::WALKABLE,  0u), //   1021
-	new Node(              "Undefined", jgl::Vector2Int( 3, 65), false,  Node::WALKABLE,  0u), //   1022
-	new Node(              "Undefined", jgl::Vector2Int( 4, 65), false,  Node::WALKABLE,  0u), //   1023
-	new Node(              "Undefined", jgl::Vector2Int( 5, 65), false,  Node::WALKABLE,  0u), //   1024
-	new Node(              "Undefined", jgl::Vector2Int( 6, 65), false,  Node::WALKABLE,  0u), //   1025
-	new Node(              "Undefined", jgl::Vector2Int( 7, 65), false,  Node::WALKABLE,  0u), //   1026
-	new Node(              "Undefined", jgl::Vector2Int( 8, 65), false,  Node::WALKABLE,  0u), //   1027
-	new Node(              "Undefined", jgl::Vector2Int( 9, 65), false,  Node::WALKABLE,  0u), //   1028
-	new Node(              "Undefined", jgl::Vector2Int(10, 65), false,  Node::WALKABLE,  0u), //   1029
-	new Node(              "Undefined", jgl::Vector2Int(11, 65), false,  Node::WALKABLE,  0u), //   1030
-	new Node(              "Undefined", jgl::Vector2Int(12, 65), false,  Node::WALKABLE,  0u), //   1031
-	new Node(              "Undefined", jgl::Vector2Int(13, 65), false,  Node::WALKABLE,  0u), //   1032
-	new Node(              "Undefined", jgl::Vector2Int(14, 65), false,  Node::WALKABLE,  0u), //   1033
-	new Node(              "Undefined", jgl::Vector2Int(15, 65), false,  Node::WALKABLE,  0u), //   1034
+	new Node(              "Undefined", jgl::Vector2Int( 0, 65), false,  Node::OBSTACLE,  0u), //   1019
+	new Node(              "Undefined", jgl::Vector2Int( 1, 65), false,  Node::OBSTACLE,  0u), //   1020
+	new Node(              "Undefined", jgl::Vector2Int( 2, 65), false,  Node::OBSTACLE,  0u), //   1021
+	new Node(              "Undefined", jgl::Vector2Int( 3, 65), false,  Node::OBSTACLE,  0u), //   1022
+	new Node(              "Undefined", jgl::Vector2Int( 4, 65), false,  Node::OBSTACLE,  0u), //   1023
+	new Node(              "Undefined", jgl::Vector2Int( 5, 65), false,  Node::OBSTACLE,  0u), //   1024
+	new Node(              "Undefined", jgl::Vector2Int( 6, 65), false,  Node::OBSTACLE,  0u), //   1025
+	new Node(              "Undefined", jgl::Vector2Int( 7, 65), false,  Node::OBSTACLE,  0u), //   1026
+	new Node(              "Undefined", jgl::Vector2Int( 8, 65), false,  Node::OBSTACLE,  0u), //   1027
+	new Node(              "Undefined", jgl::Vector2Int( 9, 65), false,  Node::OBSTACLE,  0u), //   1028
+	new Node(              "Undefined", jgl::Vector2Int(10, 65), false,  Node::OBSTACLE,  0u), //   1029
+	new Node(              "Undefined", jgl::Vector2Int(11, 65), false,  Node::OBSTACLE,  0u), //   1030
+	new Node(              "Undefined", jgl::Vector2Int(12, 65), false,  Node::OBSTACLE,  0u), //   1031
+	new Node(              "Undefined", jgl::Vector2Int(13, 65), false,  Node::OBSTACLE,  0u), //   1032
+	new Node(              "Undefined", jgl::Vector2Int(14, 65), false,  Node::OBSTACLE,  0u), //   1033
+	new Node(              "Undefined", jgl::Vector2Int(15, 65), false,  Node::OBSTACLE,  0u), //   1034
 	new Node(                   "Fire", jgl::Vector2Int(16, 65), false,  Node::WALKABLE,  1u), //   1035
 	new Node(                   "Fire", jgl::Vector2Int(20, 65), false,  Node::WALKABLE,  1u), //   1036
 	new Node(                   "Fire", jgl::Vector2Int(24, 65), false,  Node::WALKABLE,  1u), //   1037
@@ -1162,57 +1162,57 @@ jgl::Array<Prefab*> g_prefab_array =
 			0, 0
 		}),//  15
 	new Prefab("Banner ", jgl::Vector2Int(0, 2), jgl::Vector2Int(1, 2), {
-			895,
+			907,
 			927
 		}, {
 			3,
 			0
 		}),//  16
 	new Prefab("Banner ", jgl::Vector2Int(1, 2), jgl::Vector2Int(1, 2), {
-			896,
+			908,
 			928
 		}, {
 			3,
 			0
 		}),//  17
 	new Prefab("Banner ", jgl::Vector2Int(2, 2), jgl::Vector2Int(1, 2), {
-			897,
+			909,
 			929
 		}, {
 			3,
 			0
 		}),//  18
 	new Prefab("Banner ", jgl::Vector2Int(3, 2), jgl::Vector2Int(1, 2), {
-			898,
+			910,
 			930
 		}, {
 			3,
 			0
 		}),//  19
 	new Prefab("Banner ", jgl::Vector2Int(4, 2), jgl::Vector2Int(1, 2), {
-			899,
+			911,
 			931
 		}, {
 			3,
 			0
 		}),//  20
 	new Prefab("Banner ", jgl::Vector2Int(5, 2), jgl::Vector2Int(1, 2), {
-			900,
+			912,
 			932
 		}, {
 			3,
 			0
 		}),//  21
 	new Prefab("Banner ", jgl::Vector2Int(6, 2), jgl::Vector2Int(1, 2), {
-			901,
+			913,
 			933
 		}, {
 			3,
 			0
 		}),//  22
 	new Prefab("Trunk", jgl::Vector2Int(7, 2), jgl::Vector2Int(2, 2), {
-			833, 834,
-			865, 866
+			825, 826,
+			845, 846
 		}, {
 			3, 3,
 			0, 0

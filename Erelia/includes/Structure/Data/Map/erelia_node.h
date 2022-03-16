@@ -10,6 +10,7 @@ struct Node
 	static const jgl::Short SOUTH_WALKABLE		= 0b0000000000000100;
 	static const jgl::Short WEST_WALKABLE		= 0b0000000000001000;
 	static const jgl::Short WALKABLE			= 0b0000000000001111;
+	static const jgl::Short BUSH				= 0b0000000000010000;
 
 	static jgl::Size_t size;
 
