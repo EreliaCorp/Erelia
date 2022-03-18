@@ -26,9 +26,14 @@ void Chunk::unbake()
 	_baked = false;
 }
 
-jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part)
+jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part, jgl::Bool p_type)
 {
-	jgl::Int first_value = content(jgl::Vector3Int(p_x, p_y, p_z));
+	jgl::Int first_value;
+	
+	if (p_type == true)
+		first_value = content(jgl::Vector3Int(p_x, p_y, p_z));
+	else
+		first_value = encounter(jgl::Vector2Int(p_x, p_y));
 
 	jgl::Bool values[3] = { false, false, false };
 	for (jgl::Size_t j = 0; j < 3; j++)
@@ -55,7 +60,10 @@ jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::In
 		}
 		else
 		{
-			next_value = _neightbour_chunks[chunk_x][chunk_y]->content(next_pos, p_z);
+			if (p_type == true)
+				next_value = _neightbour_chunks[chunk_x][chunk_y]->content(next_pos, p_z);
+			else
+				next_value = _neightbour_chunks[chunk_x][chunk_y]->encounter(next_pos);
 		}
 		values[j] = (next_value == first_value ? false : true);
 	}
@@ -110,7 +118,37 @@ void Chunk::_bake_autotile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<
 		for (jgl::Size_t i = 0; i < 4; i++)
 			p_animation_sprite_delta_array.push_back(static_cast<jgl::Float>(p_node->animation_size));
 	}
-	
+
+}
+
+void Chunk::_bake_monster_area(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array,
+	jgl::Vector2Int p_sprite,
+	jgl::Int p_x, jgl::Int p_y)
+{
+	for (jgl::Size_t face = 0; face < 4; face++)
+	{
+		jgl::Vector2Int sprite_value = p_sprite + _calc_sub_part_sprite(p_x, p_y, 0, face, false);
+		jgl::Uint sprite_id = (Texture_atlas::instance()->monster_area_sheet()->size().x * sprite_value.y) + sprite_value.x;
+		jgl::Vector3 node_pos = jgl::Vector3(p_x, p_y, C_LAYER_LENGTH / 2) + _delta_autotile_position[face];
+		jgl::Vector2 sprite = Texture_atlas::instance()->monster_area_sheet()->sprite(sprite_id);
+		jgl::Vector2 unit = Texture_atlas::instance()->monster_area_sheet()->unit();
+
+		jgl::Size_t vertex_array_entry_size = p_vertex_array.size();
+
+		for (size_t i = 0; i < 4; i++)
+		{
+			p_vertex_array.push_back(_screen_node_unit * (node_pos + delta_autotile_pos[i]));
+			p_uvs_array.push_back(sprite + unit * delta_uvs[i]);
+		}
+		for (jgl::Size_t i = 0; i < 6; i++)
+		{
+			p_element_array.push_back(element_index[i] + vertex_array_entry_size);
+		}
+
+		for (jgl::Size_t i = 0; i < 4; i++)
+			p_animation_sprite_delta_array.push_back(0.0f);
+	}
+
 }
 
 void Chunk::_bake_tile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array,
@@ -135,6 +173,36 @@ void Chunk::_bake_tile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl:
 	}
 	for (jgl::Size_t i = 0; i < 4; i++)
 		p_animation_sprite_delta_array.push_back(static_cast<jgl::Float>(p_node->animation_size));
+}
+
+void Chunk::_bake_content(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Int p_x, jgl::Int p_y, jgl::Int p_z)
+{
+	jgl::Short value = _content[p_x][p_y][p_z];
+
+	if (value != -1 && static_cast<jgl::Size_t>(value) < g_node_array.size())
+	{
+		Node* tmp_node = g_node_array[value];
+
+		if (tmp_node->autotiled == true)
+		{
+			_bake_autotile(p_vertex_array, p_uvs_array, p_animation_sprite_delta_array, p_element_array, tmp_node, p_x, p_y, p_z);
+		}
+		else
+		{
+			_bake_tile(p_vertex_array, p_uvs_array, p_animation_sprite_delta_array, p_element_array, tmp_node, p_x, p_y, p_z);
+		}
+	}
+}
+
+void Chunk::_bake_encounter(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Int p_x, jgl::Int p_y)
+{
+	jgl::Int value = _encounter[p_x][p_y];
+
+	if (value != -1)
+	{
+		value %= 8;
+		_bake_monster_area(p_vertex_array, p_uvs_array, p_animation_sprite_delta_array, p_element_array, jgl::Vector2Int(value % 4, value / 4) * jgl::Vector2Int(4, 6), p_x, p_y);
+	}
 }
 
 void Chunk::bake(Map* p_map, jgl::Bool rebake)
@@ -167,27 +235,27 @@ void Chunk::bake(Map* p_map, jgl::Bool rebake)
 		for (jgl::Size_t j = 0; j < C_SIZE; j++)
 			for (jgl::Size_t h = 0; h < C_LAYER_LENGTH; h++)
 			{
-				jgl::Short value = _content[i][j][h];
-
-				if (value != -1 && static_cast<jgl::Size_t>(value) < g_node_array.size())
-				{
-					Node* tmp_node = g_node_array[value];
-
-					if (tmp_node->autotiled == true)
-					{
-						_bake_autotile(vertex_array, uvs_array, animation_sprite_delta_array, element_array, tmp_node, i, j, h);
-					}
-					else
-					{
-						_bake_tile(vertex_array, uvs_array, animation_sprite_delta_array, element_array, tmp_node, i, j, h);
-					}
-				}
+				_bake_content(vertex_array, uvs_array, animation_sprite_delta_array, element_array, i, j, h);
 			}
-	
-	_shader_data.model_space_buffer->send(vertex_array.all(), vertex_array.size());
-	_shader_data.model_uvs_buffer->send(uvs_array.all(), uvs_array.size());
-	_shader_data.animation_sprite_delta_buffer->send(animation_sprite_delta_array.all(), animation_sprite_delta_array.size());
-	_shader_data.indexes_buffer->send(element_array.all(), element_array.size());
+
+	_shader_data.model_space_buffer[0]->send(vertex_array.all(), vertex_array.size());
+	_shader_data.model_uvs_buffer[0]->send(uvs_array.all(), uvs_array.size());
+	_shader_data.animation_sprite_delta_buffer[0]->send(animation_sprite_delta_array.all(), animation_sprite_delta_array.size());
+	_shader_data.indexes_buffer[0]->send(element_array.all(), element_array.size());
+
+	vertex_array.clear();
+	uvs_array.clear();
+	animation_sprite_delta_array.clear();
+	element_array.clear();
+
+	for (jgl::Size_t i = 0; i < C_SIZE; i++)
+		for (jgl::Size_t j = 0; j < C_SIZE; j++)
+			_bake_encounter(vertex_array, uvs_array, animation_sprite_delta_array, element_array, i, j);
+
+	_shader_data.model_space_buffer[1]->send(vertex_array.all(), vertex_array.size());
+	_shader_data.model_uvs_buffer[1]->send(uvs_array.all(), uvs_array.size());
+	_shader_data.animation_sprite_delta_buffer[1]->send(animation_sprite_delta_array.all(), animation_sprite_delta_array.size());
+	_shader_data.indexes_buffer[1]->send(element_array.all(), element_array.size());
 
 	_baked = true;
 

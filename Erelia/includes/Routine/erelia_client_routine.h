@@ -13,4 +13,5 @@ namespace Routine
 	void receive_brush_size_change(Message& p_msg);
 	void receive_brush_type_change(Message& p_msg);
 	void receive_brush_type_data_change(Message& p_msg);
+	void receive_monster_area_value(Message& p_msg);
 }

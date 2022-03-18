@@ -23,7 +23,9 @@ enum Server_message
 	Gamemode_message = 14,
 	Brush_size_message = 15,
 	Brush_type_message = 16,
-	Brush_type_data_message = 17
+	Brush_type_data_message = 17,
+	Monster_area_value = 18,
+	Encounter_modification = 19
 };
 
 #define SERVER_PORT 26500

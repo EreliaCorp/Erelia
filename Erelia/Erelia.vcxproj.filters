@@ -115,6 +115,9 @@
     <Filter Include="Header Files\Enum">
       <UniqueIdentifier>{61eecbba-8be1-476d-9229-57ea3d73ffd2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Structure\Data\Monster">
+      <UniqueIdentifier>{edf2b83d-ad9c-49d1-87f9-497345887792}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ressource\language\french.lang">
@@ -262,6 +265,12 @@
     </ClInclude>
     <ClInclude Include="includes\Structure\File\erelia_player_save_file.h">
       <Filter>Header Files\Structure\File</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Map\erelia_encounter_area.h">
+      <Filter>Header Files\Structure\Data\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Monster\erelia_monster.h">
+      <Filter>Header Files\Structure\Data\Monster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

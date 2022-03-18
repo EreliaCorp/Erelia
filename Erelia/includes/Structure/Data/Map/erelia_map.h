@@ -27,8 +27,12 @@ public:
 	jgl::Short content(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	jgl::Short content(jgl::Vector3Int p_pos);
 
+	jgl::Int encounter(jgl::Vector2Int p_pos);
+
 	void place_node(jgl::Vector2Int p_pos, jgl::Size_t p_level, jgl::Short p_node);
 	void place_node(jgl::Vector3Int p_pos, jgl::Short p_node);
+
+	void place_encounter(jgl::Vector2Int p_pos, jgl::Int p_value);
 
 	void add_chunk(Chunk* p_chunk);
 
@@ -43,6 +47,7 @@ public:
 	void unbake();
 
 	static void send_edition_command(jgl::Vector3Int p_pos_start, jgl::Vector3Int p_pos_end, jgl::Short value);
+	static void send_area_edition_command(jgl::Vector2Int p_pos_start, jgl::Vector2Int p_pos_end, jgl::Int value);
 
 	jgl::Bool can_move(class Entity* p_entity, jgl::Vector2 p_start, jgl::Vector2 p_direction);
 };

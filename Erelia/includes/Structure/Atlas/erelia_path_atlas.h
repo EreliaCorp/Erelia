@@ -36,4 +36,7 @@ public:
 
 	static const jgl::String UI_sprite_sheet_name;
 	static const jgl::String UI_sprite_sheet_path;
+
+	static const jgl::String monster_area_sprite_sheet_name;
+	static const jgl::String monster_area_sprite_sheet_path;
 };

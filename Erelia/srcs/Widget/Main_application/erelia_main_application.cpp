@@ -13,6 +13,7 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	Texture_atlas::instance()->add_texture(Path_atlas::chunk_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::chunk_sprite_sheet_path, jgl::Vector2Int(32, 66)));
 	Texture_atlas::instance()->add_texture(Path_atlas::prefab_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::prefab_sprite_sheet_path, jgl::Vector2Int(8, 44)));
 	Texture_atlas::instance()->add_texture(Path_atlas::UI_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::UI_sprite_sheet_path, jgl::Vector2Int(10, 10)));
+	Texture_atlas::instance()->add_texture(Path_atlas::monster_area_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::monster_area_sprite_sheet_path, jgl::Vector2Int(16, 12)));
 
 	if (UI_configuration_file::server_mode() == true)
 		_start_server();

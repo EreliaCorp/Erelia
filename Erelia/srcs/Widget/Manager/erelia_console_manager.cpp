@@ -95,6 +95,9 @@ void Console_manager::_initialize_client()
 	Client_manager::client()->add_activity(Server_message::Brush_type_data_message, CLIENT_ACTIVITY{
 			Routine::receive_brush_type_data_change(p_msg);
 		});
+	Client_manager::client()->add_activity(Server_message::Monster_area_value, CLIENT_ACTIVITY{
+			Routine::receive_monster_area_value(p_msg);
+		});
 }
 
 void Console_manager::_initiate()

@@ -60,6 +60,17 @@ void Abstract_console_parser::_send_brush_type_data(Connection* p_client, jgl::S
 	Server_manager::server()->send_to(p_client, result);
 }
 
+void Abstract_console_parser::_send_monster_area_value(Connection* p_client, jgl::Int p_area_value)
+{
+	static Message result(Server_message::Monster_area_value);
+
+	result.clear();
+
+	result << p_area_value;
+
+	Server_manager::server()->send_to(p_client, result);
+}
+
 void Abstract_console_parser::_send_gamemode_modification(Connection* p_client, Gamemode p_mode)
 {
 	static Message result(Server_message::Gamemode_message);

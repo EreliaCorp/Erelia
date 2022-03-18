@@ -85,4 +85,13 @@ namespace Routine
 
 		Player_manager::instance()->player_interacter()->set_brush_type_info(value);
 	}
+
+	void receive_monster_area_value(Message& p_msg)
+	{
+		jgl::Int value;
+
+		p_msg >> value;
+
+		Player_manager::instance()->player_interacter()->set_monster_value(value);
+	}
 }

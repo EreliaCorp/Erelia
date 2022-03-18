@@ -28,3 +28,6 @@ const jgl::String Path_atlas::prefab_sprite_sheet_path = "ressource/texture/pref
 
 const jgl::String Path_atlas::UI_sprite_sheet_name = "UI_sprite_sheet";
 const jgl::String Path_atlas::UI_sprite_sheet_path = "ressource/texture/UI_sprite_sheet.png";
+
+const jgl::String Path_atlas::monster_area_sprite_sheet_name = "monster_area_sprite_sheet";
+const jgl::String Path_atlas::monster_area_sprite_sheet_path = "ressource/texture/monster_area_sprite_sheet.png";

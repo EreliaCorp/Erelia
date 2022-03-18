@@ -32,6 +32,7 @@ protected:
 	void _send_gamemode_modification(Connection* p_client, Gamemode p_mode);
 	void _send_brush_type_modification(Connection* p_client, Player_interacter::Brush_type p_type);
 	void _send_brush_type_data(Connection* p_client, jgl::String p_data);
+	void _send_monster_area_value(Connection* p_client, jgl::Int p_area_value);
 
 public:
 	Abstract_console_parser(class Console_output* p_output, jgl::Widget* p_parent);

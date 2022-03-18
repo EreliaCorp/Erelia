@@ -98,6 +98,29 @@ void Map::send_edition_command(jgl::Vector3Int p_pos_start, jgl::Vector3Int p_po
 		Client_manager::client()->send(msg);
 }
 
+void Map::send_area_edition_command(jgl::Vector2Int p_pos_start, jgl::Vector2Int p_pos_end, jgl::Int value)
+{
+	static Message msg(Server_message::Encounter_modification);
+
+	msg.clear();
+
+	for (jgl::Int x = p_pos_start.x; x <= p_pos_end.x; x++)
+	{
+		for (jgl::Int y = p_pos_start.y; y <= p_pos_end.y; y++)
+		{
+			jgl::Vector2Int tmp_pos = jgl::Vector2Int(x, y);
+			if (Engine::instance()->map()->encounter(tmp_pos) != value)
+			{
+				Engine::instance()->map()->place_encounter(tmp_pos, value);
+				msg << tmp_pos << value;
+			}
+		}
+	}
+
+	if (msg.empty() == false)
+		Client_manager::client()->send(msg);
+}
+
 jgl::Short Map::content(jgl::Vector3Int p_pos)
 {
 	jgl::Vector2Int chunk_pos = convert_world_to_chunk(p_pos);
@@ -110,6 +133,40 @@ jgl::Short Map::content(jgl::Vector3Int p_pos)
 	jgl::Vector3Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
 
 	return (tmp_chunk->content(rel_pos));
+}
+
+jgl::Int Map::encounter(jgl::Vector2Int p_pos)
+{
+	jgl::Vector2Int chunk_pos = convert_world_to_chunk(p_pos);
+
+	Chunk* tmp_chunk = chunk(chunk_pos);
+
+	if (tmp_chunk == nullptr)
+		return (-2);
+
+	jgl::Vector2Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
+
+	return (tmp_chunk->encounter(rel_pos));
+}
+
+void Map::place_encounter(jgl::Vector2Int p_pos, jgl::Int p_value)
+{
+	jgl::Vector2Int chunk_pos = convert_world_to_chunk(p_pos);
+
+	Chunk* tmp_chunk = chunk(chunk_pos);
+
+	if (tmp_chunk != nullptr)
+	{
+		jgl::Vector2Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
+
+		jgl::Short value = tmp_chunk->encounter(rel_pos);
+
+		if (value != p_value)
+		{
+			tmp_chunk->set_encounter(rel_pos, p_value);
+			tmp_chunk->unbake();
+		}
+	}
 }
 
 void Map::place_node(jgl::Vector2Int p_pos, jgl::Size_t p_level, jgl::Short p_node)

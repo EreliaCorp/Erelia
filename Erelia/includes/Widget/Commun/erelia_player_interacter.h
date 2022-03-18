@@ -68,6 +68,8 @@ public:
 private:
 	Editor_inventory* _editor_inventory;
 
+	jgl::Int _monster_value = -1;
+
 	jgl::Float _brush_radius = 0;
 	Brush_type _brush_type = Brush_type::Brush_place;
 
@@ -78,6 +80,9 @@ private:
 	void _render();
 	void _on_geometry_change();
 
+	jgl::Bool _adventure_update();
+	jgl::Bool _builder_update();
+	jgl::Bool _monster_area_update();
 	jgl::Bool _update();
 	void _activate_editor_inventory();
 	void _desactivate_editor_inventory();
@@ -87,6 +92,7 @@ private:
 	jgl::Short _get_input_type();
 	jgl::Short _get_output_type();
 
+	void _compose_pos(jgl::Vector2Int& p_actual, jgl::Vector2Int& p_start, jgl::Vector2Int& p_end);
 	void _compose_pos(jgl::Vector3Int& p_actual, jgl::Vector3Int& p_start, jgl::Vector3Int& p_end);
 
 public:
@@ -94,6 +100,7 @@ public:
 	void set_brush_radius(jgl::Size_t p_brush_radius) { _brush_radius = p_brush_radius; }
 	void set_brush_type(Brush_type p_brush_type) { _brush_type = p_brush_type; }
 	void set_brush_type_info(jgl::String p_brush_type_info);
+	void set_monster_value(jgl::Int p_value) { _monster_value = p_value; }
 
 	static void place_multiple_node(jgl::Vector3Int p_start, jgl::Vector3Int p_end, jgl::Short p_value);
 	static void place_single_node(jgl::Vector3Int p_pos, jgl::Short p_value);
@@ -101,4 +108,9 @@ public:
 	static void paint_wall_node(jgl::Vector3Int p_pos, jgl::Short p_value);
 	static void place_circle_node(jgl::Vector3Int p_pos, jgl::Float p_radius, jgl::Short p_value);
 	static void place_random_node(Remplace_data& p_random_data, jgl::Vector3Int p_pos, jgl::Float p_radius);
+
+	static void place_multiple_area_value(jgl::Vector2Int p_start, jgl::Vector2Int p_end, jgl::Int p_value);
+	static void place_single_area_value(jgl::Vector2Int p_pos, jgl::Int p_value);
+	static void paint_area_value(jgl::Vector2Int p_pos, jgl::Int p_value);
+	static void place_circle_area_value(jgl::Vector2Int p_pos, jgl::Float p_radius, jgl::Int p_value);
 };

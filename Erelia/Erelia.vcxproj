@@ -203,8 +203,10 @@
     <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h" />
+    <ClInclude Include="includes\Structure\Data\Map\erelia_encounter_area.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_map.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_node.h" />
+    <ClInclude Include="includes\Structure\Data\Monster\erelia_monster.h" />
     <ClInclude Include="includes\Structure\File\erelia_player_save_file.h" />
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h" />

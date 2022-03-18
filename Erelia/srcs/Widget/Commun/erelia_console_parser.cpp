@@ -57,7 +57,7 @@ void Console_parser::_parse_command(Command& p_command)
 		p_command.text.split(tab, " ", true);
 		if (tab[0] == "/gamemode")
 		{
-			if (tab.size() == 2 && (tab[1] == "Adventure" || tab[1] == "Builder"))
+			if (tab.size() == 2)
 			{
 				if (tab[1] == "Adventure")
 				{
@@ -69,10 +69,21 @@ void Console_parser::_parse_command(Command& p_command)
 					_send_gamemode_modification(p_command.sender, Gamemode::Builder);
 					Server_manager::instance()->send_private_message("[Systm.] : Gamemode set to Builder", p_command.sender);
 				}
+				else if (tab[1] == "Area_builder")
+				{
+					_send_gamemode_modification(p_command.sender, Gamemode::Area_builder);
+					_send_monster_area_value(p_command.sender, -1);
+					Server_manager::instance()->send_private_message("[Systm.] : Gamemode set to Area builder", p_command.sender);
+					Server_manager::instance()->send_private_message("[Systm.] : Set monster area value to -1", p_command.sender);
+				}
+				else
+				{
+					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
+				}
 			}
 			else
 			{
-				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder]\"", p_command.sender);
+				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
 			}
 		}
 		else if (tab[0] == "/ping")
@@ -195,6 +206,33 @@ void Console_parser::_parse_command(Command& p_command)
 			else
 			{
 				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
+			}
+		}
+		else if (tab[0] == "/area")
+		{
+			if (tab[1] == "value")
+			{
+				if (tab.size() == 3)
+				{
+					jgl::Int value;
+					if (tab[2] == "create")
+					{
+						value = Engine::instance()->request_monster_area_id();
+					}
+					else
+						value = jgl::stoi(tab[2]);
+
+					Encounter_area* area = Engine::instance()->encounter_area(value);
+					if (area == nullptr)
+						Engine::instance()->add_encounter_area(new Encounter_area(value));
+
+					_send_monster_area_value(p_command.sender, value);
+					Server_manager::instance()->send_private_message("[Systm.] : Set monster area value to " + jgl::itoa(value), p_command.sender);
+				}
+				else
+				{
+					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/area [Value {-1 ~ int max}]\"", p_command.sender);
+				}
 			}
 		}
 		else
