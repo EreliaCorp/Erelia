@@ -819,6 +819,15 @@ jgl::Bool Player_interacter::_monster_area_update()
 			else
 				paint_area_value(p_actual, _monster_value);
 		}
+		else if (right_button == jgl::Input_status::Down)
+		{
+			_compose_pos(p_actual, p_start, p_end);
+
+			if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Alt) == jgl::Input_status::Up)
+				place_single_area_value(p_actual, -1);
+			else
+				paint_area_value(p_actual, -1);
+		}
 	}
 	return (false);
 }

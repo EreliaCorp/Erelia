@@ -4,7 +4,7 @@ Game_screen* Game_screen::_instance = nullptr;
 
 Game_screen::Game_screen(jgl::Widget* p_parent) : Abstract_screen(p_parent)
 {
-	_gamemode = Gamemode::Builder;
+	_gamemode = Gamemode::Area_builder;
 
 	Engine::instanciate();
 	Map_manager::instanciate(this);
