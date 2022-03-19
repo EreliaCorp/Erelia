@@ -4,6 +4,7 @@ Main_application* Main_application::_instance = nullptr;
 
 Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
+	Monster_atlas::instanciate();
 	UI_configuration_file::load(Path_atlas::ui_config_path);
 	Translation_atlas::load(UI_configuration_file::language());
 

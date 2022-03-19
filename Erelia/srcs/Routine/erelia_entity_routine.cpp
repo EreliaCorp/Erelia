@@ -34,19 +34,13 @@ namespace Routine
 
 				jgl::Int tmp_value = Engine::instance()->map()->encounter(pos);
 
-				if (tmp_value != -1)
+				if (tmp_value != -1 && tmp_value < Engine::instance()->encounter_areas().size())
 				{
-					Encounter_area* tmp_area = Engine::instance()->encounter_area(tmp_value);
-					jgl::Uint monster_id = tmp_area->monster(static_cast<jgl::Float>(jgl::generate_nbr(0, 10000)) / 100.0f);
-					jgl::cout << "Encounter mob : " << monster_id << jgl::endl;
-
-					if (monster_id != 0)
+					Battle_room* tmp_room = Battle_manager::instance()->generate_battle_room(Engine::instance()->encounter_area(tmp_value));
+					if (tmp_room != nullptr)
 					{
-						Message msg(Server_message::Battle_start_notification);
-
-						msg << monster_id;
-
-						p_client->send(msg);
+						tmp_room->add_monster(Battle_room::Team::Blue, Battle_room::Slot::SlotA, Account_atlas::instance()->active_account(p_client->id())->monsters[0]);
+						delete tmp_room;
 					}
 				}
 			}

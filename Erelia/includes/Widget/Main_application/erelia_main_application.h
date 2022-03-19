@@ -2,6 +2,7 @@
 
 #include "jgl.h"
 
+#include "structure/atlas/erelia_monster_atlas.h"
 #include "structure/atlas/erelia_account_atlas.h"
 
 #include "Network/erelia_client_manager.h"

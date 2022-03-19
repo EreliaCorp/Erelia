@@ -3,6 +3,7 @@
 #include "jgl.h"
 
 #include "Network/erelia_network_definition.h"
+#include "structure/Data/Monster/erelia_monster.h"
 
 struct Account
 {
@@ -11,6 +12,8 @@ struct Account
 	Connection* connection;
 	jgl::Long id;
 	jgl::Vector2 pos;
+	Monster* monsters[6];
+	jgl::Array<Monster*> monsters_stocked;
 
 	Account(jgl::String p_username = "", jgl::String p_password = "");
 };

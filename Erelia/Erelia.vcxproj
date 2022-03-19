@@ -180,6 +180,13 @@
     <None Include="ressource\configuration\config.uiconf" />
     <None Include="ressource\language\english.lang" />
     <None Include="ressource\language\french.lang" />
+    <None Include="ressource\monster\001-monsterA.crea" />
+    <None Include="ressource\monster\002-monsterB.crea" />
+    <None Include="ressource\monster\003-monsterC.crea" />
+    <None Include="ressource\world\area\area0.area" />
+    <None Include="ressource\world\area\area1.area" />
+    <None Include="ressource\world\area\area2.area" />
+    <None Include="ressource\world\player\Hyarius2.acc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\Enum\erelia_enum.h" />
@@ -195,10 +202,13 @@
     <ClInclude Include="includes\Routine\erelia_map_routine.h" />
     <ClInclude Include="includes\Routine\erelia_loading_routine.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_account_atlas.h" />
+    <ClInclude Include="includes\Structure\Atlas\erelia_battle_room_atlas.h" />
+    <ClInclude Include="includes\Structure\Atlas\erelia_monster_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_path_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_translation_atlas.h" />
     <ClInclude Include="includes\Structure\Data\Account\erelia_account.h" />
+    <ClInclude Include="includes\Structure\Data\Battle\erelia_battle_room.h" />
     <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h" />
     <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
@@ -245,10 +255,13 @@
     <ClCompile Include="srcs\Routine\erelia_map_routine.cpp" />
     <ClCompile Include="srcs\Routine\erelia_loading_routine.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_account_atlas.cpp" />
+    <ClCompile Include="srcs\Structure\Atlas\erelia_battle_room_atlas.cpp" />
+    <ClCompile Include="srcs\Structure\Atlas\erelia_monster_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_path_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_translation_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Data\Account\erelia_account.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Battle\erelia_battle_room.cpp" />
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp" />
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
