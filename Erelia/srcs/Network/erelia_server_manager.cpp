@@ -35,25 +35,3 @@ jgl::Bool Server_manager::_fixed_update()
 {
 	return(false);
 }
-
-void Server_manager::send_global_message(jgl::String p_text)
-{
-	static Message result(Server_message::Console_message);
-
-	result.clear();
-
-	result << p_text;
-
-	_server->send_to_all(result);
-}
-
-void Server_manager::send_private_message(jgl::String p_text, Connection* p_client)
-{
-	static Message result(Server_message::Console_message);
-
-	result.clear();
-
-	result << p_text;
-
-	_server->send_to(p_client, result);
-}

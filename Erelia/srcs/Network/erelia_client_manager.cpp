@@ -14,15 +14,6 @@ void Client_manager::_on_geometry_change()
 
 }
 
-void Client_manager::send_ping_request()
-{
-	Message msg(Server_message::Ping);
-
-	msg << jgl::Application::active_application()->time();
-
-	_client->send(msg);
-}
-
 void Client_manager::_render()
 {
 
@@ -41,8 +32,6 @@ jgl::Bool Client_manager::_fixed_update()
 
 Client_manager::Client_manager(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
-	_ping = 0;
-
 	_client = new Client();
 	_client->connect(UI_configuration_file::server_address(), SERVER_PORT);
 }
