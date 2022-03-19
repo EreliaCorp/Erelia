@@ -30,16 +30,23 @@ namespace Routine
 			{
 				tmp_entity->move(result);
 
-				jgl::Vector3Int pos = jgl::Vector3Int(tmp_entity->pos().x + result.x, tmp_entity->pos().y + result.y, 0);
+				jgl::Vector2Int pos = jgl::Vector2Int(tmp_entity->pos().x + result.x, tmp_entity->pos().y + result.y);
 
-				for (jgl::Size_t i = 0; i < Chunk::C_LAYER_LENGTH; i++)
+				jgl::Int tmp_value = Engine::instance()->map()->encounter(pos);
+
+				if (tmp_value != -1)
 				{
-					jgl::Short tmp_value = Engine::instance()->map()->content(pos + jgl::Vector3Int(0, 0, i));
+					Encounter_area* tmp_area = Engine::instance()->encounter_area(tmp_value);
+					jgl::Uint monster_id = tmp_area->monster(static_cast<jgl::Float>(jgl::generate_nbr(0, 10000)) / 100.0f);
+					jgl::cout << "Encounter mob : " << monster_id << jgl::endl;
 
-					if (tmp_value != -1 && (g_node_array[tmp_value]->obstacle & Node::BUSH) == Node::BUSH)
+					if (monster_id != 0)
 					{
-						i = Chunk::C_LAYER_LENGTH;
-						jgl::cout << "Walking in bush" << jgl::endl;
+						Message msg(Server_message::Battle_start_notification);
+
+						msg << monster_id;
+
+						p_client->send(msg);
 					}
 				}
 			}

@@ -10,6 +10,7 @@
 #include "Widget/Screen/erelia_connection_screen.h"
 #include "Widget/Screen/erelia_loading_screen.h"
 #include "Widget/Screen/erelia_game_screen.h"
+#include "Widget/Screen/erelia_battle_screen.h"
 
 #include "Routine/erelia_client_routine.h"
 
@@ -46,4 +47,5 @@ public:
 	void transition_to_loading();
 	void transition_to_game();
 	void transition_to_connection();
+	void transition_to_battle();
 };

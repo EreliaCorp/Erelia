@@ -22,6 +22,13 @@ public:
 	static const jgl::String language_file_extension;
 	static const jgl::String erelia_logo_path;
 
+	static const jgl::String encounter_area_subpath;
+	static const jgl::String encounter_area_name;
+	static const jgl::String encounter_area_extension;
+
+	static const jgl::String monster_folder_path;
+	static const jgl::String monster_file_extension;
+
 	static const jgl::String basic_frame_texture_name;
 	static const jgl::String basic_frame_texture_path;
 

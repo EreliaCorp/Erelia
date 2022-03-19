@@ -9,8 +9,6 @@ class Map
 private:
 	jgl::Map<jgl::Vector2Int, Chunk*> _chunks;
 
-	jgl::String _world_path;
-
 	void _generate_chunk(Chunk* p_chunk);
 
 public:
@@ -20,7 +18,7 @@ public:
 	jgl::Map<jgl::Vector2Int, Chunk*>& chunks() { return (_chunks); }
 
 	void save();
-	void load(jgl::String p_world_path);
+	void load();
 
 	void set_node_size(jgl::Size_t p_node_size) { Node::size = p_node_size; unbake(); }
 

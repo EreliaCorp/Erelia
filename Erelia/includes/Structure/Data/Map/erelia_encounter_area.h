@@ -6,32 +6,27 @@
 
 class Encounter_area
 {
+	struct Encounter_data
+	{
+		jgl::Uint monster_id;
+		jgl::Float percent;
+
+		void save(jgl::File& p_file);
+		void load(jgl::File& p_file);
+	};
+
 	jgl::Long _id;
-	jgl::Array<std::pair<Monster*, jgl::Float>> _monsters;
+	jgl::Array<Encounter_data> _monsters;
 
 public:
-	Encounter_area(jgl::Long p_id)
-	{
-		_id = p_id;
-	}
+	Encounter_area(jgl::Long p_id = -1);
 
-	jgl::Ulong id() { return (_id); }
+	void save(jgl::String p_path);
+	void load(jgl::String p_path);
 
-	void add_monster(Monster* p_monster, jgl::Float p_percent)
-	{
-		_monsters.push_back(std::pair<Monster*, jgl::Float>(p_monster, p_percent));
-	}
+	jgl::Long id() { return (_id); }
 
-	Monster* monster(jgl::Float p_percent_value)
-	{
-		for (jgl::Size_t i = 0; i < _monsters.size(); i++)
-		{
-			if (p_percent_value < _monsters[i].second)
-			{
-				return (_monsters[i].first);
-			}
-			p_percent_value -= p_percent_value;
-		}
-		return (nullptr);
-	}
+	void add_monster(jgl::Uint p_monster_id, jgl::Float p_percent);
+	jgl::Array<Encounter_data>& monsters(){return (_monsters);}
+	jgl::Uint monster(jgl::Float p_percent_value);
 };

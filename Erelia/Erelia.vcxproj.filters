@@ -118,6 +118,12 @@
     <Filter Include="Header Files\Structure\Data\Monster">
       <UniqueIdentifier>{edf2b83d-ad9c-49d1-87f9-497345887792}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Structure\Data\Monster">
+      <UniqueIdentifier>{73f37deb-265e-4132-ae19-49f2cbf2f4f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Battle_screen">
+      <UniqueIdentifier>{7fa327a0-cc9f-4852-bdbd-c7103b6be542}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ressource\language\french.lang">
@@ -272,6 +278,15 @@
     <ClInclude Include="includes\Structure\Data\Monster\erelia_monster.h">
       <Filter>Header Files\Structure\Data\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Routine\erelia_battle_routine.h">
+      <Filter>Header Files\Routine</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\erelia_battle_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Manager\erelia_battle_manager.h">
+      <Filter>Header Files\Widget\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -411,6 +426,21 @@
     </ClCompile>
     <ClCompile Include="srcs\Structure\File\erelia_player_save_file.cpp">
       <Filter>Source Files\Structure\File</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Monster\erelia_monster.cpp">
+      <Filter>Source Files\Structure\Data\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_encounter_area.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Routine\erelia_battle_routine.cpp">
+      <Filter>Source Files\Routine</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Battle_screen\erelia_battle_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Battle_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Manager\erelia_battle_manager.cpp">
+      <Filter>Source Files\Widget\Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

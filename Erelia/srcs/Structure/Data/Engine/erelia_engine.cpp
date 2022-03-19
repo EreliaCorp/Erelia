@@ -67,13 +67,51 @@ jgl::Long Engine::request_monster_area_id()
 {
 	jgl::Long result = 0;
 	for (; _encounter_areas.count(result) != 0; result++) {}
-	jgl::cout << "Looking for a new index : result = " << result << jgl::endl;
 	return (result);
 }
 
-void Engine::load_map(jgl::String p_world_path)
+void Engine::save()
 {
-	_map->load(p_world_path);
+	save_map();
+	save_area();
+}
+
+void Engine::load()
+{
+	load_map();
+	load_area();
+}
+
+void Engine::save_map()
+{
+	_map->save();
+}
+
+void Engine::load_map()
+{
+	_map->load();
+}
+
+void Engine::load_area()
+{
+	jgl::Array<jgl::String> file_list = jgl::list_files(Path_atlas::world_path + Path_atlas::encounter_area_subpath, Path_atlas::encounter_area_extension);
+
+	for (jgl::Size_t i = 0; i < file_list.size(); i++)
+	{
+		Encounter_area* new_encounter = new Encounter_area();
+		
+		new_encounter->load(file_list[i]);
+
+		_encounter_areas[new_encounter->id()] = new_encounter;
+	}
+}
+
+void Engine::save_area()
+{
+	for (auto tmp : _encounter_areas)
+	{
+		tmp.second->save(Path_atlas::world_path + Path_atlas::encounter_area_subpath + Path_atlas::encounter_area_name + jgl::itoa(tmp.first) + Path_atlas::encounter_area_extension);
+	}
 }
 
 Engine* Engine::instanciate()

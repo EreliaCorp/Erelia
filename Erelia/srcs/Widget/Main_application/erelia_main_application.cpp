@@ -23,6 +23,7 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	Connection_screen::instanciate(this);
 	Loading_screen::instanciate(this);
 	Game_screen::instanciate(this);
+	Battle_screen::instanciate(this);
 	Debug_screen::instanciate(this);
 	Debug_screen::instance()->set_depth(1000);
 
@@ -77,6 +78,7 @@ void Main_application::transition_to_loading()
 	Connection_screen::instance()->desactivate();
 	Loading_screen::instance()->activate();
 	Game_screen::instance()->desactivate();
+	Battle_screen::instance()->desactivate();
 
 	Loading_screen::instance()->start();
 }
@@ -86,6 +88,7 @@ void Main_application::transition_to_game()
 	Connection_screen::instance()->desactivate();
 	Loading_screen::instance()->desactivate();
 	Game_screen::instance()->activate();
+	Battle_screen::instance()->desactivate();
 
 	Game_screen::instance()->start();
 }
@@ -95,10 +98,20 @@ void Main_application::transition_to_connection()
 	Connection_screen::instance()->activate();
 	Loading_screen::instance()->desactivate();
 	Game_screen::instance()->desactivate();
+	Battle_screen::instance()->desactivate();
 
 	Connection_screen::instance()->start();
 }
 
+void Main_application::transition_to_battle()
+{
+	Connection_screen::instance()->desactivate();
+	Loading_screen::instance()->desactivate();
+	Game_screen::instance()->desactivate();
+	Battle_screen::instance()->activate();
+
+	Battle_screen::instance()->start();
+}
 
 void Main_application::_initialize_client()
 {
@@ -109,7 +122,7 @@ void Main_application::_initialize_client()
 
 void Main_application::_initialize_server()
 {
-	Engine::instance()->map()->load(Path_atlas::world_path);
+	Engine::instance()->load();
 
 	Server_manager::server()->set_logout_function([&](Connection* p_client, jgl::Data_contener& p_param) {
 		Routine::client_logout_routine(p_client);

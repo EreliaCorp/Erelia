@@ -50,7 +50,7 @@ void Map_manager::receive_chunk(Chunk* p_chunk)
 	_map_mutex.lock();
 	Engine::instance()->map()->add_chunk(p_chunk);
 	_asked_chunks[p_chunk->pos()] = false;
-	/*
+	
 	for (jgl::Int i = -1; i <= 1; i++)
 		for (jgl::Int j = -1; j <= 1; j++)
 		{
@@ -60,7 +60,7 @@ void Map_manager::receive_chunk(Chunk* p_chunk)
 				tmp_chunk->unbake();
 
 		}
-	*/
+
 	_map_mutex.unlock();
 }
 

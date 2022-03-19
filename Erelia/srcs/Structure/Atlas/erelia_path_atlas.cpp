@@ -8,11 +8,17 @@ const jgl::String Path_atlas::player_save_extension = ".acc";
 const jgl::String Path_atlas::chunk_name_file = "chunk";
 const jgl::String Path_atlas::chunk_sub_path = "/chunk/";
 const jgl::String Path_atlas::chunk_extension = ".chk";
+const jgl::String Path_atlas::encounter_area_subpath = "/area/";
+const jgl::String Path_atlas::encounter_area_name = "area";
+const jgl::String Path_atlas::encounter_area_extension = ".area";
 
 const jgl::String Path_atlas::default_language_file = "ressource/language/english.lang";
 const jgl::String Path_atlas::language_folder_path = "ressource/language/";
 const jgl::String Path_atlas::language_file_extension = ".lang";
 const jgl::String Path_atlas::erelia_logo_path = "ressource/texture/erelia_logo.png";
+
+const jgl::String Path_atlas::monster_folder_path = "ressource/monster/";
+const jgl::String Path_atlas::monster_file_extension = ".crea";
 
 const jgl::String Path_atlas::basic_frame_texture_name = "Basic_frame";
 const jgl::String Path_atlas::basic_frame_texture_path = "ressource/texture/basic_frame.png";

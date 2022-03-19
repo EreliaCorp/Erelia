@@ -38,7 +38,14 @@ public:
 	jgl::Long request_id();
 	jgl::Long request_monster_area_id();
 
-	void load_map(jgl::String p_world_path);
+	void save();
+	void load();
+
+	void save_map();
+	void load_map();
+
+	void load_area();
+	void save_area();
 
 	static Engine* instanciate();
 

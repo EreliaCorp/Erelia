@@ -3,20 +3,19 @@
 
 Map::Map()
 {
-	_world_path = "";
+
 }
 
 void Map::save()
 {
 	for (auto tmp : _chunks)
 	{
-		tmp.second->save(_world_path + Path_atlas::chunk_sub_path);
+		tmp.second->save(Path_atlas::world_path + Path_atlas::chunk_sub_path);
 	}
 }
 
-void Map::load(jgl::String p_world_path)
+void Map::load()
 {
-	_world_path = p_world_path;
 	unbake();
 }
 
@@ -50,7 +49,7 @@ Chunk* Map::request_chunk(jgl::Vector2Int p_chunk_pos)
 	{
 		result = new Chunk(p_chunk_pos);
 
-		jgl::String chunk_file_path = Chunk::compose_chunk_file_name(_world_path + "/chunk/", p_chunk_pos);
+		jgl::String chunk_file_path = Chunk::compose_chunk_file_name(Path_atlas::world_path + Path_atlas::chunk_sub_path, p_chunk_pos);
 
 		if (jgl::check_file_exist(chunk_file_path) == true)
 		{

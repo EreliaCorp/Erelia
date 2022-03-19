@@ -837,7 +837,7 @@ jgl::Bool Player_interacter::_update()
 	if (Server_manager::instance() != nullptr && jgl::Application::active_application()->keyboard().get_key(jgl::Key::F7) == jgl::Input_status::Release)
 	{
 		Server_manager::instance()->send_global_message("[Systm.] : Saving server's map started - This can take a while");
-		Engine::instance()->map()->save();
+		Engine::instance()->save();
 		Server_manager::instance()->send_global_message("[Systm.] : Saving server's map completed");
 	}
 

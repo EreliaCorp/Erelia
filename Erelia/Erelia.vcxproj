@@ -187,6 +187,7 @@
     <ClInclude Include="includes\Network\erelia_client_manager.h" />
     <ClInclude Include="includes\Network\erelia_network_definition.h" />
     <ClInclude Include="includes\Network\erelia_server_manager.h" />
+    <ClInclude Include="includes\Routine\erelia_battle_routine.h" />
     <ClInclude Include="includes\Routine\erelia_client_routine.h" />
     <ClInclude Include="includes\Routine\erelia_connection_routine.h" />
     <ClInclude Include="includes\Routine\erelia_console_routine.h" />
@@ -222,10 +223,12 @@
     <ClInclude Include="includes\Widget\Commun\erelia_player_controller.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application_debug_screen.h" />
+    <ClInclude Include="includes\Widget\Manager\erelia_battle_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_console_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_entity_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_map_manager.h" />
     <ClInclude Include="includes\Widget\Manager\erelia_player_manager.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_battle_screen.h" />
     <ClInclude Include="includes\Widget\Screen\erelia_connection_screen.h" />
     <ClInclude Include="includes\Widget\Screen\erelia_game_screen.h" />
     <ClInclude Include="includes\Widget\Screen\erelia_loading_screen.h" />
@@ -234,6 +237,7 @@
     <ClCompile Include="srcs\main.cpp" />
     <ClCompile Include="srcs\Network\erelia_client_manager.cpp" />
     <ClCompile Include="srcs\Network\erelia_server_manager.cpp" />
+    <ClCompile Include="srcs\Routine\erelia_battle_routine.cpp" />
     <ClCompile Include="srcs\Routine\erelia_client_routine.cpp" />
     <ClCompile Include="srcs\Routine\erelia_connection_routine.cpp" />
     <ClCompile Include="srcs\Routine\erelia_console_routine.cpp" />
@@ -258,8 +262,10 @@
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_encounter_area.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Monster\erelia_monster.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_player_save_file.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_abstract_console_parser.cpp" />
@@ -274,10 +280,12 @@
     <ClCompile Include="srcs\Widget\Commun\erelia_player_controller.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_debug_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Manager\erelia_battle_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_console_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_entity_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_map_manager.cpp" />
     <ClCompile Include="srcs\Widget\Manager\erelia_player_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Battle_screen\erelia_battle_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Connection_screen\erelia_connection_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Connection_screen\erelia_connection_screen_data_input.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_sceen\erelia_game_screen.cpp" />

@@ -55,7 +55,7 @@ void Game_screen::_initialize_client()
 
 void Game_screen::start()
 {
-		
+
 }
 
 Game_screen* Game_screen::instanciate(jgl::Widget* p_parent)

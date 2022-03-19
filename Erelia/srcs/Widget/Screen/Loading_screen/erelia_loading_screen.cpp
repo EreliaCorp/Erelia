@@ -77,4 +77,6 @@ void Loading_screen::start()
 	Message msg(Server_message::ID_request);
 
 	Client_manager::client()->send(msg);
+
+	load_monster();
 }

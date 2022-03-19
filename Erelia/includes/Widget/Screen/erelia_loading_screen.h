@@ -27,6 +27,8 @@ protected:
 
 public:
 	void start();
+	
+	void load_monster();
 
 	static Loading_screen* instanciate(jgl::Widget* p_parent);
 	static Loading_screen* instance() { return (_instance); }
