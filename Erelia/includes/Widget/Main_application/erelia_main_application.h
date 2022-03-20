@@ -11,28 +11,42 @@
 
 #include "widget/Abstract_widget/erelia_manager_widget.h"
 
+#include "Activity/Main_application/erelia_main_application_no_mode_activity.h"
+#include "Activity/Main_application/erelia_main_application_loading_activity.h"
+#include "Activity/Main_application/erelia_main_application_launcher_activity.h"
+
 class Main_application : public Manager_widget
 {
 public:
 	enum class Status
 	{
-		Erro = -1,
+		Error = -1,
 		No_mode = 0,
-		Connection_mode = 1,
-		Loading_mode = 2,
-		Game_mode = 3,
-		Battle_mode = 4
+		Loading = 1,
+		Launcher = 2
 	};
 	enum class Event
 	{
-		Connection_send = 0,
-		Connection_received = 1
+		Initialize,
+		Start_loading,
+		Loading_completed,
+		Transition_launcher
 	};
 
 	typedef jgl::Singleton< jgl::Publisher<Event> > Publisher;
+	typedef jgl::Publisher<Event>::Subscriber Subscriber;
 	typedef jgl::Singleton< jgl::State_machine<Status> > State_machine;
 
+	class Event_subscriber : public jgl::Publisher<Event>::Subscriber
+	{
+	public:
+		Event_subscriber(jgl::Size_t p_nb_event, ...);
+		void update(Event p_event, jgl::Data_contener& p_param);
+	};
+
 private:
+	jgl::Array< Subscriber*> _subscriber_array;
+
 	void _on_geometry_change();
 
 	jgl::Bool _update();

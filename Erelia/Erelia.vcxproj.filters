@@ -73,6 +73,18 @@
     <Filter Include="Header Files\Network">
       <UniqueIdentifier>{d735d408-c1b6-45c0-b5e8-75059fc199bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Activity">
+      <UniqueIdentifier>{6fbed49b-dbf7-4e37-ad4b-9621276d06aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Activity\Main_application">
+      <UniqueIdentifier>{0f2d3c57-f588-4812-b8d9-827aa5f23d5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Activity">
+      <UniqueIdentifier>{0961915e-4c5d-49b3-8fbd-7cb820435daf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Activity\Main_application">
+      <UniqueIdentifier>{b92d173b-ce83-44eb-8f89-95909a0bb749}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ressource\language\french.lang">
@@ -140,6 +152,15 @@
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_manager_widget.h">
       <Filter>Header Files\Widget\Abstract widget</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Activity\Main_application\erelia_main_application_no_mode_activity.h">
+      <Filter>Header Files\Activity\Main_application</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Activity\Main_application\erelia_main_application_launcher_activity.h">
+      <Filter>Header Files\Activity\Main_application</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Activity\Main_application\erelia_main_application_loading_activity.h">
+      <Filter>Header Files\Activity\Main_application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -168,6 +189,18 @@
     </ClCompile>
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_manager_widget.cpp">
       <Filter>Source Files\Widget\Abstract widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Activity\Main_application\erelia_main_application_no_mode_activity.cpp">
+      <Filter>Source Files\Activity\Main_application</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Activity\Main_application\erelia_main_application_launcher_activity.cpp">
+      <Filter>Source Files\Activity\Main_application</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Activity\Main_application\erelia_main_application_loading_activity.cpp">
+      <Filter>Source Files\Activity\Main_application</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_event_subscriber.cpp">
+      <Filter>Source Files\Widget\Main_application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

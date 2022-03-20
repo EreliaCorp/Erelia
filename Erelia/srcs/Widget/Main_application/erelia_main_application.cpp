@@ -13,11 +13,16 @@ Main_application::~Main_application()
 
 void Main_application::_initiate_singleton()
 {
-	UI_configuration_file::load(Path_atlas::ui_config_path);
-	Translation_atlas::load(UI_configuration_file::language());
-	Texture_atlas::instanciate();
 	Publisher::instanciate();
 	State_machine::instanciate();
+
+	_subscriber_array.push_back(new Event_subscriber(4, Event::Initialize, Event::Start_loading, Event::Loading_completed, Event::Transition_launcher));
+
+	State_machine::instance()->add_activity(Status::No_mode, new Activity::No_mode());
+	State_machine::instance()->add_activity(Status::Loading, new Activity::Loading());
+	State_machine::instance()->add_activity(Status::Launcher, new Activity::Launcher());
+
+	State_machine::instance()->set_state(Status::No_mode);
 }
 
 void Main_application::_initiate_network()
