@@ -74,21 +74,25 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)</OutDir>
+    <IntDir>Obj\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)</OutDir>
+    <IntDir>Obj\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)</OutDir>
+    <IntDir>Obj\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>includes;$(IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)</OutDir>
+    <IntDir>Obj\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -198,6 +202,7 @@
     <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_translation_atlas.h" />
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_manager_widget.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +213,7 @@
     <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_translation_atlas.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_manager_widget.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

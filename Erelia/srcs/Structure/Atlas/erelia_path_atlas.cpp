@@ -1,4 +1,4 @@
-#include "erelia.h"
+#include "Structure/Atlas/erelia_path_atlas.h"
 
 const jgl::String Path_atlas::ui_config_path = "ressource/configuration/config.uiconf";
 

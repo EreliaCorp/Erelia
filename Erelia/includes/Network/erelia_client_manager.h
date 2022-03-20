@@ -4,11 +4,10 @@
 
 #include "Network/erelia_network_definition.h"
 
-class Client_manager : public jgl::Widget
+class Client_manager : public jgl::Updater_widget
 {
 private:
 	void _on_geometry_change();
-	void _render();
 
 	jgl::Bool _update();
 	jgl::Bool _fixed_update();

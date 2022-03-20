@@ -1,4 +1,4 @@
-#include "erelia.h"
+#include "Structure/File/erelia_UI_configuration_file.h"
 
 jgl::String UI_configuration_file::_language = "english";
 jgl::String UI_configuration_file::_username = "";

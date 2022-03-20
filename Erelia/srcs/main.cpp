@@ -7,13 +7,9 @@ int main(int argc, char **argv)
 	app.set_default_font("ressource/font/karma suture.ttf");
 	app.active_multithread();
 
-	Main_application* win_app = Main_application::instanciate(nullptr);
-	win_app->set_geometry(0, app.size());
-	win_app->activate();
+	Main_application win_app(nullptr);
+	win_app.set_geometry(0, app.size());
+	win_app.activate();
 
-	int run = app.run();
-
-	delete win_app;
-
-	return (run);
+	return (app.run());
 }

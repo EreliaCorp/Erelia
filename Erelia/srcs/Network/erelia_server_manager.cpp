@@ -1,4 +1,4 @@
-#include "erelia.h"
+#include "Network/erelia_server_manager.h"
 
 Server_manager* Server_manager::_instance = nullptr;
 
@@ -9,18 +9,13 @@ Server_manager* Server_manager::instantiate(jgl::Widget* p_parent)
 	return (_instance);
 }
 
-Server_manager::Server_manager(jgl::Widget* p_parent) : jgl::Widget(p_parent)
+Server_manager::Server_manager(jgl::Widget* p_parent) : jgl::Updater_widget(p_parent)
 {
 	_server = new Server(SERVER_PORT);
 	_server->start();
 }
 
 void Server_manager::_on_geometry_change()
-{
-
-}
-
-void Server_manager::_render()
 {
 
 }

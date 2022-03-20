@@ -9,29 +9,37 @@
 #include "structure/Atlas/erelia_texture_atlas.h"
 #include "structure/Atlas/erelia_translation_atlas.h"
 
-class Main_application : public jgl::Widget
+#include "widget/Abstract_widget/erelia_manager_widget.h"
+
+class Main_application : public Manager_widget
 {
+public:
+	enum class Status
+	{
+		Erro = -1,
+		No_mode = 0,
+		Connection_mode = 1,
+		Loading_mode = 2,
+		Game_mode = 3,
+		Battle_mode = 4
+	};
+	enum class Event
+	{
+		Connection_send = 0,
+		Connection_received = 1
+	};
+
+	typedef jgl::Singleton< jgl::Publisher<Event> > Publisher;
+	typedef jgl::Singleton< jgl::State_machine<Status> > State_machine;
+
 private:
 	void _on_geometry_change();
-	void _render();
-
-	void _start_server();
-	void _start_client();
-
-	void _initialize_client();
-	void _initialize_server();
-
-	void _initiate();
 
 	jgl::Bool _update();
 
-	Main_application(jgl::Widget* p_parent = nullptr);
-
-	static Main_application* _instance;
+	void _initiate_singleton();
+	void _initiate_network();
 public:
-
-	static Main_application* instanciate(jgl::Widget* p_parent);
-	static Main_application* instance() { return (_instance); }
-
+	Main_application(jgl::Widget* p_parent = nullptr);
 	~Main_application();
 };

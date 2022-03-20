@@ -43,9 +43,6 @@
     <Filter Include="Source Files\Structure\File">
       <UniqueIdentifier>{cd95c0a1-4ccc-4972-b8c4-9782dd37224e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Network">
-      <UniqueIdentifier>{d735d408-c1b6-45c0-b5e8-75059fc199bf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Network">
       <UniqueIdentifier>{e3fdfc1e-3f0b-4905-ac8c-5efdc195cfa6}</UniqueIdentifier>
     </Filter>
@@ -66,6 +63,15 @@
     </Filter>
     <Filter Include="Resource Files\Monster">
       <UniqueIdentifier>{2912c4a6-f5ce-4f2a-a8c9-ea09f7d52b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Abstract widget">
+      <UniqueIdentifier>{4ba1a754-cc84-4aa1-baf8-4e77179fd1a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Abstract widget">
+      <UniqueIdentifier>{9dfbe621-51ee-4d4c-ab6f-b525d25b039b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{d735d408-c1b6-45c0-b5e8-75059fc199bf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +137,9 @@
     <ClInclude Include="includes\Enum\erelia_enum.h">
       <Filter>Header Files\Enum</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_manager_widget.h">
+      <Filter>Header Files\Widget\Abstract widget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -156,6 +165,9 @@
     </ClCompile>
     <ClCompile Include="srcs\Network\erelia_server_manager.cpp">
       <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_manager_widget.cpp">
+      <Filter>Source Files\Widget\Abstract widget</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
-#include "erelia.h"
+#include "Structure/Atlas/erelia_translation_atlas.h"
+#include "Structure/Atlas/erelia_path_atlas.h"
 
 jgl::Map<jgl::String, jgl::String> Translation_atlas::_strings;
 
