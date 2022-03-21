@@ -32,28 +32,24 @@ public:
 		Loading_completed,
 		Transition_launcher
 	};
-
-	typedef jgl::Singleton< jgl::Publisher<Event> > Publisher;
-	typedef jgl::Publisher<Event>::Subscriber Subscriber;
-	typedef jgl::Singleton< jgl::State_machine<Status> > State_machine;
-
-	class Event_subscriber : public jgl::Publisher<Event>::Subscriber
+	struct Context
 	{
-	public:
-		Event_subscriber(jgl::Size_t p_nb_event, ...);
-		void update(Event p_event, jgl::Data_contener& p_param);
+
 	};
 
-private:
-	jgl::Array< Subscriber*> _subscriber_array;
+	typedef jgl::Singleton< jgl::Publisher<Event, Context> > Publisher;
+	typedef jgl::Singleton< jgl::State_machine<Status> > State_machine;
 
+private:
 	void _on_geometry_change();
 
 	jgl::Bool _update();
-
+	 
 	void _initiate_singleton();
 	void _initiate_network();
 public:
 	Main_application(jgl::Widget* p_parent = nullptr);
 	~Main_application();
 };
+
+#define ACTIVITY_PARAM [&](Context& p_context)

@@ -193,9 +193,6 @@
     <None Include="ressource\world\player\Hyarius2.acc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="includes\Activity\Main_application\erelia_main_application_launcher_activity.h" />
-    <ClInclude Include="includes\Activity\Main_application\erelia_main_application_no_mode_activity.h" />
-    <ClInclude Include="includes\Activity\Main_application\erelia_main_application_loading_activity.h" />
     <ClInclude Include="includes\Enum\erelia_enum.h" />
     <ClInclude Include="includes\erelia.h" />
     <ClInclude Include="includes\Network\erelia_client_manager.h" />
@@ -209,9 +206,6 @@
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="srcs\Activity\Main_application\erelia_main_application_launcher_activity.cpp" />
-    <ClCompile Include="srcs\Activity\Main_application\erelia_main_application_no_mode_activity.cpp" />
-    <ClCompile Include="srcs\Activity\Main_application\erelia_main_application_loading_activity.cpp" />
     <ClCompile Include="srcs\main.cpp" />
     <ClCompile Include="srcs\Network\erelia_client_manager.cpp" />
     <ClCompile Include="srcs\Network\erelia_server_manager.cpp" />
@@ -221,7 +215,6 @@
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_manager_widget.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
-    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_event_subscriber.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,8 @@ Main_application::Main_application(jgl::Widget* p_parent) : Manager_widget(p_par
 {
 	_initiate_singleton();
 	_initiate_network();
+
+	State_machine::instance()->set_state(Status::No_mode);
 }
 
 Main_application::~Main_application()
@@ -16,13 +18,13 @@ void Main_application::_initiate_singleton()
 	Publisher::instanciate();
 	State_machine::instanciate();
 
-	_subscriber_array.push_back(new Event_subscriber(4, Event::Initialize, Event::Start_loading, Event::Loading_completed, Event::Transition_launcher));
+	// - Example
+	//Publisher::instance()->subscribe(Event::Initialize, ACTIVITY_PARAM{  });
 
-	State_machine::instance()->add_activity(Status::No_mode, new Activity::No_mode());
-	State_machine::instance()->add_activity(Status::Loading, new Activity::Loading());
-	State_machine::instance()->add_activity(Status::Launcher, new Activity::Launcher());
 
-	State_machine::instance()->set_state(Status::No_mode);
+	// - Example
+	//State_machine::instance()->add_activity(Status::No_mode, new Activity::No_mode());
+
 }
 
 void Main_application::_initiate_network() 
