@@ -25,7 +25,7 @@ void Main_application::_initiate_singleton()
 	State_machine::instance()->set_state(Status::No_mode);
 }
 
-void Main_application::_initiate_network()
+void Main_application::_initiate_network() 
 {
 	if (UI_configuration_file::server_mode() == true)
 		Server_manager::instantiate(this);
