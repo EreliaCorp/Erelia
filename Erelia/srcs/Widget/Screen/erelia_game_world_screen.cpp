@@ -8,6 +8,7 @@ void Game_world_screen::_on_geometry_change()
 Game_world_screen::Game_world_screen(jgl::Widget* p_parent) : Abstract_screen(p_parent)
 {
 	button = new jgl::Button([&](jgl::Data_contener& p_param) {
+		jgl::cout << "World screen button" << jgl::endl;
 		Publisher::instance()->notify(Main_application::Event::Go_battle);
 		}, this);
 	button->label().set_text("Go battle");

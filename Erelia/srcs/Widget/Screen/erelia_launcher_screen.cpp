@@ -8,6 +8,7 @@ void Launcher_screen::_on_geometry_change()
 Launcher_screen::Launcher_screen(jgl::Widget* p_parent) : Abstract_screen(p_parent)
 {
 	button = new jgl::Button([&](jgl::Data_contener& p_param) {
+			jgl::cout << "Launcher screen button" << jgl::endl;
 			Publisher::instance()->notify(Main_application::Event::Go_world);
 		}, this);
 	button->label().set_text("Go world");

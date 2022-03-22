@@ -13,6 +13,7 @@ void Main_application::Activity::No_mode::on_transition()
 
 void Main_application::Activity::Loading_mode::execute()
 {
+	THROW_INFORMATION("Loading execute");
 	/*
 		Do the loading
 	*/
