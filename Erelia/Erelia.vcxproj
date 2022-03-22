@@ -202,8 +202,13 @@
     <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_translation_atlas.h" />
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
-    <ClInclude Include="includes\Widget\Abstract_widget\erelia_manager_widget.h" />
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager_widget.h" />
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_screen.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_launcher_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_game_battle_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_game_world_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\erelia_loading_screen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp" />
@@ -213,8 +218,14 @@
     <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_translation_atlas.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
-    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_manager_widget.cpp" />
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_manager_widget.cpp" />
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_screen.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_activity.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\erelia_launcher_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\erelia_game_battle_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\erelia_game_world_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\erelia_loading_screen.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

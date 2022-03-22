@@ -76,6 +76,12 @@
     <Filter Include="Source Files\Subscriber">
       <UniqueIdentifier>{dcba1e6f-8c96-4b78-b472-1cf8b798573e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Widget\Screen">
+      <UniqueIdentifier>{cd1c3d3b-2e47-4d19-b2a1-bdc8eca706c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen">
+      <UniqueIdentifier>{e0fb180d-530f-4814-b185-c34914a15c1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ressource\language\french.lang">
@@ -140,8 +146,23 @@
     <ClInclude Include="includes\Enum\erelia_enum.h">
       <Filter>Header Files\Enum</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Abstract_widget\erelia_manager_widget.h">
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager_widget.h">
       <Filter>Header Files\Widget\Abstract widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\erelia_launcher_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_screen.h">
+      <Filter>Header Files\Widget\Abstract widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\erelia_loading_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\erelia_game_battle_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\erelia_game_world_screen.h">
+      <Filter>Header Files\Widget\Screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -169,8 +190,26 @@
     <ClCompile Include="srcs\Network\erelia_server_manager.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_manager_widget.cpp">
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_manager_widget.cpp">
       <Filter>Source Files\Widget\Abstract widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\erelia_launcher_screen.cpp">
+      <Filter>Source Files\Widget\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_screen.cpp">
+      <Filter>Source Files\Widget\Abstract widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\erelia_game_world_screen.cpp">
+      <Filter>Source Files\Widget\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\erelia_game_battle_screen.cpp">
+      <Filter>Source Files\Widget\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_activity.cpp">
+      <Filter>Source Files\Widget\Main_application</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\erelia_loading_screen.cpp">
+      <Filter>Source Files\Widget\Screen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
