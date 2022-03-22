@@ -41,6 +41,9 @@ public:
 
 	};
 
+	typedef jgl::Singleton< jgl::Publisher<Event, Context> > Publisher;
+	typedef jgl::Singleton< jgl::State_machine<Status> > State_machine;
+
 private:
 	struct Activity
 	{
@@ -58,6 +61,8 @@ private:
 		class Launcher_mode : public jgl::Abstract_activity
 		{
 		private:
+			jgl::Bool _connection_initialize = false;
+
 		public:
 			void execute();
 			void on_transition();
@@ -87,6 +92,9 @@ private:
 
 	jgl::Array<Abstract_screen*> _screens;
 	Abstract_screen* _active_screen;
+
+	jgl::Bool _connection_initialize = false;
+
 	void _on_geometry_change();
 
 	jgl::Bool _update();
@@ -94,7 +102,6 @@ private:
 	void _initiate_singleton();
 	void _initiate_network();
 	void _initiate_screen();
-
 
 	static Main_application* _instance;
 
@@ -107,7 +114,5 @@ public:
 	~Main_application();
 };
 
-typedef jgl::Singleton< jgl::Publisher<Main_application::Event, Main_application::Context> > Publisher;
-typedef jgl::Singleton< jgl::State_machine<Main_application::Status> > State_machine;
 
-#define ACTIVITY_PARAM [&](Context& p_context)
+#define MAIN_APPLICATION_ACTIVITY_PARAM [&](Main_application::Context& p_context)

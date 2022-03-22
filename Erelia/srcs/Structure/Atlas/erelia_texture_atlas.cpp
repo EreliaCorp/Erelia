@@ -6,23 +6,6 @@ Texture_atlas::Texture_atlas()
 
 }
 
-Texture_atlas* Texture_atlas::_instance = nullptr;
-
-Texture_atlas* Texture_atlas::instanciate()
-{
-	if (_instance != nullptr)
-	{
-		_instance = new Texture_atlas();
-		_instance->load();
-	}
-	return (_instance);
-}
-
-Texture_atlas* Texture_atlas::instance()
-{
-	return (_instance);
-}
-
 void Texture_atlas::load()
 {
 	add_texture(Path_atlas::basic_frame_texture_name, new jgl::Sprite_sheet(Path_atlas::basic_frame_texture_path, 3));

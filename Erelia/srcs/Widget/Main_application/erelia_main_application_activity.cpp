@@ -14,9 +14,13 @@ void Main_application::Activity::No_mode::on_transition()
 void Main_application::Activity::Loading_mode::execute()
 {
 	THROW_INFORMATION("Loading execute");
-	/*
-		Do the loading
-	*/
+		
+	if (Texture_atlas::instance() == nullptr)
+	{
+		Texture_atlas::instanciate();
+		Texture_atlas::instance()->load();
+	}
+
 	Publisher::instance()->notify(Event::Go_launcher);
 }
 
@@ -28,7 +32,11 @@ void Main_application::Activity::Loading_mode::on_transition()
 
 void Main_application::Activity::Launcher_mode::execute()
 {
-
+	if (_connection_initialize == false && Client_manager::client()->connection()->state() == Connection::State::Accepted)
+	{
+		_connection_initialize = true;
+		Launcher_screen::Publisher::instance()->notify(Launcher_screen::Event::Connection_complete);
+	}
 }
 
 void Main_application::Activity::Launcher_mode::on_transition()

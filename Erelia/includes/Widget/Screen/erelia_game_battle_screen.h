@@ -4,8 +4,28 @@
 
 class Game_battle_screen : public Abstract_screen
 {
+public:
+	enum class Status
+	{
+		Pre_fight,
+		Preparation,
+		Round,
+		Post_fight
+	};
+	enum class Event
+	{
+		Fight_ended
+	};
+	struct Context
+	{
+
+	};
+
+	typedef jgl::Singleton< jgl::Publisher<Event, Context> > Publisher;
+	typedef jgl::Singleton< jgl::State_machine<Status> > State_machine;
+	
 private:
-	jgl::Button* button;
+	Context* _context;
 	void _on_geometry_change();
 
 public:
@@ -13,3 +33,5 @@ public:
 	void focus();
 	void unfocus();
 };
+
+#define GAME_BATTLE_SCREEN_ACTIVITY_PARAM [&](Game_battle_screen::Context& p_context)

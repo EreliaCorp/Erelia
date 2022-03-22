@@ -5,7 +5,6 @@
 class Loading_screen : public Abstract_screen
 {
 private:
-	jgl::Button* button;
 	void _on_geometry_change();
 
 public:
