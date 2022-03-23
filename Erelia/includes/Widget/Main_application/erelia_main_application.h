@@ -8,6 +8,7 @@
 #include "structure/Atlas/erelia_path_atlas.h"
 #include "structure/Atlas/erelia_texture_atlas.h"
 #include "structure/Atlas/erelia_translation_atlas.h"
+#include "structure/Atlas/erelia_account_atlas.h"
 
 #include "widget/Abstract_widget/erelia_abstract_manager_widget.h"
 #include "widget/Abstract_widget/erelia_abstract_screen.h"
