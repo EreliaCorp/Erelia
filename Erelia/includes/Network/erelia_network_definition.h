@@ -4,7 +4,12 @@
 
 enum Server_message
 {
-	
+	Register_request,
+	Register_accepted,
+	Register_refused,
+	Connection_request,
+	Connection_accepted,
+	Connection_refused
 };
 
 #define SERVER_PORT 26500

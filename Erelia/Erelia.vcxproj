@@ -218,10 +218,12 @@
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager_widget.h" />
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_screen.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
-    <ClInclude Include="includes\Widget\Screen\erelia_launcher_screen.h" />
-    <ClInclude Include="includes\Widget\Screen\erelia_game_battle_screen.h" />
-    <ClInclude Include="includes\Widget\Screen\erelia_game_world_screen.h" />
-    <ClInclude Include="includes\Widget\Screen\erelia_loading_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\Game_battle\erelia_game_battle_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\Launcher\erelia_launcher_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.h" />
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.h" />
+    <ClInclude Include="includes\Widget\Screen\Loading\erelia_loading_screen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp" />
@@ -251,10 +253,12 @@
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_screen.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_activity.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\erelia_launcher_screen.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\erelia_game_battle_screen.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\erelia_game_world_screen.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\erelia_loading_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Game_battle\erelia_game_battle_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Game_world\erelia_game_world_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Launcher\erelia_launcher_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Launcher\widget\erelia_launcher_connection_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Loading\erelia_loading_screen.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
