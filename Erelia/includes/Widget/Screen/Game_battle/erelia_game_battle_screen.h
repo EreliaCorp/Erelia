@@ -2,7 +2,7 @@
 
 #include "widget/Abstract_widget/erelia_abstract_screen.h"
 
-class Game_battle_screen : public Abstract_screen
+class Game_battle_screen : public Abstract_screen, public jgl::Singleton_widget<Game_battle_screen>
 {
 public:
 	enum class Status

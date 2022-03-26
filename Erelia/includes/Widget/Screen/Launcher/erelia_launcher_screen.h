@@ -7,7 +7,7 @@
 #include "widget/erelia_launcher_menu.h"
 #include "widget/erelia_launcher_message_output.h"
 
-class Launcher_screen : public Abstract_screen
+class Launcher_screen : public Abstract_screen, public jgl::Singleton_widget<Launcher_screen>
 {
 public:
 	enum class Event
@@ -29,11 +29,11 @@ private:
 
 	void _on_geometry_change();
 
-	void _send_connection();
-	void _send_register();
-
 public:
 	void set_text(jgl::String p_text_a, jgl::String p_text_b = "", jgl::String p_text_c = "");
+
+	const jgl::String& username() { return (_menu->username()); }
+	const jgl::String& password() { return (_menu->password()); }
 
 	Launcher_screen(jgl::Widget* p_parent);
 	

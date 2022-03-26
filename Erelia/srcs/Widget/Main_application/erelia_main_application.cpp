@@ -48,10 +48,10 @@ void Main_application::_initiate_network()
 
 void Main_application::_initiate_screen()
 {
-	_screens.push_back(new Loading_screen(this));
-	_screens.push_back(new Launcher_screen(this));
-	_screens.push_back(new Game_world_screen(this));
-	_screens.push_back(new Game_battle_screen(this));
+	_screens.push_back(Loading_screen::instanciate(this));
+	_screens.push_back(Launcher_screen::instanciate(this));
+	_screens.push_back(Game_world_screen::instanciate(this));
+	_screens.push_back(Game_battle_screen::instanciate(this));
 }
 
 void Main_application::transition_to_screen(Screen p_screen)

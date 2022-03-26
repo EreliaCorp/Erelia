@@ -30,7 +30,6 @@ Registration_manager::Registration_manager(jgl::Widget* p_parent) : Abstract_man
 	_button->label().set_text(Translation_atlas::string("Register"));
 	_button->activate();
 
-
 	Launcher_screen::Publisher::instance()->subscribe(Launcher_screen::Event::Connection_complete, LAUNCHER_SCREEN_ACTIVITY_PARAM{
 			_button->define_function([&](jgl::Data_contener& p_param) {
 					jgl::cout << "Registration manager function" << jgl::endl;
