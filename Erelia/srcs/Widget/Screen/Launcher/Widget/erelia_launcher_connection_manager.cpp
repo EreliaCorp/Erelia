@@ -16,7 +16,9 @@ void Connection_manager::_initialize_client()
 
 void Connection_manager::_initialize_server()
 {
-
+	Server_manager::server()->add_activity(Server_message::Connection_request, SERVER_ACTIVITY{
+			_treat_connection_request(p_msg);
+		});
 }
 
 jgl::Bool Connection_manager::_update()
@@ -30,6 +32,38 @@ jgl::Bool Connection_manager::_update()
 	return (false);
 }
 
+void Connection_manager::_send_connection_request()
+{
+	static Message msg(Server_message::Connection_request);
+
+	msg.clear();
+
+	msg << Launcher_screen::instance()->username();
+	msg << Launcher_screen::instance()->password();
+
+	Client_manager::client()->send(msg);
+}
+
+void Connection_manager::_treat_connection_request(Message& p_msg)
+{
+	jgl::String username, password;
+
+	p_msg >> username;
+	p_msg >> password;
+
+	jgl::cout << "Treat connection connection : " << username << " / " << password << jgl::endl;
+}
+
+void Connection_manager::_treat_connection_approuval(Message& p_msg)
+{
+
+}
+
+void Connection_manager::_treat_connection_rejection(Message& p_msg)
+{
+
+}
+
 Connection_manager::Connection_manager(jgl::Widget* p_parent) : Abstract_manager_widget(p_parent)
 {
 	_button = new jgl::Button([&](jgl::Data_contener& p_param) {}, this);
@@ -38,7 +72,8 @@ Connection_manager::Connection_manager(jgl::Widget* p_parent) : Abstract_manager
 
 	Launcher_screen::Publisher::instance()->subscribe(Launcher_screen::Event::Connection_complete, LAUNCHER_SCREEN_ACTIVITY_PARAM{
 			_button->define_function([&](jgl::Data_contener& p_param) {
-					jgl::cout << "Connection manager function" << jgl::endl;
+					if (Launcher_screen::instance()->username().size() >= 4 && Launcher_screen::instance()->password().size() >= 4)
+						_send_connection_request();
 				});
 
 			for (jgl::Size_t i = 0; i < 2; i++)
@@ -60,4 +95,6 @@ Connection_manager::Connection_manager(jgl::Widget* p_parent) : Abstract_manager
 		_button->boxes()[i].set_color(a, b);
 		_button->label().set_text_color(c);
 	}
+
+	_initiate();
 }
