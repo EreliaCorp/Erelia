@@ -118,6 +118,54 @@
     <Filter Include="Source Files\Structure\Data\Monster">
       <UniqueIdentifier>{f726534e-3fba-46dd-bdd0-d3e3be538c6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Widget\Screen\Launcher">
+      <UniqueIdentifier>{880abb47-0d08-4df1-8086-03bd4a214499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Loading">
+      <UniqueIdentifier>{f5e7e44e-d399-4ab2-bed5-345dfe00393d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world">
+      <UniqueIdentifier>{0e502638-1501-41a9-bb98-e929f47beae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_battle">
+      <UniqueIdentifier>{04b38aaa-a5f3-429e-b220-41b3b527d83c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Game_battle">
+      <UniqueIdentifier>{53411402-4c34-4295-9191-ef66ad005b99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Game_world">
+      <UniqueIdentifier>{25b5d543-2d4e-4542-a427-1af5c11a2512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Loading">
+      <UniqueIdentifier>{46eafb0a-18e4-4725-89af-cdbac01fb8fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Launcher">
+      <UniqueIdentifier>{9a2e81d1-339d-46d7-98a8-741ced6abf07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Game_battle\Widget">
+      <UniqueIdentifier>{f1f5bdca-06e9-4af4-a684-97ba398fa376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Game_world\Widget">
+      <UniqueIdentifier>{b42c27ef-1efb-47a7-839c-1619bc749a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Loading\Widget">
+      <UniqueIdentifier>{c183c2cb-8e65-4aa0-954b-ea66f6fcdf89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Screen\Launcher\Widget">
+      <UniqueIdentifier>{e81b6442-d7fa-4797-aa14-58abfb5b433c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Loading\Widget">
+      <UniqueIdentifier>{1dcc2e22-362a-4972-94d6-d446439bce44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Launcher\Widget">
+      <UniqueIdentifier>{c7af7605-d1fd-4886-b240-4d8261b32026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world\Widget">
+      <UniqueIdentifier>{0ff09422-2904-4c2e-89f9-5a44d40d4374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_battle\Widget">
+      <UniqueIdentifier>{1e9264fe-0c6a-4e71-a2f8-73ee7eb57f23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ressource\language\french.lang">
@@ -185,20 +233,8 @@
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager_widget.h">
       <Filter>Header Files\Widget\Abstract widget</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Screen\erelia_launcher_screen.h">
-      <Filter>Header Files\Widget\Screen</Filter>
-    </ClInclude>
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_screen.h">
       <Filter>Header Files\Widget\Abstract widget</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Screen\erelia_loading_screen.h">
-      <Filter>Header Files\Widget\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Screen\erelia_game_battle_screen.h">
-      <Filter>Header Files\Widget\Screen</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Screen\erelia_game_world_screen.h">
-      <Filter>Header Files\Widget\Screen</Filter>
     </ClInclude>
     <ClInclude Include="includes\Structure\Atlas\erelia_account_atlas.h">
       <Filter>Header Files\Structure\Atlas</Filter>
@@ -239,6 +275,24 @@
     <ClInclude Include="includes\Structure\Atlas\erelia_monster_atlas.h">
       <Filter>Header Files\Structure\Atlas</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_battle\erelia_game_battle_screen.h">
+      <Filter>Header Files\Widget\Screen\Game_battle</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h">
+      <Filter>Header Files\Widget\Screen\Game_world</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Launcher\erelia_launcher_screen.h">
+      <Filter>Header Files\Widget\Screen\Launcher</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Loading\erelia_loading_screen.h">
+      <Filter>Header Files\Widget\Screen\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.h">
+      <Filter>Header Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.h">
+      <Filter>Header Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -268,23 +322,11 @@
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_manager_widget.cpp">
       <Filter>Source Files\Widget\Abstract widget</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\erelia_launcher_screen.cpp">
-      <Filter>Source Files\Widget\Screen</Filter>
-    </ClCompile>
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_screen.cpp">
       <Filter>Source Files\Widget\Abstract widget</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\erelia_game_world_screen.cpp">
-      <Filter>Source Files\Widget\Screen</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\erelia_game_battle_screen.cpp">
-      <Filter>Source Files\Widget\Screen</Filter>
-    </ClCompile>
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_activity.cpp">
       <Filter>Source Files\Widget\Main_application</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\erelia_loading_screen.cpp">
-      <Filter>Source Files\Widget\Screen</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Structure\Atlas\erelia_account_atlas.cpp">
       <Filter>Source Files\Structure\Atlas</Filter>
@@ -333,6 +375,24 @@
     </ClCompile>
     <ClCompile Include="srcs\Structure\Atlas\erelia_monster_atlas.cpp">
       <Filter>Source Files\Structure\Atlas</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_battle\erelia_game_battle_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Game_battle</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\erelia_game_world_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Launcher\erelia_launcher_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Launcher</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Loading\erelia_loading_screen.cpp">
+      <Filter>Source Files\Widget\Screen\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Launcher\widget\erelia_launcher_connection_manager.cpp">
+      <Filter>Source Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.cpp">
+      <Filter>Source Files\Widget\Screen\Launcher\Widget</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
