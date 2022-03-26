@@ -4,6 +4,8 @@
 
 #include "widget/erelia_launcher_connection_manager.h"
 #include "widget/erelia_launcher_registration_manager.h"
+#include "widget/erelia_launcher_menu.h"
+#include "widget/erelia_launcher_message_output.h"
 
 class Launcher_screen : public Abstract_screen
 {
@@ -20,27 +22,11 @@ public:
 	typedef jgl::Singleton< jgl::Publisher<Event, Context> > Publisher;
 
 private:
-	struct Data_input
-	{
-		jgl::Text_label* label;
-		jgl::Text_entry* entry;
+	Connection_manager* _connection_manager;
+	Registration_manager* _registration_manager;
+	Launcher::Menu* _menu;
+	Launcher::Message_output* _message_output;
 
-		Data_input();
-		Data_input(jgl::String p_name, jgl::String p_value, jgl::Widget* p_parent);
-
-		void set_geometry(jgl::Vector2Int p_anchor, jgl::Vector2Int p_area);
-	};
-
-	jgl::Frame* _layout;
-	jgl::Frame* _logo;
-	Data_input _username_input;
-	Data_input _password_input;
-	jgl::Button* _connect_button;
-	jgl::Button* _register_button;
-
-	jgl::Text_label* _messages_output[3];
-
-	jgl::Bool _update();
 	void _on_geometry_change();
 
 	void _send_connection();
@@ -48,7 +34,9 @@ private:
 
 public:
 	void set_text(jgl::String p_text_a, jgl::String p_text_b = "", jgl::String p_text_c = "");
+
 	Launcher_screen(jgl::Widget* p_parent);
+	
 	void focus();
 	void unfocus();
 };

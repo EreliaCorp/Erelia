@@ -9,3 +9,13 @@ void Abstract_screen::_render()
 {
 
 }
+
+jgl::Bool Abstract_screen::_update()
+{
+	return (false);
+}
+
+jgl::Bool Abstract_screen::_fixed_update()
+{
+	return (false);
+}

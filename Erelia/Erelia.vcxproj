@@ -222,6 +222,8 @@
     <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Launcher\erelia_launcher_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.h" />
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_menu.h" />
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_message_output.h" />
     <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.h" />
     <ClInclude Include="includes\Widget\Screen\Loading\erelia_loading_screen.h" />
   </ItemGroup>
@@ -256,7 +258,9 @@
     <ClCompile Include="srcs\Widget\Screen\Game_battle\erelia_game_battle_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\erelia_game_world_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Launcher\erelia_launcher_screen.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\Launcher\widget\erelia_launcher_connection_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_menu.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_message_output.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Loading\erelia_loading_screen.cpp" />
   </ItemGroup>

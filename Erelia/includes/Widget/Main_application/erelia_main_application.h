@@ -13,10 +13,10 @@
 #include "widget/Abstract_widget/erelia_abstract_manager_widget.h"
 #include "widget/Abstract_widget/erelia_abstract_screen.h"
 
-#include "widget/screen/erelia_launcher_screen.h"
-#include "widget/screen/erelia_loading_screen.h"
-#include "widget/screen/erelia_game_world_screen.h"
-#include "widget/screen/erelia_game_battle_screen.h"
+#include "widget/screen/Launcher/erelia_launcher_screen.h"
+#include "widget/screen/Loading/erelia_loading_screen.h"
+#include "widget/screen/Game_world/erelia_game_world_screen.h"
+#include "widget/screen/Game_battle/erelia_game_battle_screen.h"
 
 class Main_application : public Abstract_manager_widget
 {

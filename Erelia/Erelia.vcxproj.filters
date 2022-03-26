@@ -290,6 +290,12 @@
     <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.h">
       <Filter>Header Files\Widget\Screen\Launcher\Widget</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_menu.h">
+      <Filter>Header Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_message_output.h">
+      <Filter>Header Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClInclude>
     <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.h">
       <Filter>Header Files\Widget\Screen\Launcher\Widget</Filter>
     </ClInclude>
@@ -388,7 +394,13 @@
     <ClCompile Include="srcs\Widget\Screen\Loading\erelia_loading_screen.cpp">
       <Filter>Source Files\Widget\Screen\Loading</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\Launcher\widget\erelia_launcher_connection_manager.cpp">
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.cpp">
+      <Filter>Source Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_menu.cpp">
+      <Filter>Source Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_message_output.cpp">
       <Filter>Source Files\Widget\Screen\Launcher\Widget</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.cpp">

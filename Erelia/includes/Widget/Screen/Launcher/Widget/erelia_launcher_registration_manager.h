@@ -7,7 +7,9 @@
 class Registration_manager : public Abstract_manager_widget
 {
 private:
-	void _on_geometry_change(jgl::Vector2Int p_anchor, jgl::Vector2Int p_area);
+	jgl::Button* _button;
+
+	void _on_geometry_change();
 
 	void _initialize_client();
 	void _initialize_server();

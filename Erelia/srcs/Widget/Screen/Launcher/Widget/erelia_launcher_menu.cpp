@@ -1,4 +1,7 @@
-#include "erelia.h"
+#include "widget/Screen/Launcher/Widget/erelia_launcher_menu.h"
+#include "structure/Atlas/erelia_translation_atlas.h"
+#include "structure/Atlas/erelia_path_atlas.h"
+#include "structure/File/erelia_UI_configuration_file.h"
 
 namespace Launcher
 {
