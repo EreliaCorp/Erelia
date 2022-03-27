@@ -198,6 +198,9 @@
     <None Include="ressource\monster\003-monsterC.crea">
       <Filter>Resource Files\Monster</Filter>
     </None>
+    <None Include="ressource\world\player\Hywa.acc">
+      <Filter>Resource Files\World\Player</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\erelia.h">
@@ -230,7 +233,7 @@
     <ClInclude Include="includes\Enum\erelia_enum.h">
       <Filter>Header Files\Enum</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager_widget.h">
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager.h">
       <Filter>Header Files\Widget\Abstract widget</Filter>
     </ClInclude>
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_screen.h">
@@ -298,6 +301,15 @@
     </ClInclude>
     <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.h">
       <Filter>Header Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_overworld_widget.h">
+      <Filter>Header Files\Widget\Abstract widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_renderer.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_manager.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -405,6 +417,15 @@
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_registration_manager.cpp">
       <Filter>Source Files\Widget\Screen\Launcher\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_overworld_widget.cpp">
+      <Filter>Source Files\Widget\Abstract widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_renderer.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_updater.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

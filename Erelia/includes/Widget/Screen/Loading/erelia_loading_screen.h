@@ -4,11 +4,14 @@
 
 class Loading_screen : public Abstract_screen, public jgl::Singleton_widget<Loading_screen>
 {
+	friend class  jgl::Singleton_widget<Loading_screen>;
+
 private:
 	void _on_geometry_change();
 
-public:
 	Loading_screen(jgl::Widget* p_parent);
+
+public:
 	void focus();
 	void unfocus();
 };

@@ -1,6 +1,9 @@
 #include "widget/Screen/Launcher/erelia_launcher_screen.h"
 #include "widget/Screen/Launcher/Widget/erelia_launcher_connection_manager.h"
 #include "structure/Atlas/erelia_translation_atlas.h"
+#include "structure/Atlas/erelia_account_atlas.h"
+#include "structure/Data/Engine/erelia_engine.h"
+#include "widget/Main_application/erelia_main_application.h"
 
 void Connection_manager::_on_geometry_change()
 {
@@ -11,13 +14,18 @@ void Connection_manager::_on_geometry_change()
 
 void Connection_manager::_initialize_client()
 {
-
+	Client_manager::client()->add_activity(Server_message::Connection_accepted, CLIENT_ACTIVITY{
+			_treat_connection_approuval(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Connection_refused, CLIENT_ACTIVITY{
+			_treat_connection_rejection(p_msg);
+		});
 }
 
 void Connection_manager::_initialize_server()
 {
 	Server_manager::server()->add_activity(Server_message::Connection_request, SERVER_ACTIVITY{
-			_treat_connection_request(p_msg);
+			_treat_connection_request(p_client, p_msg);
 		});
 }
 
@@ -44,27 +52,67 @@ void Connection_manager::_send_connection_request()
 	Client_manager::client()->send(msg);
 }
 
-void Connection_manager::_treat_connection_request(Message& p_msg)
+void Connection_manager::_treat_connection_request(Connection* p_client, Message& p_msg)
 {
 	jgl::String username, password;
 
 	p_msg >> username;
 	p_msg >> password;
 
-	jgl::cout << "Treat connection connection : " << username << " / " << password << jgl::endl;
+	Account* tmp_account = Account_atlas::instance()->account(username);
+
+	if (tmp_account != nullptr && tmp_account->password == password && tmp_account->connection == nullptr)
+	{
+		static Message result(Server_message::Connection_accepted);
+
+		tmp_account->connection = p_client;
+		tmp_account->id = Engine::instance()->request_id();
+
+		result.clear();
+
+		result << tmp_account->id;
+
+		p_client->send(result);
+	}
+	else
+	{
+		static Message result(Server_message::Connection_refused);
+
+		result.clear();
+
+		if (tmp_account != nullptr && tmp_account->password == password)
+			result << jgl::Int(0);
+		else
+			result << jgl::Int(1);
+
+		p_client->send(result);
+	}
 }
 
 void Connection_manager::_treat_connection_approuval(Message& p_msg)
 {
+	jgl::Long id;
 
+	p_msg >> id;
+
+	Engine::instance()->initialize_player(id);
+
+	Main_application::Publisher::instance()->notify(Main_application::Event::Go_world);
 }
 
 void Connection_manager::_treat_connection_rejection(Message& p_msg)
 {
+	jgl::Int value;
 
+	p_msg >> value;
+
+	if (value == 0)
+		Launcher_screen::instance()->set_text(Translation_atlas::string("Already_connected"));
+	else if (value == 1)
+		Launcher_screen::instance()->set_text(Translation_atlas::string("Connection_rejected"));
 }
 
-Connection_manager::Connection_manager(jgl::Widget* p_parent) : Abstract_manager_widget(p_parent)
+Connection_manager::Connection_manager(jgl::Widget* p_parent) : jgl::Updater_widget(p_parent)
 {
 	_button = new jgl::Button([&](jgl::Data_contener& p_param) {}, this);
 	_button->label().set_text(Translation_atlas::string("Connect"));

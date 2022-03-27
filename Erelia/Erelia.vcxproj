@@ -191,6 +191,7 @@
     <None Include="ressource\world\area\area1.area" />
     <None Include="ressource\world\area\area2.area" />
     <None Include="ressource\world\player\Hyarius2.acc" />
+    <None Include="ressource\world\player\Hywa.acc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\Enum\erelia_enum.h" />
@@ -215,11 +216,14 @@
     <ClInclude Include="includes\Structure\Data\Monster\erelia_monster.h" />
     <ClInclude Include="includes\Structure\File\erelia_player_save_file.h" />
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
-    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager_widget.h" />
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager.h" />
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_screen.h" />
+    <ClInclude Include="includes\Widget\Abstract_widget\erelia_overworld_widget.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
     <ClInclude Include="includes\Widget\Screen\Game_battle\erelia_game_battle_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h" />
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_renderer.h" />
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_manager.h" />
     <ClInclude Include="includes\Widget\Screen\Launcher\erelia_launcher_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.h" />
     <ClInclude Include="includes\Widget\Screen\Launcher\Widget\erelia_launcher_menu.h" />
@@ -253,10 +257,13 @@
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_manager_widget.cpp" />
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Abstract_widget\erelia_overworld_widget.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_activity.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_battle\erelia_game_battle_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\erelia_game_world_screen.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_renderer.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_updater.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Launcher\erelia_launcher_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_connection_manager.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Launcher\Widget\erelia_launcher_menu.cpp" />

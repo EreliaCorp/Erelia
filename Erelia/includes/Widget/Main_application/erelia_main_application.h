@@ -10,7 +10,7 @@
 #include "structure/Atlas/erelia_translation_atlas.h"
 #include "structure/Atlas/erelia_account_atlas.h"
 
-#include "widget/Abstract_widget/erelia_abstract_manager_widget.h"
+#include "widget/Abstract_widget/erelia_abstract_manager.h"
 #include "widget/Abstract_widget/erelia_abstract_screen.h"
 
 #include "widget/screen/Launcher/erelia_launcher_screen.h"
@@ -18,7 +18,7 @@
 #include "widget/screen/Game_world/erelia_game_world_screen.h"
 #include "widget/screen/Game_battle/erelia_game_battle_screen.h"
 
-class Main_application : public Abstract_manager_widget
+class Main_application : public Abstract_manager, public jgl::Widget
 {
 public:
 	enum class Status
@@ -59,18 +59,18 @@ private:
 			void execute();
 			void on_transition();
 		};
+		class Loading_mode : public jgl::Abstract_activity
+		{
+		private:
+		public:
+			void execute();
+			void on_transition();
+		};
 		class Launcher_mode : public jgl::Abstract_activity
 		{
 		private:
 			jgl::Bool _connection_initialize = false;
 
-		public:
-			void execute();
-			void on_transition();
-		};
-		class Loading_mode : public jgl::Abstract_activity
-		{
-		private:
 		public:
 			void execute();
 			void on_transition();
@@ -96,6 +96,7 @@ private:
 
 	jgl::Bool _connection_initialize = false;
 
+	void _render();
 	void _on_geometry_change();
 
 	jgl::Bool _update();
@@ -103,6 +104,9 @@ private:
 	void _initiate_singleton();
 	void _initiate_network();
 	void _initiate_screen();
+
+	void _initialize_client();
+	void _initialize_server();
 
 	static Main_application* _instance;
 

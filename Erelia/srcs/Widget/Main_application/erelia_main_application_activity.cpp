@@ -1,4 +1,6 @@
 #include "erelia.h"
+#include "structure/Atlas/erelia_translation_atlas.h"
+#include "structure/Data/Engine/erelia_engine.h"
 
 void Main_application::Activity::No_mode::execute()
 {
@@ -11,14 +13,25 @@ void Main_application::Activity::No_mode::on_transition()
 	Publisher::instance()->notify(Event::Go_loading);
 }
 
+
 void Main_application::Activity::Loading_mode::execute()
 {
 	THROW_INFORMATION("Loading execute");
-		
+
 	if (Texture_atlas::instance() == nullptr)
 	{
 		Texture_atlas::instanciate();
 		Texture_atlas::instance()->load();
+	}
+
+	Translation_atlas::load(UI_configuration_file::language());
+
+	Engine::instanciate();
+
+	if (Server_manager::instance() != nullptr)
+	{
+		Account_atlas::instanciate();
+		Account_atlas::instance()->load();
 	}
 
 	Publisher::instance()->notify(Event::Go_launcher);
@@ -42,6 +55,7 @@ void Main_application::Activity::Launcher_mode::execute()
 void Main_application::Activity::Launcher_mode::on_transition()
 {
 	THROW_INFORMATION("Transition to launcher");
+
 	Main_application::instance()->transition_to_screen(Main_application::Screen::Launcher);
 }
 

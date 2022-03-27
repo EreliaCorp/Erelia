@@ -1,9 +1,12 @@
 #pragma once
 
 #include "widget/Abstract_widget/erelia_abstract_screen.h"
+#include "Widget/Screen/Game_world/Widget/erelia_map_renderer.h"
+#include "Widget/Screen/Game_world/Widget/erelia_map_manager.h"
 
 class Game_world_screen : public Abstract_screen, public jgl::Singleton_widget<Game_world_screen>
 {
+	friend class  jgl::Singleton_widget<Game_world_screen>;
 public:
 	enum class Status
 	{
@@ -28,8 +31,12 @@ public:
 private:
 	void _on_geometry_change();
 
-public:
 	Game_world_screen(jgl::Widget* p_parent);
+
+	Map_renderer* _map_renderer;
+	Map_manager* _map_manager;
+
+public:
 	void focus();
 	void unfocus();
 };

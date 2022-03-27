@@ -2,7 +2,17 @@
 
 Main_application* Main_application::_instance = nullptr;
 
-Main_application::Main_application(jgl::Widget* p_parent) : Abstract_manager_widget(p_parent)
+void Main_application::_initialize_client()
+{
+
+}
+
+void Main_application::_initialize_server()
+{
+
+}
+
+Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
 	_instance = this;
 	_active_screen = nullptr;
@@ -17,6 +27,8 @@ Main_application::Main_application(jgl::Widget* p_parent) : Abstract_manager_wid
 Main_application::~Main_application()
 {
 	UI_configuration_file::save(Path_atlas::ui_config_path);
+	if (Account_atlas::instance() != nullptr)
+		Account_atlas::instance()->save();
 }
 
 void Main_application::_initiate_singleton()
@@ -73,11 +85,16 @@ void Main_application::transition_to_screen(Screen p_screen)
 	}
 }
 
+void Main_application::_render()
+{
+
+}
+
 void Main_application::_on_geometry_change()
 {
-	for (jgl::Size_t i = 0; i < _childrens.size(); i++)
+	for (jgl::Size_t i = 0; i < _screens.size(); i++)
 	{
-		_childrens[i]->set_geometry(0, _area);
+		_screens[i]->set_geometry(0, _area);
 	}
 }
 

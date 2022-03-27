@@ -7,6 +7,7 @@
 
 class Engine : public jgl::Singleton<Engine>
 {
+	friend class jgl::Singleton<Engine>;
 private:
 	Map* _map;
 	Player* _player;
@@ -18,6 +19,7 @@ private:
 	Engine();
 
 public:
+
 	Map* map() { return (_map); }
 	Player* player() { return (_player); }
 

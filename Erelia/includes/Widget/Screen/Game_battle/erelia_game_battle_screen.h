@@ -4,6 +4,7 @@
 
 class Game_battle_screen : public Abstract_screen, public jgl::Singleton_widget<Game_battle_screen>
 {
+	friend class  jgl::Singleton_widget<Game_battle_screen>;
 public:
 	enum class Status
 	{
@@ -28,8 +29,9 @@ private:
 	Context* _context;
 	void _on_geometry_change();
 
-public:
 	Game_battle_screen(jgl::Widget* p_parent);
+
+public:
 	void focus();
 	void unfocus();
 };

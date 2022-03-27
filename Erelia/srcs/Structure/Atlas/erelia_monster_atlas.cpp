@@ -1,8 +1,6 @@
 #include "Structure/Atlas/erelia_monster_atlas.h"
 #include "Structure/Atlas/erelia_path_atlas.h"
 
-Monster_atlas* Monster_atlas::_instance = nullptr;
-
 Monster_atlas::Monster_atlas()
 {
 	_load();
@@ -23,13 +21,4 @@ Monster* Monster_atlas::monster(jgl::Size_t p_index)
 	if (p_index >= _monster_array.size())
 		return (nullptr);
 	return (_monster_array[p_index]);
-}
-
-Monster_atlas* Monster_atlas::instanciate()
-{
-	if (_instance == nullptr)
-	{
-		_instance = new Monster_atlas();
-	}
-	return (_instance);
 }

@@ -3,9 +3,9 @@
 #include "jgl.h"
 
 #include "network/erelia_network_definition.h"
-#include "widget/Abstract_widget/erelia_abstract_manager_widget.h"
+#include "widget/Abstract_widget/erelia_abstract_manager.h"
 
-class Registration_manager : public Abstract_manager_widget
+class Registration_manager : public Abstract_manager, public jgl::Updater_widget
 {
 private:
 	jgl::Button* _button;
@@ -18,7 +18,7 @@ private:
 	jgl::Bool _update();
 
 	void _send_registration_request();
-	void _treat_registration_request(Message& p_msg);
+	void _treat_registration_request(Connection* p_client,Message& p_msg);
 	void _treat_registration_approuval(Message& p_msg);
 	void _treat_registration_rejection(Message& p_msg);
 

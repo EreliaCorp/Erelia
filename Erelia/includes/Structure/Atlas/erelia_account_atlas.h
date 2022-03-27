@@ -7,6 +7,8 @@
 
 class Account_atlas : public jgl::Singleton<Account_atlas>
 {
+	friend class jgl::Singleton<Account_atlas>;
+
 private:
 	jgl::Map<jgl::String, Account*> _accounts;
 	jgl::Map<jgl::Ulong, Account*> _active_accounts;

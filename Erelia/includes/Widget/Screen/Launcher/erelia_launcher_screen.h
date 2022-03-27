@@ -9,6 +9,7 @@
 
 class Launcher_screen : public Abstract_screen, public jgl::Singleton_widget<Launcher_screen>
 {
+	friend class  jgl::Singleton_widget<Launcher_screen>;
 public:
 	enum class Event
 	{
@@ -29,13 +30,13 @@ private:
 
 	void _on_geometry_change();
 
+	Launcher_screen(jgl::Widget* p_parent);
+
 public:
 	void set_text(jgl::String p_text_a, jgl::String p_text_b = "", jgl::String p_text_c = "");
 
 	const jgl::String& username() { return (_menu->username()); }
 	const jgl::String& password() { return (_menu->password()); }
-
-	Launcher_screen(jgl::Widget* p_parent);
 	
 	void focus();
 	void unfocus();

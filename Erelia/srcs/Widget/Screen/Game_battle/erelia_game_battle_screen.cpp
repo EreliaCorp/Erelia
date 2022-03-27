@@ -16,10 +16,10 @@ Game_battle_screen::Game_battle_screen(jgl::Widget* p_parent) : Abstract_screen(
 
 void Game_battle_screen::focus()
 {
-
+	THROW_INFORMATION("Focus on game battle screen");
 }
 
 void Game_battle_screen::unfocus()
 {
-
+	THROW_INFORMATION("Unfocus on game battle screen");
 } 

@@ -4,6 +4,8 @@
 
 class Texture_atlas : public jgl::Singleton<Texture_atlas>
 {
+	friend class jgl::Singleton<Texture_atlas>;
+
 private:
 	jgl::Map<jgl::String, jgl::Image_handler*> _content;
 	jgl::Sprite_sheet* _basic_frame = nullptr;
@@ -13,8 +15,9 @@ private:
 	jgl::Sprite_sheet* _UI_sprite_sheet = nullptr;
 	jgl::Sprite_sheet* _monster_area_sheet = nullptr;
 
-public:
 	Texture_atlas();
+
+public:
 	void load();
 
 	void add_texture(jgl::String p_name, jgl::Image_handler* p_image_handler);
