@@ -1,5 +1,6 @@
 #include "widget/Screen/Game_world/Widget/erelia_map_renderer.h"
 #include "structure/data/engine/erelia_engine.h"
+#include  "widget/Screen/Game_world/erelia_game_world_screen.h"
 
 void Map_renderer::_on_geometry_change()
 {
@@ -33,6 +34,8 @@ void Map_renderer::_render()
 					tmp_chunk->bake(map, true);
 
 				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
+				if (Game_world_screen::Publisher::instance()->context()->area_mode == true)
+					tmp_chunk->render_area(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
 			}
 		}
 	}

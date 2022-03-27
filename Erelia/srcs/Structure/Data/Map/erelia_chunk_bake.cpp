@@ -279,6 +279,15 @@ void Chunk::render(jgl::Vector3 p_offset, jgl::Int p_animation_state)
 	if (Texture_atlas::instance()->node_sprite_sheet() != nullptr)
 	{
 		if (_shader_data.generated == true)
-			_shader_data.cast(p_offset, p_animation_state);
+			_shader_data.cast(p_offset, p_animation_state, 0);
+	}
+}
+
+void Chunk::render_area(jgl::Vector3 p_offset, jgl::Int p_animation_state)
+{
+	if (Texture_atlas::instance()->monster_area_sheet() != nullptr)
+	{
+		if (_shader_data.generated == true)
+			_shader_data.cast(p_offset, p_animation_state, 1);
 	}
 }

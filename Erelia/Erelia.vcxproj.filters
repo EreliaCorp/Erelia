@@ -311,6 +311,9 @@
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_manager.h">
       <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_controller.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -425,6 +428,9 @@
       <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_updater.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_controller.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
     </ClCompile>
   </ItemGroup>

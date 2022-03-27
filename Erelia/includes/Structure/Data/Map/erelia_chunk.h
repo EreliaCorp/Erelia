@@ -30,7 +30,7 @@ private:
 		jgl::Uniform* texture_uniform = nullptr;
 
 		void generate();
-		void cast(jgl::Vector3 p_offset, jgl::Int p_animation_state);
+		void cast(jgl::Vector3 p_offset, jgl::Int p_animation_state, jgl::Size_t p_index);
 	};
 
 	Shader_data _shader_data;
@@ -76,6 +76,7 @@ public:
 	void bake(class Map* p_map, jgl::Bool rebake);
 
 	void render(jgl::Vector3 p_offset, jgl::Int p_animation_state);
+	void render_area(jgl::Vector3 p_offset, jgl::Int p_animation_state);
 
 	jgl::Vector2Int pos() { return (_pos); }
 

@@ -30,30 +30,33 @@ void Chunk::Shader_data::generate()
 	generated = true;
 }
 
-void Chunk::Shader_data::cast(jgl::Vector3 p_offset, jgl::Int p_animation_state)
+void Chunk::Shader_data::cast(jgl::Vector3 p_offset, jgl::Int p_animation_state, jgl::Size_t p_index)
 {
+	if (p_index >= 2)
+		return;
+
 	shader->activate();
 
 	delta_model_uniform->send(p_offset);
 	animation_state_uniform->send(p_animation_state);
-	uvs_unit_uniform->send(Texture_atlas::instance()->node_sprite_sheet()->unit());
+	if (p_index == 0)
+		uvs_unit_uniform->send(Texture_atlas::instance()->node_sprite_sheet()->unit());
+	else if (p_index == 1)
+		uvs_unit_uniform->send(Texture_atlas::instance()->monster_area_sheet()->unit());
 	texture_uniform->send(0);
 
-	for (jgl::Size_t i = 0; i < 2; i++)
+	if (indexes_buffer[p_index]->size() != 0 && Texture_atlas::instance()->node_sprite_sheet() != nullptr)
 	{
-		if (indexes_buffer[i]->size() != 0 && Texture_atlas::instance()->node_sprite_sheet() != nullptr)
-		{
-			if (i == 0)
-				Texture_atlas::instance()->node_sprite_sheet()->activate();
-			else if (i == 1)
-				Texture_atlas::instance()->monster_area_sheet()->activate();
+		if (p_index == 0)
+			Texture_atlas::instance()->node_sprite_sheet()->activate();
+		else if (p_index == 1)
+			Texture_atlas::instance()->monster_area_sheet()->activate();
 
-			model_space_buffer[i]->activate();
-			model_uvs_buffer[i]->activate();
-			animation_sprite_delta_buffer[i]->activate();
-			indexes_buffer[i]->activate();
+		model_space_buffer[p_index]->activate();
+		model_uvs_buffer[p_index]->activate();
+		animation_sprite_delta_buffer[p_index]->activate();
+		indexes_buffer[p_index]->activate();
 
-			shader->cast(jgl::Shader::Mode::Triangle, indexes_buffer[i]->size() / sizeof(jgl::Uint));
-		}
+		shader->cast(jgl::Shader::Mode::Triangle, indexes_buffer[p_index]->size() / sizeof(jgl::Uint));
 	}
 }
