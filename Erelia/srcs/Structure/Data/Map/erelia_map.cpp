@@ -189,9 +189,6 @@ Chunk* Map::chunk(jgl::Vector2Int p_pos)
 
 jgl::Bool Map::can_move(Entity* p_entity, jgl::Vector2 p_start, jgl::Vector2 p_direction)
 {
-	if (p_entity->is_flying() == true)
-		return (true);
-
 	jgl::Vector2 p_destination = p_start + p_direction;
 	static jgl::Vector2Int direction_value[8] = {
 		jgl::Vector2Int(-1, -1),

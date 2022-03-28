@@ -64,6 +64,11 @@ void Main_application::_initiate_screen()
 	_screens.push_back(Launcher_screen::instanciate(this));
 	_screens.push_back(Game_world_screen::instanciate(this));
 	_screens.push_back(Game_battle_screen::instanciate(this));
+
+	for (jgl::Size_t i = 0; i < _screens.size(); i++)
+	{
+		_screens[i]->desactivate();
+	}
 }
 
 void Main_application::transition_to_screen(Screen p_screen)

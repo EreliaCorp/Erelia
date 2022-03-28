@@ -12,6 +12,9 @@ enum Server_message
 	Connection_refused,
 	Chunk_request,
 	Chunk_data,
+	Player_movement,
+	Entity_data,
+	Entity_suppression,
 };
 
 #define SERVER_PORT 26500

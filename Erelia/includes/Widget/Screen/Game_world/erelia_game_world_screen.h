@@ -3,6 +3,9 @@
 #include "widget/Abstract_widget/erelia_abstract_screen.h"
 #include "Widget/Screen/Game_world/Widget/erelia_map_renderer.h"
 #include "Widget/Screen/Game_world/Widget/erelia_map_manager.h"
+#include "Widget/Screen/Game_world/Widget/erelia_player_manager.h"
+#include "Widget/Screen/Game_world/Widget/erelia_entity_manager.h"
+#include "Widget/Screen/Game_world/Widget/erelia_entity_renderer.h"
 
 class Game_world_screen : public Abstract_screen, public jgl::Singleton_widget<Game_world_screen>
 {
@@ -35,6 +38,9 @@ private:
 
 	Map_renderer* _map_renderer;
 	Map_manager* _map_manager;
+	Player_manager* _player_manager;
+	Entity_manager* _entity_manager;
+	Entity_renderer* _entity_renderer;
 
 public:
 	void focus();

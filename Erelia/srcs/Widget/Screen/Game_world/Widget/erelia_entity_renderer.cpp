@@ -1,0 +1,29 @@
+#include "Widget/Screen/Game_world/WIdget/erelia_entity_renderer.h"
+#include "structure/Data/Map/erelia_chunk.h"
+#include "structure/Data/Engine/erelia_engine.h"
+
+void Entity_renderer::_on_geometry_change()
+{
+
+}
+
+void Entity_renderer::_render()
+{
+	for (auto tmp : Engine::instance()->entities())
+	{
+		if (tmp.second != nullptr)
+		{
+			jgl::Float depth = _depth + (tmp.second->is_flying() == true ? Chunk::C_LAYER_LENGTH + 1 : Chunk::C_LAYER_LENGTH / 2 + 0.5f);
+			if (tmp.second->sprite_sheet() != nullptr)
+				tmp.second->sprite_sheet()->draw(tmp.second->sprite(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth, 1.0f);
+			else
+				jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+
+		}
+	}
+}
+
+Entity_renderer::Entity_renderer(jgl::Widget* p_parent) : Overworld_widget(p_parent)
+{
+
+}
