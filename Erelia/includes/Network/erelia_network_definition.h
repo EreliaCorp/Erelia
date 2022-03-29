@@ -4,6 +4,7 @@
 
 enum Server_message
 {
+	Ping,
 	Registration_request,
 	Registration_accepted,
 	Registration_refused,
@@ -12,9 +13,18 @@ enum Server_message
 	Connection_refused,
 	Chunk_request,
 	Chunk_data,
+	Chunk_modification,
 	Player_movement,
 	Entity_data,
 	Entity_suppression,
+	Command_input,
+	Console_message,
+	Gamemode_message,
+	Brush_size_message,
+	Brush_type_message,
+	Brush_type_data_message,
+	Monster_area_value,
+	Encounter_modification,
 };
 
 #define SERVER_PORT 26500

@@ -1,5 +1,6 @@
 #include "widget/Screen/Game_world/Widget/erelia_player_manager.h"
 #include "structure/Data/Engine/erelia_engine.h"
+#include "widget/Commun/erelia_console_manager.h"
 
 void Player_manager::_on_geometry_change()
 {
@@ -51,7 +52,7 @@ void Player_manager::_treat_player_motion(Connection* p_client, Message& p_msg)
 
 jgl::Bool Player_manager::_update()
 {
-	if (Engine::instance() == nullptr || Engine::instance()->player() == nullptr)
+	if (Engine::instance() == nullptr || Engine::instance()->player() == nullptr || Console_manager::instance()->console_active() == true)
 		return false;
 
 	jgl::Key keys[4] = { jgl::Key::Z, jgl::Key::Q, jgl::Key::S, jgl::Key::D };
@@ -81,7 +82,7 @@ void Player_manager::_initialize_server()
 		});
 }
 
-Player_manager::Player_manager(jgl::Widget* p_parent) : Abstract_manager(), jgl::Updater_widget(p_parent)
+Player_manager::Player_manager(jgl::Widget* p_parent) : jgl::Updater_widget(p_parent)
 {
 	_initiate();
 }

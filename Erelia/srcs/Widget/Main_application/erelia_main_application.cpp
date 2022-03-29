@@ -1,4 +1,5 @@
 #include "erelia.h"
+#include "Widget/commun/erelia_console_manager.h"
 
 Main_application* Main_application::_instance = nullptr;
 
@@ -48,6 +49,7 @@ void Main_application::_initiate_singleton()
 	State_machine::instance()->add_activity(Status::Launcher, new Main_application::Activity::Launcher_mode());
 	State_machine::instance()->add_activity(Status::World_mode, new Main_application::Activity::World_mode());
 	State_machine::instance()->add_activity(Status::Battle_mode, new Main_application::Activity::Battle_mode());
+
 }
 
 void Main_application::_initiate_network() 
@@ -69,6 +71,10 @@ void Main_application::_initiate_screen()
 	{
 		_screens[i]->desactivate();
 	}
+
+	Console_manager::instanciate(this);
+	Console_manager::instance()->set_depth(1000);
+	Console_manager::instance()->desactivate();
 }
 
 void Main_application::transition_to_screen(Screen p_screen)
@@ -97,6 +103,7 @@ void Main_application::_render()
 
 void Main_application::_on_geometry_change()
 {
+	Console_manager::instance()->set_geometry(0, _area);
 	for (jgl::Size_t i = 0; i < _screens.size(); i++)
 	{
 		_screens[i]->set_geometry(0, _area);

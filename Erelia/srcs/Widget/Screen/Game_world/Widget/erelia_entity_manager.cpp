@@ -79,6 +79,8 @@ void Entity_manager::_receive_entity_suppression_command(Message& p_msg)
 
 	p_msg >> id;
 
+	jgl::cout << "Removing entity [" << id << "]" << jgl::endl;
+
 	Engine::instance()->remove_entity(id);
 }
 

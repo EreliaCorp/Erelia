@@ -66,7 +66,13 @@ void Connection_manager::_treat_connection_request(Connection* p_client, Message
 		static Message result(Server_message::Connection_accepted);
 
 		tmp_account->connection = p_client;
-		tmp_account->id = Engine::instance()->request_id();
+		Account_atlas::instance()->activate_account(tmp_account);
+
+		Entity* new_entity = new Entity(Engine::instance()->request_id());
+
+		Engine::instance()->add_entity(new_entity);
+
+		tmp_account->id = new_entity->id();
 
 		result.clear();
 
@@ -94,6 +100,8 @@ void Connection_manager::_treat_connection_approuval(Message& p_msg)
 	jgl::Long id;
 
 	p_msg >> id;
+
+	THROW_INFORMATION("Initializing player with id [" + jgl::itoa(id) + "]");
 
 	Engine::instance()->initialize_player(id);
 

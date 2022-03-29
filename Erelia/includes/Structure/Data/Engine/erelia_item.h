@@ -1,6 +1,7 @@
 #pragma once
 
 #include "jgl.h"
+#include "network/erelia_network_definition.h"
 
 enum class Item_type
 {
@@ -36,7 +37,10 @@ private:
 	void _use(jgl::Vector3Int p_pos);
 	void _remove(jgl::Vector3Int p_pos);
 
+	static Message _prefab_message;
+
 public:
+
 	jgl::Short value;
 
 	Prefab_item(jgl::Short p_value);

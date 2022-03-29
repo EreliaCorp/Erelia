@@ -166,6 +166,27 @@
     <Filter Include="Source Files\Widget\Screen\Game_battle\Widget">
       <UniqueIdentifier>{1e9264fe-0c6a-4e71-a2f8-73ee7eb57f23}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Widget\Commun">
+      <UniqueIdentifier>{4b46e86b-9f65-4fed-b51f-3a589f6c8030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget\Commun">
+      <UniqueIdentifier>{3efc0734-c034-43f9-87ca-d773501a4655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world\Widget\Editor">
+      <UniqueIdentifier>{7515beb9-8fa5-4594-8f61-449829dc77ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world\Widget\Map">
+      <UniqueIdentifier>{9f78ea66-8268-4276-ba47-508c1a661c10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world\Widget\Entity">
+      <UniqueIdentifier>{92677129-c637-438f-9ebc-9165525c19d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world\Widget\Player">
+      <UniqueIdentifier>{0f693915-f0db-4769-98e2-c00de485a37e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world\Widget\Player\Activity">
+      <UniqueIdentifier>{a6661056-c2f1-4568-af30-29b51f2d463e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ressource\language\french.lang">
@@ -320,6 +341,33 @@
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_entity_renderer.h">
       <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_abstract_console_parser.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_input.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_output.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_parser.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_interacter.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_editor_inventory.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_console_manager.h">
+      <Filter>Header Files\Widget\Commun</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_operation.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_interacter_activity.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -430,20 +478,56 @@
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_overworld_widget.cpp">
       <Filter>Source Files\Widget\Abstract widget</Filter>
     </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_abstract_console_parser.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_input.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_parser.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_console_manager.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_editor_inventory.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_editor_inventory_pages_content.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_operation.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
+    </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_renderer.cpp">
-      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_manager.cpp">
-      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_manager.cpp">
-      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_entity_renderer.cpp">
-      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_entity_manager.cpp">
-      <Filter>Source Files\Widget\Screen\Game_world\Widget</Filter>
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_entity_renderer.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_manager.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_area_builder_activity.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Player\Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_adventure_activity.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Player\Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_builder_activity.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Player\Activity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
