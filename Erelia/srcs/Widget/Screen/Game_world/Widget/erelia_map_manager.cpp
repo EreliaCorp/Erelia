@@ -1,4 +1,5 @@
 #include "widget/Screen/Game_world/Widget/erelia_map_manager.h"
+#include "widget/Screen/Game_world/erelia_game_world_screen.h"
 #include "structure/data/engine/erelia_engine.h"
 #include "network/erelia_client_manager.h"
 #include "network/erelia_server_manager.h"
@@ -10,7 +11,39 @@ void Map_manager::_on_geometry_change()
 
 void Map_manager::_render()
 {
+	jgl::Vector2Int start = convert_screen_to_chunk(0);
+	jgl::Vector2Int end = convert_screen_to_chunk(_area);
+	Map* map = Engine::instance()->map();
 
+	jgl::Int animation_state = (jgl::Application::active_application()->time() % 1000) / 250;
+
+	if (Node::size < 4)
+		animation_state = 0;
+
+	if (map == nullptr)
+		return;
+
+	for (jgl::Int x = start.x; x <= end.x; x++)
+	{
+		for (jgl::Int y = start.y; y <= end.y; y++)
+		{
+			jgl::Vector2Int chunk_pos = jgl::Vector2Int(x, y);
+			Chunk* tmp_chunk = map->chunk(chunk_pos);
+
+			if (tmp_chunk != nullptr)
+			{
+				_map_mutex.lock();
+				if (tmp_chunk->baked() == false)
+					tmp_chunk->bake(map, true);
+
+				jgl::cout << "Render chunk [" << chunk_pos << "]" << jgl::endl;
+				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
+				if (Game_world_screen::Publisher::instance()->context()->area_mode == true)
+					tmp_chunk->render_area(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
+				_map_mutex.unlock();
+			}
+		}
+	}
 }
 
 jgl::Bool Map_manager::_update()
@@ -56,6 +89,8 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->encounter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 
+
+		_map_mutex.lock();
 		Engine::instance()->map()->add_chunk(result);
 		_asked_chunks[result->pos()] = false;
 
@@ -67,6 +102,8 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 				if (tmp_chunk != nullptr)
 					tmp_chunk->unbake();
 			}
+
+		_map_mutex.unlock();
 	}
 }
 
@@ -103,10 +140,39 @@ void Map_manager::_treat_request_chunk_data(Connection* p_client, Message& p_msg
 	p_client->send(result);
 }
 
+void Map_manager::_treat_chunk_modification(Connection* p_client, Message& p_msg)
+{
+	Server_manager::server()->send_to_all(p_msg, p_client);
+}
+
+void Map_manager::_received_chunk_modification(Message& p_msg)
+{
+	while (p_msg.empty() == false)
+	{
+		jgl::Vector3Int pos;
+		jgl::Short value;
+
+		p_msg >> pos >> value;
+
+		jgl::Vector2Int chunk_pos = Map::convert_world_to_chunk(pos);
+		if (Engine::instance()->map()->chunk(chunk_pos) != nullptr)
+		{
+			if (Engine::instance()->map()->content(pos) != value)
+			{
+				Engine::instance()->map()->place_node(pos, value);
+			}
+		}
+	}
+}
+
 void Map_manager::_initialize_client()
 {
 	Client_manager::client()->add_activity(Server_message::Chunk_data, CLIENT_ACTIVITY{
 			_receive_chunk_data(p_msg);
+		});
+
+	Client_manager::client()->add_activity(Server_message::Chunk_modification, CLIENT_ACTIVITY{
+			_received_chunk_modification(p_msg);
 		});
 }
 
@@ -114,6 +180,10 @@ void Map_manager::_initialize_server()
 {
 	Server_manager::server()->add_activity(Server_message::Chunk_request, SERVER_ACTIVITY{
 			_treat_request_chunk_data(p_client, p_msg);
+		});
+
+	Server_manager::server()->add_activity(Server_message::Chunk_modification, SERVER_ACTIVITY{
+			_treat_chunk_modification(p_client, p_msg);
 		});
 }
 

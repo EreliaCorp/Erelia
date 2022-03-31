@@ -94,6 +94,13 @@ jgl::Bool Player_interacter::_update()
 {
 	_state_machine->update();
 
+	if (Server_manager::instance() != nullptr && jgl::Application::active_application()->keyboard().get_key(jgl::Key::F7) == jgl::Input_status::Release)
+	{
+		Console_manager::instance()->send_global_message("[Systm.] : Saving server's map started - This can take a while");
+		Engine::instance()->save();
+		Console_manager::instance()->send_global_message("[Systm.] : Saving server's map completed");
+	}
+
 	return (false);
 }
 
@@ -123,7 +130,18 @@ void Player_interacter::set_brush_type_info(jgl::String p_brush_type_info)
 
 void Player_interacter::_initialize_client()
 {
-
+	Client_manager::client()->add_activity(Server_message::Brush_size_message, CLIENT_ACTIVITY{
+			_receive_brush_size_change(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Brush_type_message, CLIENT_ACTIVITY{
+			_receive_brush_type_change(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Brush_type_data_message, CLIENT_ACTIVITY{
+			_receive_brush_type_data_change(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Monster_area_value, CLIENT_ACTIVITY{
+			_receive_monster_area_value(p_msg);
+		});
 }
 
 void Player_interacter::_initialize_server()

@@ -22,6 +22,9 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	_initiate_network();
 	_initiate_screen();
 
+	Debug_screen::instanciate(this);
+	Debug_screen::instance()->set_depth(1000);
+
 	State_machine::instance()->set_state(Status::No_mode);
 }
 
@@ -103,6 +106,7 @@ void Main_application::_render()
 
 void Main_application::_on_geometry_change()
 {
+	Debug_screen::instance()->set_geometry(0, _area);
 	Console_manager::instance()->set_geometry(0, _area);
 	for (jgl::Size_t i = 0; i < _screens.size(); i++)
 	{

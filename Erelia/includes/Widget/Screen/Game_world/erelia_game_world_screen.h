@@ -1,7 +1,6 @@
 #pragma once
 
 #include "widget/Abstract_widget/erelia_abstract_screen.h"
-#include "Widget/Screen/Game_world/Widget/erelia_map_renderer.h"
 #include "Widget/Screen/Game_world/Widget/erelia_map_manager.h"
 #include "Widget/Screen/Game_world/Widget/erelia_player_manager.h"
 #include "Widget/Screen/Game_world/Widget/erelia_player_interacter.h"
@@ -40,7 +39,6 @@ private:
 
 	Game_world_screen(jgl::Widget* p_parent);
 
-	Map_renderer* _map_renderer;
 	Map_manager* _map_manager;
 	Player_manager* _player_manager;
 	Player_interacter* _player_interacter;

@@ -101,6 +101,8 @@ void Engine::load_area()
 		
 		new_encounter->load(file_list[i]);
 
+		jgl::cout << "Loading encounter area [" << new_encounter->id() << "]" << jgl::endl;
+
 		_encounter_areas[new_encounter->id()] = new_encounter;
 	}
 }

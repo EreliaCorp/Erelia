@@ -326,9 +326,6 @@
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_overworld_widget.h">
       <Filter>Header Files\Widget\Abstract widget</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_renderer.h">
-      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
-    </ClInclude>
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_manager.h">
       <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
     </ClInclude>
@@ -367,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_interacter_activity.h">
       <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Main_application\erelia_main_application_debug_screen.h">
+      <Filter>Header Files\Widget\Main_application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -502,9 +502,6 @@
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_operation.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_renderer.cpp">
-      <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
-    </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_manager.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
     </ClCompile>
@@ -528,6 +525,9 @@
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_builder_activity.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget\Player\Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_debug_screen.cpp">
+      <Filter>Source Files\Widget\Main_application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

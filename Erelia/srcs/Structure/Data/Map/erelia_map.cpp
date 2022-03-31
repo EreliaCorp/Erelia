@@ -61,7 +61,7 @@ Chunk* Map::request_chunk(jgl::Vector2Int p_chunk_pos)
 			_generate_chunk(result);
 		}
 
-		add_chunk(result);
+		//add_chunk(result);
 	}
 
 	return (result);

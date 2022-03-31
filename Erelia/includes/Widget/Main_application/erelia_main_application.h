@@ -18,6 +18,8 @@
 #include "widget/screen/Game_world/erelia_game_world_screen.h"
 #include "widget/screen/Game_battle/erelia_game_battle_screen.h"
 
+#include "widget/Main_application/erelia_main_application_debug_screen.h"
+
 class Main_application : public Abstract_manager, public jgl::Widget
 {
 public:
@@ -93,6 +95,8 @@ private:
 
 	jgl::Array<Abstract_screen*> _screens;
 	Abstract_screen* _active_screen;
+
+	Debug_screen* _debug_screen;
 
 	jgl::Bool _connection_initialize = false;
 

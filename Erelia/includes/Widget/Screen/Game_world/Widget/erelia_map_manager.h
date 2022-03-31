@@ -9,6 +9,7 @@
 class Map_manager : public Overworld_widget, public Abstract_manager
 {
 private:
+	std::mutex _map_mutex;
 	jgl::Map<jgl::Vector2Int, jgl::Bool> _asked_chunks;
 	jgl::Array<jgl::Vector2Int> _asked_chunk_list;
 
@@ -18,7 +19,9 @@ private:
 
 	void _receive_chunk_data(Message& p_msg);
 	void _request_chunk_data();
+	void _received_chunk_modification(Message& p_msg);
 	void _treat_request_chunk_data(Connection* p_client, Message& p_msg);
+	void _treat_chunk_modification(Connection* p_client, Message& p_msg);
 
 	void _initialize_client();
 	void _initialize_server();

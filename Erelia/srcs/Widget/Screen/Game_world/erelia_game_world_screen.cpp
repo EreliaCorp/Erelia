@@ -4,7 +4,6 @@
 
 void Game_world_screen::_on_geometry_change()
 {
-	_map_renderer->set_geometry(0, _area);
 	_map_manager->set_geometry(0, _area);
 	_player_manager->set_geometry(0, _area);
 	_player_interacter->set_geometry(0, _area);
@@ -28,9 +27,6 @@ Game_world_screen::Game_world_screen(jgl::Widget* p_parent) : Abstract_screen(p_
 {
 	State_machine::instanciate();
 	Publisher::instanciate();
-
-	_map_renderer = new Map_renderer(this);
-	_map_renderer->activate();
 
 	_map_manager = new Map_manager(this);
 	_map_manager->activate();
