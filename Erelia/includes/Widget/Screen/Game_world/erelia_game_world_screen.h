@@ -6,6 +6,7 @@
 #include "Widget/Screen/Game_world/Widget/erelia_player_interacter.h"
 #include "Widget/Screen/Game_world/Widget/erelia_entity_manager.h"
 #include "Widget/Screen/Game_world/Widget/erelia_entity_renderer.h"
+#include "Widget/Screen/Game_world/Widget/erelia_wrap_renderer.h"
 
 class Game_world_screen : public Abstract_screen, public Abstract_manager, public jgl::Singleton_widget<Game_world_screen>
 {
@@ -44,6 +45,7 @@ private:
 	Player_interacter* _player_interacter;
 	Entity_manager* _entity_manager;
 	Entity_renderer* _entity_renderer;
+	Wrap_renderer* _wrap_renderer;
 
 	void _receive_gamemode_change(Message& p_msg);
 

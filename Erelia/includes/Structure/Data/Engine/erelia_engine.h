@@ -12,6 +12,8 @@ private:
 	Map* _map;
 	Player* _player;
 
+	jgl::Map<jgl::String, jgl::Vector2Int> _wraps;
+
 	jgl::Map<jgl::Long, Entity*> _entities;
 
 	jgl::Map<jgl::Long, Encounter_area*> _encounter_areas;
@@ -23,6 +25,7 @@ public:
 	Map* map() { return (_map); }
 	Player* player() { return (_player); }
 
+	jgl::Map<jgl::String, jgl::Vector2Int>& wraps() { return (_wraps); }
 	jgl::Map<jgl::Long, Entity*>& entities() { return (_entities); }
 	jgl::Map<jgl::Long, Encounter_area*>& encounter_areas() { return (_encounter_areas); }
 
@@ -46,4 +49,7 @@ public:
 
 	void load_area();
 	void save_area();
+
+	void load_wrap();
+	void save_wrap();
 };

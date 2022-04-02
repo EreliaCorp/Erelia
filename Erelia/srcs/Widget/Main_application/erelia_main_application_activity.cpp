@@ -18,12 +18,11 @@ void Main_application::Activity::Loading_mode::execute()
 {
 	THROW_INFORMATION("Loading execute");
 
-	Translation_atlas::load(UI_configuration_file::language());
-
 	Engine::instanciate();
 
 	if (Server_manager::instance() != nullptr)
 	{
+		Engine::instance()->load();
 		Account_atlas::instanciate();
 		Account_atlas::instance()->load();
 	}

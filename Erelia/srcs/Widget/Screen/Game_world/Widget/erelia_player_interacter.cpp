@@ -1,5 +1,6 @@
 #include "widget/Screen/Game_world/Widget/erelia_player_interacter.h"
 #include "widget/Screen/Game_world/Widget/erelia_player_interacter_activity.h"
+#include "structure/atlas/erelia_texture_atlas.h"
 #include "Widget/Commun/erelia_console_manager.h"
 #include "network/erelia_network_definition.h"
 #include "network/erelia_client_manager.h"
@@ -22,6 +23,13 @@ void Player_interacter::_render()
 		jgl::Vector2Int size = (end - start) * Node::size;
 
 		jgl::draw_rectangle_color(jgl::Color(255, 255, 255, 120), anchor, size, _depth + 10);
+	}
+	if (_editor_inventory->selected_item() != nullptr && _editor_inventory->selected_item()->type == Item_type::Flag)
+	{
+		for (auto tmp : Flag_item::pos)
+		{
+			Texture_atlas::instance()->UI_sprite_sheet()->draw(Flag_item::sprite(tmp.first), convert_world_to_screen(tmp.second), Node::size, Chunk::C_LAYER_LENGTH + 1, 1.0f);
+		}
 	}
 }
 

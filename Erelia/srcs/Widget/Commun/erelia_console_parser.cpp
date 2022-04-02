@@ -212,7 +212,7 @@ void Console_parser::_parse_command(Command& p_command)
 		}
 		else if (tab[0] == "/area")
 		{
-			if (tab[1] == "value")
+			if (tab.size() > 2 && tab[1] == "value")
 			{
 				if (tab.size() == 3)
 				{
@@ -235,6 +235,41 @@ void Console_parser::_parse_command(Command& p_command)
 				{
 					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/area [Value {-1 ~ int max}]\"", p_command.sender);
 				}
+			}
+		}
+		else if (tab[0] == "/wrap")
+		{
+			if (tab.size() == 2)
+			{
+				if (Engine::instance()->wraps().count(tab[1]) != 0)
+				{
+					Engine::instance()->entity(Account_atlas::instance()->active_account(p_command.sender->id())->id)->place(Engine::instance()->wraps()[tab[1]]);
+					Console_manager::instance()->send_private_message("[Systm.] : Teleport to wrap [" + tab[1] + "]\"", p_command.sender);
+				}
+				else
+				{
+					Console_manager::instance()->send_private_message("[Systm.] : Wrap did not exist\"", p_command.sender);
+				}
+			}
+			else if (tab.size() == 3)
+			{
+				if (tab[1] == "create")
+				{
+					Engine::instance()->wraps()[tab[2]] = Engine::instance()->player()->pos();
+					Console_manager::instance()->send_private_message("[Systm.] : Wrap created sucessfully\"", p_command.sender);
+				}
+				else if(tab[1] == "delete")
+				{
+					if (Engine::instance()->wraps().count(tab[2]) != 0)
+					{
+						Console_manager::instance()->send_private_message("[Systm.] : Wrap deleted sucessfully\"", p_command.sender);
+						Engine::instance()->wraps().erase(tab[2]);
+					}
+				}
+			}
+			else
+			{
+
 			}
 		}
 		else

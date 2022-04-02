@@ -218,6 +218,8 @@ void Editor_inventory::_compose_predefined_page()
 				new_page->add_item(std::get<1>(tmp.second[i]), new Node_item(std::get<2>(tmp.second[i])));
 			else if (type == 1 && g_prefab_array[std::get<2>(tmp.second[i])]->size != 0)
 				new_page->add_item(std::get<1>(tmp.second[i]), new Prefab_item(std::get<2>(tmp.second[i])));
+			else if (type == 2)
+				new_page->add_item(std::get<1>(tmp.second[i]), new Flag_item(static_cast<Flag_item::Color>(std::get<2>(tmp.second[i]))));
 		}
 
 		_pages.push_back(new_page);
@@ -233,7 +235,7 @@ void Editor_inventory::set_inventory_page(jgl::Size_t p_page_index)
 {
 	_page_offset = 0;
 	_inventory_page_index = p_page_index;
-	_page_name_label->label().set_text(_pages[_inventory_page_index]->name);
+	_page_name_label->label().set_text(Translation_atlas::string(_pages[_inventory_page_index]->name));
 
 	if (_pages[_inventory_page_index] != nullptr)
 	{
@@ -423,6 +425,12 @@ void Editor_inventory::Inventory_page::compute()
 				Prefab_item* tmp_item = static_cast<Prefab_item*>(item);
 
 				Texture_atlas::instance()->prefab_sprite_sheet()->draw(g_prefab_array[tmp_item->value]->sprite, pos * C_ITEM_SIZE, C_ITEM_SIZE, 100, 1.0f);
+			}
+			else if (item->type == Item_type::Flag)
+			{
+				Flag_item* tmp_item = static_cast<Flag_item*>(item);
+
+				Texture_atlas::instance()->UI_sprite_sheet()->draw(Flag_item::sprite(tmp_item->color), pos * C_ITEM_SIZE, C_ITEM_SIZE, 100, 1.0f);
 			}
 		}
 

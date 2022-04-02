@@ -9,6 +9,7 @@ void Game_world_screen::_on_geometry_change()
 	_player_interacter->set_geometry(0, _area);
 	_entity_manager->set_geometry(0, _area);
 	_entity_renderer->set_geometry(0, _area);
+	_wrap_renderer->set_geometry(0, _area);
 }
 
 void Game_world_screen::_initialize_server()
@@ -42,6 +43,10 @@ Game_world_screen::Game_world_screen(jgl::Widget* p_parent) : Abstract_screen(p_
 
 	_entity_renderer = new Entity_renderer(this);
 	_entity_renderer->activate();
+	
+	_wrap_renderer = new Wrap_renderer(this);
+	_wrap_renderer->activate();
+
 
 	Publisher::instance()->subscribe(Game_world_screen::Event::Go_adventure, GAME_WORLD_SCREEN_ACTIVITY_PARAM{
 			_player_interacter->publisher()->notify(Player_interacter::Event::Go_adventure);

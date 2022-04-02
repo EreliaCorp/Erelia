@@ -1420,9 +1420,17 @@ jgl::Map< jgl::String, jgl::Array <std::tuple <jgl::Int, jgl::Vector2Int, jgl::S
 			{0, jgl::Vector2Int(0, 0), 0},
 		}
 	},
-	{"7-Inventory_page_fournitures",
+	{ "7-Inventory_page_fournitures",
 		{
 			{0, jgl::Vector2Int(0, 0), 0},
+		}
+	},
+	{ "8-Inventory_page_tools",
+		{
+			{2, jgl::Vector2Int(0, 0), 0},
+			{2, jgl::Vector2Int(1, 0), 1},
+			{2, jgl::Vector2Int(2, 0), 2},
+			{2, jgl::Vector2Int(3, 0), 3},
 		}
 	}
 };

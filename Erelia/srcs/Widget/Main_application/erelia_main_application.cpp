@@ -1,5 +1,6 @@
 #include "erelia.h"
 #include "Widget/commun/erelia_console_manager.h"
+#include "Structure/Data/Engine/erelia_engine.h"
 
 Main_application* Main_application::_instance = nullptr;
 
@@ -31,6 +32,7 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 Main_application::~Main_application()
 {
 	UI_configuration_file::save(Path_atlas::ui_config_path);
+	Engine::instance()->save();
 	if (Account_atlas::instance() != nullptr)
 		Account_atlas::instance()->save();
 }
@@ -38,6 +40,8 @@ Main_application::~Main_application()
 void Main_application::_initiate_singleton()
 {
 	UI_configuration_file::load(Path_atlas::ui_config_path);
+
+	Translation_atlas::load(UI_configuration_file::language());
 
 	Texture_atlas::instanciate();
 	Texture_atlas::instance()->load();

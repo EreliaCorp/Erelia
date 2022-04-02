@@ -73,12 +73,14 @@ void Engine::save()
 {
 	save_map();
 	save_area();
+	save_wrap();
 }
 
 void Engine::load()
 {
 	load_map();
 	load_area();
+	load_wrap();
 }
 
 void Engine::save_map()
@@ -112,5 +114,38 @@ void Engine::save_area()
 	for (auto tmp : _encounter_areas)
 	{
 		tmp.second->save(Path_atlas::world_path + Path_atlas::encounter_area_subpath + Path_atlas::encounter_area_name + jgl::itoa(tmp.first) + Path_atlas::encounter_area_extension);
+	}
+}
+
+void Engine::load_wrap()
+{
+	jgl::File file = jgl::open_file(Path_atlas::world_path + Path_atlas::wrap_sub_path + Path_atlas::wrap_name_file + Path_atlas::wrap_save_extension, jgl::File_mode::in);
+
+	while (file.peek() != EOF)
+	{
+		static jgl::Array<jgl::String> tab;
+		jgl::String line = jgl::get_str(file);
+		line.split(tab, ";");
+		if (tab.size() == 3 && tab[1].compose_only("0123456789-") && tab[2].compose_only("0123456789-"))
+		{
+			_wraps[tab[0]] = jgl::Vector2Int(jgl::stoi(tab[1]), jgl::stoi(tab[2]));
+		}
+		else
+		{
+			THROW_INFORMATION("Error while loading wrap : " + line);
+		}
+	}
+}
+
+void Engine::save_wrap()
+{
+	THROW_INFORMATION("Saving wrap");
+
+	jgl::File file = jgl::open_file(Path_atlas::world_path + Path_atlas::wrap_sub_path + Path_atlas::wrap_name_file + Path_atlas::wrap_save_extension, jgl::File_mode::out);
+
+	for (auto tmp : _wraps)
+	{
+		THROW_INFORMATION("Saving wrap [" + tmp.first + "]");
+		file << tmp.first << ";" << tmp.second.x << ";" << tmp.second.y << std::endl;
 	}
 }

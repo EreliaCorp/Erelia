@@ -368,6 +368,9 @@
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application_debug_screen.h">
       <Filter>Header Files\Widget\Main_application</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_wrap_renderer.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -528,6 +531,9 @@
     </ClCompile>
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_debug_screen.cpp">
       <Filter>Source Files\Widget\Main_application</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_wrap_renderer.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

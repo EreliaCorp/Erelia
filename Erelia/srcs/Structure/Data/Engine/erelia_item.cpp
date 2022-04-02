@@ -138,3 +138,20 @@ void Prefab_item::remove(jgl::Vector3Int p_pos_start, jgl::Vector3Int p_pos_end)
 	if (_prefab_message.empty() == false)
 		Client_manager::client()->send(_prefab_message);
 }
+
+jgl::Map<Flag_item::Color, jgl::Vector2Int> Flag_item::pos;
+
+Flag_item::Flag_item(Flag_item::Color p_color) : Item(Item_type::Flag)
+{
+	color = p_color;
+}
+
+void Flag_item::use(jgl::Vector2Int p_pos)
+{
+	pos[color] = p_pos;
+}
+
+jgl::Vector2Int Flag_item::sprite(Color p_color)
+{
+	return (jgl::Vector2Int(static_cast<jgl::Int>(p_color) + 1, 0));
+}
