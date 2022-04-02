@@ -36,7 +36,6 @@ void Map_manager::_render()
 				if (tmp_chunk->baked() == false)
 					tmp_chunk->bake(map, true);
 
-				jgl::cout << "Render chunk [" << chunk_pos << "]" << jgl::endl;
 				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
 				if (Game_world_screen::Publisher::instance()->context()->area_mode == true)
 					tmp_chunk->render_area(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
@@ -94,6 +93,7 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 		Engine::instance()->map()->add_chunk(result);
 		_asked_chunks[result->pos()] = false;
 
+		/*
 		for (jgl::Int i = -1; i <= 1; i++)
 			for (jgl::Int j = -1; j <= 1; j++)
 			{
@@ -102,6 +102,7 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 				if (tmp_chunk != nullptr)
 					tmp_chunk->unbake();
 			}
+		*/
 
 		_map_mutex.unlock();
 	}

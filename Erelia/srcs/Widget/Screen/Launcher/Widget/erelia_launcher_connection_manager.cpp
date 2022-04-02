@@ -69,6 +69,7 @@ void Connection_manager::_treat_connection_request(Connection* p_client, Message
 		Account_atlas::instance()->activate_account(tmp_account);
 
 		Entity* new_entity = new Entity(Engine::instance()->request_id());
+		new_entity->place(tmp_account->pos);
 
 		Engine::instance()->add_entity(new_entity);
 
@@ -77,6 +78,7 @@ void Connection_manager::_treat_connection_request(Connection* p_client, Message
 		result.clear();
 
 		result << tmp_account->id;
+		result << tmp_account->pos;
 
 		p_client->send(result);
 	}
@@ -98,12 +100,15 @@ void Connection_manager::_treat_connection_request(Connection* p_client, Message
 void Connection_manager::_treat_connection_approuval(Message& p_msg)
 {
 	jgl::Long id;
+	jgl::Vector2 pos;
 
 	p_msg >> id;
+	p_msg >> pos;
 
-	THROW_INFORMATION("Initializing player with id [" + jgl::itoa(id) + "]");
+	THROW_INFORMATION("Initializing player with id [" + jgl::itoa(id) + "] at pos [" + pos.text() + "]");
 
 	Engine::instance()->initialize_player(id);
+	Engine::instance()->player()->place(pos);
 
 	Main_application::Publisher::instance()->notify(Main_application::Event::Go_world);
 }

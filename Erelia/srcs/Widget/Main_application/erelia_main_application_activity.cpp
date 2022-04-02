@@ -18,12 +18,6 @@ void Main_application::Activity::Loading_mode::execute()
 {
 	THROW_INFORMATION("Loading execute");
 
-	if (Texture_atlas::instance() == nullptr)
-	{
-		Texture_atlas::instanciate();
-		Texture_atlas::instance()->load();
-	}
-
 	Translation_atlas::load(UI_configuration_file::language());
 
 	Engine::instanciate();

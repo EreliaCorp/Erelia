@@ -39,6 +39,9 @@ void Main_application::_initiate_singleton()
 {
 	UI_configuration_file::load(Path_atlas::ui_config_path);
 
+	Texture_atlas::instanciate();
+	Texture_atlas::instance()->load();
+
 	Publisher::instanciate();
 	State_machine::instanciate();
 
@@ -52,7 +55,6 @@ void Main_application::_initiate_singleton()
 	State_machine::instance()->add_activity(Status::Launcher, new Main_application::Activity::Launcher_mode());
 	State_machine::instance()->add_activity(Status::World_mode, new Main_application::Activity::World_mode());
 	State_machine::instance()->add_activity(Status::Battle_mode, new Main_application::Activity::Battle_mode());
-
 }
 
 void Main_application::_initiate_network() 

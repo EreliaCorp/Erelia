@@ -31,21 +31,28 @@ void Player_manager::_treat_player_motion(Connection* p_client, Message& p_msg)
 
 	if (tmp_entity != nullptr && tmp_entity->is_moving() == false)
 	{
-		jgl::Vector2Int result = 0;
-
-		jgl::Vector2Int delta_value[2] = { jgl::Vector2Int(1, 0), jgl::Vector2Int(0, 1) };
-
-		for (jgl::Size_t i = 0; i < 2; i++)
+		if (Engine::instance()->player()->is_flying() == true)
 		{
-			if (Engine::instance()->player()->is_flying() == true || Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), delta * delta_value[i]) == true)
-			{
-				result += delta * delta_value[i];
-			}
+			tmp_entity->move(delta);
 		}
-
-		if (result != delta || Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), delta) == true)
+		else
 		{
-			tmp_entity->move(result);
+			jgl::Vector2Int result = 0;
+
+			jgl::Vector2Int delta_value[2] = { jgl::Vector2Int(1, 0), jgl::Vector2Int(0, 1) };
+
+			for (jgl::Size_t i = 0; i < 2; i++)
+			{
+				if (Engine::instance()->player()->is_flying() == true || Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), delta * delta_value[i]) == true)
+				{
+					result += delta * delta_value[i];
+				}
+			}
+
+			if (result != delta || Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), delta) == true)
+			{
+				tmp_entity->move(result);
+			}
 		}
 	}
 }
