@@ -22,6 +22,8 @@ private:
 	void _received_chunk_modification(Message& p_msg);
 	void _treat_request_chunk_data(Connection* p_client, Message& p_msg);
 	void _treat_chunk_modification(Connection* p_client, Message& p_msg);
+	void _treat_place_teleport_data_request(Message& p_msg);
+	void _receive_place_teleport_data(Connection* p_client, Message& p_msg);
 
 	void _initialize_client();
 	void _initialize_server();

@@ -17,6 +17,7 @@ private:
 	jgl::Map<jgl::Long, Entity*> _entities;
 
 	jgl::Map<jgl::Long, Encounter_area*> _encounter_areas;
+	jgl::Map<jgl::Long, jgl::Vector2Int> _teleporter_destination;
 
 	Engine();
 
@@ -38,8 +39,13 @@ public:
 	void add_encounter_area(Encounter_area* p_area);
 	void remove_encounter_area(jgl::Long p_id);
 
+	jgl::Vector2Int teleporter(jgl::Long p_id);
+	void add_teleporter(jgl::Long p_id, jgl::Vector2Int p_destination);
+	void remove_teleporter(jgl::Long p_id);
+
 	jgl::Long request_id();
 	jgl::Long request_monster_area_id();
+	jgl::Long request_teleporter_id();
 
 	void save();
 	void load();
@@ -52,4 +58,7 @@ public:
 
 	void load_wrap();
 	void save_wrap();
+
+	void save_teleport();
+	void load_teleport();
 };

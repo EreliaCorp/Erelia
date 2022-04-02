@@ -8,6 +8,7 @@ class Map_operation
 private:
 	static Message _modification_message;
 	static Message _encounter_modification_message;
+	static Message _teleporter_modification_message;
 
 public:
 	static void place_multiple_node(jgl::Vector3Int p_start, jgl::Vector3Int p_end, jgl::Short p_value);
@@ -21,4 +22,6 @@ public:
 	static void place_single_area_value(jgl::Vector2Int p_pos, jgl::Int p_value);
 	static void paint_area_value(jgl::Vector2Int p_pos, jgl::Int p_value);
 	static void place_circle_area_value(jgl::Vector2Int p_pos, jgl::Float p_radius, jgl::Int p_value);
+
+	static void place_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value);
 };

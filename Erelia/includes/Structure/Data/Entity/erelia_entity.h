@@ -38,6 +38,8 @@ public:
 	jgl::Sprite_sheet* sprite_sheet() { return (_sprite_sheet); }
 	jgl::Vector2Int sprite() const { return (_sprite); }
 	jgl::Vector2 pos() const { return (_pos); }
+	jgl::Vector2 destination() const { return (_destination); }
+	jgl::Vector2 movement() const { return (_movement); }
 	jgl::Vector2Int size() const { return (_size); }
 	jgl::Bool is_flying() { return (_is_flying); }
 

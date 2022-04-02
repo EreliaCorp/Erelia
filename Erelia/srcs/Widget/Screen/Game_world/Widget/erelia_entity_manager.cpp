@@ -18,6 +18,17 @@ jgl::Bool Entity_manager::_update()
 				if (tmp.second->is_moving() == true)
 				{
 					tmp.second->update();
+
+					if (tmp.second->is_moving() == false)
+					{
+						jgl::Long teleporter_id = Engine::instance()->map()->teleporter(tmp.second->destination());
+						if (teleporter_id != -1)
+						{
+							jgl::Vector2 delta = tmp.second->movement();
+							tmp.second->place(Engine::instance()->teleporter(teleporter_id));
+							tmp.second->move(tmp.second->movement());
+						}
+					}
 				}
 			}
 

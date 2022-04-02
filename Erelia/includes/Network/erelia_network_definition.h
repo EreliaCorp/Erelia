@@ -25,6 +25,9 @@ enum Server_message
 	Brush_type_data_message,
 	Monster_area_value,
 	Encounter_modification,
+	Place_teleport_data_request,
+	Place_teleport_data,
+	Place_teleporter
 };
 
 #define SERVER_PORT 26500

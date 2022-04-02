@@ -1,5 +1,6 @@
 #include "widget/Screen/Game_world/Widget/erelia_map_manager.h"
 #include "widget/Screen/Game_world/erelia_game_world_screen.h"
+#include "Widget/Commun/erelia_console_manager.h"
 #include "structure/data/engine/erelia_engine.h"
 #include "network/erelia_client_manager.h"
 #include "network/erelia_server_manager.h"
@@ -87,13 +88,13 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 		Chunk* result = new Chunk(chunk_pos);
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->encounter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
+		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->teleporter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 
 
 		_map_mutex.lock();
 		Engine::instance()->map()->add_chunk(result);
 		_asked_chunks[result->pos()] = false;
 
-		/*
 		for (jgl::Int i = -1; i <= 1; i++)
 			for (jgl::Int j = -1; j <= 1; j++)
 			{
@@ -102,7 +103,6 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 				if (tmp_chunk != nullptr)
 					tmp_chunk->unbake();
 			}
-		*/
 
 		_map_mutex.unlock();
 	}
@@ -136,6 +136,7 @@ void Map_manager::_treat_request_chunk_data(Connection* p_client, Message& p_msg
 		result << chunk_pos;
 		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
 		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->encounter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
+		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->teleporter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 	}
 
 	p_client->send(result);
@@ -166,6 +167,43 @@ void Map_manager::_received_chunk_modification(Message& p_msg)
 	}
 }
 
+void Map_manager::_receive_place_teleport_data(Connection* p_client, Message& p_msg)
+{
+	jgl::Vector2Int source, destination;
+
+	while (p_msg.empty() == false)
+	{
+		p_msg >> source;
+		p_msg >> destination;
+
+		jgl::Long id = Engine::instance()->request_teleporter_id();
+		Engine::instance()->add_teleporter(id, destination);
+		Engine::instance()->map()->place_teleporter(source, id);
+
+		Console_manager::instance()->console_output()->add_message("Linking node [" + source.text() + "] and [" + destination.text() + "]");
+	}
+}
+
+void Map_manager::_treat_place_teleport_data_request(Message& p_msg)
+{
+	static Message result(Server_message::Place_teleport_data);
+	result.clear();
+
+	jgl::Int type;
+
+	p_msg >> type;
+
+	if (Flag_item::pos.count(Flag_item::Color::Red) != 0 && Flag_item::pos.count(Flag_item::Color::Blue) != 0)
+	{
+		result << Flag_item::pos[Flag_item::Color::Red] << Flag_item::pos[Flag_item::Color::Blue];
+		if (type == 2)
+			result << Flag_item::pos[Flag_item::Color::Blue] << Flag_item::pos[Flag_item::Color::Red];
+	}
+
+	if (result.size() != 0)
+		Client_manager::client()->send(result);
+}
+
 void Map_manager::_initialize_client()
 {
 	Client_manager::client()->add_activity(Server_message::Chunk_data, CLIENT_ACTIVITY{
@@ -174,6 +212,9 @@ void Map_manager::_initialize_client()
 
 	Client_manager::client()->add_activity(Server_message::Chunk_modification, CLIENT_ACTIVITY{
 			_received_chunk_modification(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Place_teleport_data_request, CLIENT_ACTIVITY{
+			_treat_place_teleport_data_request(p_msg);
 		});
 }
 
@@ -185,6 +226,9 @@ void Map_manager::_initialize_server()
 
 	Server_manager::server()->add_activity(Server_message::Chunk_modification, SERVER_ACTIVITY{
 			_treat_chunk_modification(p_client, p_msg);
+		});
+	Server_manager::server()->add_activity(Server_message::Place_teleport_data, SERVER_ACTIVITY{
+			_receive_place_teleport_data(p_client, p_msg);
 		});
 }
 

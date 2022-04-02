@@ -85,7 +85,7 @@ namespace Player_interact_activity
 				{
 					static_cast<Node_item*>(selected_item)->paint_wall(p_actual);
 				}
-				else if (selected_item->type == Item_type::Flag)
+				else if (selected_item != nullptr && selected_item->type == Item_type::Flag)
 				{
 					static_cast<Flag_item*>(selected_item)->use(jgl::Vector2Int(p_actual.x, p_actual.y));
 				}

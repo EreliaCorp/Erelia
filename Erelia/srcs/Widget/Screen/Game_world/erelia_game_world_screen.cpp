@@ -14,7 +14,6 @@ void Game_world_screen::_on_geometry_change()
 
 void Game_world_screen::_initialize_server()
 {
-
 }
 
 void Game_world_screen::_initialize_client()

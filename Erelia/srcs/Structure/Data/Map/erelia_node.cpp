@@ -636,11 +636,11 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(22, 48), false,  Node::WALKABLE,  0u), //   629
 	new Node(              "Undefined", jgl::Vector2Int(23, 48), false,  Node::WALKABLE,  0u), //   630
 	new Node(              "Undefined", jgl::Vector2Int(24, 48), false,  Node::OBSTACLE,  0u), //   631
-	new Node(              "Undefined", jgl::Vector2Int(25, 48), false,  Node::OBSTACLE,  0u), //   632
+	new Node(              "Undefined", jgl::Vector2Int(25, 48), false,  Node::WALKABLE,  0u), //   632
 	new Node(              "Undefined", jgl::Vector2Int(26, 48), false,  Node::OBSTACLE,  0u), //   633
 	new Node(              "Undefined", jgl::Vector2Int(27, 48), false,  Node::OBSTACLE,  0u), //   634
 	new Node(              "Undefined", jgl::Vector2Int(28, 48), false,  Node::OBSTACLE,  0u), //   635
-	new Node(              "Undefined", jgl::Vector2Int(29, 48), false,  Node::OBSTACLE,  0u), //   636
+	new Node(              "Undefined", jgl::Vector2Int(29, 48), false,  Node::WALKABLE,  0u), //   636
 	new Node(              "Undefined", jgl::Vector2Int(30, 48), false,  Node::OBSTACLE,  0u), //   637
 	new Node(              "Undefined", jgl::Vector2Int(31, 48), false,  Node::OBSTACLE,  0u), //   638
 	new Node(              "Undefined", jgl::Vector2Int( 0, 49), false,  Node::WALKABLE,  0u), //   639
@@ -796,11 +796,11 @@ jgl::Array<Node*> g_node_array =
 	new Node(              "Undefined", jgl::Vector2Int(22, 53), false,  Node::WALKABLE,  0u), //   789
 	new Node(              "Undefined", jgl::Vector2Int(23, 53), false,  Node::WALKABLE,  0u), //   790
 	new Node(              "Undefined", jgl::Vector2Int(24, 53), false,  Node::OBSTACLE,  0u), //   791
-	new Node(              "Undefined", jgl::Vector2Int(25, 53), false,  Node::OBSTACLE,  0u), //   792
+	new Node(              "Undefined", jgl::Vector2Int(25, 53), false,  Node::WALKABLE,  0u), //   792
 	new Node(              "Undefined", jgl::Vector2Int(26, 53), false,  Node::OBSTACLE,  0u), //   793
 	new Node(              "Undefined", jgl::Vector2Int(27, 53), false,  Node::OBSTACLE,  0u), //   794
 	new Node(              "Undefined", jgl::Vector2Int(28, 53), false,  Node::OBSTACLE,  0u), //   795
-	new Node(              "Undefined", jgl::Vector2Int(29, 53), false,  Node::OBSTACLE,  0u), //   796
+	new Node(              "Undefined", jgl::Vector2Int(29, 53), false,  Node::WALKABLE,  0u), //   796
 	new Node(              "Undefined", jgl::Vector2Int(30, 53), false,  Node::OBSTACLE,  0u), //   797
 	new Node(              "Undefined", jgl::Vector2Int(31, 53), false,  Node::OBSTACLE,  0u), //   798
 	new Node(              "Undefined", jgl::Vector2Int( 0, 54), false,  Node::OBSTACLE,  0u), //   799

@@ -100,6 +100,20 @@ jgl::Int Map::encounter(jgl::Vector2Int p_pos)
 	return (tmp_chunk->encounter(rel_pos));
 }
 
+jgl::Int Map::teleporter(jgl::Vector2Int p_pos)
+{
+	jgl::Vector2Int chunk_pos = convert_world_to_chunk(p_pos);
+
+	Chunk* tmp_chunk = chunk(chunk_pos);
+
+	if (tmp_chunk == nullptr)
+		return (-2);
+
+	jgl::Vector2Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
+
+	return (tmp_chunk->teleporter(rel_pos));
+}
+
 void Map::place_encounter(jgl::Vector2Int p_pos, jgl::Int p_value)
 {
 	jgl::Vector2Int chunk_pos = convert_world_to_chunk(p_pos);
@@ -115,6 +129,26 @@ void Map::place_encounter(jgl::Vector2Int p_pos, jgl::Int p_value)
 		if (value != p_value)
 		{
 			tmp_chunk->set_encounter(rel_pos, p_value);
+			tmp_chunk->unbake();
+		}
+	}
+}
+
+void Map::place_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value)
+{
+	jgl::Vector2Int chunk_pos = convert_world_to_chunk(p_pos);
+
+	Chunk* tmp_chunk = chunk(chunk_pos);
+
+	if (tmp_chunk != nullptr)
+	{
+		jgl::Vector2Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
+
+		jgl::Short value = tmp_chunk->encounter(rel_pos);
+
+		if (value != p_value)
+		{
+			tmp_chunk->set_teleporter(rel_pos, p_value);
 			tmp_chunk->unbake();
 		}
 	}

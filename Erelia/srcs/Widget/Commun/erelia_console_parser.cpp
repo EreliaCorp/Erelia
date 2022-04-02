@@ -272,6 +272,31 @@ void Console_parser::_parse_command(Command& p_command)
 
 			}
 		}
+		else if (tab[0] == "/place_teleport")
+		{
+			static Message place_tp_msg(Server_message::Place_teleport_data_request);
+
+			place_tp_msg.clear();
+
+			if (tab.size() == 2)
+			{
+				if (tab[1] == "dual")
+				{
+					place_tp_msg << jgl::Int(2);
+				}
+				else
+				{
+					place_tp_msg << jgl::Int(1);
+				}
+			}
+			else
+			{
+				place_tp_msg << jgl::Int(1);
+			}
+
+			Console_manager::instance()->send_private_message("[Systm.] : Place a new teleporter", p_command.sender);
+			p_command.sender->send(place_tp_msg);
+		}
 		else
 		{
 			Console_manager::instance()->send_private_message("[Systm.] : Command unknow [" + p_command.text + "]", p_command.sender);

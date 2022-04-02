@@ -38,6 +38,7 @@ private:
 	jgl::Vector2Int _pos;
 	jgl::Short _content[C_SIZE][C_SIZE][C_LAYER_LENGTH];
 	jgl::Int _encounter[C_SIZE][C_SIZE];
+	jgl::Int _teleporter[C_SIZE][C_SIZE];
 
 	static jgl::Vector3 _delta_autotile_position[4];
 	static jgl::Vector3 _delta_tile_position[4];
@@ -87,11 +88,16 @@ public:
 	jgl::Short content(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	jgl::Short content(jgl::Vector3Int p_pos);
 
-
 	void set_encounter(jgl::Vector2Int p_pos, jgl::Int p_value);
 
 	jgl::Int* encounter() { return (&(_encounter[0][0])); }
 	jgl::Int encounter(jgl::Vector2Int p_pos);
+
+
+	void set_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value);
+
+	jgl::Int* teleporter() { return (&(_teleporter[0][0])); }
+	jgl::Int teleporter(jgl::Vector2Int p_pos);
 
 	Node* node(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	Node* node(jgl::Vector3Int p_pos);

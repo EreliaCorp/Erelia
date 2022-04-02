@@ -48,7 +48,6 @@ private:
 	Wrap_renderer* _wrap_renderer;
 
 	void _receive_gamemode_change(Message& p_msg);
-
 public:
 	void focus();
 	void unfocus();

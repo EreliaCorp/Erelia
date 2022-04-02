@@ -55,6 +55,23 @@ void Engine::remove_encounter_area(jgl::Long p_id)
 	_encounter_areas.erase(p_id);
 }
 
+jgl::Vector2Int Engine::teleporter(jgl::Long p_id)
+{
+	if (_teleporter_destination.count(p_id) == 0)
+		return (-1);
+	return (_teleporter_destination[p_id]);
+}
+
+void Engine::add_teleporter(jgl::Long p_id, jgl::Vector2Int p_destination)
+{
+	_teleporter_destination[p_id] = p_destination;
+}
+
+void Engine::remove_teleporter(jgl::Long p_id)
+{
+	_teleporter_destination.erase(p_id);
+}
+
 jgl::Long Engine::request_id()
 {
 	jgl::Long result = 0;
@@ -69,11 +86,19 @@ jgl::Long Engine::request_monster_area_id()
 	return (result);
 }
 
+jgl::Long  Engine::request_teleporter_id()
+{
+	jgl::Long result = 0;
+	for (; _teleporter_destination.count(result) != 0; result++) {}
+	return (result);
+}
+
 void Engine::save()
 {
 	save_map();
 	save_area();
 	save_wrap();
+	save_teleport();
 }
 
 void Engine::load()
@@ -81,6 +106,7 @@ void Engine::load()
 	load_map();
 	load_area();
 	load_wrap();
+	load_teleport();
 }
 
 void Engine::save_map()
@@ -139,13 +165,45 @@ void Engine::load_wrap()
 
 void Engine::save_wrap()
 {
-	THROW_INFORMATION("Saving wrap");
-
 	jgl::File file = jgl::open_file(Path_atlas::world_path + Path_atlas::wrap_sub_path + Path_atlas::wrap_name_file + Path_atlas::wrap_save_extension, jgl::File_mode::out);
 
 	for (auto tmp : _wraps)
 	{
-		THROW_INFORMATION("Saving wrap [" + tmp.first + "]");
 		file << tmp.first << ";" << tmp.second.x << ";" << tmp.second.y << std::endl;
+	}
+}
+
+void Engine::save_teleport()
+{
+	THROW_INFORMATION("Saving teleporter");
+
+	jgl::File file = jgl::open_file(Path_atlas::world_path + Path_atlas::teleporter_sub_path + Path_atlas::teleporter_name_file + Path_atlas::teleporter_save_extension, jgl::File_mode::out);
+
+	for (auto tmp : _teleporter_destination)
+	{
+		file.write(reinterpret_cast<const char*>(&tmp.first), sizeof(jgl::Long));
+		file.write(reinterpret_cast<const char*>(&tmp.second.x), sizeof(jgl::Int));
+		file.write(reinterpret_cast<const char*>(&tmp.second.y), sizeof(jgl::Int));
+	}
+}
+
+void Engine::load_teleport()
+{
+	if (jgl::check_file_exist(Path_atlas::world_path + Path_atlas::teleporter_sub_path + Path_atlas::teleporter_name_file + Path_atlas::teleporter_save_extension) == false)
+		return;
+
+	jgl::File file = jgl::open_file(Path_atlas::world_path + Path_atlas::teleporter_sub_path + Path_atlas::teleporter_name_file + Path_atlas::teleporter_save_extension, jgl::File_mode::in);
+
+	while (file.peek() != EOF)
+	{
+		jgl::Long id;
+		jgl::Vector2Int pos;
+
+		file.read(reinterpret_cast<char*>(&id), sizeof(jgl::Long));
+		file.read(reinterpret_cast<char*>(&pos.x), sizeof(jgl::Int));
+		file.read(reinterpret_cast<char*>(&pos.y), sizeof(jgl::Int));
+
+		THROW_INFORMATION("Placing new teleporter [" + jgl::itoa(id) + "] at destination " + pos.text());
+		Engine::instance()->add_teleporter(id, pos);
 	}
 }

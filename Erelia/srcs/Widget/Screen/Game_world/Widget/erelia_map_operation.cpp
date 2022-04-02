@@ -6,8 +6,7 @@
 
 Message Map_operation::_modification_message = Message(Server_message::Chunk_modification);
 Message Map_operation::_encounter_modification_message = Message(Server_message::Encounter_modification);
-
-
+Message Map_operation::_teleporter_modification_message = Message(Server_message::Place_teleporter);
 
 void Map_operation::place_single_node(jgl::Vector3Int pos, jgl::Short value)
 {
@@ -617,4 +616,15 @@ void Map_operation::place_circle_area_value(jgl::Vector2Int p_pos, jgl::Float p_
 
 	if (_encounter_modification_message.empty() == false)
 		Client_manager::client()->send(_encounter_modification_message);
+}
+
+void Map_operation::place_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value)
+{
+	_teleporter_modification_message.clear();
+
+	Engine::instance()->map()->place_teleporter(p_pos, p_value);
+	_teleporter_modification_message << p_pos << p_value;
+
+	if (_teleporter_modification_message.empty() == false)
+		Client_manager::client()->send(_teleporter_modification_message);
 }

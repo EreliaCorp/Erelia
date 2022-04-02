@@ -38,6 +38,7 @@ void Entity::update()
 void Entity::move(jgl::Vector2 p_delta)
 {
 	_starting_pos = _pos;
+	_movement = p_delta;
 	_destination = _pos + p_delta;
 	_start_motion_time = jgl::Application::active_application()->time();
 	_is_moving = true;

@@ -13,9 +13,15 @@ public:
 	static const jgl::String world_path;
 	static const jgl::String player_sub_path;
 	static const jgl::String player_save_extension;
+
 	static const jgl::String wrap_sub_path;
 	static const jgl::String wrap_name_file;
 	static const jgl::String wrap_save_extension;
+
+	static const jgl::String teleporter_sub_path;
+	static const jgl::String teleporter_name_file;
+	static const jgl::String teleporter_save_extension;
+
 	static const jgl::String chunk_name_file;
 	static const jgl::String chunk_sub_path;
 	static const jgl::String chunk_extension;
