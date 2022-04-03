@@ -27,7 +27,10 @@ enum Server_message
 	Encounter_modification,
 	Place_teleport_data_request,
 	Place_teleport_data,
-	Place_teleporter
+	Place_teleporter,
+	Remove_teleport_data_request,
+	Remove_teleport_data,
+	Remove_teleporter,
 };
 
 #define SERVER_PORT 26500

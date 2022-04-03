@@ -144,7 +144,7 @@ void Map::place_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value)
 	{
 		jgl::Vector2Int rel_pos = tmp_chunk->convert_absolute_to_relative_pos(p_pos);
 
-		jgl::Short value = tmp_chunk->encounter(rel_pos);
+		jgl::Short value = tmp_chunk->teleporter(rel_pos);
 
 		if (value != p_value)
 		{

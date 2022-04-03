@@ -272,30 +272,49 @@ void Console_parser::_parse_command(Command& p_command)
 
 			}
 		}
-		else if (tab[0] == "/place_teleport")
+		else if (tab[0] == "/teleporter")
 		{
-			static Message place_tp_msg(Server_message::Place_teleport_data_request);
-
-			place_tp_msg.clear();
-
-			if (tab.size() == 2)
+			if (tab.size() >= 2)
 			{
-				if (tab[1] == "dual")
+				if (tab[1] == "place")
 				{
-					place_tp_msg << jgl::Int(2);
+					static Message place_tp_msg(Server_message::Place_teleport_data_request);
+
+					place_tp_msg.clear();
+
+					if (tab.size() == 3)
+					{
+						if (tab[2] == "dual")
+						{
+							place_tp_msg << jgl::Int(2);
+						}
+						else
+						{
+							place_tp_msg << jgl::Int(1);
+						}
+					}
+					else
+					{
+						place_tp_msg << jgl::Int(1);
+					}
+
+					Console_manager::instance()->send_private_message("[Systm.] : Sending place teleporter request", p_command.sender);
+					p_command.sender->send(place_tp_msg);
+				}
+				else if (tab[1] == "remove")
+				{
+					static Message place_tp_msg(Server_message::Remove_teleport_data_request);
+
+					Console_manager::instance()->send_private_message("[Systm.] : Sending remove teleporter request", p_command.sender);
+
+					p_command.sender->send(place_tp_msg);
 				}
 				else
 				{
-					place_tp_msg << jgl::Int(1);
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/teleporter [place / remove]\"", p_command.sender);
 				}
 			}
-			else
-			{
-				place_tp_msg << jgl::Int(1);
-			}
-
-			Console_manager::instance()->send_private_message("[Systm.] : Place a new teleporter", p_command.sender);
-			p_command.sender->send(place_tp_msg);
+			
 		}
 		else
 		{

@@ -204,6 +204,46 @@ void Map_manager::_treat_place_teleport_data_request(Message& p_msg)
 		Client_manager::client()->send(result);
 }
 
+void Map_manager::_receive_remove_teleport_data(Connection* p_client, Message& p_msg)
+{
+	Console_manager::instance()->console_output()->add_message("Receive remove teleporter data");
+	jgl::Vector2Int source;
+
+	while (p_msg.empty() == false)
+	{
+		p_msg >> source;
+
+		jgl::Long id = Engine::instance()->map()->teleporter(source);
+		Engine::instance()->remove_teleporter(id);
+		Engine::instance()->map()->place_teleporter(source, -1);
+
+		Console_manager::instance()->console_output()->add_message("Removing teleporter [" + jgl::itoa(id) + "] from pos " + source.text());
+	}
+}
+
+void Map_manager::_treat_remove_teleport_data_request(Message& p_msg)
+{
+	static Message result(Server_message::Remove_teleport_data);
+	result.clear();
+
+	Console_manager::instance()->console_output()->add_message("Treat remove teleporter data request");
+
+	jgl::Int type;
+
+	p_msg >> type;
+
+	if (Flag_item::pos.count(Flag_item::Color::Red) != 0)
+	{
+		result << Flag_item::pos[Flag_item::Color::Red];
+	}
+
+	if (result.size() != 0)
+	{
+		Console_manager::instance()->console_output()->add_message("Sending remove teleporter data back to the server");
+		Client_manager::client()->send(result);
+	}
+}
+
 void Map_manager::_initialize_client()
 {
 	Client_manager::client()->add_activity(Server_message::Chunk_data, CLIENT_ACTIVITY{
@@ -215,6 +255,9 @@ void Map_manager::_initialize_client()
 		});
 	Client_manager::client()->add_activity(Server_message::Place_teleport_data_request, CLIENT_ACTIVITY{
 			_treat_place_teleport_data_request(p_msg);
+		});
+	Client_manager::client()->add_activity(Server_message::Remove_teleport_data_request, CLIENT_ACTIVITY{
+			_treat_remove_teleport_data_request(p_msg);
 		});
 }
 
@@ -229,6 +272,9 @@ void Map_manager::_initialize_server()
 		});
 	Server_manager::server()->add_activity(Server_message::Place_teleport_data, SERVER_ACTIVITY{
 			_receive_place_teleport_data(p_client, p_msg);
+		});
+	Server_manager::server()->add_activity(Server_message::Remove_teleport_data, SERVER_ACTIVITY{
+			_receive_remove_teleport_data(p_client, p_msg);
 		});
 }
 
