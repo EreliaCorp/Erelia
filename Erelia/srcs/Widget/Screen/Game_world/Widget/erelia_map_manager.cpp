@@ -7,7 +7,8 @@
 
 void Map_manager::_on_geometry_change()
 {
-
+	if (Engine::instance() != nullptr && Engine::instance()->map() != nullptr)
+		Engine::instance()->map()->unbake();
 }
 
 void Map_manager::_render()
