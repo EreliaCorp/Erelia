@@ -3,7 +3,6 @@
 #include "jgl.h"
 
 #include "Structure/Data/Map/erelia_node.h"
-#include "Structure/Data/Map/erelia_encounter_area.h"
 
 class Chunk
 {
@@ -30,14 +29,14 @@ private:
 		jgl::Uniform* texture_uniform = nullptr;
 
 		void generate();
-		void cast(jgl::Vector3 p_offset, jgl::Int p_animation_state);
+		void cast(jgl::Vector3 p_offset, jgl::Int p_animation_state, jgl::Size_t p_index);
 	};
 
 	Shader_data _shader_data;
 
 	jgl::Vector2Int _pos;
 	jgl::Short _content[C_SIZE][C_SIZE][C_LAYER_LENGTH];
-	jgl::Int _encounter[C_SIZE][C_SIZE];
+	jgl::Int _teleporter[C_SIZE][C_SIZE];
 
 	static jgl::Vector3 _delta_autotile_position[4];
 	static jgl::Vector3 _delta_tile_position[4];
@@ -51,7 +50,7 @@ private:
 
 	void _initialize_opengl_data();
 
-	jgl::Vector2Int _calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part, jgl::Bool p_type = true);
+	jgl::Vector2Int _calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part);
 
 	void _bake_autotile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, Node* p_node, jgl::Int p_x, jgl::Int p_y, jgl::Int p_z);
 	void _bake_monster_area(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Vector2Int p_sprite, jgl::Int p_x, jgl::Int p_y);
@@ -59,7 +58,6 @@ private:
 	void _bake_tile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, Node* p_node, jgl::Int p_x, jgl::Int p_y, jgl::Int p_z);
 	
 	void _bake_content(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Int p_x, jgl::Int p_y, jgl::Int p_z);
-	void _bake_encounter(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Int p_x, jgl::Int p_y);
 
 	Chunk* _neightbour_chunks[3][3];
 public:
@@ -76,6 +74,7 @@ public:
 	void bake(class Map* p_map, jgl::Bool rebake);
 
 	void render(jgl::Vector3 p_offset, jgl::Int p_animation_state);
+	void render_area(jgl::Vector3 p_offset, jgl::Int p_animation_state);
 
 	jgl::Vector2Int pos() { return (_pos); }
 
@@ -86,11 +85,10 @@ public:
 	jgl::Short content(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	jgl::Short content(jgl::Vector3Int p_pos);
 
+	void set_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value);
 
-	void set_encounter(jgl::Vector2Int p_pos, jgl::Int p_value);
-
-	jgl::Int* encounter() { return (&(_encounter[0][0])); }
-	jgl::Int encounter(jgl::Vector2Int p_pos);
+	jgl::Int* teleporter() { return (&(_teleporter[0][0])); }
+	jgl::Int teleporter(jgl::Vector2Int p_pos);
 
 	Node* node(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	Node* node(jgl::Vector3Int p_pos);

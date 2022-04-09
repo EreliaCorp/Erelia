@@ -1,6 +1,7 @@
-#include "erelia.h"
-
-Account_atlas* Account_atlas::_instance;
+#include "Structure/Atlas/erelia_account_atlas.h"
+#include "Structure/Atlas/erelia_path_atlas.h"
+#include "Structure/Data/Engine/erelia_engine.h"
+#include "Structure/Data/Entity/erelia_entity.h"
 
 Account_atlas::Account_atlas()
 {
@@ -87,16 +88,4 @@ void Account_atlas::desactivate_account(jgl::Ulong p_id)
 		_active_accounts[p_id]->connection = nullptr;
 		_active_accounts.erase(p_id);
 	}
-}
-
-Account_atlas* Account_atlas::instanciate()
-{
-	_instance = new Account_atlas();
-
-	return (_instance);
-}
-
-Account_atlas* Account_atlas::instance()
-{
-	return (_instance);
 }

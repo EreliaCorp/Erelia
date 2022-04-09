@@ -2,51 +2,125 @@
 
 #include "jgl.h"
 
-#include "structure/atlas/erelia_monster_atlas.h"
-#include "structure/atlas/erelia_account_atlas.h"
-
 #include "Network/erelia_client_manager.h"
 #include "Network/erelia_server_manager.h"
 
-#include "Widget/Screen/erelia_connection_screen.h"
-#include "Widget/Screen/erelia_loading_screen.h"
-#include "Widget/Screen/erelia_game_screen.h"
-#include "Widget/Screen/erelia_battle_screen.h"
+#include "structure/Atlas/erelia_path_atlas.h"
+#include "structure/Atlas/erelia_texture_atlas.h"
+#include "structure/Atlas/erelia_translation_atlas.h"
+#include "structure/Atlas/erelia_account_atlas.h"
 
-#include "Routine/erelia_client_routine.h"
+#include "widget/Abstract_widget/erelia_abstract_manager.h"
+#include "widget/Abstract_widget/erelia_abstract_screen.h"
 
-#include "erelia_main_application_debug_screen.h"
+#include "widget/screen/Launcher/erelia_launcher_screen.h"
+#include "widget/screen/Loading/erelia_loading_screen.h"
+#include "widget/screen/Game_world/erelia_game_world_screen.h"
 
-class Main_application : public jgl::Widget
+#include "widget/Main_application/erelia_main_application_debug_screen.h"
+
+class Main_application : public Abstract_manager, public jgl::Widget
 {
+public:
+	enum class Status
+	{
+		No_mode = -1,
+		Loading = 0,
+		Launcher = 1,
+		World_mode = 2,
+		Battle_mode = 3,
+	};
+	typedef Status Screen;
+	enum class Event
+	{
+		Go_loading,
+		Go_launcher,
+		Go_world,
+		Go_battle
+	};
+	struct Context
+	{
+
+	};
+
+	typedef jgl::Singleton< jgl::Publisher<Event, Context> > Publisher;
+	typedef jgl::Singleton< jgl::State_machine<Status> > State_machine;
+
 private:
+	struct Activity
+	{
+	private:
+		Activity() = delete;
+
+	public:
+		class No_mode : public jgl::Abstract_activity
+		{
+		private:
+		public:
+			void execute();
+			void on_transition();
+		};
+		class Loading_mode : public jgl::Abstract_activity
+		{
+		private:
+		public:
+			void execute();
+			void on_transition();
+		};
+		class Launcher_mode : public jgl::Abstract_activity
+		{
+		private:
+			jgl::Bool _connection_initialize = false;
+
+		public:
+			void execute();
+			void on_transition();
+		};
+		class World_mode : public jgl::Abstract_activity
+		{
+		private:
+		public:
+			void execute();
+			void on_transition();
+		};
+		class Battle_mode : public jgl::Abstract_activity
+		{
+		private:
+		public:
+			void execute();
+			void on_transition();
+		};
+	};
+
+	jgl::Array<Abstract_screen*> _screens;
+	Abstract_screen* _active_screen;
+
 	Debug_screen* _debug_screen;
 
-	void _on_geometry_change();
-	void _render();
+	jgl::Bool _connection_initialize = false;
 
-	void _start_server();
-	void _start_client();
+	void _render();
+	void _on_geometry_change();
+
+	jgl::Bool _update();
+	 
+	void _initiate_singleton();
+	void _initiate_network();
+	void _initiate_screen();
 
 	void _initialize_client();
 	void _initialize_server();
 
-	void _initiate();
-
-	jgl::Bool _update();
-
-	Main_application(jgl::Widget* p_parent = nullptr);
-
 	static Main_application* _instance;
-public:
 
-	static Main_application* instanciate(jgl::Widget* p_parent);
+public:
 	static Main_application* instance() { return (_instance); }
 
-	~Main_application();
+	void transition_to_screen(Screen p_screen);
 
-	void transition_to_loading();
-	void transition_to_game();
-	void transition_to_connection();
-	void transition_to_battle();
+	Main_application(jgl::Widget* p_parent = nullptr);
+	~Main_application();
 };
+
+
+#define MAIN_APPLICATION_ACTIVITY_PARAM [&](Main_application::Context& p_context)

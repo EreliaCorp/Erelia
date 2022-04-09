@@ -1,4 +1,4 @@
-#include "erelia.h"
+#include "Structure/Data/Map/erelia_chunk.h"
 
 jgl::Vector2Int Chunk::_baking_neightbour_node[4][3] = {
 		{

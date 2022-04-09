@@ -1,16 +1,5 @@
-#include "erelia.h"
-
-Debug_screen* Debug_screen::_instance = nullptr;
-
-Debug_screen* Debug_screen::instanciate(jgl::Widget* p_parent)
-{
-	if (_instance == nullptr)
-	{
-		_instance = new Debug_screen(p_parent);
-		_instance->activate();
-	}
-	return (_instance);
-}
+#include "Widget/Main_application/erelia_main_application_debug_screen.h"
+#include "network/erelia_client_manager.h"
 
 void Debug_screen::set_text(jgl::Size_t line, jgl::Size_t row, jgl::String p_text)
 {
@@ -46,15 +35,20 @@ jgl::Bool Debug_screen::_update()
 	static jgl::Timer message_timer(4);
 	static jgl::Size_t old_value = 15;
 	
-	if (old_value != Client_manager::client()->input().size() && message_timer.timeout())
+	if (message_timer.timeout() == true)
 	{
-		old_value = Client_manager::client()->input().size();
-		_lines[0][0]->set_text("Nb message : " + jgl::itoa(old_value));
+		if (old_value != Client_manager::client()->input().size())
+		{
+			old_value = Client_manager::client()->input().size();
+			_lines[0][0]->set_text("Nb message : " + jgl::itoa(old_value));
+		}
+
+		_lines[0][1]->set_text("Render FPS : " + jgl::itoa(jgl::Application::active_application()->fps_render()));
+		_lines[0][2]->set_text("Update FPS : " + jgl::itoa(jgl::Application::active_application()->fps_update()));
+
 		message_timer.start();
 	}
 
-	_lines[0][1]->set_text("Render FPS : " + jgl::itoa(jgl::Application::active_application()->fps_render()));
-	_lines[0][2]->set_text("Update FPS : " + jgl::itoa(jgl::Application::active_application()->fps_update()));
 
 	return (false);
 }

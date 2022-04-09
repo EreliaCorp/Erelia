@@ -1,23 +1,20 @@
-#include "erelia.h"
+#include "Structure/Atlas/erelia_texture_atlas.h"
+#include "Structure/Atlas/erelia_path_atlas.h"
 
 Texture_atlas::Texture_atlas()
 {
 
 }
 
-Texture_atlas* Texture_atlas::_instance = nullptr;
-
-Texture_atlas* Texture_atlas::instanciate()
+void Texture_atlas::load()
 {
-	_instance = new Texture_atlas();
-	return (_instance);
+	add_texture(Path_atlas::basic_frame_texture_name, new jgl::Sprite_sheet(Path_atlas::basic_frame_texture_path, 3));
+	add_texture(Path_atlas::basic_frame_texture_pressed_name, new jgl::Sprite_sheet(Path_atlas::basic_frame_texture_pressed_path, 3));
+	add_texture(Path_atlas::chunk_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::chunk_sprite_sheet_path, jgl::Vector2Int(32, 66)));
+	add_texture(Path_atlas::prefab_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::prefab_sprite_sheet_path, jgl::Vector2Int(8, 44)));
+	add_texture(Path_atlas::UI_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::UI_sprite_sheet_path, jgl::Vector2Int(10, 10)));
+	add_texture(Path_atlas::monster_area_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::monster_area_sprite_sheet_path, jgl::Vector2Int(16, 12)));
 }
-
-Texture_atlas* Texture_atlas::instance()
-{
-	return (_instance);
-}
-
 void Texture_atlas::add_texture(jgl::String p_name, jgl::Image_handler* p_image_handler)
 {
 	if (_content[p_name] != nullptr)

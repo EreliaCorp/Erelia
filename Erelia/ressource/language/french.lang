@@ -14,6 +14,7 @@ Registration_rejected;Inscription rejetée
 5-Inventory_page_housing;Maison/Urbain
 6-Inventory_page_ruin;Ruines
 7-Inventory_page_fournitures;Autres
+8-Inventory_page_tools;Outils
 login_pre_name;
 login_post_name; vient de se connecter !
 logout_pre_name;

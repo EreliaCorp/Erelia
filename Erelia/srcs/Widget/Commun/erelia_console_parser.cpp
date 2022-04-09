@@ -1,5 +1,7 @@
-#include "erelia.h"
-
+#include "Widget/Commun/erelia_console_parser.h"
+#include "Widget/Commun/erelia_console_manager.h"
+#include "Structure/atlas/erelia_account_atlas.h"
+#include "Structure/data/Engine/erelia_engine.h"
 
 jgl::String Console_parser::_parse_block_composition(jgl::String p_entry)
 {
@@ -49,7 +51,7 @@ void Console_parser::_parse_command(Command& p_command)
 		if (tmp_account != nullptr)
 			account_name = tmp_account->username;
 
-		Server_manager::instance()->send_global_message("[" + account_name + "] : " + p_command.text);
+		Console_manager::instance()->send_global_message("[" + account_name + "] : " + p_command.text);
 	}
 	else
 	{
@@ -61,34 +63,34 @@ void Console_parser::_parse_command(Command& p_command)
 			{
 				if (tab[1] == "Adventure")
 				{
-					_send_gamemode_modification(p_command.sender, Gamemode::Adventure);
-					Server_manager::instance()->send_private_message("[Systm.] : Gamemode set to Adventure", p_command.sender);
+					_send_gamemode_modification(p_command.sender, Game_world_screen::Event::Go_adventure);
+					Console_manager::instance()->send_private_message("[Systm.] : Gamemode set to Adventure", p_command.sender);
 				}
 				else if (tab[1] == "Builder")
 				{
-					_send_gamemode_modification(p_command.sender, Gamemode::Builder);
-					Server_manager::instance()->send_private_message("[Systm.] : Gamemode set to Builder", p_command.sender);
+					_send_gamemode_modification(p_command.sender, Game_world_screen::Event::Go_builder);
+					Console_manager::instance()->send_private_message("[Systm.] : Gamemode set to Builder", p_command.sender);
 				}
 				else if (tab[1] == "Area_builder")
 				{
-					_send_gamemode_modification(p_command.sender, Gamemode::Area_builder);
+					_send_gamemode_modification(p_command.sender, Game_world_screen::Event::Go_area_builder);
 					_send_monster_area_value(p_command.sender, -1);
-					Server_manager::instance()->send_private_message("[Systm.] : Gamemode set to Area builder", p_command.sender);
-					Server_manager::instance()->send_private_message("[Systm.] : Set monster area value to -1", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Gamemode set to Area builder", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Set monster area value to -1", p_command.sender);
 				}
 				else
 				{
-					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
 				}
 			}
 			else
 			{
-				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
 			}
 		}
 		else if (tab[0] == "/ping")
 		{
-			Client_manager::instance()->send_ping_request();
+			_send_ping_request(p_command.sender);
 		}
 		else if (tab[0] == "/brush_size")
 		{
@@ -100,10 +102,10 @@ void Console_parser::_parse_command(Command& p_command)
 			if(value >= 0 && value <= 16)
 			{
 				_send_brush_size_modification(p_command.sender, value);
-				Server_manager::instance()->send_private_message("[Systm.] : Brush size set to " + jgl::itoa(value), p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Brush size set to " + jgl::itoa(value), p_command.sender);
 			}
 			else
-				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/brush_size [Radius size from 0 to 16]\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/brush_size [Radius size from 0 to 16]\"", p_command.sender);
 		}
 		else if (tab[0] == "/replace")
 		{
@@ -116,23 +118,23 @@ void Console_parser::_parse_command(Command& p_command)
 				{
 					_send_brush_type_data(p_command.sender, block_entry + " " + block_output);
 					_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_replace);
-					Server_manager::instance()->send_private_message("[Systm.] : Replace tiles [" + block_entry + "] with [" + block_output + "]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Replace tiles [" + block_entry + "] with [" + block_output + "]\"", p_command.sender);
 				}
 				else
 				{
-					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
-					Server_manager::instance()->send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
 				}
 			}
 			else if (tab.size() == 2 && tab[1] == "off")
 			{
 				_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_place);
-				Server_manager::instance()->send_private_message("[Systm.] : Replace mode disable", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Replace mode disable", p_command.sender);
 			}
 			else
 			{
-				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
-				Server_manager::instance()->send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/replace [Unique tile type to change] [tile to place]\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] :       \"/replace [off] to disable replace mode\"", p_command.sender);
 			}
 		}
 		else if (tab[0] == "/place_wall")
@@ -142,18 +144,18 @@ void Console_parser::_parse_command(Command& p_command)
 				if (tab[1] == "on")
 				{
 					_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_place_wall);
-					Server_manager::instance()->send_private_message("[Systm.] : Place wall enable", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Place wall enable", p_command.sender);
 				}
 				else if (tab[1] == "off")
 				{
 					_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_place);
-					Server_manager::instance()->send_private_message("[Systm.] : Place wall disable", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Place wall disable", p_command.sender);
 				}
 				else
-					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/place_wall [on / off]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/place_wall [on / off]\"", p_command.sender);
 			}
 			else
-				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/place_wall [on / off]\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/place_wall [on / off]\"", p_command.sender);
 		}
 		else if (tab[0] == "/speed")
 		{
@@ -162,24 +164,24 @@ void Console_parser::_parse_command(Command& p_command)
 				jgl::Ulong speed = jgl::stoi(tab[1]);
 
 				if (speed < 1 || speed > 150)
-					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/speed [speed from 1 to 150]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/speed [speed from 1 to 150]\"", p_command.sender);
 				else
 				{
 					if (Account_atlas::instance()->active_account(p_command.sender->id()) == nullptr ||
 						Engine::instance()->entity(Account_atlas::instance()->active_account(p_command.sender->id())->id) == nullptr)
 					{
-						Server_manager::instance()->send_private_message("[Systm.] : Error while parsing speed command", p_command.sender);
+						Console_manager::instance()->send_private_message("[Systm.] : Error while parsing speed command", p_command.sender);
 					}
 					else
 					{
 						Engine::instance()->entity(Account_atlas::instance()->active_account(p_command.sender->id())->id)->set_move_speed(speed);
-						Server_manager::instance()->send_private_message("[Systm.] : Speed set to " + jgl::itoa(speed), p_command.sender);
+						Console_manager::instance()->send_private_message("[Systm.] : Speed set to " + jgl::itoa(speed), p_command.sender);
 					}
 				}
 			}
 			else
 			{
-				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/speed [speed from 1 to 150]\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/speed [speed from 1 to 150]\"", p_command.sender);
 			}
 		}
 		else if (tab[0] == "/fly")
@@ -191,53 +193,105 @@ void Console_parser::_parse_command(Command& p_command)
 				if (tab[1] == "on")
 				{
 					tmp_entity->set_fly_mode(true);
-					Server_manager::instance()->send_private_message("[Systm.] : Fly set to true", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Fly set to true", p_command.sender);
 				}
 				else if (tab[1] == "off")
 				{
 					tmp_entity->set_fly_mode(false);
-					Server_manager::instance()->send_private_message("[Systm.] : Fly set to false", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Fly set to false", p_command.sender);
 				}
 				else
 				{
-					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
 				}
 			}
 			else
 			{
-				Server_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
 			}
 		}
-		else if (tab[0] == "/area")
+		else if (tab[0] == "/wrap")
 		{
-			if (tab[1] == "value")
+			if (tab.size() == 2)
 			{
-				if (tab.size() == 3)
+				if (Engine::instance()->wraps().count(tab[1]) != 0)
 				{
-					jgl::Int value;
-					if (tab[2] == "create")
-					{
-						value = Engine::instance()->request_monster_area_id();
-					}
-					else
-						value = jgl::stoi(tab[2]);
-
-					Encounter_area* area = Engine::instance()->encounter_area(value);
-					if (area == nullptr)
-						Engine::instance()->add_encounter_area(new Encounter_area(value));
-
-					_send_monster_area_value(p_command.sender, value);
-					Server_manager::instance()->send_private_message("[Systm.] : Set monster area value to " + jgl::itoa(value), p_command.sender);
+					Engine::instance()->entity(Account_atlas::instance()->active_account(p_command.sender->id())->id)->place(Engine::instance()->wraps()[tab[1]]);
+					Console_manager::instance()->send_private_message("[Systm.] : Teleport to wrap [" + tab[1] + "]\"", p_command.sender);
 				}
 				else
 				{
-					Server_manager::instance()->send_private_message("[Systm.] : Usage \"/area [Value {-1 ~ int max}]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Wrap did not exist\"", p_command.sender);
 				}
 			}
+			else if (tab.size() == 3)
+			{
+				if (tab[1] == "create")
+				{
+					Engine::instance()->wraps()[tab[2]] = Engine::instance()->player()->pos();
+					Console_manager::instance()->send_private_message("[Systm.] : Wrap created sucessfully\"", p_command.sender);
+				}
+				else if(tab[1] == "delete")
+				{
+					if (Engine::instance()->wraps().count(tab[2]) != 0)
+					{
+						Console_manager::instance()->send_private_message("[Systm.] : Wrap deleted sucessfully\"", p_command.sender);
+						Engine::instance()->wraps().erase(tab[2]);
+					}
+				}
+			}
+			else
+			{
+
+			}
+		}
+		else if (tab[0] == "/teleporter")
+		{
+			if (tab.size() >= 2)
+			{
+				if (tab[1] == "place")
+				{
+					static Message place_tp_msg(Server_message::Place_teleport_data_request);
+
+					place_tp_msg.clear();
+
+					if (tab.size() == 3)
+					{
+						if (tab[2] == "dual")
+						{
+							place_tp_msg << jgl::Int(2);
+						}
+						else
+						{
+							place_tp_msg << jgl::Int(1);
+						}
+					}
+					else
+					{
+						place_tp_msg << jgl::Int(1);
+					}
+
+					Console_manager::instance()->send_private_message("[Systm.] : Sending place teleporter request", p_command.sender);
+					p_command.sender->send(place_tp_msg);
+				}
+				else if (tab[1] == "remove")
+				{
+					static Message place_tp_msg(Server_message::Remove_teleport_data_request);
+
+					Console_manager::instance()->send_private_message("[Systm.] : Sending remove teleporter request", p_command.sender);
+
+					p_command.sender->send(place_tp_msg);
+				}
+				else
+				{
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/teleporter [place / remove]\"", p_command.sender);
+				}
+			}
+			
 		}
 		else
 		{
-			Server_manager::instance()->send_private_message("[Systm.] : Command unknow [" + p_command.text + "]", p_command.sender);
+			Console_manager::instance()->send_private_message("[Systm.] : Command unknow [" + p_command.text + "]", p_command.sender);
 		}
 	}
 }

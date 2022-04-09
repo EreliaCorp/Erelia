@@ -4,32 +4,37 @@
 
 enum Server_message
 {
-	Ping = -2,
-	Error = -1,
-	Register_request = 0,
-	Connection_request = 1,
-	Connection_accepted = 2,
-	Connection_screen_communication = 3,
-	ID_request = 4,
-	ID_data = 5,
-	Chunk_request = 6,
-	Chunk_data = 7,
-	Entity_data = 8,
-	Player_movement = 9,
-	Entity_suppression = 10,
-	Command_input = 11,
-	Console_message = 12,
-	Chunk_modification = 13,
-	Gamemode_message = 14,
-	Brush_size_message = 15,
-	Brush_type_message = 16,
-	Brush_type_data_message = 17,
-	Monster_area_value = 18,
-	Encounter_modification = 19,
-	Battle_start_notification = 20
+	Ping,
+	Registration_request,
+	Registration_accepted,
+	Registration_refused,
+	Connection_request,
+	Connection_accepted,
+	Connection_refused,
+	Chunk_request,
+	Chunk_data,
+	Chunk_modification,
+	Player_movement,
+	Entity_data,
+	Entity_suppression,
+	Command_input,
+	Console_message,
+	Gamemode_message,
+	Brush_size_message,
+	Brush_type_message,
+	Brush_type_data_message,
+	Monster_area_value,
+	Place_teleport_data_request,
+	Place_teleport_data,
+	Place_teleporter,
+	Remove_teleport_data_request,
+	Remove_teleport_data,
+	Remove_teleporter,
+	Enter_battle_mode
 };
 
 #define SERVER_PORT 26500
+
 using Connection = jgl::Connection<Server_message>;
 using Message = jgl::Message<Server_message>;
 using Client = jgl::Client<Server_message>;

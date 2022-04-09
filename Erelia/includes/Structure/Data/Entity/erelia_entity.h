@@ -4,7 +4,15 @@
 
 class Entity
 {
-private:
+public:
+	enum class Type
+	{
+		Player,
+		NPC,
+		Enemy
+	};
+protected:
+	Type _type;
 	jgl::Long _id;
 	jgl::Bool _is_moving;
 	jgl::Bool _is_flying;
@@ -22,8 +30,8 @@ private:
 
 	void _join_destination();
 public:
-	Entity(jgl::Long p_id);
-	void place(jgl::Vector2 p_pos);
+	Entity(Type p_type, jgl::Long p_id);
+	virtual void place(jgl::Vector2 p_pos);
 	void move(jgl::Vector2 p_delta);
 
 	void set_id(jgl::Long p_id) { _id = p_id; }
@@ -34,10 +42,13 @@ public:
 
 	void update();
 
+	Type type(){return (_type);}
 	jgl::Long id() { return (_id); }
 	jgl::Sprite_sheet* sprite_sheet() { return (_sprite_sheet); }
 	jgl::Vector2Int sprite() const { return (_sprite); }
 	jgl::Vector2 pos() const { return (_pos); }
+	jgl::Vector2 destination() const { return (_destination); }
+	jgl::Vector2 movement() const { return (_movement); }
 	jgl::Vector2Int size() const { return (_size); }
 	jgl::Bool is_flying() { return (_is_flying); }
 
