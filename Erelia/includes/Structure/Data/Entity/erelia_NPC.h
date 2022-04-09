@@ -16,7 +16,7 @@ public:
 		{
 			jgl::Vector2Int base;
 			jgl::Vector2Int destination;
-			jgl::Size_t range;
+			jgl::Int range;
 			jgl::Array<jgl::Vector2Int> path;
 
 			jgl::Vector2Int calc_destination()
