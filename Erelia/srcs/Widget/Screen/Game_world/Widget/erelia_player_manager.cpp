@@ -1,6 +1,7 @@
 #include "widget/Screen/Game_world/Widget/erelia_player_manager.h"
 #include "structure/Data/Engine/erelia_engine.h"
 #include "widget/Commun/erelia_console_manager.h"
+#include "structure/Atlas/erelia_account_atlas.h"
 
 void Player_manager::_on_geometry_change()
 {
@@ -52,19 +53,8 @@ void Player_manager::_treat_player_motion(Connection* p_client, Message& p_msg)
 			if (result != delta || Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), delta) == true)
 			{
 				tmp_entity->move(result);
-				_handle_player_encounter(p_client, tmp_entity->destination());
 			}
 		}
-	}
-}
-
-void Player_manager::_handle_player_encounter(Connection* p_client, jgl::Vector2Int p_pos)
-{
-	jgl::Int tmp_value = Engine::instance()->map()->encounter(p_pos);
-
-	if (tmp_value != -1 && tmp_value < Engine::instance()->encounter_areas().size())
-	{
-		jgl::cout << "There is a encounter area !" << jgl::endl;
 	}
 }
 

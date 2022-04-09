@@ -55,10 +55,6 @@ Game_world_screen::Game_world_screen(jgl::Widget* p_parent) : Abstract_screen(p_
 			_player_interacter->publisher()->notify(Player_interacter::Event::Go_builder);
 			Publisher::instance()->context()->area_mode = false;
 		});
-	Publisher::instance()->subscribe(Game_world_screen::Event::Go_area_builder, GAME_WORLD_SCREEN_ACTIVITY_PARAM{
-			_player_interacter->publisher()->notify(Player_interacter::Event::Go_area_builder);
-			Publisher::instance()->context()->area_mode = true;
-		});
 
 	_initiate();
 }

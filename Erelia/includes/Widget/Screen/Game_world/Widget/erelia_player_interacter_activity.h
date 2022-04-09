@@ -32,12 +32,4 @@ namespace Player_interact_activity
 		void execute();
 		void on_transition();
 	};
-	class Area_builder : public Abstract_activity
-	{
-	private:
-	public:
-		Area_builder(Player_interacter* p_interacter);
-		void execute();
-		void on_transition();
-	};
 }

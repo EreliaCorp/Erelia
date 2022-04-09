@@ -52,13 +52,11 @@ void Main_application::_initiate_singleton()
 	Publisher::instance()->subscribe(Main_application::Event::Go_loading, MAIN_APPLICATION_ACTIVITY_PARAM{ "Go to loading"; State_machine::instance()->set_state(Status::Loading); });
 	Publisher::instance()->subscribe(Main_application::Event::Go_launcher, MAIN_APPLICATION_ACTIVITY_PARAM{ "Go to connection"; State_machine::instance()->set_state(Status::Launcher); });
 	Publisher::instance()->subscribe(Main_application::Event::Go_world, MAIN_APPLICATION_ACTIVITY_PARAM{ "Go to World"; State_machine::instance()->set_state(Status::World_mode); });
-	Publisher::instance()->subscribe(Main_application::Event::Go_battle, MAIN_APPLICATION_ACTIVITY_PARAM{ "Go to Battle"; State_machine::instance()->set_state(Status::Battle_mode); });
 
 	State_machine::instance()->add_activity(Status::No_mode, new Main_application::Activity::No_mode());
 	State_machine::instance()->add_activity(Status::Loading, new Main_application::Activity::Loading_mode());
 	State_machine::instance()->add_activity(Status::Launcher, new Main_application::Activity::Launcher_mode());
 	State_machine::instance()->add_activity(Status::World_mode, new Main_application::Activity::World_mode());
-	State_machine::instance()->add_activity(Status::Battle_mode, new Main_application::Activity::Battle_mode());
 }
 
 void Main_application::_initiate_network() 
@@ -74,7 +72,6 @@ void Main_application::_initiate_screen()
 	_screens.push_back(Loading_screen::instanciate(this));
 	_screens.push_back(Launcher_screen::instanciate(this));
 	_screens.push_back(Game_world_screen::instanciate(this));
-	_screens.push_back(Game_battle_screen::instanciate(this));
 
 	for (jgl::Size_t i = 0; i < _screens.size(); i++)
 	{

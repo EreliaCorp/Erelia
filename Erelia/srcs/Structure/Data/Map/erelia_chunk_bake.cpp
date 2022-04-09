@@ -28,14 +28,11 @@ void Chunk::unbake()
 	_baked = false;
 }
 
-jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part, jgl::Bool p_type)
+jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part)
 {
 	jgl::Int first_value;
 	
-	if (p_type == true)
-		first_value = content(jgl::Vector3Int(p_x, p_y, p_z));
-	else
-		first_value = encounter(jgl::Vector2Int(p_x, p_y));
+	first_value = content(jgl::Vector3Int(p_x, p_y, p_z));
 
 	jgl::Bool values[3] = { false, false, false };
 	for (jgl::Size_t j = 0; j < 3; j++)
@@ -62,10 +59,7 @@ jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::In
 		}
 		else
 		{
-			if (p_type == true)
-				next_value = _neightbour_chunks[chunk_x][chunk_y]->content(next_pos, p_z);
-			else
-				next_value = _neightbour_chunks[chunk_x][chunk_y]->encounter(next_pos);
+			next_value = _neightbour_chunks[chunk_x][chunk_y]->content(next_pos, p_z);
 		}
 		values[j] = (next_value == first_value ? false : true);
 	}
@@ -129,7 +123,7 @@ void Chunk::_bake_monster_area(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Ar
 {
 	for (jgl::Size_t face = 0; face < 4; face++)
 	{
-		jgl::Vector2Int sprite_value = p_sprite + _calc_sub_part_sprite(p_x, p_y, 0, face, false);
+		jgl::Vector2Int sprite_value = p_sprite + _calc_sub_part_sprite(p_x, p_y, 0, face);
 		jgl::Uint sprite_id = (Texture_atlas::instance()->monster_area_sheet()->size().x * sprite_value.y) + sprite_value.x;
 		jgl::Vector3 node_pos = jgl::Vector3(p_x, p_y, C_LAYER_LENGTH / 2) + _delta_autotile_position[face];
 		jgl::Vector2 sprite = Texture_atlas::instance()->monster_area_sheet()->sprite(sprite_id);
@@ -196,17 +190,6 @@ void Chunk::_bake_content(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<j
 	}
 }
 
-void Chunk::_bake_encounter(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Int p_x, jgl::Int p_y)
-{
-	jgl::Int value = _encounter[p_x][p_y];
-
-	if (value != -1)
-	{
-		value %= 8;
-		_bake_monster_area(p_vertex_array, p_uvs_array, p_animation_sprite_delta_array, p_element_array, jgl::Vector2Int(value % 4, value / 4) * jgl::Vector2Int(4, 6), p_x, p_y);
-	}
-}
-
 void Chunk::bake(Map* p_map, jgl::Bool rebake)
 {
 	_initialize_opengl_data();
@@ -249,10 +232,6 @@ void Chunk::bake(Map* p_map, jgl::Bool rebake)
 	uvs_array.clear();
 	animation_sprite_delta_array.clear();
 	element_array.clear();
-
-	for (jgl::Size_t i = 0; i < C_SIZE; i++)
-		for (jgl::Size_t j = 0; j < C_SIZE; j++)
-			_bake_encounter(vertex_array, uvs_array, animation_sprite_delta_array, element_array, i, j);
 
 	_shader_data.model_space_buffer[1]->send(vertex_array.all(), vertex_array.size());
 	_shader_data.model_uvs_buffer[1]->send(uvs_array.all(), uvs_array.size());

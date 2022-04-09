@@ -24,13 +24,13 @@ enum Server_message
 	Brush_type_message,
 	Brush_type_data_message,
 	Monster_area_value,
-	Encounter_modification,
 	Place_teleport_data_request,
 	Place_teleport_data,
 	Place_teleporter,
 	Remove_teleport_data_request,
 	Remove_teleport_data,
 	Remove_teleporter,
+	Enter_battle_mode
 };
 
 #define SERVER_PORT 26500

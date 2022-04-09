@@ -68,7 +68,7 @@ void Connection_manager::_treat_connection_request(Connection* p_client, Message
 		tmp_account->connection = p_client;
 		Account_atlas::instance()->activate_account(tmp_account);
 
-		Entity* new_entity = new Entity(Engine::instance()->request_id());
+		Entity* new_entity = new Entity(Entity::Type::Player, Engine::instance()->request_id());
 		new_entity->place(tmp_account->pos);
 
 		Engine::instance()->add_entity(new_entity);

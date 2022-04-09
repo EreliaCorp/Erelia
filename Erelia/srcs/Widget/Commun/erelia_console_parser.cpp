@@ -210,33 +210,6 @@ void Console_parser::_parse_command(Command& p_command)
 				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/fly [on or off]\"", p_command.sender);
 			}
 		}
-		else if (tab[0] == "/area")
-		{
-			if (tab.size() > 2 && tab[1] == "value")
-			{
-				if (tab.size() == 3)
-				{
-					jgl::Int value;
-					if (tab[2] == "create")
-					{
-						value = Engine::instance()->request_monster_area_id();
-					}
-					else
-						value = jgl::stoi(tab[2]);
-
-					Encounter_area* area = Engine::instance()->encounter_area(value);
-					if (area == nullptr)
-						Engine::instance()->add_encounter_area(new Encounter_area(value));
-
-					_send_monster_area_value(p_command.sender, value);
-					Console_manager::instance()->send_private_message("[Systm.] : Set monster area value to " + jgl::itoa(value), p_command.sender);
-				}
-				else
-				{
-					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/area [Value {-1 ~ int max}]\"", p_command.sender);
-				}
-			}
-		}
 		else if (tab[0] == "/wrap")
 		{
 			if (tab.size() == 2)

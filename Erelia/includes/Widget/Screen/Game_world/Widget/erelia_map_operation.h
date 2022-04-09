@@ -7,7 +7,6 @@ class Map_operation
 {
 private:
 	static Message _modification_message;
-	static Message _encounter_modification_message;
 	static Message _teleporter_modification_message;
 
 public:
@@ -17,11 +16,6 @@ public:
 	static void paint_wall_node(jgl::Vector3Int p_pos, jgl::Short p_value);
 	static void place_circle_node(jgl::Vector3Int p_pos, jgl::Float p_radius, jgl::Short p_value);
 	static void place_random_node(Player_interacter::Remplace_data& p_random_data, jgl::Vector3Int p_pos, jgl::Float p_radius);
-
-	static void place_multiple_area_value(jgl::Vector2Int p_start, jgl::Vector2Int p_end, jgl::Int p_value);
-	static void place_single_area_value(jgl::Vector2Int p_pos, jgl::Int p_value);
-	static void paint_area_value(jgl::Vector2Int p_pos, jgl::Int p_value);
-	static void place_circle_area_value(jgl::Vector2Int p_pos, jgl::Float p_radius, jgl::Int p_value);
 
 	static void place_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value);
 };

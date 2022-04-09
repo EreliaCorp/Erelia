@@ -16,7 +16,6 @@
 #include "widget/screen/Launcher/erelia_launcher_screen.h"
 #include "widget/screen/Loading/erelia_loading_screen.h"
 #include "widget/screen/Game_world/erelia_game_world_screen.h"
-#include "widget/screen/Game_battle/erelia_game_battle_screen.h"
 
 #include "widget/Main_application/erelia_main_application_debug_screen.h"
 

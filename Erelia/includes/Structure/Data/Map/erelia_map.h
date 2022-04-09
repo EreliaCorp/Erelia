@@ -25,14 +25,10 @@ public:
 	jgl::Short content(jgl::Vector2Int p_pos, jgl::Size_t p_level);
 	jgl::Short content(jgl::Vector3Int p_pos);
 
-	jgl::Int encounter(jgl::Vector2Int p_pos);
-
 	jgl::Int teleporter(jgl::Vector2Int p_pos);
 
 	void place_node(jgl::Vector2Int p_pos, jgl::Size_t p_level, jgl::Short p_node);
 	void place_node(jgl::Vector3Int p_pos, jgl::Short p_node);
-
-	void place_encounter(jgl::Vector2Int p_pos, jgl::Int p_value);
 
 	void place_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value);
 
@@ -49,4 +45,5 @@ public:
 	void unbake();
 
 	jgl::Bool can_move(class Entity* p_entity, jgl::Vector2 p_start, jgl::Vector2 p_direction);
+	void find_path(jgl::Array<jgl::Vector2Int>& p_path, jgl::Vector2Int p_source, jgl::Vector2Int p_destination, jgl::Int p_max_length = -1);
 };

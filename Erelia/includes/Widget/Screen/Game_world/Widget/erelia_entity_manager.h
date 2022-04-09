@@ -21,5 +21,5 @@ private:
 
 public:
 	Entity_manager(jgl::Widget* p_parent = nullptr);
-	void receive_entity_data(Message& p_msg);
+	//void receive_entity_data(Message& p_msg);
 };

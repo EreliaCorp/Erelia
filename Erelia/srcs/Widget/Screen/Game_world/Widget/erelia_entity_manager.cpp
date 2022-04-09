@@ -13,24 +13,7 @@ jgl::Bool Entity_manager::_update()
 	{
 		if (_entity_updater_timer.timeout() == true)
 		{
-			for (auto tmp : Engine::instance()->entities())
-			{
-				if (tmp.second->is_moving() == true)
-				{
-					tmp.second->update();
-
-					if (tmp.second->is_moving() == false)
-					{
-						jgl::Long teleporter_id = Engine::instance()->map()->teleporter(tmp.second->destination());
-						if (teleporter_id != -1)
-						{
-							jgl::Vector2 delta = tmp.second->movement();
-							tmp.second->place(Engine::instance()->teleporter(teleporter_id));
-							tmp.second->move(tmp.second->movement());
-						}
-					}
-				}
-			}
+			Engine::instance()->update();
 
 			static Message msg(Server_message::Entity_data);
 
@@ -38,6 +21,7 @@ jgl::Bool Entity_manager::_update()
 
 			for (auto tmp : Engine::instance()->entities())
 			{
+				msg << tmp.second->type();
 				msg << tmp.first;
 				msg << tmp.second->pos();
 				msg << tmp.second->is_moving();
@@ -60,10 +44,12 @@ void Entity_manager::_receive_entity_data(Message& p_msg)
 	{
 		while (p_msg.empty() == false)
 		{
+			Entity::Type type;
 			jgl::Long id;
 			jgl::Vector2 pos;
 			jgl::Bool moving;
 
+			p_msg >> type;
 			p_msg >> id;
 			p_msg >> pos;
 			p_msg >> moving;
@@ -76,7 +62,7 @@ void Entity_manager::_receive_entity_data(Message& p_msg)
 			}
 			else
 			{
-				tmp_entity = new Entity(id);
+				tmp_entity = new Entity(type, id);
 				tmp_entity->place(pos);
 				Engine::instance()->add_entity(tmp_entity);
 			}
@@ -110,7 +96,7 @@ void Entity_manager::_initialize_client()
 		});
 }
 
-void Entity_manager::receive_entity_data(Message& p_msg)
+/*void Entity_manager::receive_entity_data(Message& p_msg)
 {
 	jgl::Long id;
 	jgl::Vector2 pos;
@@ -132,7 +118,7 @@ void Entity_manager::receive_entity_data(Message& p_msg)
 		tmp_entity->place(pos);
 		Engine::instance()->add_entity(tmp_entity);
 	}
-}
+}*/
 
 
 Entity_manager::Entity_manager(jgl::Widget* p_parent) : Abstract_manager(), jgl::Updater_widget(p_parent),

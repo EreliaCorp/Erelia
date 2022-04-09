@@ -17,7 +17,14 @@ void Entity_renderer::_render()
 			if (tmp.second->sprite_sheet() != nullptr)
 				tmp.second->sprite_sheet()->draw(tmp.second->sprite(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth, 1.0f);
 			else
-				jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+			{
+				if (tmp.second->type() == Entity::Type::Player)
+					jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+				else if (tmp.second->type() == Entity::Type::NPC)
+					jgl::draw_rectangle_color(jgl::Color::green(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+				else if (tmp.second->type() == Entity::Type::Enemy)
+					jgl::draw_rectangle_color(jgl::Color::red(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+			}
 
 		}
 	}

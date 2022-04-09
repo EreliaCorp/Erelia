@@ -14,7 +14,6 @@ Chunk::Chunk(jgl::Vector2Int p_pos)
 	{
 		for (jgl::Size_t j = 0; j < C_SIZE; j++)
 		{
-			_encounter[i][j] = -1;
 			_teleporter[i][j] = -1;
 			for (jgl::Size_t h = 0; h < C_LAYER_LENGTH; h++)
 			{
@@ -31,7 +30,6 @@ void Chunk::save(jgl::String p_folder_path)
 	jgl::File file = jgl::open_file(compose_chunk_file_name(p_folder_path, _pos), jgl::File_mode::out_binary);
 
 	file.write(reinterpret_cast<char*>(_content), sizeof(_content));
-	file.write(reinterpret_cast<char*>(_encounter), sizeof(_encounter));
 	file.write(reinterpret_cast<char*>(_teleporter), sizeof(_teleporter));
 }
 
@@ -45,28 +43,8 @@ void Chunk::load(jgl::String p_path)
 	}
 	if (file.eof() == false)
 	{
-		file.read(reinterpret_cast<char*>(_encounter), sizeof(_encounter));
-	}
-	if (file.eof() == false)
-	{
 		file.read(reinterpret_cast<char*>(_teleporter), sizeof(_teleporter));
 	}
-}
-
-void Chunk::set_encounter(jgl::Vector2Int p_pos, jgl::Int p_value)
-{
-	if (p_pos.x < 0 || p_pos.x >= C_SIZE ||
-		p_pos.y < 0 || p_pos.y >= C_SIZE)
-		return;
-	_encounter[p_pos.x][p_pos.y] = p_value;
-}
-
-jgl::Int Chunk::encounter(jgl::Vector2Int p_pos)
-{
-	if (p_pos.x < 0 || p_pos.x >= C_SIZE ||
-		p_pos.y < 0 || p_pos.y >= C_SIZE)
-		return (-1);
-	return (_encounter[p_pos.x][p_pos.y]);
 }
 
 void Chunk::set_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value)

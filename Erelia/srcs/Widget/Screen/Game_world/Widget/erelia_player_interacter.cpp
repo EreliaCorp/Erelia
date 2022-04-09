@@ -164,11 +164,9 @@ Player_interacter::Player_interacter(jgl::Widget* p_parent) : Overworld_widget(p
 
 	_publisher->subscribe(Player_interacter::Event::Go_adventure, [&](Player_interacter::Context& p_context) {_state_machine->set_state(Player_interacter::Mode::Adventure); });
 	_publisher->subscribe(Player_interacter::Event::Go_builder, [&](Player_interacter::Context& p_context) {_state_machine->set_state(Player_interacter::Mode::Builder); });
-	_publisher->subscribe(Player_interacter::Event::Go_area_builder, [&](Player_interacter::Context& p_context) {_state_machine->set_state(Player_interacter::Mode::Area_builder); });
 
 	_state_machine->add_activity(Player_interacter::Mode::Adventure, new Player_interact_activity::Adventure(this));
 	_state_machine->add_activity(Player_interacter::Mode::Builder, new Player_interact_activity::Builder(this));
-	_state_machine->add_activity(Player_interacter::Mode::Area_builder, new Player_interact_activity::Area_builder(this));
 
 	_editor_inventory = new Editor_inventory(this);
 	_editor_inventory->set_depth(_depth + 100);

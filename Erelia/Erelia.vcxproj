@@ -184,12 +184,6 @@
     <None Include="ressource\configuration\config.uiconf" />
     <None Include="ressource\language\english.lang" />
     <None Include="ressource\language\french.lang" />
-    <None Include="ressource\monster\001-monsterA.crea" />
-    <None Include="ressource\monster\002-monsterB.crea" />
-    <None Include="ressource\monster\003-monsterC.crea" />
-    <None Include="ressource\world\area\area0.area" />
-    <None Include="ressource\world\area\area1.area" />
-    <None Include="ressource\world\area\area2.area" />
     <None Include="ressource\world\player\Hyarius2.acc" />
     <None Include="ressource\world\player\Hywa.acc" />
   </ItemGroup>
@@ -200,7 +194,6 @@
     <ClInclude Include="includes\Network\erelia_network_definition.h" />
     <ClInclude Include="includes\Network\erelia_server_manager.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_account_atlas.h" />
-    <ClInclude Include="includes\Structure\Atlas\erelia_monster_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_path_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_texture_atlas.h" />
     <ClInclude Include="includes\Structure\Atlas\erelia_translation_atlas.h" />
@@ -208,12 +201,11 @@
     <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h" />
     <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_NPC.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h" />
-    <ClInclude Include="includes\Structure\Data\Map\erelia_encounter_area.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_map.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_node.h" />
-    <ClInclude Include="includes\Structure\Data\Monster\erelia_monster.h" />
     <ClInclude Include="includes\Structure\File\erelia_player_save_file.h" />
     <ClInclude Include="includes\Structure\File\erelia_UI_configuration_file.h" />
     <ClInclude Include="includes\Widget\Abstract_widget\erelia_abstract_manager.h" />
@@ -226,7 +218,6 @@
     <ClInclude Include="includes\Widget\Commun\erelia_console_parser.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application_debug_screen.h" />
-    <ClInclude Include="includes\Widget\Screen\Game_battle\erelia_game_battle_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_editor_inventory.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_entity_manager.h" />
@@ -249,7 +240,6 @@
     <ClCompile Include="srcs\Network\erelia_client_manager.cpp" />
     <ClCompile Include="srcs\Network\erelia_server_manager.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_account_atlas.cpp" />
-    <ClCompile Include="srcs\Structure\Atlas\erelia_monster_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_path_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_texture_atlas.cpp" />
     <ClCompile Include="srcs\Structure\Atlas\erelia_translation_atlas.cpp" />
@@ -257,15 +247,15 @@
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp" />
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_NPC.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_encounter_area.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_map_motion.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_node.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Monster\erelia_monster.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_player_save_file.cpp" />
     <ClCompile Include="srcs\Structure\File\erelia_UI_configuration_file.cpp" />
     <ClCompile Include="srcs\Widget\Abstract_widget\erelia_abstract_manager_widget.cpp" />
@@ -279,7 +269,6 @@
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_activity.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_debug_screen.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\Game_battle\erelia_game_battle_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\erelia_game_world_screen.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_editor_inventory.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_editor_inventory_pages_content.cpp" />
@@ -289,7 +278,6 @@
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_manager.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_adventure_activity.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_area_builder_activity.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_builder_activity.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_manager.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_wrap_renderer.cpp" />

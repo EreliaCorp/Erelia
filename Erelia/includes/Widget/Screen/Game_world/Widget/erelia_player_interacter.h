@@ -71,14 +71,12 @@ public:
 	enum class Mode
 	{
 		Adventure,
-		Builder,
-		Area_builder
+		Builder
 	};
 	enum class Event
 	{
 		Go_adventure,
-		Go_builder,
-		Go_area_builder
+		Go_builder
 	};
 	struct Context
 	{

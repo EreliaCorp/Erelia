@@ -1,7 +1,8 @@
 #include "Structure/Data/Entity/erelia_entity.h"
 
-Entity::Entity(jgl::Long p_id)
+Entity::Entity(Type p_type, jgl::Long p_id)
 {
+	_type = p_type;
 	_sprite_sheet = nullptr;
 	_sprite = 0;
 	_id = p_id;

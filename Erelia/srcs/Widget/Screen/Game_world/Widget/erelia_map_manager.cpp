@@ -88,7 +88,6 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 
 		Chunk* result = new Chunk(chunk_pos);
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
-		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->encounter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->teleporter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 
 
@@ -136,7 +135,6 @@ void Map_manager::_treat_request_chunk_data(Connection* p_client, Message& p_msg
 
 		result << chunk_pos;
 		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
-		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->encounter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->teleporter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 	}
 
@@ -250,7 +248,6 @@ void Map_manager::_initialize_client()
 	Client_manager::client()->add_activity(Server_message::Chunk_data, CLIENT_ACTIVITY{
 			_receive_chunk_data(p_msg);
 		});
-
 	Client_manager::client()->add_activity(Server_message::Chunk_modification, CLIENT_ACTIVITY{
 			_received_chunk_modification(p_msg);
 		});

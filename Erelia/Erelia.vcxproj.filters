@@ -52,17 +52,11 @@
     <Filter Include="Resource Files\World">
       <UniqueIdentifier>{049bfd6a-27dd-4583-9371-6e8372d75433}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\World\Area">
-      <UniqueIdentifier>{d6751780-6807-4b79-8d9c-96e9f7113f95}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\World\Chunk">
       <UniqueIdentifier>{1ce05775-a17c-435d-9e78-336c66c5fcd3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\World\Player">
       <UniqueIdentifier>{8c5d6e49-c16b-4430-af1b-976481ae0983}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Monster">
-      <UniqueIdentifier>{2912c4a6-f5ce-4f2a-a8c9-ea09f7d52b60}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Widget\Abstract widget">
       <UniqueIdentifier>{4ba1a754-cc84-4aa1-baf8-4e77179fd1a3}</UniqueIdentifier>
@@ -112,12 +106,6 @@
     <Filter Include="Source Files\Structure\Data\Map">
       <UniqueIdentifier>{e62a6e7f-62be-4457-810b-3cb924425a14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Structure\Data\Monster">
-      <UniqueIdentifier>{32ab1952-7914-41a8-8d6d-88f67dd18893}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Structure\Data\Monster">
-      <UniqueIdentifier>{f726534e-3fba-46dd-bdd0-d3e3be538c6e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Widget\Screen\Launcher">
       <UniqueIdentifier>{880abb47-0d08-4df1-8086-03bd4a214499}</UniqueIdentifier>
     </Filter>
@@ -127,12 +115,6 @@
     <Filter Include="Source Files\Widget\Screen\Game_world">
       <UniqueIdentifier>{0e502638-1501-41a9-bb98-e929f47beae3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Widget\Screen\Game_battle">
-      <UniqueIdentifier>{04b38aaa-a5f3-429e-b220-41b3b527d83c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Widget\Screen\Game_battle">
-      <UniqueIdentifier>{53411402-4c34-4295-9191-ef66ad005b99}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Widget\Screen\Game_world">
       <UniqueIdentifier>{25b5d543-2d4e-4542-a427-1af5c11a2512}</UniqueIdentifier>
     </Filter>
@@ -141,9 +123,6 @@
     </Filter>
     <Filter Include="Header Files\Widget\Screen\Launcher">
       <UniqueIdentifier>{9a2e81d1-339d-46d7-98a8-741ced6abf07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Widget\Screen\Game_battle\Widget">
-      <UniqueIdentifier>{f1f5bdca-06e9-4af4-a684-97ba398fa376}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Widget\Screen\Game_world\Widget">
       <UniqueIdentifier>{b42c27ef-1efb-47a7-839c-1619bc749a26}</UniqueIdentifier>
@@ -162,9 +141,6 @@
     </Filter>
     <Filter Include="Source Files\Widget\Screen\Game_world\Widget">
       <UniqueIdentifier>{0ff09422-2904-4c2e-89f9-5a44d40d4374}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Widget\Screen\Game_battle\Widget">
-      <UniqueIdentifier>{1e9264fe-0c6a-4e71-a2f8-73ee7eb57f23}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Widget\Commun">
       <UniqueIdentifier>{4b46e86b-9f65-4fed-b51f-3a589f6c8030}</UniqueIdentifier>
@@ -198,26 +174,8 @@
     <None Include="ressource\configuration\config.uiconf">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ressource\world\area\area0.area">
-      <Filter>Resource Files\World\Area</Filter>
-    </None>
-    <None Include="ressource\world\area\area1.area">
-      <Filter>Resource Files\World\Area</Filter>
-    </None>
-    <None Include="ressource\world\area\area2.area">
-      <Filter>Resource Files\World\Area</Filter>
-    </None>
     <None Include="ressource\world\player\Hyarius2.acc">
       <Filter>Resource Files\World\Player</Filter>
-    </None>
-    <None Include="ressource\monster\001-monsterA.crea">
-      <Filter>Resource Files\Monster</Filter>
-    </None>
-    <None Include="ressource\monster\002-monsterB.crea">
-      <Filter>Resource Files\Monster</Filter>
-    </None>
-    <None Include="ressource\monster\003-monsterC.crea">
-      <Filter>Resource Files\Monster</Filter>
     </None>
     <None Include="ressource\world\player\Hywa.acc">
       <Filter>Resource Files\World\Player</Filter>
@@ -281,9 +239,6 @@
     <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h">
       <Filter>Header Files\Structure\Data\Map</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\Data\Map\erelia_encounter_area.h">
-      <Filter>Header Files\Structure\Data\Map</Filter>
-    </ClInclude>
     <ClInclude Include="includes\Structure\Data\Map\erelia_map.h">
       <Filter>Header Files\Structure\Data\Map</Filter>
     </ClInclude>
@@ -292,15 +247,6 @@
     </ClInclude>
     <ClInclude Include="includes\Structure\File\erelia_player_save_file.h">
       <Filter>Header Files\Structure\File</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Structure\Data\Monster\erelia_monster.h">
-      <Filter>Header Files\Structure\Data\Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Structure\Atlas\erelia_monster_atlas.h">
-      <Filter>Header Files\Structure\Atlas</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\Widget\Screen\Game_battle\erelia_game_battle_screen.h">
-      <Filter>Header Files\Widget\Screen\Game_battle</Filter>
     </ClInclude>
     <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h">
       <Filter>Header Files\Widget\Screen\Game_world</Filter>
@@ -371,6 +317,9 @@
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_wrap_renderer.h">
       <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
     </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_NPC.h">
+      <Filter>Header Files\Structure\Data\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="srcs\main.cpp">
@@ -436,9 +385,6 @@
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_shader_data.cpp">
       <Filter>Source Files\Structure\Data\Map</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Map\erelia_encounter_area.cpp">
-      <Filter>Source Files\Structure\Data\Map</Filter>
-    </ClCompile>
     <ClCompile Include="srcs\Structure\Data\Map\erelia_map.cpp">
       <Filter>Source Files\Structure\Data\Map</Filter>
     </ClCompile>
@@ -447,15 +393,6 @@
     </ClCompile>
     <ClCompile Include="srcs\Structure\File\erelia_player_save_file.cpp">
       <Filter>Source Files\Structure\File</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Monster\erelia_monster.cpp">
-      <Filter>Source Files\Structure\Data\Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Structure\Atlas\erelia_monster_atlas.cpp">
-      <Filter>Source Files\Structure\Atlas</Filter>
-    </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\Game_battle\erelia_game_battle_screen.cpp">
-      <Filter>Source Files\Widget\Screen\Game_battle</Filter>
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\erelia_game_world_screen.cpp">
       <Filter>Source Files\Widget\Screen\Game_world</Filter>
@@ -520,9 +457,6 @@
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_manager.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget\Player</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_area_builder_activity.cpp">
-      <Filter>Source Files\Widget\Screen\Game_world\Widget\Player\Activity</Filter>
-    </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_adventure_activity.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget\Player\Activity</Filter>
     </ClCompile>
@@ -534,6 +468,12 @@
     </ClCompile>
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_wrap_renderer.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_NPC.cpp">
+      <Filter>Source Files\Structure\Data\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Map\erelia_map_motion.cpp">
+      <Filter>Source Files\Structure\Data\Map</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
