@@ -7,11 +7,13 @@ class Entity
 public:
 	enum class Type
 	{
-		Player,
-		NPC,
-		Enemy
+		Player = 0,
+		NPC = 1,
+		Spawner = 2,
+		Enemy = 3
 	};
 protected:
+	jgl::String _name;
 	Type _type;
 	jgl::Long _id;
 	jgl::Bool _is_moving;
@@ -30,18 +32,21 @@ protected:
 
 	void _join_destination();
 public:
-	Entity(Type p_type, jgl::Long p_id);
+	Entity(jgl::String p_name, Type p_type, jgl::Long p_id);
 	virtual void place(jgl::Vector2 p_pos);
 	void move(jgl::Vector2 p_delta);
 
+	void set_name(jgl::String p_name) { _name = p_name; }
 	void set_id(jgl::Long p_id) { _id = p_id; }
 	void set_fly_mode(jgl::Bool p_state) { _is_flying = p_state; }
 	void set_sprite_sheet(jgl::Sprite_sheet* p_sprite_sheet) { _sprite_sheet = p_sprite_sheet; }
 	void set_sprite(jgl::Vector2Int p_sprite) { _sprite = p_sprite; }
 	void set_move_speed(jgl::Ulong p_move_speed) { _move_speed = p_move_speed; }
 
-	void update();
+	virtual void update();
+	void update_pos();
 
+	jgl::String name() { return (_name); }
 	Type type(){return (_type);}
 	jgl::Long id() { return (_id); }
 	jgl::Sprite_sheet* sprite_sheet() { return (_sprite_sheet); }

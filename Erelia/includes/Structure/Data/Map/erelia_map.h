@@ -2,14 +2,55 @@
 
 #include "jgl.h"
 
+#include <set>
 #include "Structure/Data/Map/erelia_chunk.h"
 
 class Map
 {
 private:
+
+	struct AStar_node
+	{
+		jgl::Float distance;
+		jgl::Vector2Int pos;
+		jgl::Vector2Int delta;
+		const AStar_node* parent;
+		jgl::Size_t path_len;
+
+		AStar_node()
+		{
+			distance = -1;
+			pos = 0;
+			delta = 0;
+			parent = nullptr;
+			path_len = 0;
+		}
+		AStar_node(jgl::Float p_distance, jgl::Vector2Int p_pos, jgl::Vector2Int p_delta, const AStar_node* p_parent, jgl::Size_t p_path_len)
+		{
+			distance = p_distance;
+			pos = p_pos;
+			delta = p_delta;
+			parent = p_parent;
+			path_len = p_path_len;
+		}
+
+		bool operator<(const AStar_node& other) const
+		{
+			return distance < other.distance;
+		}
+
+		friend std::ostream& operator<<(std::ostream& os, const AStar_node& value)
+		{
+			os << value.pos;
+			return os;
+		}
+	};
+
 	jgl::Map<jgl::Vector2Int, Chunk*> _chunks;
 
 	void _generate_chunk(Chunk* p_chunk);
+	void _calc_result(const Map::AStar_node* destination, jgl::Array<jgl::Vector2Int>& p_path);
+	const AStar_node* _found_closest_node(jgl::Array<AStar_node>& p_to_calc, jgl::Size_t p_first_index);
 
 public:
 
@@ -44,6 +85,7 @@ public:
 
 	void unbake();
 
-	jgl::Bool can_move(class Entity* p_entity, jgl::Vector2 p_start, jgl::Vector2 p_direction);
-	void find_path(jgl::Array<jgl::Vector2Int>& p_path, jgl::Vector2Int p_source, jgl::Vector2Int p_destination, jgl::Int p_max_length = -1);
+	jgl::Bool can_acces(jgl::Vector2Int p_start, jgl::Vector2Int p_direction);
+	void find_path(jgl::Array<jgl::Vector2Int>& p_path, jgl::Vector2Int p_source, jgl::Vector2Int p_destination, jgl::Int p_max_length = 50);
+	jgl::Array<jgl::Vector2Int> find_path(jgl::Vector2Int p_source, jgl::Vector2Int p_destination, jgl::Int p_max_length = 50);
 };

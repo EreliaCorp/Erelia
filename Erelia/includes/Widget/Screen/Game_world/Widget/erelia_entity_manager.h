@@ -13,8 +13,13 @@ private:
 
 	jgl::Bool _update();
 
+	void _send_entity_data();
+	void _request_entity_info(jgl::Array<jgl::Long>& p_ids);
+
 	void _receive_entity_data(Message& p_msg);
 	void _receive_entity_suppression_command(Message& p_msg);
+	void _receive_entity_info(Message& p_msg);
+	void _receive_request_entity_info(Connection* p_client, Message& p_msg);
 
 	void _initialize_server();
 	void _initialize_client();

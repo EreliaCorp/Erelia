@@ -26,6 +26,10 @@ public:
 	static const jgl::String chunk_sub_path;
 	static const jgl::String chunk_extension;
 
+	static const jgl::String entity_name_file;
+	static const jgl::String entity_sub_path;
+	static const jgl::String entity_extension;
+
 	static const jgl::String default_language_file;
 	static const jgl::String language_folder_path;
 	static const jgl::String language_file_extension;

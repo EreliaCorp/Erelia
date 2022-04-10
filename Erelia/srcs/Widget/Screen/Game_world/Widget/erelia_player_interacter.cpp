@@ -109,6 +109,15 @@ jgl::Bool Player_interacter::_update()
 		Console_manager::instance()->send_global_message("[Systm.] : Saving server's map completed");
 	}
 
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::H) == jgl::Input_status::Release)
+	{
+		jgl::Array<jgl::Vector2Int> path;
+
+		Engine::instance()->map()->find_path(path, Engine::instance()->player()->pos(), convert_screen_to_world(jgl::Application::active_application()->mouse().pos()), 50);
+
+		jgl::cout << "Path : " << path << jgl::endl;
+	}
+
 	return (false);
 }
 

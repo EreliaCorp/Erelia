@@ -19,7 +19,7 @@ public:
 			jgl::Int range;
 			jgl::Array<jgl::Vector2Int> path;
 
-			jgl::Vector2Int calc_destination()
+			jgl::Vector2Int generate_destination()
 			{
 				return (base + jgl::Vector2(jgl::generate_nbr(-range, range), jgl::generate_nbr(-range, range)));
 			}
@@ -33,7 +33,7 @@ private:
 	Movement_info _movement_info;
 
 public:
-	NPC(Entity::Type p_type = Entity::Type::NPC);
+	NPC(jgl::String p_name, jgl::Long p_id);
 
 	void place(jgl::Vector2 p_pos);
 

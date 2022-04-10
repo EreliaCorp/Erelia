@@ -4,6 +4,7 @@
 
 #include "Structure/Data/Map/erelia_map.h"
 #include "Structure/Data/Entity/erelia_player.h"
+#include "Structure/Data/Entity/erelia_NPC.h"
 
 class Engine : public jgl::Singleton<Engine>
 {
@@ -33,7 +34,7 @@ public:
 	jgl::Map<jgl::String, jgl::Vector2Int>& wraps() { return (_wraps); }
 	jgl::Map<jgl::Long, Entity*>& entities() { return (_entities); }
 
-	void initialize_player(jgl::Long p_id);
+	void initialize_player(jgl::String p_name, jgl::Long p_id);
 	Entity* entity(jgl::Long p_id);
 	void add_entity(Entity* p_entity);
 	void remove_entity(jgl::Long p_id);
@@ -56,4 +57,7 @@ public:
 
 	void save_teleport();
 	void load_teleport();
+
+	void save_entity();
+	void load_entity();
 };

@@ -18,6 +18,10 @@ const jgl::String Path_atlas::chunk_name_file = "chunk";
 const jgl::String Path_atlas::chunk_sub_path = "/chunk/";
 const jgl::String Path_atlas::chunk_extension = ".chk";
 
+const jgl::String Path_atlas::entity_name_file = "entity";
+const jgl::String Path_atlas::entity_sub_path = "/entity/";
+const jgl::String Path_atlas::entity_extension = ".ety";
+
 const jgl::String Path_atlas::default_language_file = "ressource/language/english.lang";
 const jgl::String Path_atlas::language_folder_path = "ressource/language/";
 const jgl::String Path_atlas::language_file_extension = ".lang";

@@ -24,14 +24,6 @@ void Main_application::Activity::Loading_mode::execute()
 	{
 		Engine::instance()->load();
 
-		Entity* tmp_entity = new Entity(Entity::Type::NPC, 0);
-		tmp_entity->place(6);
-		Engine::instance()->add_entity(tmp_entity);
-
-		tmp_entity = new Entity(Entity::Type::Enemy, 1);
-		tmp_entity->place(8);
-		Engine::instance()->add_entity(tmp_entity);
-
 		Account_atlas::instanciate();
 		Account_atlas::instance()->load();
 	}

@@ -16,6 +16,8 @@ enum Server_message
 	Chunk_modification,
 	Player_movement,
 	Entity_data,
+	Request_entity_info,
+	Entity_info,
 	Entity_suppression,
 	Command_input,
 	Console_message,

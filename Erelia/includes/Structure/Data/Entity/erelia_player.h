@@ -7,5 +7,5 @@ class Player : public Entity
 private :
 
 public:
-	Player();
+	Player(jgl::String p_name);
 };

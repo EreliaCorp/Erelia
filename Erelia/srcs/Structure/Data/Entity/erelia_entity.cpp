@@ -1,7 +1,8 @@
 #include "Structure/Data/Entity/erelia_entity.h"
 
-Entity::Entity(Type p_type, jgl::Long p_id)
+Entity::Entity(jgl::String p_name, Type p_type, jgl::Long p_id)
 {
+	_name = p_name;
 	_type = p_type;
 	_sprite_sheet = nullptr;
 	_sprite = 0;
@@ -24,6 +25,11 @@ void Entity::_join_destination()
 }
 
 void Entity::update()
+{
+
+}
+
+void Entity::update_pos()
 {
 	jgl::Ulong time = jgl::Application::active_application()->time();
 

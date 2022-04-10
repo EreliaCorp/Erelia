@@ -4,18 +4,18 @@
 
 Engine::Engine()
 {
-	_player = new Player();
+	_player = new Player("Player");
 	_map = new Map();
 }
 
 void Engine::_update_entity()
 {
-	for (auto tmp : Engine::instance()->entities())
+	for (auto tmp : _entities)
 	{
 		if (tmp.second->is_moving() == true)
 		{
-			tmp.second->update();
-
+			tmp.second->update_pos();
+			 
 			if (tmp.second->is_moving() == false)
 			{
 				jgl::Long teleporter_id = Engine::instance()->map()->teleporter(tmp.second->destination());
@@ -34,15 +34,7 @@ void Engine::_update_NPC()
 {
 	for (jgl::Size_t i = 0; i < _NPC_entities.size(); i++)
 	{
-		Entity* tmp_entity = _NPC_entities[i];
-		if (tmp_entity->type() == Entity::Type::NPC && tmp_entity->is_moving() == false && Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), jgl::Vector2(1, 1)) == true)
-		{
-			tmp_entity->move(jgl::Vector2(1, 1));
-		}
-		else if (tmp_entity->type() == Entity::Type::Enemy && tmp_entity->is_moving() == false && Engine::instance()->map()->can_move(tmp_entity, tmp_entity->pos(), jgl::Vector2(0, 1)) == true)
-		{
-			tmp_entity->move(jgl::Vector2(0, 1));
-		}
+		_NPC_entities[i]->update();
 	}
 }
 
@@ -53,8 +45,9 @@ void Engine::update()
 	_update_entity();
 }
 
-void Engine::initialize_player(jgl::Long p_id)
+void Engine::initialize_player(jgl::String p_name, jgl::Long p_id)
 {
+	_player->set_name(p_name);
 	_player->set_id(p_id);
 	add_entity(_player);
 }
@@ -71,7 +64,7 @@ void Engine::add_entity(Entity* p_entity)
 	if (_entities[p_entity->id()] != nullptr)
 		delete _entities[p_entity->id()];
 	_entities[p_entity->id()] = p_entity;
-	if (p_entity->type() != Entity::Type::Player)
+	if (p_entity->type() == Entity::Type::NPC || p_entity->type() == Entity::Type::Spawner)
 		_NPC_entities.push_back(p_entity);
 }
 
@@ -79,8 +72,9 @@ void Engine::remove_entity(jgl::Long p_id)
 {
 	if (_entities.count(p_id) != 0)
 	{
-		Entity* tmp_entity = _entities[p_id];
-		_NPC_entities.erase(_NPC_entities.find(tmp_entity));
+		auto tmp_entity = _NPC_entities.find(_entities[p_id]);
+		if (tmp_entity != _NPC_entities.end())
+			_NPC_entities.erase(tmp_entity);
 	}
 	if (_player->id() == p_id)
 		_player = nullptr;
@@ -124,6 +118,7 @@ void Engine::save()
 	save_map();
 	save_wrap();
 	save_teleport();
+	save_entity();
 }
 
 void Engine::load()
@@ -131,6 +126,7 @@ void Engine::load()
 	load_map();
 	load_wrap();
 	load_teleport();
+	load_entity();
 }
 
 void Engine::save_map()
@@ -205,5 +201,45 @@ void Engine::load_teleport()
 
 		THROW_INFORMATION("Placing new teleporter [" + jgl::itoa(id) + "] at destination " + pos.text());
 		Engine::instance()->add_teleporter(id, pos);
+	}
+}
+
+void Engine::save_entity()
+{
+	for (jgl::Size_t i = 0; i < _NPC_entities.size(); i++)
+	{
+		jgl::File myfile = jgl::open_file(Path_atlas::world_path + Path_atlas::entity_sub_path + _NPC_entities[i]->name() + jgl::itoa(i) + Path_atlas::entity_extension, jgl::File_mode::out);
+	}
+}
+
+void Engine::load_entity()
+{
+	jgl::Array<jgl::String> files_path = jgl::list_files(Path_atlas::world_path + Path_atlas::entity_sub_path, Path_atlas::entity_extension);
+	jgl::Array<jgl::String> tab;
+
+	for (jgl::Size_t i = 0; i < files_path.size(); i++)
+	{
+		jgl::File file = jgl::open_file(files_path[i], jgl::File_mode::in);
+
+		jgl::String name = jgl::get_str(file);
+		Entity::Type type = static_cast<Entity::Type>(jgl::stoi(jgl::get_str(file)));
+
+		tab = jgl::get_strsplit(file, ";", 2);
+		jgl::Vector2Int pos = jgl::Vector2Int(jgl::stoi(tab[0]), jgl::stoi(tab[1]));
+
+		if (type == Entity::Type::NPC)
+		{
+			NPC* new_npc = new NPC(name, request_id());
+			new_npc->place(pos);
+		}
+		else if (type == Entity::Type::Spawner)
+		{
+			Entity* new_entity = new Entity(name, type, request_id());
+			new_entity->place(pos);
+		}
+		else
+		{
+			jgl::cout << "Error in file [" << files_path[i] << "]" << jgl::endl;
+		}
 	}
 }
