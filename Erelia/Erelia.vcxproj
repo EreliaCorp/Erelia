@@ -184,6 +184,8 @@
     <None Include="ressource\configuration\config.uiconf" />
     <None Include="ressource\language\english.lang" />
     <None Include="ressource\language\french.lang" />
+    <None Include="ressource\world\entity\NPC.ety" />
+    <None Include="ressource\world\entity\Spanwer.ety" />
     <None Include="ressource\world\player\Hyarius2.acc" />
     <None Include="ressource\world\player\Hywa.acc" />
   </ItemGroup>

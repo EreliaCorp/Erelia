@@ -14,7 +14,6 @@ void NPC::place(jgl::Vector2 p_pos)
 
 void NPC::update()
 {
-	jgl::cout << "Static NPC [" << _id << "]" << jgl::endl;
 	if (_movement_info.pattern == NPC::Movement_info::Pattern::Static)
 		return;
 

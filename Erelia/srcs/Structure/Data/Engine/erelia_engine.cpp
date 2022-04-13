@@ -231,11 +231,13 @@ void Engine::load_entity()
 		{
 			NPC* new_npc = new NPC(name, request_id());
 			new_npc->place(pos);
+			add_entity(new_npc);
 		}
 		else if (type == Entity::Type::Spawner)
 		{
 			Entity* new_entity = new Entity(name, type, request_id());
 			new_entity->place(pos);
+			add_entity(new_entity);
 		}
 		else
 		{
