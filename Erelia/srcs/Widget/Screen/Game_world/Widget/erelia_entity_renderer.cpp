@@ -11,13 +11,22 @@ void Entity_renderer::_on_geometry_change()
 
 void Entity_renderer::_render()
 {
+	jgl::Bool to_print = false;
 	for (auto tmp : Engine::instance()->entities())
 	{
 		if (tmp.second != nullptr)
 		{
-			jgl::cout << "Entity [" << tmp.first << "] : " << tmp.second->sprite_sheet() << jgl::endl;
+			if (tmp.first == 1)
+			{
+				static jgl::Vector2 last_pos[3] = {-1, -1, -1};
+				if (last_pos[tmp.first] != tmp.second->pos())
+				{
+					to_print = true;
+					last_pos[tmp.first] = tmp.second->pos();
+				}
+			}
 			jgl::Float depth = _depth + (tmp.second->is_flying() == true ? Chunk::C_LAYER_LENGTH + 1 : Chunk::C_LAYER_LENGTH / 2 + 0.5f);
-			jgl::cout << "Entity [" << tmp.first << "] : " << tmp.second->sprite_sheet() << jgl::endl;
+
 			if (tmp.second->sprite_sheet() != nullptr)
 				tmp.second->sprite_sheet()->draw(tmp.second->sprite(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth, 1.0f);
 			else
@@ -32,6 +41,8 @@ void Entity_renderer::_render()
 
 		}
 	}
+	if (to_print == true)
+		jgl::cout << "Render entities" << jgl::endl;
 	nb_render++;
 }
 

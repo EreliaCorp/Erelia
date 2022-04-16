@@ -9,12 +9,15 @@ class Entity_manager : public Abstract_manager, public jgl::Updater_widget
 private:
 	jgl::Timer _entity_updater_timer;
 
+	jgl::Array<jgl::Long> _entity_to_ask;
+	jgl::Map<jgl::Long, jgl::Bool> _entity_received;
+
 	void _on_geometry_change();
 
 	jgl::Bool _update();
 
 	void _send_entity_data();
-	void _request_entity_info(jgl::Array<jgl::Long>& p_ids);
+	void _request_entity_info();
 
 	void _receive_entity_data(Message& p_msg);
 	void _receive_entity_suppression_command(Message& p_msg);

@@ -47,14 +47,14 @@ void Entity_manager::_send_entity_data()
 	Server_manager::server()->send_to_all(msg);
 }
 
-void Entity_manager::_request_entity_info(jgl::Array<jgl::Long>& p_ids)
+void Entity_manager::_request_entity_info()
 {
 	static Message msg(Server_message::Request_entity_info);
 	msg.clear();
 
-	for (jgl::Size_t i = 0; i < p_ids.size(); i++)
+	for (jgl::Size_t i = 0; i < _entity_to_ask.size(); i++)
 	{
-		msg << p_ids[i];
+		msg << _entity_to_ask[i];
 	}
 
 	Client_manager::client()->send(msg);
@@ -106,6 +106,7 @@ void Entity_manager::_receive_entity_info(Message& p_msg)
 		new_entity->place(pos);
 
 		Engine::instance()->add_entity(new_entity);
+		_entity_received[id] = false;
 	}
 }
 
@@ -113,8 +114,7 @@ void Entity_manager::_receive_entity_data(Message& p_msg)
 {
 	if (Server_manager::instance() == nullptr)
 	{
-		static jgl::Array<jgl::Long> entity_to_ask;
-		entity_to_ask.clear();
+		_entity_to_ask.clear();
 
 		while (p_msg.empty() == false)
 		{
@@ -126,21 +126,21 @@ void Entity_manager::_receive_entity_data(Message& p_msg)
 
 			Entity* tmp_entity = Engine::instance()->entity(id);
 
-
 			if (tmp_entity != nullptr && tmp_entity->pos() != pos)
 			{
 				tmp_entity->place(pos);
-				jgl::cout << "Place entity [" << id << "] at pos " << pos << jgl::endl;
+				jgl::cout << "Update to pos : " << tmp_entity->pos() << jgl::endl;
 			}
-			else
+			else if (tmp_entity == nullptr && _entity_received[id] == false)
 			{
-				entity_to_ask.push_back(id);
+				_entity_to_ask.push_back(id);
+				_entity_received[id] = true;
 			}
 		}
 
-		if (entity_to_ask.size() != 0)
+		if (_entity_to_ask.size() != 0)
 		{
-			_request_entity_info(entity_to_ask);
+			_request_entity_info();
 		}
 		nb_pos_update++;
 	}
@@ -177,7 +177,7 @@ void Entity_manager::_initialize_client()
 }
 
 Entity_manager::Entity_manager(jgl::Widget* p_parent) : Abstract_manager(), jgl::Updater_widget(p_parent),
-	_entity_updater_timer(4)
+	_entity_updater_timer(1000 / 60)
 {
 	_initiate();
 }
