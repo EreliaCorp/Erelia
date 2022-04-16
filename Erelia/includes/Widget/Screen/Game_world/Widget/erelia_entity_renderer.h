@@ -12,4 +12,6 @@ private:
 
 public:
 	Entity_renderer(jgl::Widget* p_parent = nullptr);
+
+	static jgl::Size_t nb_render;
 };

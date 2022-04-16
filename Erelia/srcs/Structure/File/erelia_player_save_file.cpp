@@ -29,7 +29,7 @@ void Player_file::save(jgl::String p_path, Account* p_account)
 	file << p_account->username << std::endl;
 	file << p_account->password << std::endl;
 
-	file << p_account->pos.x << "/" << p_account->pos.y << std::endl;
+	file << jgl::floor(p_account->pos.x) << "/" << jgl::floor(p_account->pos.y) << std::endl;
 
 	file.close();
 }

@@ -15,6 +15,7 @@ enum Server_message
 	Chunk_data,
 	Chunk_modification,
 	Player_movement,
+	Player_movement_treated,
 	Entity_data,
 	Request_entity_info,
 	Entity_info,

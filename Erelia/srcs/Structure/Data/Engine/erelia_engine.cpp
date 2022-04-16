@@ -19,7 +19,7 @@ void Engine::_update_entity()
 			if (tmp.second->is_moving() == false)
 			{
 				jgl::Long teleporter_id = Engine::instance()->map()->teleporter(tmp.second->destination());
-				if (teleporter_id != -1)
+				if (teleporter_id >= 0)
 				{
 					jgl::Vector2 delta = tmp.second->movement();
 					tmp.second->place(Engine::instance()->teleporter(teleporter_id));
@@ -62,7 +62,9 @@ Entity* Engine::entity(jgl::Long p_id)
 void Engine::add_entity(Entity* p_entity)
 {
 	if (_entities[p_entity->id()] != nullptr)
+	{
 		delete _entities[p_entity->id()];
+	}
 	_entities[p_entity->id()] = p_entity;
 	if (p_entity->type() == Entity::Type::NPC || p_entity->type() == Entity::Type::Spawner)
 		_NPC_entities.push_back(p_entity);
@@ -219,6 +221,7 @@ void Engine::load_entity()
 
 	for (jgl::Size_t i = 0; i < files_path.size(); i++)
 	{
+		jgl::cout << "Loading file [" << files_path[i] << "]" << jgl::endl;
 		jgl::File file = jgl::open_file(files_path[i], jgl::File_mode::in);
 
 		jgl::String name = jgl::get_str(file);

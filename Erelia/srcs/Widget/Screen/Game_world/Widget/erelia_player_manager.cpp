@@ -17,11 +17,22 @@ void Player_manager::_send_motion_command(jgl::Vector2Int p_delta)
 	msg << Engine::instance()->player()->id();
 	msg << p_delta;
 
+	_motion_command_send = true;
+
 	Client_manager::client()->send(msg);
+}
+
+void Player_manager::_receive_movement_treated(Message& p_msg)
+{
+	_motion_command_send = false;
 }
 
 void Player_manager::_treat_player_motion(Connection* p_client, Message& p_msg)
 {
+	static Message motion_reception_message(Server_message::Player_movement_treated);
+	motion_reception_message.clear();
+	Server_manager::server()->send_to(p_client, motion_reception_message);
+
 	jgl::Long id;
 	jgl::Vector2Int delta;
 
@@ -63,17 +74,20 @@ jgl::Bool Player_manager::_update()
 	if (Engine::instance() == nullptr || Engine::instance()->player() == nullptr || Console_manager::instance()->console_active() == true)
 		return false;
 
-	jgl::Key keys[4] = { jgl::Key::Z, jgl::Key::Q, jgl::Key::S, jgl::Key::D };
-	jgl::Vector2Int delta_value[4] = { jgl::Vector2(0, -1) , jgl::Vector2(-1, 0) , jgl::Vector2(0, 1) , jgl::Vector2(1, 0) };
-	jgl::Vector2Int delta_pos = 0;
-
-	for (jgl::Size_t i = 0; i < 4; i++)
-		if (jgl::Application::active_application()->keyboard().get_key(keys[i]) == jgl::Input_status::Down)
-			delta_pos += delta_value[i];
-
-	if (delta_pos != 0 && Engine::instance()->player()->is_moving() == false)
+	if (_motion_command_send == false)
 	{
-		_send_motion_command(delta_pos);
+		jgl::Key keys[4] = { jgl::Key::Z, jgl::Key::Q, jgl::Key::S, jgl::Key::D };
+		jgl::Vector2Int delta_value[4] = { jgl::Vector2(0, -1) , jgl::Vector2(-1, 0) , jgl::Vector2(0, 1) , jgl::Vector2(1, 0) };
+		jgl::Vector2Int delta_pos = 0;
+
+		for (jgl::Size_t i = 0; i < 4; i++)
+			if (jgl::Application::active_application()->keyboard().get_key(keys[i]) == jgl::Input_status::Down)
+				delta_pos += delta_value[i];
+
+		if (delta_pos != 0 && Engine::instance()->player()->is_moving() == false)
+		{
+			_send_motion_command(delta_pos);
+		}
 	}
 
 	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Key_1) == jgl::Input_status::Release)
@@ -102,7 +116,9 @@ jgl::Bool Player_manager::_update()
 
 void Player_manager::_initialize_client()
 {
-
+	Client_manager::client()->add_activity(Server_message::Player_movement_treated, CLIENT_ACTIVITY{
+			_receive_movement_treated(p_msg);
+		});
 }
 
 void Player_manager::_initialize_server()
@@ -114,5 +130,6 @@ void Player_manager::_initialize_server()
 
 Player_manager::Player_manager(jgl::Widget* p_parent) : jgl::Updater_widget(p_parent)
 {
+	_motion_command_send = false;
 	_initiate();
 }

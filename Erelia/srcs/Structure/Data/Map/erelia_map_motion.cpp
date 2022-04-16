@@ -57,9 +57,9 @@ jgl::Bool Map::can_acces(jgl::Vector2Int p_start, jgl::Vector2Int p_direction)
 			value = Node::OBSTACLE;
 		if (i == 0 && destination_pos_value == -1)
 			destination_value = Node::OBSTACLE;
-		if (pos_value != -1)
+		if (pos_value >= 0)
 			value &= g_node_array[pos_value]->obstacle;
-		if (destination_pos_value != -1)
+		if (destination_pos_value >= 0)
 			destination_value &= g_node_array[destination_pos_value]->obstacle;
 	}
 

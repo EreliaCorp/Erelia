@@ -5,6 +5,9 @@
 #include "network/erelia_client_manager.h"
 #include "network/erelia_server_manager.h"
 
+jgl::Size_t Map_manager::nb_render = 0;
+jgl::Size_t Map_manager::nb_update = 0;
+
 void Map_manager::_on_geometry_change()
 {
 	if (Engine::instance() != nullptr && Engine::instance()->map() != nullptr)
@@ -45,35 +48,42 @@ void Map_manager::_render()
 			}
 		}
 	}
+	nb_render++;
 }
 
 jgl::Bool Map_manager::_update()
 {
 	if (Engine::instance() == nullptr || Engine::instance()->map() == nullptr)
 		return false;
-	Map* map = Engine::instance()->map();
-
-	jgl::Vector2Int start = convert_screen_to_chunk(0);
-	jgl::Vector2Int end = convert_screen_to_chunk(_area);
-
-	_asked_chunk_list.clear();
-
-	for (jgl::Int x = start.x; x <= end.x; x++)
+	if (_update_timer.timeout() == true)
 	{
-		for (jgl::Int y = start.y; y <= end.y; y++)
-		{
-			jgl::Vector2Int chunk_pos = jgl::Vector2Int(x, y);
+		Map* map = Engine::instance()->map();
 
-			if (map->chunk(chunk_pos) == nullptr && _asked_chunks[chunk_pos] == false)
+		jgl::Vector2Int start = convert_screen_to_chunk(0);
+		jgl::Vector2Int end = convert_screen_to_chunk(_area);
+
+		_asked_chunk_list.clear();
+
+		for (jgl::Int x = start.x; x <= end.x; x++)
+		{
+			for (jgl::Int y = start.y; y <= end.y; y++)
 			{
-				_asked_chunks[chunk_pos] = true;
-				_asked_chunk_list.push_back(chunk_pos);
+				jgl::Vector2Int chunk_pos = jgl::Vector2Int(x, y);
+
+				if (map->chunk(chunk_pos) == nullptr && _asked_chunks[chunk_pos] == false)
+				{
+					_asked_chunks[chunk_pos] = true;
+					_asked_chunk_list.push_back(chunk_pos);
+				}
 			}
 		}
-	}
 
-	if (_asked_chunk_list.size() != 0)
-		_request_chunk_data();
+		if (_asked_chunk_list.size() != 0)
+			_request_chunk_data();
+
+		_update_timer.start();
+		nb_update++;
+	}
 
 	return (false);
 }
@@ -276,7 +286,8 @@ void Map_manager::_initialize_server()
 		});
 }
 
-Map_manager::Map_manager(jgl::Widget* p_parent) : Overworld_widget(p_parent)
+Map_manager::Map_manager(jgl::Widget* p_parent) : Overworld_widget(p_parent),
+	_update_timer(1)
 {
 	_initiate();
 }

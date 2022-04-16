@@ -27,4 +27,7 @@ private:
 public:
 	Entity_manager(jgl::Widget* p_parent = nullptr);
 	//void receive_entity_data(Message& p_msg);
+
+	static jgl::Size_t nb_update;
+	static jgl::Size_t nb_pos_update;
 };

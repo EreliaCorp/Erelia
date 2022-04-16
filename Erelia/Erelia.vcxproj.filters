@@ -177,18 +177,6 @@
     <None Include="ressource\configuration\config.uiconf">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ressource\world\player\Hyarius2.acc">
-      <Filter>Resource Files\World\Player</Filter>
-    </None>
-    <None Include="ressource\world\player\Hywa.acc">
-      <Filter>Resource Files\World\Player</Filter>
-    </None>
-    <None Include="ressource\world\entity\NPC.ety">
-      <Filter>Resource Files\World\Entity</Filter>
-    </None>
-    <None Include="ressource\world\entity\Spanwer.ety">
-      <Filter>Resource Files\World\Entity</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\erelia.h">

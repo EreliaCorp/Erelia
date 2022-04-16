@@ -2,6 +2,9 @@
 #include "structure/Data/Engine/erelia_engine.h"
 #include "structure/Atlas/erelia_account_atlas.h"
 
+jgl::Size_t Entity_manager::nb_update = 0;
+jgl::Size_t Entity_manager::nb_pos_update = 0;
+
 void Entity_manager::_on_geometry_change()
 {
 
@@ -13,13 +16,15 @@ jgl::Bool Entity_manager::_update()
 	{
 		if (_entity_updater_timer.timeout() == true)
 		{
+			_entity_updater_timer.start();
+
 			Engine::instance()->update();
 
 			_send_entity_data();
 
-			_entity_updater_timer.start();
-
 			Account_atlas::instance()->actualize_player_data();
+	
+			nb_update++;
 		}
 	}
 
@@ -121,9 +126,11 @@ void Entity_manager::_receive_entity_data(Message& p_msg)
 
 			Entity* tmp_entity = Engine::instance()->entity(id);
 
-			if (tmp_entity != nullptr)
+
+			if (tmp_entity != nullptr && tmp_entity->pos() != pos)
 			{
 				tmp_entity->place(pos);
+				jgl::cout << "Place entity [" << id << "] at pos " << pos << jgl::endl;
 			}
 			else
 			{
@@ -135,6 +142,7 @@ void Entity_manager::_receive_entity_data(Message& p_msg)
 		{
 			_request_entity_info(entity_to_ask);
 		}
+		nb_pos_update++;
 	}
 }
 
