@@ -28,7 +28,7 @@ jgl::Bool Abstract_console_parser::_update()
 	return (false);
 }
 
-void Abstract_console_parser::_send_ping_request(Connection* p_client)
+void Abstract_console_parser::_treat_ping_request(Connection* p_client)
 {
 	static Message result(Server_message::Ping);
 

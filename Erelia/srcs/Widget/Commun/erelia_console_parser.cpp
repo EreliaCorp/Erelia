@@ -38,6 +38,8 @@ jgl::String Console_parser::_parse_block_composition(jgl::String p_entry)
 
 	return (result);
 }
+#include <chrono>
+#include <thread>
 
 void Console_parser::_parse_command(Command& p_command)
 {
@@ -90,7 +92,7 @@ void Console_parser::_parse_command(Command& p_command)
 		}
 		else if (tab[0] == "/ping")
 		{
-			_send_ping_request(p_command.sender);
+			_treat_ping_request(p_command.sender);
 		}
 		else if (tab[0] == "/brush_size")
 		{

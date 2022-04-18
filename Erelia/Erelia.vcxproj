@@ -235,7 +235,6 @@
     <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_editor_inventory.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_entity_manager.h" />
-    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_entity_renderer.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_operation.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_manager.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_interacter.h" />
@@ -287,7 +286,6 @@
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_editor_inventory.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_editor_inventory_pages_content.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_entity_manager.cpp" />
-    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_entity_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_operation.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_manager.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter.cpp" />

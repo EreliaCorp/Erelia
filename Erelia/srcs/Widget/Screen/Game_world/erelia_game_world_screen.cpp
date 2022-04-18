@@ -8,7 +8,6 @@ void Game_world_screen::_on_geometry_change()
 	_player_manager->set_geometry(0, _area);
 	_player_interacter->set_geometry(0, _area);
 	_entity_manager->set_geometry(0, _area);
-	_entity_renderer->set_geometry(0, _area);
 	_wrap_renderer->set_geometry(0, _area);
 }
 
@@ -39,9 +38,6 @@ Game_world_screen::Game_world_screen(jgl::Widget* p_parent) : Abstract_screen(p_
 
 	_entity_manager = new Entity_manager(this);
 	_entity_manager->activate();
-
-	_entity_renderer = new Entity_renderer(this);
-	_entity_renderer->activate();
 	
 	_wrap_renderer = new Wrap_renderer(this);
 	_wrap_renderer->activate();

@@ -120,6 +120,10 @@ void Main_application::_on_geometry_change()
 
 jgl::Bool Main_application::_update()
 {
+	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::F3) == jgl::Input_status::Release)
+	{
+		Debug_screen::instance()->set_active(!(Debug_screen::instance()->active()));
+	}
 	State_machine::instance()->update();
 	return (false);
 }

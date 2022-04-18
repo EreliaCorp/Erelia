@@ -2,12 +2,38 @@
 #include "structure/Data/Engine/erelia_engine.h"
 #include "structure/Atlas/erelia_account_atlas.h"
 
+jgl::Size_t Entity_manager::nb_render = 0;
 jgl::Size_t Entity_manager::nb_update = 0;
 jgl::Size_t Entity_manager::nb_pos_update = 0;
 
 void Entity_manager::_on_geometry_change()
 {
 
+}
+
+void Entity_manager::_render()
+{
+	for (auto tmp : Engine::instance()->entities())
+	{
+		if (tmp.second != nullptr)
+		{
+			jgl::Float depth = _depth + (tmp.second->is_flying() == true ? Chunk::C_LAYER_LENGTH + 1 : Chunk::C_LAYER_LENGTH / 2 + 0.5f);
+
+			if (tmp.second->sprite_sheet() != nullptr)
+				tmp.second->sprite_sheet()->draw(tmp.second->sprite(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth, 1.0f);
+			else
+			{
+				if (tmp.second->type() == Entity::Type::Player)
+					jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+				else if (tmp.second->type() == Entity::Type::NPC)
+					jgl::draw_rectangle_color(jgl::Color::green(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+				else if (tmp.second->type() == Entity::Type::Enemy)
+					jgl::draw_rectangle_color(jgl::Color::red(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
+			}
+
+		}
+	}
+	nb_render++;
 }
 
 jgl::Bool Entity_manager::_update()
@@ -129,7 +155,6 @@ void Entity_manager::_receive_entity_data(Message& p_msg)
 			if (tmp_entity != nullptr && tmp_entity->pos() != pos)
 			{
 				tmp_entity->place(pos);
-				jgl::cout << "Update to pos : " << tmp_entity->pos() << jgl::endl;
 			}
 			else if (tmp_entity == nullptr && _entity_received[id] == false)
 			{
@@ -172,11 +197,10 @@ void Entity_manager::_initialize_client()
 		});
 	Client_manager::client()->add_activity(Server_message::Entity_suppression, CLIENT_ACTIVITY{
 			_receive_entity_suppression_command(p_msg);
-		});
-	
+		});	
 }
 
-Entity_manager::Entity_manager(jgl::Widget* p_parent) : Abstract_manager(), jgl::Updater_widget(p_parent),
+Entity_manager::Entity_manager(jgl::Widget* p_parent) : Abstract_manager(), Overworld_widget(p_parent),
 	_entity_updater_timer(1000 / 60)
 {
 	_initiate();

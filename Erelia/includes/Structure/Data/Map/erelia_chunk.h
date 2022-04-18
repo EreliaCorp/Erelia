@@ -31,7 +31,7 @@ private:
 		void generate();
 		void cast(jgl::Vector3 p_offset, jgl::Int p_animation_state, jgl::Size_t p_index);
 	};
-
+	std::mutex _mutex;
 	Shader_data _shader_data;
 
 	jgl::Vector2Int _pos;
@@ -65,6 +65,8 @@ public:
 
 public:
 	Chunk(jgl::Vector2Int p_pos = 0);
+
+	std::mutex& mutex() { return (_mutex); }
 
 	void save(jgl::String p_folder_path);
 	void load(jgl::String p_path);

@@ -37,14 +37,14 @@ void Map_manager::_render()
 
 			if (tmp_chunk != nullptr)
 			{
-				_map_mutex.lock();
+				
 				if (tmp_chunk->baked() == false)
 					tmp_chunk->bake(map, true);
 
 				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
 				if (Game_world_screen::Publisher::instance()->context()->area_mode == true)
 					tmp_chunk->render_area(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
-				_map_mutex.unlock();
+				
 			}
 		}
 	}
@@ -97,11 +97,14 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 		p_msg >> chunk_pos;
 
 		Chunk* result = new Chunk(chunk_pos);
+
+		result->mutex().lock();
+
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->teleporter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 
+		result->mutex().unlock();
 
-		_map_mutex.lock();
 		Engine::instance()->map()->add_chunk(result);
 		_asked_chunks[result->pos()] = false;
 
@@ -114,7 +117,7 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 					tmp_chunk->unbake();
 			}
 
-		_map_mutex.unlock();
+		
 	}
 }
 
@@ -144,8 +147,10 @@ void Map_manager::_treat_request_chunk_data(Connection* p_client, Message& p_msg
 		Chunk* tmp_chunk = Engine::instance()->map()->request_chunk(chunk_pos);
 
 		result << chunk_pos;
+		tmp_chunk->mutex().lock();
 		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
 		result.add_in_array(reinterpret_cast<jgl::Uchar*>(tmp_chunk->teleporter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
+		tmp_chunk->mutex().unlock();
 	}
 
 	p_client->send(result);

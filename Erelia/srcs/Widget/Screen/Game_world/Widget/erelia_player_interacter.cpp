@@ -24,7 +24,7 @@ void Player_interacter::_render()
 
 		jgl::draw_rectangle_color(jgl::Color(255, 255, 255, 120), anchor, size, _depth + 10);
 	}
-	if (_editor_inventory->selected_item() != nullptr && _editor_inventory->selected_item()->type == Item_type::Flag)
+	else if (_editor_inventory->selected_item() != nullptr && _editor_inventory->selected_item()->type == Item_type::Flag)
 	{
 		for (auto tmp : Flag_item::pos)
 		{

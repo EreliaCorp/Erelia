@@ -2,7 +2,6 @@
 #include "network/erelia_client_manager.h"
 #include "widget/Screen/Game_world/Widget/erelia_map_manager.h"
 #include "widget/Screen/Game_world/Widget/erelia_entity_manager.h"
-#include "widget/Screen/Game_world/Widget/erelia_entity_renderer.h"
 
 void Debug_screen::set_text(jgl::Size_t line, jgl::Size_t row, jgl::String p_text)
 {
@@ -56,15 +55,14 @@ jgl::Bool Debug_screen::_update()
 	{
 		_lines[1][0]->set_text("Map manager : Render : " + jgl::itoa(Map_manager::nb_render));
 		_lines[1][1]->set_text("Map manager : Update : " + jgl::itoa(Map_manager::nb_update));
-		_lines[1][2]->set_text("Entity renderer : Render : " + jgl::itoa(Entity_renderer::nb_render));
+		_lines[1][2]->set_text("Entity renderer : Render : " + jgl::itoa(Entity_manager::nb_render));
 		_lines[1][3]->set_text("Entity manager : Update : " + jgl::itoa(Entity_manager::nb_update));
 		_lines[1][4]->set_text("Entity manager : Pos Update : " + jgl::itoa(Entity_manager::nb_pos_update));
 
 		Map_manager::nb_render = 0;
 		Map_manager::nb_update = 0;
 
-		Entity_renderer::nb_render = 0;
-
+		Entity_manager::nb_render = 0;
 		Entity_manager::nb_update = 0;
 		Entity_manager::nb_pos_update = 0;
 

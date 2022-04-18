@@ -27,14 +27,19 @@ Chunk::Chunk(jgl::Vector2Int p_pos)
 
 void Chunk::save(jgl::String p_folder_path)
 {
+	_mutex.lock();
+	
 	jgl::File file = jgl::open_file(compose_chunk_file_name(p_folder_path, _pos), jgl::File_mode::out_binary);
 
 	file.write(reinterpret_cast<char*>(_content), sizeof(_content));
 	file.write(reinterpret_cast<char*>(_teleporter), sizeof(_teleporter));
+	
+	_mutex.unlock();
 }
 
 void Chunk::load(jgl::String p_path)
 {
+	_mutex.lock();
 	jgl::File file = jgl::open_file(p_path, jgl::File_mode::in_binary);
 
 	if (file.eof() == false)
@@ -45,6 +50,7 @@ void Chunk::load(jgl::String p_path)
 	{
 		file.read(reinterpret_cast<char*>(_teleporter), sizeof(_teleporter));
 	}
+	_mutex.unlock();
 }
 
 void Chunk::set_teleporter(jgl::Vector2Int p_pos, jgl::Int p_value)

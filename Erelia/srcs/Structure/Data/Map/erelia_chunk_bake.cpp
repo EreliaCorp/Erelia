@@ -17,6 +17,7 @@ void Chunk::_initialize_opengl_data()
 
 void Chunk::unbake()
 {
+	_mutex.lock();
 	for (jgl::Int i = -1; i <= 1; i++)
 	{
 		for (jgl::Int j = -1; j <= 1; j++)
@@ -26,6 +27,7 @@ void Chunk::unbake()
 	}
 	_screen_node_unit = 0;
 	_baked = false;
+	_mutex.unlock();
 }
 
 jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part)
@@ -192,6 +194,7 @@ void Chunk::_bake_content(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<j
 
 void Chunk::bake(Map* p_map, jgl::Bool rebake)
 {
+	_mutex.lock();
 	_initialize_opengl_data();
 
 	if (Texture_atlas::instance()->node_sprite_sheet() == nullptr)
@@ -239,6 +242,7 @@ void Chunk::bake(Map* p_map, jgl::Bool rebake)
 	_shader_data.indexes_buffer[1]->send(element_array.all(), element_array.size());
 
 	_baked = true;
+	_mutex.unlock();
 
 	if (rebake == true)
 	{

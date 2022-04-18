@@ -10,7 +10,7 @@ class Map_manager : public Overworld_widget, public Abstract_manager
 {
 private:
 	jgl::Timer _update_timer;
-	std::mutex _map_mutex;
+
 	jgl::Map<jgl::Vector2Int, jgl::Bool> _asked_chunks;
 	jgl::Array<jgl::Vector2Int> _asked_chunk_list;
 

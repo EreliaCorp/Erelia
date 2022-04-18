@@ -15,8 +15,7 @@ void Engine::_update_entity()
 		if (tmp.second->is_moving() == true)
 		{
 			tmp.second->update_pos();
-			jgl::cout << "Update to pos : " << tmp.second->pos() << jgl::endl;
-			 
+
 			if (tmp.second->is_moving() == false)
 			{
 				jgl::Long teleporter_id = Engine::instance()->map()->teleporter(tmp.second->destination());

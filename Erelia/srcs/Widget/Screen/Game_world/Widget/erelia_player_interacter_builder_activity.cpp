@@ -27,7 +27,7 @@ namespace Player_interact_activity
 		{
 			_interacter->publisher()->context()->selected_first_pos = _interacter->convert_screen_to_world(jgl::Application::active_application()->mouse().pos());
 		}
-		if (shift_key == jgl::Input_status::Down)
+		else if (shift_key == jgl::Input_status::Down)
 		{
 			if (left_button == jgl::Input_status::Release)
 			{
@@ -90,7 +90,7 @@ namespace Player_interact_activity
 					static_cast<Flag_item*>(selected_item)->use(jgl::Vector2Int(p_actual.x, p_actual.y));
 				}
 			}
-			if (right_button == jgl::Input_status::Down)
+			else if (right_button == jgl::Input_status::Down)
 			{
 				_interacter->compose_pos(p_actual, p_start, p_end);
 

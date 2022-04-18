@@ -3,16 +3,19 @@
 #include "jgl.h"
 
 #include "Widget/Abstract_widget/erelia_abstract_manager.h"
+#include "Widget/Abstract_widget/erelia_overworld_widget.h"
 
-class Entity_manager : public Abstract_manager, public jgl::Updater_widget
+class Entity_manager : public Overworld_widget, public Abstract_manager
 {
 private:
+	std::mutex _update_mutex;
 	jgl::Timer _entity_updater_timer;
 
 	jgl::Array<jgl::Long> _entity_to_ask;
 	jgl::Map<jgl::Long, jgl::Bool> _entity_received;
 
 	void _on_geometry_change();
+	void _render();
 
 	jgl::Bool _update();
 
@@ -33,4 +36,5 @@ public:
 
 	static jgl::Size_t nb_update;
 	static jgl::Size_t nb_pos_update;
+	static jgl::Size_t nb_render;
 };
