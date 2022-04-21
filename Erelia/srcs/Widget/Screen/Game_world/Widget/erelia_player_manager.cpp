@@ -55,13 +55,16 @@ void Player_manager::_treat_player_motion(Connection* p_client, Message& p_msg)
 
 			for (jgl::Size_t i = 0; i < 2; i++)
 			{
-				if (Engine::instance()->player()->is_flying() == true || Engine::instance()->map()->can_acces(tmp_entity->pos(), delta * delta_value[i]) == true)
+				if (Engine::instance()->player()->is_flying() == true ||
+					(Engine::instance()->map()->can_acces(tmp_entity->pos(), delta * delta_value[i]) == true && 
+					 Engine::instance()->entity_collision(tmp_entity, tmp_entity->pos() + delta * delta_value[i]) == false))
 				{
 					result += delta * delta_value[i];
 				}
 			}
 
-			if (result != delta || Engine::instance()->map()->can_acces(tmp_entity->pos(), delta) == true)
+			if (result != delta || (Engine::instance()->map()->can_acces(tmp_entity->pos(), delta) == true &&
+				Engine::instance()->entity_collision(tmp_entity, tmp_entity->pos() + delta) == false))
 			{
 				tmp_entity->move(result);
 			}

@@ -4,6 +4,7 @@
 
 #include "Widget/Abstract_widget/erelia_abstract_manager.h"
 #include "Widget/Abstract_widget/erelia_overworld_widget.h"
+#include "structure/Data/Entity/erelia_entity.h"
 
 class Entity_manager : public Overworld_widget, public Abstract_manager
 {
@@ -15,6 +16,9 @@ private:
 	jgl::Map<jgl::Long, jgl::Bool> _entity_received;
 
 	void _on_geometry_change();
+
+	void _render_sprite(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth);
+	void _render_name(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth);
 	void _render();
 
 	jgl::Bool _update();

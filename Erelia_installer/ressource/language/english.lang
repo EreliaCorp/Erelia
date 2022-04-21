@@ -1,0 +1,21 @@
+Connect;Connect
+Register;Register
+Username;Username
+Password;Password
+Connection_accepted;Connection accepted
+Connection_rejected;Connection rejected
+Already_connected;Already connected
+Registration_accepted;Register accepted
+Registration_rejected;Register rejected
+1-Inventory_page_all;All
+2-Inventory_page_prefab;Prefab
+3-Inventory_page_plant;Plant
+4-Inventory_page_mineral;Mineral
+5-Inventory_page_housing;Housing
+6-Inventory_page_ruin;Ruin
+7-Inventory_page_fournitures;Other
+8-Inventory_page_tools;Tools
+login_pre_name;
+login_post_name; just log in !
+logout_pre_name;
+logout_post_name; log out !

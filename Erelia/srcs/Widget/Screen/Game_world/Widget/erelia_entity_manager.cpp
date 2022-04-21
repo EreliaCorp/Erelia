@@ -11,26 +11,46 @@ void Entity_manager::_on_geometry_change()
 
 }
 
+void Entity_manager::_render_sprite(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth)
+{
+	if (p_entity->sprite_sheet() != nullptr)
+		p_entity->sprite_sheet()->draw(p_entity->sprite(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth, 1.0f);
+	else
+	{
+		if (p_entity->type() == Entity::Type::Player)
+			jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
+		else if (p_entity->type() == Entity::Type::NPC)
+			jgl::draw_rectangle_color(jgl::Color::green(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
+		else if (p_entity->type() == Entity::Type::Spawner)
+			jgl::draw_rectangle_color(jgl::Color::black(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
+		else if (p_entity->type() == Entity::Type::Enemy)
+			jgl::draw_rectangle_color(jgl::Color::red(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
+	}
+}
+
+void Entity_manager::_render_name(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth)
+{
+	if (p_entity->type() == Entity::Type::Player)
+		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::blue(), jgl::Color::black());
+	else if (p_entity->type() == Entity::Type::NPC)
+		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::green(), jgl::Color::black());
+	else if (p_entity->type() == Entity::Type::Spawner)
+		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::black(), jgl::Color::black());
+	else if (p_entity->type() == Entity::Type::Enemy)
+		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::red(), jgl::Color::black());
+}
+
 void Entity_manager::_render()
 {
 	for (auto tmp : Engine::instance()->entities())
 	{
 		if (tmp.second != nullptr)
 		{
+			jgl::Vector2Int anchor = convert_world_to_screen(tmp.second->pos());
 			jgl::Float depth = _depth + (tmp.second->is_flying() == true ? Chunk::C_LAYER_LENGTH + 1 : Chunk::C_LAYER_LENGTH / 2 + 0.5f);
 
-			if (tmp.second->sprite_sheet() != nullptr)
-				tmp.second->sprite_sheet()->draw(tmp.second->sprite(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth, 1.0f);
-			else
-			{
-				if (tmp.second->type() == Entity::Type::Player)
-					jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
-				else if (tmp.second->type() == Entity::Type::NPC)
-					jgl::draw_rectangle_color(jgl::Color::green(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
-				else if (tmp.second->type() == Entity::Type::Enemy)
-					jgl::draw_rectangle_color(jgl::Color::red(), convert_world_to_screen(tmp.second->pos()), tmp.second->size() * Node::size, depth);
-			}
-
+			_render_sprite(tmp.second, anchor, depth);
+			_render_name(tmp.second, anchor, depth);
 		}
 	}
 	nb_render++;

@@ -200,6 +200,7 @@
     <None Include="ressource\configuration\config.uiconf" />
     <None Include="ressource\language\english.lang" />
     <None Include="ressource\language\french.lang" />
+    <None Include="ressource\world\entity\Guard0.ety" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\Enum\erelia_enum.h" />
@@ -214,6 +215,7 @@
     <ClInclude Include="includes\Structure\Data\Account\erelia_account.h" />
     <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h" />
     <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h" />
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_AI_controlled_entity.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_NPC.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h" />
@@ -259,6 +261,7 @@
     <ClCompile Include="srcs\Structure\Data\Account\erelia_account.cpp" />
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp" />
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_AI_controlled_entity.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_NPC.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp" />

@@ -177,6 +177,9 @@
     <None Include="ressource\configuration\config.uiconf">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="ressource\world\entity\Guard0.ety">
+      <Filter>Resource Files\World\Entity</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\erelia.h">
@@ -312,6 +315,9 @@
       <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
     </ClInclude>
     <ClInclude Include="includes\Structure\Data\Entity\erelia_NPC.h">
+      <Filter>Header Files\Structure\Data\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_AI_controlled_entity.h">
       <Filter>Header Files\Structure\Data\Entity</Filter>
     </ClInclude>
   </ItemGroup>
@@ -465,6 +471,9 @@
     </ClCompile>
     <ClCompile Include="srcs\Structure\Data\Map\erelia_map_motion.cpp">
       <Filter>Source Files\Structure\Data\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_AI_controlled_entity.cpp">
+      <Filter>Source Files\Structure\Data\Entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -25,6 +25,7 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 
 	Debug_screen::instanciate(this);
 	Debug_screen::instance()->set_depth(1000);
+	Debug_screen::instance()->desactivate();
 
 	State_machine::instance()->set_state(Status::No_mode);
 }

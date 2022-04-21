@@ -1,43 +1,12 @@
 #pragma once
 
-#include "structure/Data/Entity/erelia_entity.h"
+#include "structure/Data/Entity/erelia_AI_controlled_entity.h"
 
-class NPC : public Entity
+class NPC : public AI_controlled_entity
 {
 public:
-	struct Movement_info
-	{
-		enum class Pattern
-		{
-			Static,
-			Wondering
-		};
-		struct Data
-		{
-			jgl::Vector2Int base;
-			jgl::Vector2Int destination;
-			jgl::Int range;
-			jgl::Array<jgl::Vector2Int> path;
 
-			jgl::Vector2Int generate_destination()
-			{
-				return (base + jgl::Vector2(jgl::generate_nbr(-range, range), jgl::generate_nbr(-range, range)));
-			}
-		};
-	
-		Pattern pattern = Pattern::Static;
-		Data data;
-	};
-
-private:
-	Movement_info _movement_info;
 
 public:
 	NPC(jgl::String p_name, jgl::Long p_id);
-
-	void place(jgl::Vector2 p_pos);
-
-	Movement_info& movement_info() { return (_movement_info); }
-
-	void update();
 };

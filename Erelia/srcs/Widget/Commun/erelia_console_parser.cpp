@@ -291,6 +291,10 @@ void Console_parser::_parse_command(Command& p_command)
 			}
 			
 		}
+		else if (tab[0] == "/new_npc")
+		{
+			Console_manager::instance()->send_private_message("[Systm.] : NPC creation command", p_command.sender);
+		}
 		else
 		{
 			Console_manager::instance()->send_private_message("[Systm.] : Command unknow [" + p_command.text + "]", p_command.sender);

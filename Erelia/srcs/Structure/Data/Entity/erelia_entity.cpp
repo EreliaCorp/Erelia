@@ -17,6 +17,8 @@ Entity::Entity(jgl::String p_name, Type p_type, jgl::Long p_id)
 void Entity::place(jgl::Vector2 p_pos)
 {
 	_pos = p_pos;
+	_starting_pos = _pos;
+	_destination = _pos;
 }
 
 void Entity::_join_destination()

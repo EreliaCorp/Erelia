@@ -19,6 +19,8 @@ Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "Erelia_client", "Erelia\cli
 		IORedirection = Auto
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Erelia_installer", "Erelia_installer\Erelia_installer.vdproj", "{8E26638B-F06C-42BA-BC1A-D86D703A6F82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|x64 = All|x64
@@ -47,6 +49,12 @@ Global
 		{60760B61-72C4-40D9-8D07-594DA51CD670}.Debug|x86.ActiveCfg = Release|x64
 		{60760B61-72C4-40D9-8D07-594DA51CD670}.Release|x64.ActiveCfg = Release|x64
 		{60760B61-72C4-40D9-8D07-594DA51CD670}.Release|x86.ActiveCfg = Release|x64
+		{8E26638B-F06C-42BA-BC1A-D86D703A6F82}.All|x64.ActiveCfg = Debug
+		{8E26638B-F06C-42BA-BC1A-D86D703A6F82}.All|x86.ActiveCfg = Debug
+		{8E26638B-F06C-42BA-BC1A-D86D703A6F82}.Debug|x64.ActiveCfg = Debug
+		{8E26638B-F06C-42BA-BC1A-D86D703A6F82}.Debug|x86.ActiveCfg = Debug
+		{8E26638B-F06C-42BA-BC1A-D86D703A6F82}.Release|x64.ActiveCfg = Release
+		{8E26638B-F06C-42BA-BC1A-D86D703A6F82}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

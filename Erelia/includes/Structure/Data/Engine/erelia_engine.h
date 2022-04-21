@@ -3,6 +3,7 @@
 #include "jgl.h"
 
 #include "Structure/Data/Map/erelia_map.h"
+#include "Structure/Data/Entity/erelia_AI_controlled_entity.h"
 #include "Structure/Data/Entity/erelia_player.h"
 #include "Structure/Data/Entity/erelia_NPC.h"
 
@@ -16,7 +17,7 @@ private:
 	jgl::Map<jgl::String, jgl::Vector2Int> _wraps;
 
 	jgl::Map<jgl::Long, Entity*> _entities;
-	jgl::Array<Entity*> _NPC_entities;
+	jgl::Array<AI_controlled_entity*> _NPC_entities;
 
 	jgl::Map<jgl::Long, jgl::Vector2Int> _teleporter_destination;
 
@@ -25,8 +26,24 @@ private:
 	void _update_entity();
 	void _update_NPC();
 
+	jgl::String _load_entity_name(jgl::File& p_file);
+	Entity::Type _load_entity_type(jgl::File& p_file);
+	jgl::Vector2Int _load_entity_pos(jgl::File& p_file);
+	jgl::Ulong _load_entity_move_speed(jgl::File& p_file);
+	void _load_entity_flags(jgl::Array<jgl::Vector2Int>& p_tab, jgl::File& p_file);
+	void _load_movement_pattern(AI_controlled_entity::Movement_info& p_param, jgl::Vector2Int p_base, jgl::File& p_file);
+	void _load_static_movement_pattern(AI_controlled_entity::Movement_info& p_param, jgl::File& p_file);
+	void _load_wander_movement_pattern(AI_controlled_entity::Movement_info& p_param, jgl::File& p_file);
+	void _load_path_movement_pattern(AI_controlled_entity::Movement_info& p_param, jgl::File& p_file);
+
+	void _load_NPC(jgl::String p_name, jgl::Vector2Int p_pos, jgl::Ulong p_move_speed, jgl::File& p_file);
+	void _load_spawner(jgl::String p_name, jgl::Vector2Int p_pos, jgl::Ulong p_move_speed, jgl::File& p_file);
+	void _load_enemy(jgl::String p_name, jgl::Vector2Int p_pos, jgl::Ulong p_move_speed, jgl::File& p_file);
+
 public:
 	void update();
+
+	jgl::Bool entity_collision(Entity* p_entity, jgl::Vector2Int p_pos);
 
 	Map* map() { return (_map); }
 	Player* player() { return (_player); }
