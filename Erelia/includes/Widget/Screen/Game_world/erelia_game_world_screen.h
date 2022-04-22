@@ -25,7 +25,7 @@ public:
 	};
 	struct Context
 	{
-		jgl::Bool area_mode = false;
+
 	};
 
 	typedef jgl::Singleton< jgl::Publisher<Event, Context> > Publisher;

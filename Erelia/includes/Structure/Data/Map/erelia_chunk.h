@@ -18,10 +18,10 @@ private:
 
 		jgl::Bool generated = false;
 
-		jgl::Buffer* model_space_buffer[2] = {nullptr, nullptr};
-		jgl::Buffer* model_uvs_buffer[2] = {nullptr, nullptr};
-		jgl::Buffer* animation_sprite_delta_buffer[2] = {nullptr, nullptr};
-		jgl::Buffer* indexes_buffer[2] = {nullptr, nullptr};
+		jgl::Buffer* model_space_buffer = nullptr;
+		jgl::Buffer* model_uvs_buffer = nullptr;
+		jgl::Buffer* animation_sprite_delta_buffer = nullptr;
+		jgl::Buffer* indexes_buffer = nullptr;
 
 		jgl::Uniform* delta_model_uniform = nullptr;
 		jgl::Uniform* animation_state_uniform = nullptr;
@@ -29,9 +29,9 @@ private:
 		jgl::Uniform* texture_uniform = nullptr;
 
 		void generate();
-		void cast(jgl::Vector3 p_offset, jgl::Int p_animation_state, jgl::Size_t p_index);
+		void cast(jgl::Vector3 p_offset, jgl::Int p_animation_state);
 	};
-	std::mutex _mutex;
+	std::recursive_mutex _mutex;
 	Shader_data _shader_data;
 
 	jgl::Vector2Int _pos;
@@ -44,7 +44,7 @@ private:
 	static jgl::Uint _delta_indexes[6];
 	static jgl::Vector2Int _baking_neightbour_node[4][3];
 	static jgl::Vector2Int _baking_delta_node_sprite[4][2][2][2];
-	static jgl::Vector3 _screen_node_unit;
+	static jgl::Vector3 _screen_node_size;
 
 	jgl::Bool _baked = false;
 
@@ -53,8 +53,7 @@ private:
 	jgl::Vector2Int _calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::Int p_z, jgl::Size_t p_sub_part);
 
 	void _bake_autotile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, Node* p_node, jgl::Int p_x, jgl::Int p_y, jgl::Int p_z);
-	void _bake_monster_area(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Vector2Int p_sprite, jgl::Int p_x, jgl::Int p_y);
-
+	
 	void _bake_tile(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, Node* p_node, jgl::Int p_x, jgl::Int p_y, jgl::Int p_z);
 	
 	void _bake_content(jgl::Array<jgl::Vector3>& p_vertex_array, jgl::Array<jgl::Vector2>& p_uvs_array, jgl::Array<jgl::Float>& p_animation_sprite_delta_array, jgl::Array<jgl::Uint>& p_element_array, jgl::Int p_x, jgl::Int p_y, jgl::Int p_z);
@@ -62,11 +61,12 @@ private:
 	Chunk* _neightbour_chunks[3][3];
 public:
 	static jgl::String compose_chunk_file_name(jgl::String p_path, jgl::Vector2Int p_pos);
+	static void set_screen_node_size(jgl::Vector3 p_screen_node_size) { _screen_node_size = p_screen_node_size; }
 
 public:
 	Chunk(jgl::Vector2Int p_pos = 0);
 
-	std::mutex& mutex() { return (_mutex); }
+	std::recursive_mutex& mutex() { return (_mutex); }
 
 	void save(jgl::String p_folder_path);
 	void load(jgl::String p_path);
@@ -76,7 +76,6 @@ public:
 	void bake(class Map* p_map, jgl::Bool rebake);
 
 	void render(jgl::Vector3 p_offset, jgl::Int p_animation_state);
-	void render_area(jgl::Vector3 p_offset, jgl::Int p_animation_state);
 
 	jgl::Vector2Int pos() { return (_pos); }
 

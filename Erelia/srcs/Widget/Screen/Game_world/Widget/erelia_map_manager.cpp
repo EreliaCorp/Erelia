@@ -42,8 +42,6 @@ void Map_manager::_render()
 					tmp_chunk->bake(map, true);
 
 				tmp_chunk->render(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
-				if (Game_world_screen::Publisher::instance()->context()->area_mode == true)
-					tmp_chunk->render_area(jgl::convert_screen_to_opengl(convert_chunk_to_screen(chunk_pos), _depth), animation_state);
 				
 			}
 		}
@@ -103,10 +101,8 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->content()), sizeof(jgl::Short) * Chunk::C_SIZE * Chunk::C_SIZE * Chunk::C_LAYER_LENGTH);
 		p_msg.load_from_array(reinterpret_cast<jgl::Uchar*>(result->teleporter()), sizeof(jgl::Int) * Chunk::C_SIZE * Chunk::C_SIZE);
 
-		result->mutex().unlock();
-
 		Engine::instance()->map()->add_chunk(result);
-		_asked_chunks[result->pos()] = false;
+
 
 		for (jgl::Int i = -1; i <= 1; i++)
 			for (jgl::Int j = -1; j <= 1; j++)
@@ -117,6 +113,10 @@ void Map_manager::_receive_chunk_data(Message& p_msg)
 					tmp_chunk->unbake();
 			}
 
+
+		_asked_chunks[result->pos()] = false;
+
+		result->mutex().unlock();
 		
 	}
 }

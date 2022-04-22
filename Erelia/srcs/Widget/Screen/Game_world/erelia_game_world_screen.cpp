@@ -45,11 +45,9 @@ Game_world_screen::Game_world_screen(jgl::Widget* p_parent) : Abstract_screen(p_
 
 	Publisher::instance()->subscribe(Game_world_screen::Event::Go_adventure, GAME_WORLD_SCREEN_ACTIVITY_PARAM{
 			_player_interacter->publisher()->notify(Player_interacter::Event::Go_adventure);
-			Publisher::instance()->context()->area_mode = false;
 		});
 	Publisher::instance()->subscribe(Game_world_screen::Event::Go_builder, GAME_WORLD_SCREEN_ACTIVITY_PARAM{
 			_player_interacter->publisher()->notify(Player_interacter::Event::Go_builder);
-			Publisher::instance()->context()->area_mode = false;
 		});
 
 	_initiate();

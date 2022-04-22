@@ -54,7 +54,7 @@ void AI_controlled_entity::update()
 			else if (_movement_info.data.timer.timeout() == true)
 			{
 				_movement_info.data.timer.stop();
-				THROW_INFORMATION("Entity collision : " + (Engine::instance()->entity_collision(this, _pos + _movement_info.data.path[_movement_info.data.path_index]) == true ? "true" : "false"));
+				THROW_INFORMATION(jgl::String("Entity collision : ") + (Engine::instance()->entity_collision(this, _pos + _movement_info.data.path[_movement_info.data.path_index]) == true ? "true" : "false"));
 				if (Engine::instance()->entity_collision(this, _pos + _movement_info.data.path[_movement_info.data.path_index]) == false)
 				{
 					_movement_info.data.destination = _pos + _movement_info.data.path[_movement_info.data.path_index];

@@ -22,6 +22,7 @@ void Map::load()
 
 void Map::unbake()
 {
+	Chunk::set_screen_node_size(0);
 	for (auto tmp : _chunks)
 	{
 		tmp.second->unbake();
