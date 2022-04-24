@@ -5,6 +5,7 @@
 #include "Widget/Abstract_widget/erelia_abstract_manager.h"
 #include "Widget/Abstract_widget/erelia_overworld_widget.h"
 #include "structure/Data/Entity/erelia_entity.h"
+#include "structure/Data/Entity/erelia_AI_controlled_entity.h"
 
 class Entity_manager : public Overworld_widget, public Abstract_manager
 {
@@ -19,6 +20,7 @@ private:
 
 	void _render_sprite(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth);
 	void _render_name(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth);
+	void _render_path(AI_controlled_entity* p_entity, jgl::Float p_depth);
 	void _render();
 
 	jgl::Bool _update();

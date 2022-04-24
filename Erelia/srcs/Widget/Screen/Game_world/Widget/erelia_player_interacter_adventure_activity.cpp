@@ -16,5 +16,6 @@ namespace Player_interact_activity
 	{
 		THROW_INFORMATION("Transition to gamemode Adventure");
 		_interacter->editor_inventory()->desactivate();
+		_interacter->npc_creator_interface()->desactivate();
 	}
 }

@@ -16,6 +16,7 @@ namespace Player_interact_activity
 			_interacter = p_interacter;
 		}
 	};
+
 	class Adventure : public Abstract_activity
 	{
 	private:
@@ -24,11 +25,21 @@ namespace Player_interact_activity
 		void execute();
 		void on_transition();
 	};
+
 	class Builder : public Abstract_activity
 	{
 	private:
 	public:
 		Builder(Player_interacter* p_interacter);
+		void execute();
+		void on_transition();
+	};
+
+	class NPC_creator : public Abstract_activity
+	{
+	private:
+	public:
+		NPC_creator(Player_interacter* p_interacter);
 		void execute();
 		void on_transition();
 	};

@@ -6,6 +6,7 @@
 #include "widget/Abstract_widget/erelia_overworld_widget.h"
 #include "widget/Abstract_widget/erelia_abstract_manager.h"
 #include "Widget/Screen/Game_world/Widget/erelia_editor_inventory.h"
+#include "Widget/Screen/Game_world/Widget/erelia_npc_creator_interface.h"
 
 class Player_interacter : public Overworld_widget, public Abstract_manager
 {
@@ -71,12 +72,14 @@ public:
 	enum class Mode
 	{
 		Adventure,
-		Builder
+		Builder,
+		NPC_creator
 	};
 	enum class Event
 	{
 		Go_adventure,
-		Go_builder
+		Go_builder,
+		Go_NPC_creator
 	};
 	struct Context
 	{
@@ -91,6 +94,7 @@ public:
 	};
 private:
 	Editor_inventory* _editor_inventory;
+	NPC_creator_interface* _npc_creator_interface;
 
 	jgl::Publisher<Event, Context>* _publisher;
 	jgl::State_machine<Mode>* _state_machine;
@@ -113,7 +117,8 @@ private:
 public:
 	Player_interacter(jgl::Widget* p_parent);
 
-	Editor_inventory* editor_inventory() {return (_editor_inventory);}
+	Editor_inventory* editor_inventory() { return (_editor_inventory); }
+	NPC_creator_interface* npc_creator_interface() {return (_npc_creator_interface);}
 	jgl::Publisher<Event, Context>* publisher() {return (_publisher);}
 	jgl::State_machine<Mode>* state_machine() { return (_state_machine);}
 

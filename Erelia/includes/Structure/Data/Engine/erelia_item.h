@@ -2,6 +2,7 @@
 
 #include "jgl.h"
 #include "network/erelia_network_definition.h"
+#include "structure/data/entity/erelia_entity.h"
 
 enum class Item_type
 {
@@ -56,13 +57,17 @@ struct Flag_item : public Item
 	enum class Color
 	{
 		Red = 0,
-		Blue = 1
+		Blue = 1,
+		Green = 2,
+		Yellow = 3
 	};
 
 	static jgl::Map<Color, jgl::Vector2Int> pos;
 	Color color;
+	Entity* collision;
 
 	Flag_item(Flag_item::Color p_color);
 	void use(jgl::Vector2Int p_pos);
+	void remove(jgl::Vector2Int p_pos);
 	static jgl::Vector2Int sprite(Color p_color);
 };

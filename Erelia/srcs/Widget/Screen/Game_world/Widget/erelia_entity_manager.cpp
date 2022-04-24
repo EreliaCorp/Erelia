@@ -1,6 +1,8 @@
 #include "Widget/Screen/Game_world/WIdget/erelia_entity_manager.h"
 #include "structure/Data/Engine/erelia_engine.h"
 #include "structure/Atlas/erelia_account_atlas.h"
+#include "widget/screen/game_world/erelia_game_world_screen.h"
+#include "structure/Atlas/erelia_texture_atlas.h"
 
 jgl::Size_t Entity_manager::nb_render = 0;
 jgl::Size_t Entity_manager::nb_update = 0;
@@ -26,6 +28,15 @@ void Entity_manager::_render_sprite(Entity* p_entity, jgl::Vector2Int p_anchor, 
 		else if (p_entity->type() == Entity::Type::Enemy)
 			jgl::draw_rectangle_color(jgl::Color::red(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
 	}
+	if (Game_world_screen::Publisher::instance()->context()->selected_id == p_entity)
+	{
+		Texture_atlas::instance()->UI_sprite_sheet()->draw(
+			jgl::Vector2Int(0, 0),
+			p_anchor - Node::size / 4,
+			p_entity->size() * Node::size + Node::size / 2,
+			p_depth + 0.5f,
+			1.0f);
+	}
 }
 
 void Entity_manager::_render_name(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth)
@@ -40,6 +51,19 @@ void Entity_manager::_render_name(Entity* p_entity, jgl::Vector2Int p_anchor, jg
 		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::red(), jgl::Color::black());
 }
 
+void Entity_manager::_render_path(AI_controlled_entity* p_entity, jgl::Float p_depth)
+{
+	jgl::Vector2 pos = p_entity->destination();
+
+	for (jgl::Size_t i = p_entity->movement_info().data.path_index; i < p_entity->movement_info().data.path.size(); i++)
+	{
+		jgl::Vector2Int anchor = convert_world_to_screen((pos.ceiling() + p_entity->movement_info().data.path[i]).ceiling() + 0.5f) - Node::size / 4;
+		pos += p_entity->movement_info().data.path[i];
+
+		jgl::draw_rectangle_color(jgl::Color::red(), anchor, Node::size / 2, p_depth);
+	}
+}
+
 void Entity_manager::_render()
 {
 	for (auto tmp : Engine::instance()->entities())
@@ -50,7 +74,11 @@ void Entity_manager::_render()
 			jgl::Float depth = _depth + (tmp.second->is_flying() == true ? Chunk::C_LAYER_LENGTH + 1 : Chunk::C_LAYER_LENGTH / 2 + 0.5f);
 
 			_render_sprite(tmp.second, anchor, depth);
+
 			_render_name(tmp.second, anchor, depth);
+
+			if (tmp.second->type() == Entity::Type::NPC || tmp.second->type() == Entity::Type::Enemy)
+				_render_path(reinterpret_cast<AI_controlled_entity*>(tmp.second), depth);
 		}
 	}
 	nb_render++;

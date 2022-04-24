@@ -107,6 +107,10 @@ namespace Player_interact_activity
 				}
 				else if (selected_item->type == Item_type::Prefab)
 					static_cast<Prefab_item*>(selected_item)->remove(p_actual);
+				else if (selected_item != nullptr && selected_item->type == Item_type::Flag)
+				{
+					static_cast<Flag_item*>(selected_item)->remove(jgl::Vector2Int(p_actual.x, p_actual.y));
+				}
 			}
 		}
 	}
@@ -115,5 +119,6 @@ namespace Player_interact_activity
 	{
 		THROW_INFORMATION("Transition to gamemode Builder");
 		_interacter->editor_inventory()->activate();
+		_interacter->npc_creator_interface()->desactivate();
 	}
 }

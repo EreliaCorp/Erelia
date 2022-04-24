@@ -15,17 +15,17 @@ public:
 	{
 		Adventure,
 		Builder,
-		Area_builder
+		NPC_creator
 	};
 	enum class Event
 	{
 		Go_adventure,
 		Go_builder,
-		Go_area_builder
+		Go_NPC_creator
 	};
 	struct Context
 	{
-
+		Entity* selected_id;
 	};
 
 	typedef jgl::Singleton< jgl::Publisher<Event, Context> > Publisher;

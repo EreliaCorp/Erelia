@@ -61,13 +61,12 @@ void Editor_inventory::_on_geometry_change()
 	jgl::Vector2Int page_name_label_size = jgl::Vector2Int(frame_size.x - button_size.x * 2 - space.x * 6, button_size.y);
 	jgl::Vector2Int inventory_page_size = jgl::Vector2Int(frame_size.x - space.x * 4, frame_size.y - space.y * 5 - button_size.y);
 
-	_opened_position = jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x - frame_size.x, 0);
-	_closed_position = jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x, 0);
+	_slider->define_position(jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x - frame_size.x, 0), jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x, 0));
 
-	if (_is_opened == true)
-		_slider_contener->set_geometry(_opened_position, _area);
+	if (_slider->is_opened() == true)
+		_slider->set_geometry(_slider->opened_position(), _area);
 	else
-		_slider_contener->set_geometry(_closed_position, _area);
+		_slider->set_geometry(_slider->closed_position(), _area);
 
 	SET_BUTTON_LOOK(_lower_level_button, jgl::Vector2Int(0, 0), button_size);
 	SET_LABEL_LOOK(_level_selected_label, jgl::Vector2Int(button_size.x + space.x, 0), layer_label_size);
@@ -91,28 +90,9 @@ void Editor_inventory::_on_geometry_change()
 		_inventory_frame_contener->set_UVs(_pages[_inventory_page_index]->unit * _page_offset, _pages[_inventory_page_index]->unit * _nb_element_on_screen);
 }
 
-void Editor_inventory::_update_position()
-{
-	if (_is_in_motion == true)
-	{
-		jgl::Ulong actual_tick = jgl::Application::active_application()->time() - _starting_time;
-
-		jgl::Vector2 position = jgl::lerp<jgl::Vector2>(_start_position, _final_position, actual_tick, _slide_duration);
-
-		_slider_contener->set_geometry(position, _slider_contener->area());
-
-		if (actual_tick >= _slide_duration)
-		{
-			_is_in_motion = false;
-		}
-	}
-}
-
 jgl::Bool Editor_inventory::_update()
 {
 	static jgl::Ulong next_input = 0;
-
-	_update_position();
 
 	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Tab) == jgl::Input_status::Release)
 	{
@@ -169,39 +149,15 @@ jgl::Bool Editor_inventory::_fixed_update()
 	return (false);
 }
 
-void Editor_inventory::_slider_button_open()
-{
-	_slider_button->label().set_text("<");
-
-	_is_opened = true;
-	_is_in_motion = true;
-	_starting_time = jgl::Application::active_application()->time();
-
-	_start_position = _closed_position;
-	_final_position = _opened_position;
-}
-
-void Editor_inventory::_slider_button_close()
-{
-	_slider_button->label().set_text(">");
-
-	_is_opened = false;
-	_is_in_motion = true;
-	_starting_time = jgl::Application::active_application()->time();
-
-	_start_position = _opened_position;
-	_final_position = _closed_position;
-}
-
 void Editor_inventory::_slider_button_action()
 {
-	if (_is_opened == true)
+	if (_slider->is_opened() == true)
 	{
-		_slider_button_close();
+		_slider->close();
 	}
 	else
 	{
-		_slider_button_open();
+		_slider->open();
 	}
 }
 
@@ -252,19 +208,19 @@ void Editor_inventory::set_level_value(jgl::Size_t p_level_value)
 }
 
 Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent),
-	_slide_duration(150), _page_offset(0)
+	_page_offset(0)
 {
-	_slider_contener = new jgl::Contener(this);
-	_slider_contener->activate();
+	_slider = new Slider(this);
+	_slider->activate();
 
-	_slider_button = new jgl::Button([&](jgl::Data_contener& p_param) {if (_is_in_motion == false)_slider_button_action(); }, _slider_contener);
+	_slider_button = new jgl::Button([&](jgl::Data_contener& p_param) {if (_slider->is_in_motion() == false)_slider_button_action(); }, _slider);
 	_slider_button->activate();
 
-	_inventory_frame = new jgl::Frame(_slider_contener);
+	_inventory_frame = new jgl::Frame(_slider);
 	_inventory_frame->set_depth(_depth);
 	_inventory_frame->activate();
 
-	_inventory_frame_contener = new Inventory_renderer(_slider_contener);
+	_inventory_frame_contener = new Inventory_renderer(_slider);
 	_inventory_frame_contener->set_depth(_depth + 2);
 	_inventory_frame_contener->activate();
 
@@ -274,12 +230,12 @@ Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent
 				set_inventory_page(_pages.size() - 1);
 			else
 				set_inventory_page(_inventory_page_index - 1);
-		}, _slider_contener);
+		}, _slider);
 	_previous_page_button->set_depth(_depth + 40);
 	_previous_page_button->label().set_text("<");
 	_previous_page_button->activate();
 
-	_page_name_label = new jgl::Text_label("", _slider_contener);
+	_page_name_label = new jgl::Text_label("", _slider);
 	_page_name_label->set_depth(_depth + 40);
 	_page_name_label->label().set_horizontal_align(jgl::Horizontal_alignment::Centred);
 	_page_name_label->label().set_vertical_align(jgl::Vertical_alignment::Centred);
@@ -291,13 +247,13 @@ Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent
 				set_inventory_page(0);
 			else
 				set_inventory_page(_inventory_page_index + 1);
-		}, _slider_contener);
+		}, _slider);
 	_next_page_button->set_depth(_depth + 40);
 	_next_page_button->label().set_text(">");
 	_next_page_button->activate();
 
 
-	_level_selected_label = new jgl::Text_label("Level : ", _slider_contener);
+	_level_selected_label = new jgl::Text_label("Level : ", _slider);
 	_level_selected_label->label().set_horizontal_align(jgl::Horizontal_alignment::Centred);
 	_level_selected_label->label().set_vertical_align(jgl::Vertical_alignment::Centred);
 	_level_selected_label->activate();
@@ -306,7 +262,7 @@ Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent
 		{
 			if (_selected_level > 0)
 				set_level_value(_selected_level - 1);
-		}, _slider_contener);
+		}, _slider);
 	_lower_level_button->label().set_text("-");
 	_lower_level_button->activate();
 
@@ -314,11 +270,10 @@ Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent
 		{
 			if (_selected_level < Chunk::C_LAYER_LENGTH - 1)
 				set_level_value(_selected_level + 1);
-		}, _slider_contener);
+		}, _slider);
 	_raise_level_button->label().set_text("+");
 	_raise_level_button->activate();
 
-	_is_opened = false;
 	_slider_button->label().set_text(">");
 
 	_compose_predefined_page();

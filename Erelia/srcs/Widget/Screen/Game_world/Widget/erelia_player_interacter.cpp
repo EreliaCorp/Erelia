@@ -156,9 +156,6 @@ void Player_interacter::_initialize_client()
 	Client_manager::client()->add_activity(Server_message::Brush_type_data_message, CLIENT_ACTIVITY{
 			_receive_brush_type_data_change(p_msg);
 		});
-	Client_manager::client()->add_activity(Server_message::Monster_area_value, CLIENT_ACTIVITY{
-			_receive_monster_area_value(p_msg);
-		});
 }
 
 void Player_interacter::_initialize_server()
@@ -173,13 +170,19 @@ Player_interacter::Player_interacter(jgl::Widget* p_parent) : Overworld_widget(p
 
 	_publisher->subscribe(Player_interacter::Event::Go_adventure, [&](Player_interacter::Context& p_context) {_state_machine->set_state(Player_interacter::Mode::Adventure); });
 	_publisher->subscribe(Player_interacter::Event::Go_builder, [&](Player_interacter::Context& p_context) {_state_machine->set_state(Player_interacter::Mode::Builder); });
+	_publisher->subscribe(Player_interacter::Event::Go_NPC_creator, [&](Player_interacter::Context& p_context) {_state_machine->set_state(Player_interacter::Mode::NPC_creator); });
 
 	_state_machine->add_activity(Player_interacter::Mode::Adventure, new Player_interact_activity::Adventure(this));
 	_state_machine->add_activity(Player_interacter::Mode::Builder, new Player_interact_activity::Builder(this));
+	_state_machine->add_activity(Player_interacter::Mode::NPC_creator, new Player_interact_activity::NPC_creator(this));
 
 	_editor_inventory = new Editor_inventory(this);
 	_editor_inventory->set_depth(_depth + 100);
 	_editor_inventory->desactivate();
+
+	_npc_creator_interface = new NPC_creator_interface(this);
+	_npc_creator_interface->set_depth(_depth + 100);
+	_npc_creator_interface->desactivate();
 
 	_state_machine->set_state(Player_interacter::Mode::Adventure);
 

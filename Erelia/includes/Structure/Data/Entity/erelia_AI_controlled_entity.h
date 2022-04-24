@@ -33,6 +33,7 @@ public:
 	};
 protected:
 	Movement_info _movement_info;
+	jgl::Bool _last_moving = false;
 
 public:
 	AI_controlled_entity(jgl::String p_name, Type p_type, Movement_info::Pattern p_pattern, jgl::Long p_id);

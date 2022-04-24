@@ -4,6 +4,8 @@
 
 #include "Structure/Data/Engine/erelia_item.h"
 
+#include "widget/Commun/erelia_slider_widget.h"
+
 class Editor_inventory : public jgl::Widget
 {
 private:
@@ -32,19 +34,11 @@ private:
 		}
 	};
 
-	jgl::Bool _is_opened;
-	jgl::Bool _is_in_motion;
-	jgl::Vector2Int _opened_position;
-	jgl::Vector2Int _closed_position;
-	jgl::Vector2Int _start_position;
-	jgl::Vector2Int _final_position;
-	jgl::Ulong _starting_time;
-	const jgl::Ulong _slide_duration;
-
 	jgl::Vector2 _element_unit;
 	jgl::Vector2 _nb_element_on_screen;
 	jgl::Vector2 _page_offset;
 
+	Slider* _slider;
 
 	jgl::Text_label* _page_name_label;
 	jgl::Button* _previous_page_button;
@@ -54,7 +48,6 @@ private:
 	jgl::Button* _lower_level_button;
 	jgl::Button* _raise_level_button;
 
-	jgl::Contener* _slider_contener;
 	jgl::Button* _slider_button;
 	jgl::Frame* _inventory_frame;
 
@@ -89,9 +82,6 @@ private:
 	jgl::Bool _update();
 	jgl::Bool _fixed_update();
 
-	void _update_position();
-	void _slider_button_open();
-	void _slider_button_close();
 	void _slider_button_action();
 
 	void _compose_predefined_page();

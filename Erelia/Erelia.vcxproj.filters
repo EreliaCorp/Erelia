@@ -166,6 +166,9 @@
     <Filter Include="Resource Files\World\Entity">
       <UniqueIdentifier>{755ef64e-ee3a-4c81-9acf-93ca15afac70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Widget\Screen\Game_world\Widget\NPC_creator">
+      <UniqueIdentifier>{aad9ce83-4ead-466e-a619-057f150be2f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ressource\language\french.lang">
@@ -319,6 +322,12 @@
     </ClInclude>
     <ClInclude Include="includes\Structure\Data\Entity\erelia_AI_controlled_entity.h">
       <Filter>Header Files\Structure\Data\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_npc_creator_interface.h">
+      <Filter>Header Files\Widget\Screen\Game_world\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Widget\Commun\erelia_slider_widget.h">
+      <Filter>Header Files\Widget\Commun</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +483,15 @@
     </ClCompile>
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_AI_controlled_entity.cpp">
       <Filter>Source Files\Structure\Data\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_NPC_creator.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\Player\Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_npc_creator_interface.cpp">
+      <Filter>Source Files\Widget\Screen\Game_world\Widget\NPC_creator</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Widget\Commun\erelia_slider_widget.cpp">
+      <Filter>Source Files\Widget\Commun</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -43,7 +43,7 @@ private:
 public:
 	void update();
 
-	jgl::Bool entity_collision(Entity* p_entity, jgl::Vector2Int p_pos);
+	Entity* entity_collision(Entity* p_entity, jgl::Vector2Int p_pos);
 
 	Map* map() { return (_map); }
 	Player* player() { return (_player); }

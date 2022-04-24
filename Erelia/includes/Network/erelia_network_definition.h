@@ -33,7 +33,6 @@ enum Server_message
 	Remove_teleport_data_request,
 	Remove_teleport_data,
 	Remove_teleporter,
-	Enter_battle_mode
 };
 
 #define SERVER_PORT 26500

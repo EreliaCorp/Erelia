@@ -45,16 +45,19 @@ void Engine::update()
 	_update_entity();
 }
 
-jgl::Bool Engine::entity_collision(Entity* p_entity, jgl::Vector2Int p_pos)
+Entity* Engine::entity_collision(Entity* p_entity, jgl::Vector2Int p_pos)
 {
+	if (p_entity != nullptr && p_entity->is_flying() == true)
+		return (nullptr);
+
 	for (auto tmp : _entities)
 	{
 		Entity* tmp_entity = tmp.second;
 		if (tmp_entity != p_entity && tmp_entity->pos().distance(p_pos) < 1.0f)
-			return (true);
+			return (tmp_entity);
 	}
 
-	return (false);
+	return (nullptr);
 }
 
 void Engine::initialize_player(jgl::String p_name, jgl::Long p_id)
@@ -307,6 +310,7 @@ void Engine::_load_movement_pattern(AI_controlled_entity::Movement_info& p_param
 void Engine::_load_NPC(jgl::String p_name, jgl::Vector2Int p_pos, jgl::Ulong p_move_speed, jgl::File& p_file)
 {
 	NPC* new_NPC = new NPC(p_name, request_id());
+	THROW_INFORMATION("Creating NPC (" + p_name + ") of id " + jgl::itoa(new_NPC->id()) + " at pos [" + p_pos.text() + "]");
 	new_NPC->set_move_speed(p_move_speed);
 	new_NPC->place(p_pos);
 	_load_movement_pattern(new_NPC->movement_info(), p_pos, p_file);
@@ -336,7 +340,6 @@ void Engine::load_entity()
 
 	for (jgl::Size_t i = 0; i < files_path.size(); i++)
 	{
-		jgl::cout << "Loading file [" << files_path[i] << "]" << jgl::endl;
 		jgl::File file = jgl::open_file(files_path[i], jgl::File_mode::in);
 
 		jgl::String name = _load_entity_name(file);

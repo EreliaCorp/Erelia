@@ -38,8 +38,6 @@ jgl::String Console_parser::_parse_block_composition(jgl::String p_entry)
 
 	return (result);
 }
-#include <chrono>
-#include <thread>
 
 void Console_parser::_parse_command(Command& p_command)
 {
@@ -73,21 +71,19 @@ void Console_parser::_parse_command(Command& p_command)
 					_send_gamemode_modification(p_command.sender, Game_world_screen::Event::Go_builder);
 					Console_manager::instance()->send_private_message("[Systm.] : Gamemode set to Builder", p_command.sender);
 				}
-				else if (tab[1] == "Area_builder")
+				else if (tab[1] == "NPC_creator")
 				{
-					_send_gamemode_modification(p_command.sender, Game_world_screen::Event::Go_area_builder);
-					_send_monster_area_value(p_command.sender, -1);
-					Console_manager::instance()->send_private_message("[Systm.] : Gamemode set to Area builder", p_command.sender);
-					Console_manager::instance()->send_private_message("[Systm.] : Set monster area value to -1", p_command.sender);
+					_send_gamemode_modification(p_command.sender, Game_world_screen::Event::Go_NPC_creator);
+					Console_manager::instance()->send_private_message("[Systm.] : Gamemode set to NPC creator", p_command.sender);
 				}
 				else
 				{
-					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
+					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / NPC_creator]\"", p_command.sender);
 				}
 			}
 			else
 			{
-				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / Area_builder]\"", p_command.sender);
+				Console_manager::instance()->send_private_message("[Systm.] : Usage \"/gamemode [Adventure / Builder / NPC_creator]\"", p_command.sender);
 			}
 		}
 		else if (tab[0] == "/ping")
@@ -289,11 +285,6 @@ void Console_parser::_parse_command(Command& p_command)
 					Console_manager::instance()->send_private_message("[Systm.] : Usage \"/teleporter [place / remove]\"", p_command.sender);
 				}
 			}
-			
-		}
-		else if (tab[0] == "/new_npc")
-		{
-			Console_manager::instance()->send_private_message("[Systm.] : NPC creation command", p_command.sender);
 		}
 		else
 		{

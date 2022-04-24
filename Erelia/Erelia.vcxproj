@@ -106,6 +106,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,6 +114,7 @@
       <AdditionalDependencies>glew32s.lib;jgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Developement\JGL\JGL\libs\$(Platform)\;C:\Developement\JGL\BUILD\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <Profile>true</Profile>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(TargetPath)" "client/Erelia_client.exe"</Command>
@@ -132,6 +134,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,6 +143,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32s.lib;jgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Developement\JGL\JGL\libs\$(Platform)\;C:\Developement\JGL\BUILD\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(TargetPath)" "client/Erelia_client.exe"</Command>
@@ -157,6 +161,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,6 +169,7 @@
       <AdditionalDependencies>glew32s.lib;jgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Developement\JGL\JGL\libs\$(Platform)\;C:\Developement\JGL\BUILD\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <Profile>true</Profile>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(TargetPath)" "client/Erelia_client.exe"</Command>
@@ -183,6 +189,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -191,6 +198,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32s.lib;jgl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\Developement\JGL\JGL\libs\$(Platform)\;C:\Developement\JGL\BUILD\$(Configuration)\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(TargetPath)" "client/Erelia_client.exe"</Command>
@@ -232,6 +240,7 @@
     <ClInclude Include="includes\Widget\Commun\erelia_console_manager.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_console_output.h" />
     <ClInclude Include="includes\Widget\Commun\erelia_console_parser.h" />
+    <ClInclude Include="includes\Widget\Commun\erelia_slider_widget.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application.h" />
     <ClInclude Include="includes\Widget\Main_application\erelia_main_application_debug_screen.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\erelia_game_world_screen.h" />
@@ -239,6 +248,7 @@
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_entity_manager.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_operation.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_map_manager.h" />
+    <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_npc_creator_interface.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_interacter.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_interacter_activity.h" />
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_player_manager.h" />
@@ -282,6 +292,7 @@
     <ClCompile Include="srcs\Widget\Commun\erelia_console_manager.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_console_output.cpp" />
     <ClCompile Include="srcs\Widget\Commun\erelia_console_parser.cpp" />
+    <ClCompile Include="srcs\Widget\Commun\erelia_slider_widget.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_activity.cpp" />
     <ClCompile Include="srcs\Widget\Main_application\erelia_main_application_debug_screen.cpp" />
@@ -291,9 +302,11 @@
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_entity_manager.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_operation.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_map_manager.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_npc_creator_interface.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_adventure_activity.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_builder_activity.cpp" />
+    <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_interacter_NPC_creator.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_player_manager.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_wrap_renderer.cpp" />
     <ClCompile Include="srcs\Widget\Screen\Launcher\erelia_launcher_screen.cpp" />

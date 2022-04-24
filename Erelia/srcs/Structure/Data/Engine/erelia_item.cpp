@@ -3,6 +3,7 @@
 #include "structure/Data/Map/erelia_chunk.h"
 #include "structure/Data/Map/erelia_node.h"
 #include "widget/screen/game_world/Widget/erelia_map_operation.h"
+#include "widget/screen/game_world/erelia_game_world_screen.h"
 #include "network/erelia_client_manager.h"
 
 Message Prefab_item::_prefab_message(Server_message::Chunk_modification);
@@ -148,7 +149,37 @@ Flag_item::Flag_item(Flag_item::Color p_color) : Item(Item_type::Flag)
 
 void Flag_item::use(jgl::Vector2Int p_pos)
 {
-	pos[color] = p_pos;
+	if (color == Color::Green)
+	{
+		collision = Engine::instance()->entity_collision(nullptr, p_pos);
+		if (collision != nullptr)
+		{
+			if (pos.count(color) != 0)
+			{
+				Flag_item::pos.erase(Flag_item::pos.find(color));
+			}
+			jgl::cout << "Collision with entity " << collision->name() << jgl::endl;
+		}
+		else
+		{
+			pos[color] = p_pos;
+		}
+		Game_world_screen::Publisher::instance()->context()->selected_id = collision;
+	}
+	else
+	{
+		pos[color] = p_pos;
+	}
+}
+
+void Flag_item::remove(jgl::Vector2Int p_pos)
+{
+	collision = nullptr;
+	Game_world_screen::Publisher::instance()->context()->selected_id = nullptr;
+	if (pos.count(color) != 0 && p_pos == pos[color])
+	{
+		Flag_item::pos.erase(Flag_item::pos.find(color));
+	}
 }
 
 jgl::Vector2Int Flag_item::sprite(Color p_color)

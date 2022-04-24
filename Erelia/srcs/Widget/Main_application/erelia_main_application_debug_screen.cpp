@@ -2,6 +2,7 @@
 #include "network/erelia_client_manager.h"
 #include "widget/Screen/Game_world/Widget/erelia_map_manager.h"
 #include "widget/Screen/Game_world/Widget/erelia_entity_manager.h"
+#include "widget/Screen/Game_world/erelia_game_world_screen.h"
 
 void Debug_screen::set_text(jgl::Size_t line, jgl::Size_t row, jgl::String p_text)
 {
@@ -43,11 +44,11 @@ jgl::Bool Debug_screen::_update()
 		if (old_value != Client_manager::client()->input().size())
 		{
 			old_value = Client_manager::client()->input().size();
-			_lines[0][0]->set_text("Nb message : " + jgl::itoa(old_value));
+			_lines[0][1]->set_text("Nb message : " + jgl::itoa(old_value));
 		}
 
-		_lines[0][1]->set_text("Render FPS : " + jgl::itoa(jgl::Application::active_application()->fps_render()));
-		_lines[0][2]->set_text("Update FPS : " + jgl::itoa(jgl::Application::active_application()->fps_update()));
+		_lines[0][2]->set_text("Render FPS : " + jgl::itoa(jgl::Application::active_application()->fps_render()));
+		_lines[0][3]->set_text("Update FPS : " + jgl::itoa(jgl::Application::active_application()->fps_update()));
 
 		message_timer.start();
 	}
@@ -89,5 +90,15 @@ Debug_screen::Debug_screen(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 			_lines[j][i]->set_text_color(jgl::Color::white());
 		}
 	}
+	Game_world_screen::Publisher::instance()->subscribe(Game_world_screen::Game_world_screen::Event::Go_adventure, GAME_WORLD_SCREEN_ACTIVITY_PARAM{
+			_lines[0][0]->set_text("Gamemode : Adventure");
+		});
+	Game_world_screen::Publisher::instance()->subscribe(Game_world_screen::Game_world_screen::Event::Go_builder, GAME_WORLD_SCREEN_ACTIVITY_PARAM{
+			_lines[0][0]->set_text("Gamemode : Builder");
+		});
+	Game_world_screen::Publisher::instance()->subscribe(Game_world_screen::Game_world_screen::Event::Go_NPC_creator, GAME_WORLD_SCREEN_ACTIVITY_PARAM{
+			_lines[0][0]->set_text("Gamemode : NPC_creator");
+		});
+
 }
 	
