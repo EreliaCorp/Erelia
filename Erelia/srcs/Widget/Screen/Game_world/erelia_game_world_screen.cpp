@@ -69,7 +69,7 @@ void Game_world_screen::_receive_gamemode_change(Message& p_msg)
 void Game_world_screen::focus()
 {
 	THROW_INFORMATION("Focus on game world screen");
-	Publisher::instance()->notify(Game_world_screen::Event::Go_builder);
+	Publisher::instance()->notify(Game_world_screen::Event::Go_NPC_creator);
 	Console_manager::instance()->activate();
 	if (Server_manager::instance() != nullptr)
 		Server_manager::server()->set_logout_function([&](Connection* p_client, jgl::Data_contener& p_param) {

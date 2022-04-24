@@ -36,6 +36,7 @@ void Player_interacter::_render()
 void Player_interacter::_on_geometry_change()
 {
 	_editor_inventory->set_geometry(0, _area);
+	_npc_creator_interface->set_geometry(0, _area);
 }
 
 void Player_interacter::compose_pos(jgl::Vector3Int& p_actual, jgl::Vector3Int& p_start, jgl::Vector3Int& p_end)

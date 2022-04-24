@@ -29,39 +29,51 @@ jgl::Bool Slider::_update()
 }
 
 Slider::Slider(jgl::Widget* p_parent) : jgl::Widget(p_parent)
+{
+
+}
+
+void Slider::set_slide_time(jgl::Ulong p_slide_duration)
+{
+	_slide_duration = p_slide_duration;
+}
+
+void Slider::define_position(jgl::Vector2Int p_closed_position, jgl::Vector2Int p_opened_position)
+{
+	_closed_position = p_closed_position;
+	_opened_position = p_opened_position;
+}
+
+void Slider::open()
+{
+	_is_opened = true;
+	_is_in_motion = true;
+	_starting_time = jgl::Application::active_application()->time();
+
+	_start_position = _closed_position;
+	_final_position = _opened_position;
+}
+void Slider::close()
+{
+	if (_is_opened == false || _is_in_motion == true)
+		return;
+
+	_is_opened = false;
+	_is_in_motion = true;
+	_starting_time = jgl::Application::active_application()->time();
+
+	_start_position = _opened_position;
+	_final_position = _closed_position;
+}
+
+void Slider::change_state()
+{
+	if (_is_opened == true)
 	{
-
+		close();
 	}
-
-	void Slider::set_slide_time(jgl::Ulong p_slide_duration)
+	else
 	{
-		_slide_duration = p_slide_duration;
+		open();
 	}
-
-	void Slider::define_position(jgl::Vector2Int p_opened_position, jgl::Vector2Int p_closed_position)
-	{
-		_closed_position = p_closed_position;
-		_opened_position = p_opened_position;
-	}
-
-	void Slider::open()
-	{
-		_is_opened = true;
-		_is_in_motion = true;
-		_starting_time = jgl::Application::active_application()->time();
-
-		_start_position = _closed_position;
-		_final_position = _opened_position;
-	}
-	void Slider::close()
-	{
-		if (_is_opened == false || _is_in_motion == true)
-			return;
-
-		_is_opened = false;
-		_is_in_motion = true;
-		_starting_time = jgl::Application::active_application()->time();
-
-		_start_position = _opened_position;
-		_final_position = _closed_position;
-	}
+}

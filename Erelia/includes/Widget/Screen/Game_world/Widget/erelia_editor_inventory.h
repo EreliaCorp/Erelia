@@ -82,8 +82,6 @@ private:
 	jgl::Bool _update();
 	jgl::Bool _fixed_update();
 
-	void _slider_button_action();
-
 	void _compose_predefined_page();
 	void _compose_custom_page();
 

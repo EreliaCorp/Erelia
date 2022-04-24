@@ -61,7 +61,7 @@ void Editor_inventory::_on_geometry_change()
 	jgl::Vector2Int page_name_label_size = jgl::Vector2Int(frame_size.x - button_size.x * 2 - space.x * 6, button_size.y);
 	jgl::Vector2Int inventory_page_size = jgl::Vector2Int(frame_size.x - space.x * 4, frame_size.y - space.y * 5 - button_size.y);
 
-	_slider->define_position(jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x - frame_size.x, 0), jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x, 0));
+	_slider->define_position(jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x, 0), jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - layer_label_size.x - frame_size.x, 0));
 
 	if (_slider->is_opened() == true)
 		_slider->set_geometry(_slider->opened_position(), _area);
@@ -93,10 +93,17 @@ void Editor_inventory::_on_geometry_change()
 jgl::Bool Editor_inventory::_update()
 {
 	static jgl::Ulong next_input = 0;
+	static jgl::Bool last_state = true;
+
+	if (last_state != _slider->is_opened())
+	{
+		_slider_button->label().set_text((_slider->is_opened() == true ? ">" : "<"));
+		last_state = _slider->is_opened();
+	}
 
 	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Tab) == jgl::Input_status::Release)
 	{
-		_slider_button_action();
+		_slider->change_state();
 		return (true);
 	}
 
@@ -147,18 +154,6 @@ jgl::Bool Editor_inventory::_update()
 jgl::Bool Editor_inventory::_fixed_update()
 {
 	return (false);
-}
-
-void Editor_inventory::_slider_button_action()
-{
-	if (_slider->is_opened() == true)
-	{
-		_slider->close();
-	}
-	else
-	{
-		_slider->open();
-	}
 }
 
 void Editor_inventory::_compose_predefined_page()
@@ -213,7 +208,9 @@ Editor_inventory::Editor_inventory(jgl::Widget* p_parent) : jgl::Widget(p_parent
 	_slider = new Slider(this);
 	_slider->activate();
 
-	_slider_button = new jgl::Button([&](jgl::Data_contener& p_param) {if (_slider->is_in_motion() == false)_slider_button_action(); }, _slider);
+	_slider_button = new jgl::Button([&](jgl::Data_contener& p_param) {
+		_slider->change_state();
+		}, _slider);
 	_slider_button->activate();
 
 	_inventory_frame = new jgl::Frame(_slider);

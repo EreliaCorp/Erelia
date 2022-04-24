@@ -30,8 +30,9 @@ public:
 
 	void set_slide_time(jgl::Ulong p_slide_duration);
 
-	void define_position(jgl::Vector2Int p_opened_position, jgl::Vector2Int p_closed_position);
+	void define_position(jgl::Vector2Int p_closed_position, jgl::Vector2Int p_opened_position);
 	void open();
 	void close();
 
+	void change_state();
 };
