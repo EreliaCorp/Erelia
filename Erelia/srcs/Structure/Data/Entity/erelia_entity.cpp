@@ -7,11 +7,27 @@ Entity::Entity(jgl::String p_name, Type p_type, jgl::Long p_id)
 	_sprite_sheet = nullptr;
 	_sprite = 0;
 	_id = p_id;
-	_size = 1;
 	_destination = 0;
 	_move_speed = 100u;
 	_is_moving = false;
 	_join_destination();
+}
+
+void Entity::render(jgl::Vector2Int p_anchor, jgl::Vector2Int p_size, jgl::Float p_depth)
+{
+	if (sprite_sheet() != nullptr)
+		sprite_sheet()->draw(sprite(), p_anchor, p_size, p_depth, 1.0f);
+	else
+	{
+		if (type() == Entity::Type::Player)
+			jgl::draw_rectangle_color(jgl::Color::blue(), p_anchor, p_size, p_depth);
+		else if (type() == Entity::Type::NPC)
+			jgl::draw_rectangle_color(jgl::Color::green(), p_anchor, p_size, p_depth);
+		else if (type() == Entity::Type::Spawner)
+			jgl::draw_rectangle_color(jgl::Color::black(), p_anchor, p_size, p_depth);
+		else if (type() == Entity::Type::Enemy)
+			jgl::draw_rectangle_color(jgl::Color::red(), p_anchor, p_size, p_depth);
+	}
 }
 
 void Entity::place(jgl::Vector2 p_pos)

@@ -15,25 +15,14 @@ void Entity_manager::_on_geometry_change()
 
 void Entity_manager::_render_sprite(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth)
 {
-	if (p_entity->sprite_sheet() != nullptr)
-		p_entity->sprite_sheet()->draw(p_entity->sprite(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth, 1.0f);
-	else
-	{
-		if (p_entity->type() == Entity::Type::Player)
-			jgl::draw_rectangle_color(jgl::Color::blue(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
-		else if (p_entity->type() == Entity::Type::NPC)
-			jgl::draw_rectangle_color(jgl::Color::green(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
-		else if (p_entity->type() == Entity::Type::Spawner)
-			jgl::draw_rectangle_color(jgl::Color::black(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
-		else if (p_entity->type() == Entity::Type::Enemy)
-			jgl::draw_rectangle_color(jgl::Color::red(), convert_world_to_screen(p_entity->pos()), p_entity->size() * Node::size, p_depth);
-	}
+	p_entity->render(convert_world_to_screen(p_entity->pos()), Node::size, p_depth);
+
 	if (Game_world_screen::Publisher::instance()->context()->selected_id == p_entity)
 	{
 		Texture_atlas::instance()->UI_sprite_sheet()->draw(
 			jgl::Vector2Int(0, 0),
 			p_anchor - Node::size / 4,
-			p_entity->size() * Node::size + Node::size / 2,
+			Node::size + Node::size / 2,
 			p_depth + 0.5f,
 			1.0f);
 	}

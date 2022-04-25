@@ -21,7 +21,6 @@ protected:
 	jgl::Sprite_sheet* _sprite_sheet;
 	jgl::Vector2Int _sprite;
 	jgl::Vector2 _pos;
-	jgl::Vector2Int _size;
 
 	//Movement relative attribut
 	jgl::Vector2 _starting_pos;
@@ -35,6 +34,8 @@ public:
 	Entity(jgl::String p_name, Type p_type, jgl::Long p_id);
 	virtual void place(jgl::Vector2 p_pos);
 	void move(jgl::Vector2 p_delta);
+
+	void render(jgl::Vector2Int p_anchor, jgl::Vector2Int p_size, jgl::Float p_depth);
 
 	void set_name(jgl::String p_name) { _name = p_name; }
 	void set_id(jgl::Long p_id) { _id = p_id; }
@@ -54,7 +55,6 @@ public:
 	jgl::Vector2 pos() const { return (_pos); }
 	jgl::Vector2 destination() const { return (_destination); }
 	jgl::Vector2 movement() const { return (_movement); }
-	jgl::Vector2Int size() const { return (_size); }
 	jgl::Bool is_flying() { return (_is_flying); }
 
 	jgl::Bool is_moving() { return (_is_moving); }
