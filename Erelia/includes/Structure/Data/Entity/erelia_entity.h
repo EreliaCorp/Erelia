@@ -12,6 +12,24 @@ public:
 		Spawner = 2,
 		Enemy = 3
 	};
+	static jgl::String to_string(Type p_type)
+	{
+		switch (p_type)
+		{
+		case Type::Player:
+			return ("Player");
+			break;
+		case Type::NPC:
+			return ("NPC");
+			break;
+		case Type::Enemy:
+			return ("Enemy");
+			break;
+		case Type::Spawner:
+			return ("Spawner");
+			break;
+		}
+	}
 protected:
 	jgl::String _name;
 	Type _type;
@@ -39,6 +57,7 @@ public:
 
 	void set_name(jgl::String p_name) { _name = p_name; }
 	void set_id(jgl::Long p_id) { _id = p_id; }
+	void set_type(Type p_type) { _type = p_type; }
 	void set_fly_mode(jgl::Bool p_state) { _is_flying = p_state; }
 	void set_sprite_sheet(jgl::Sprite_sheet* p_sprite_sheet) { _sprite_sheet = p_sprite_sheet; }
 	void set_sprite(jgl::Vector2Int p_sprite) { _sprite = p_sprite; }

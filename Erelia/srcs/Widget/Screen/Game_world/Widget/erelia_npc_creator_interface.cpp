@@ -15,7 +15,8 @@ void NPC_creator_interface::_on_geometry_change()
 	jgl::Size_t nb_line = 10;
 	jgl::Vector2Int line_size = jgl::Vector2Int(frame_size.x - space.x * 4, (frame_size.y - renderer_size.y - space.y * nb_line) / nb_line - space.y / nb_line);
 	jgl::Vector2Int line_sub_part = jgl::Vector2Int(line_size.x - space.x * 2 - line_size.y * 2, line_size.y);
-	
+	jgl::Vector2Int confirmation_button = jgl::Vector2Int(line_size.x / 3, line_size.y);
+
 	_slider->define_position(jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2, 0), jgl::Vector2Int(_area.x - button_size.x * 2 - space.x * 2 - frame_size.x, 0));
 
 	if (_slider->is_opened() == true)
@@ -42,7 +43,6 @@ void NPC_creator_interface::_on_geometry_change()
 	pos.y += line_size.y + space.y;
 
 	jgl::Vector2Int label_size = line_size - jgl::Vector2Int(line_button_size.x + space.x, 0.0f);
-	jgl::cout << "Line : " << pos << " / " << label_size << jgl::endl;
 	SET_LABEL_LOOK(_entity_position_label, pos, label_size);
 	SET_BUTTON_LOOK(_entity_position_definition_button, pos + jgl::Vector2Int(label_size.x + space.x, 0), line_button_size);
 
@@ -50,23 +50,15 @@ void NPC_creator_interface::_on_geometry_change()
 
 	SET_BUTTON_LOOK(_previous_movement_type_button, pos, line_button_size);
 	SET_LABEL_LOOK(_entity_movement_type_label, pos + jgl::Vector2Int(line_size.y + space.x, 0), line_sub_part);
-	SET_BUTTON_LOOK(_entity_movement_path_reset_button, pos + jgl::Vector2Int(line_size.y + space.x + line_sub_part.x + space.x, 0), line_button_size);
+	SET_BUTTON_LOOK(_next_movement_type_button, pos + jgl::Vector2Int(line_size.y + space.x + line_sub_part.x + space.x, 0), line_button_size);
 
-	/*
-	SET_LABEL_LOOK(_previous_movement_type_button, anchor, area);
+	pos.y = _area.y - space.y * 2 - confirmation_button.y;
+	pos.x += confirmation_button.x - space.x;
 
-	SET_LABEL_LOOK(_entity_movement_type_label, anchor, area);
+	SET_BUTTON_LOOK(_creation_reset_button, pos, confirmation_button);
+	pos.x += confirmation_button.x + space.x;
+	SET_BUTTON_LOOK(_creation_confirmation_button, pos, confirmation_button);
 
-	SET_LABEL_LOOK(_entity_movement_path_definition_button, anchor, area);
-
-	SET_LABEL_LOOK(_entity_movement_path_reset_button, anchor, area);
-
-	SET_LABEL_LOOK(_next_movement_type_button, anchor, area);
-
-	SET_LABEL_LOOK(_creation_confirmation_button, anchor, area);
-
-	SET_LABEL_LOOK(_creation_reset_button, anchor, area);
-	*/
 }
 
 void NPC_creator_interface::_render()
@@ -110,16 +102,26 @@ NPC_creator_interface::NPC_creator_interface(jgl::Widget* p_parent) : jgl::Widge
 	_name_entry->activate();
 
 	_previous_type_button = new jgl::Button([&](jgl::Data_contener& p_param) {
-
+			if (_entity_to_create->type() == Entity::Type::NPC)
+				_entity_to_create->set_type(Entity::Type::Enemy);
+			else
+				_entity_to_create->set_type(static_cast<Entity::Type>(static_cast<jgl::Int>(_entity_to_create->type()) - 1));
+			_entity_type_label->label().set_text(Entity::to_string(_entity_to_create->type()));
 		}, _frame);
 	_previous_type_button->label().set_text("<");
 	_previous_type_button->activate();
 
-	_entity_type_label = new jgl::Text_label("", _frame);
+	_entity_type_label = new jgl::Text_label(Entity::to_string(_entity_to_create->type()), _frame);
+	_entity_type_label->label().set_horizontal_align(jgl::Horizontal_alignment::Centred);
+	_entity_type_label->label().set_vertical_align(jgl::Vertical_alignment::Centred); 
 	_entity_type_label->activate();
 
 	_next_type_button = new jgl::Button([&](jgl::Data_contener& p_param) {
-		
+			if (_entity_to_create->type() == Entity::Type::Enemy)
+				_entity_to_create->set_type(Entity::Type::NPC);
+			else
+				_entity_to_create->set_type(static_cast<Entity::Type>(static_cast<jgl::Int>(_entity_to_create->type()) + 1));
+			_entity_type_label->label().set_text(Entity::to_string(_entity_to_create->type()));
 		}, _frame);
 	_next_type_button->label().set_text(">");
 	_next_type_button->activate();
@@ -132,11 +134,13 @@ NPC_creator_interface::NPC_creator_interface(jgl::Widget* p_parent) : jgl::Widge
 	_entity_position_definition_button = new jgl::Button([&](jgl::Data_contener& p_param) {
 
 		}, _frame);
+	_entity_position_definition_button->label().set_text("Place");
 	_entity_position_definition_button->activate();
 
 	_previous_movement_type_button = new jgl::Button([&](jgl::Data_contener& p_param) {
 
 		}, _frame);
+	_previous_movement_type_button->label().set_text("<");
 	_previous_movement_type_button->activate();
 
 	_entity_movement_type_label = new jgl::Text_label("", _frame);
@@ -155,15 +159,18 @@ NPC_creator_interface::NPC_creator_interface(jgl::Widget* p_parent) : jgl::Widge
 	_next_movement_type_button = new jgl::Button([&](jgl::Data_contener& p_param) {
 
 		}, _frame);
+	_next_movement_type_button->label().set_text(">");
 	_next_movement_type_button->activate();
 
 	_creation_confirmation_button = new jgl::Button([&](jgl::Data_contener& p_param) {
 
 		}, _frame);
+	_creation_confirmation_button->label().set_text("Confirm");
 	_creation_confirmation_button->activate();
 
 	_creation_reset_button = new jgl::Button([&](jgl::Data_contener& p_param) {
 
 		}, _frame);
+	_creation_reset_button->label().set_text("Reset");
 	_creation_reset_button->activate();
 }
