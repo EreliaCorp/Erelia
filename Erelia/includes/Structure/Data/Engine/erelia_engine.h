@@ -4,6 +4,7 @@
 
 #include "Structure/Data/Map/erelia_map.h"
 #include "Structure/Data/Entity/erelia_AI_controlled_entity.h"
+#include "structure/data/entity/erelia_spawner_entity.h"
 #include "Structure/Data/Entity/erelia_player.h"
 #include "Structure/Data/Entity/erelia_NPC.h"
 
@@ -14,10 +15,13 @@ private:
 	Map* _map;
 	Player* _player;
 
+	std::recursive_mutex _entities_mutex;
+
 	jgl::Map<jgl::String, jgl::Vector2Int> _wraps;
 
 	jgl::Map<jgl::Long, Entity*> _entities;
 	jgl::Array<AI_controlled_entity*> _NPC_entities;
+	jgl::Array<Spawner_entity*> _spawner_entities;
 
 	jgl::Map<jgl::Long, jgl::Vector2Int> _teleporter_destination;
 
@@ -42,6 +46,15 @@ private:
 
 public:
 	void update();
+
+	void lock_mutex()
+	{
+		_entities_mutex.lock();
+	}
+	void unlock_mutex()
+	{
+		_entities_mutex.unlock();
+	}
 
 	Entity* entity_collision(Entity* p_entity, jgl::Vector2Int p_pos);
 

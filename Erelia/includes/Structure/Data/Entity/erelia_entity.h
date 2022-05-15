@@ -7,10 +7,10 @@ class Entity
 public:
 	enum class Type
 	{
-		Player = 0,
-		NPC = 1,
-		Spawner = 2,
-		Enemy = 3
+		NPC = 0,
+		Spawner = 1,
+		Enemy = 2,
+		Player = 3
 	};
 	static jgl::String to_string(Type p_type)
 	{
@@ -29,6 +29,7 @@ public:
 			return ("Spawner");
 			break;
 		}
+		return ("Unknow");
 	}
 protected:
 	jgl::String _name;
@@ -54,6 +55,7 @@ public:
 	void move(jgl::Vector2 p_delta);
 
 	void render(jgl::Vector2Int p_anchor, jgl::Vector2Int p_size, jgl::Float p_depth);
+	void render_name(jgl::Vector2Int p_anchor, jgl::Float p_depth);
 
 	void set_name(jgl::String p_name) { _name = p_name; }
 	void set_id(jgl::Long p_id) { _id = p_id; }

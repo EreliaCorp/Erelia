@@ -33,8 +33,6 @@ Main_application::Main_application(jgl::Widget* p_parent) : jgl::Widget(p_parent
 Main_application::~Main_application()
 {
 	UI_configuration_file::save(Path_atlas::ui_config_path);
-	if (Server_manager::instance() != nullptr)
-		Engine::instance()->save();
 	if (Account_atlas::instance() != nullptr)
 		Account_atlas::instance()->save();
 }

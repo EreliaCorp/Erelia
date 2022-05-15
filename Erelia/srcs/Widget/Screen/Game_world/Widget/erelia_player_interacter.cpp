@@ -181,7 +181,7 @@ Player_interacter::Player_interacter(jgl::Widget* p_parent) : Overworld_widget(p
 	_editor_inventory->set_depth(_depth + 100);
 	_editor_inventory->desactivate();
 
-	_npc_creator_interface = new NPC_creator_interface(this);
+	_npc_creator_interface = NPC_creator_interface::instanciate(this);
 	_npc_creator_interface->set_depth(_depth + 100);
 	_npc_creator_interface->desactivate();
 

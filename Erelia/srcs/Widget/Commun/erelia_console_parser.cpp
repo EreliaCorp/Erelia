@@ -18,7 +18,7 @@ jgl::String Console_parser::_parse_block_composition(jgl::String p_entry)
 
 		if (sub_tab.size() == 1)
 		{
-			if (sub_tab[0].compose_only("0123456789.") == false || sub_tab[0].compose_only(".") == true)
+			if (sub_tab[0] != "-1" && (sub_tab[0].compose_only("0123456789.") == false || sub_tab[0].compose_only(".") == true))
 				return ("");
 			else
 				result += (result != "" ? jgl::String("/") : jgl::String()) + "100/" + sub_tab[0];
@@ -112,7 +112,7 @@ void Console_parser::_parse_command(Command& p_command)
 				jgl::String block_entry = _parse_block_composition(tab[1]);
 				jgl::String block_output = _parse_block_composition(tab[2]);
 
-				if (block_entry != "" && block_entry.compose_only("1234567890/.") == true && block_output != "")
+				if (block_entry != "" && block_entry.compose_only("1234567890/.-") == true && block_output != "")
 				{
 					_send_brush_type_data(p_command.sender, block_entry + " " + block_output);
 					_send_brush_type_modification(p_command.sender, Player_interacter::Brush_type::Brush_replace);

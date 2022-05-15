@@ -30,6 +30,18 @@ void Entity::render(jgl::Vector2Int p_anchor, jgl::Vector2Int p_size, jgl::Float
 	}
 }
 
+void Entity::render_name(jgl::Vector2Int p_anchor, jgl::Float p_depth)
+{
+	if (type() == Entity::Type::Player)
+		jgl::draw_text(name(), p_anchor - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::blue(), jgl::Color::black());
+	else if (type() == Entity::Type::NPC)
+		jgl::draw_text(name(), p_anchor - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::green(), jgl::Color::black());
+	else if (type() == Entity::Type::Spawner)
+		jgl::draw_text(name(), p_anchor - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::black(), jgl::Color::black());
+	else if (type() == Entity::Type::Enemy)
+		jgl::draw_text(name(), p_anchor - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::red(), jgl::Color::black());
+}
+
 void Entity::place(jgl::Vector2 p_pos)
 {
 	_pos = p_pos;

@@ -15,29 +15,14 @@ void Entity_manager::_on_geometry_change()
 
 void Entity_manager::_render_sprite(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth)
 {
-	p_entity->render(convert_world_to_screen(p_entity->pos()), Node::size, p_depth);
-
-	if (Game_world_screen::Publisher::instance()->context()->selected_id == p_entity)
-	{
-		Texture_atlas::instance()->UI_sprite_sheet()->draw(
-			jgl::Vector2Int(0, 0),
-			p_anchor - Node::size / 4,
-			Node::size + Node::size / 2,
-			p_depth + 0.5f,
-			1.0f);
-	}
+	if (p_entity != nullptr)
+		p_entity->render(p_anchor, Node::size, p_depth);
 }
 
 void Entity_manager::_render_name(Entity* p_entity, jgl::Vector2Int p_anchor, jgl::Float p_depth)
 {
-	if (p_entity->type() == Entity::Type::Player)
-		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::blue(), jgl::Color::black());
-	else if (p_entity->type() == Entity::Type::NPC)
-		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::green(), jgl::Color::black());
-	else if (p_entity->type() == Entity::Type::Spawner)
-		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::black(), jgl::Color::black());
-	else if (p_entity->type() == Entity::Type::Enemy)
-		jgl::draw_text(p_entity->name(), convert_world_to_screen(p_entity->pos()) - jgl::Vector2Int(0, 30), 25, p_depth + 10, 1.0f, jgl::Color::red(), jgl::Color::black());
+	if (p_entity != nullptr)
+		p_entity->render_name(p_anchor, p_depth);
 }
 
 void Entity_manager::_render_path(AI_controlled_entity* p_entity, jgl::Float p_depth)
@@ -55,6 +40,7 @@ void Entity_manager::_render_path(AI_controlled_entity* p_entity, jgl::Float p_d
 
 void Entity_manager::_render()
 {
+	Engine::instance()->lock_mutex();
 	for (auto tmp : Engine::instance()->entities())
 	{
 		if (tmp.second != nullptr)
@@ -70,6 +56,7 @@ void Entity_manager::_render()
 				_render_path(reinterpret_cast<AI_controlled_entity*>(tmp.second), depth);
 		}
 	}
+	Engine::instance()->unlock_mutex();
 	nb_render++;
 }
 
@@ -165,10 +152,11 @@ void Entity_manager::_receive_entity_info(Message& p_msg)
 		p_msg >> id;
 		p_msg >> pos;
 
-		Entity* new_entity = new Entity(name, type, id);
-		new_entity->place(pos);
+		Entity* tmp_entity = new AI_controlled_entity(name, type, id);
 
-		Engine::instance()->add_entity(new_entity);
+		tmp_entity->place(pos);
+
+		Engine::instance()->add_entity(tmp_entity);
 		_entity_received[id] = false;
 	}
 }
@@ -217,15 +205,142 @@ void Entity_manager::_receive_entity_suppression_command(Message& p_msg)
 	Engine::instance()->remove_entity(id);
 }
 
+void Entity_manager::_receive_client_entity_modification(Connection* p_client, Message& p_msg)
+{
+	jgl::Long id;
+	jgl::String name;
+	jgl::Vector2 pos;
+	Entity::Type type;
+	AI_controlled_entity::Movement_info movement_info;
+
+	p_msg >> id;
+	p_msg >> name;
+	p_msg >> pos;
+	p_msg >> type;
+	p_msg >> movement_info.pattern;
+
+	if (movement_info.pattern == AI_controlled_entity::Movement_info::Pattern::Wander)
+	{
+		p_msg >> movement_info.data.range;
+	}
+	else if (movement_info.pattern == AI_controlled_entity::Movement_info::Pattern::Path)
+	{
+		for (jgl::Size_t i = 0; i < movement_info.data.path.size(); i++)
+		{
+			p_msg >> movement_info.data.path[i];
+		}
+	}
+
+	if (id == -1)
+	{
+		AI_controlled_entity* tmp_entity = nullptr;
+
+		if (type == Entity::Type::NPC)
+			tmp_entity = new NPC(name, Engine::instance()->request_id());
+		else if (type == Entity::Type::Spawner)
+			tmp_entity = new AI_controlled_entity(name, type, movement_info.pattern, Engine::instance()->request_id());
+		else if (type == Entity::Type::Enemy)
+			tmp_entity = new AI_controlled_entity(name, type, movement_info.pattern, Engine::instance()->request_id());
+
+		if (tmp_entity != nullptr)
+		{
+			tmp_entity->place(pos);
+
+			jgl::cout << "Creating new entity [" << tmp_entity->id() << "] - (" << tmp_entity->name() << ")" << jgl::endl;
+			Engine::instance()->add_entity(tmp_entity);
+
+			static Message result(Server_message::Entity_creation_confirmation);
+
+			result << tmp_entity->id();
+
+			Server_manager::server()->send_to(p_client, result);
+		}
+	}
+	else
+	{
+		AI_controlled_entity* tmp_entity = static_cast<AI_controlled_entity *>(Engine::instance()->entity(id));
+
+		if (tmp_entity != nullptr)
+		{
+			tmp_entity->set_name(name);
+			tmp_entity->set_type(type);
+			tmp_entity->set_movement_info(movement_info);
+			tmp_entity->place(pos);
+
+			static Message result(Server_message::Entity_modification);
+			result.clear();
+
+			result << id;
+			result << name;
+			result << type;
+
+			Server_manager::server()->send_to_all(result, nullptr);
+		}
+	}
+}
+
+void Entity_manager::_receive_entity_modification(Message& p_msg)
+{
+	jgl::Long id;
+	jgl::String name;
+	jgl::Vector2 pos;
+	Entity::Type type;
+
+	p_msg >> id;
+
+	if (id != -1)
+	{
+		AI_controlled_entity* tmp_entity = static_cast<AI_controlled_entity*>(Engine::instance()->entity(id));
+
+		p_msg >> name;
+		p_msg >> type;
+
+		tmp_entity->set_name(name);
+		tmp_entity->set_type(type);
+	}
+}
+
+void Entity_manager::_receive_entity_creation_confirmation(Message& p_msg)
+{
+	jgl::Long id;
+
+	p_msg >> id;
+
+	NPC_creator_interface::instance()->set_entity_id(id);
+}
+
+void Entity_manager::_receive_client_entity_suppression(Connection* p_client, Message& p_msg)
+{
+	p_msg.header.id = Server_message::Entity_suppression;
+
+	jgl::Long id;
+
+	p_msg >> id;
+
+	p_msg.header.readed = 0;
+
+	Server_manager::server()->send_to_all(p_msg, nullptr);
+}
+
 void Entity_manager::_initialize_server()
 {
 	Server_manager::server()->add_activity(Server_message::Request_entity_info, SERVER_ACTIVITY{
 			_receive_request_entity_info(p_client, p_msg);
 		});
+	Server_manager::server()->add_activity(Server_message::Entity_modification, SERVER_ACTIVITY{
+			_receive_client_entity_modification(p_client, p_msg);
+		});
+
+	Server_manager::server()->add_activity(Server_message::Entity_suppression_request, SERVER_ACTIVITY{
+			_receive_client_entity_suppression(p_client, p_msg);
+		});
 }
 
 void Entity_manager::_initialize_client()
 {
+	Client_manager::client()->add_activity(Server_message::Entity_modification, CLIENT_ACTIVITY{
+			_receive_entity_modification(p_msg);
+		});
 	Client_manager::client()->add_activity(Server_message::Entity_data, CLIENT_ACTIVITY{
 			_receive_entity_data(p_msg);
 		});
@@ -234,7 +349,10 @@ void Entity_manager::_initialize_client()
 		});
 	Client_manager::client()->add_activity(Server_message::Entity_suppression, CLIENT_ACTIVITY{
 			_receive_entity_suppression_command(p_msg);
-		});	
+		});
+	Client_manager::client()->add_activity(Server_message::Entity_creation_confirmation, CLIENT_ACTIVITY{
+			_receive_entity_creation_confirmation(p_msg);
+		});
 }
 
 Entity_manager::Entity_manager(jgl::Widget* p_parent) : Abstract_manager(), Overworld_widget(p_parent),

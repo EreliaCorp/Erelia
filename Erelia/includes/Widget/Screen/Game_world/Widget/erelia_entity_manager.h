@@ -36,6 +36,11 @@ private:
 	void _initialize_server();
 	void _initialize_client();
 
+	void _receive_client_entity_modification(Connection* p_client, Message& p_msg);
+	void _receive_entity_modification(Message& p_msg);
+	void _receive_entity_creation_confirmation(Message& p_msg);
+	void _receive_client_entity_suppression(Connection* p_client, Message& p_msg);
+
 public:
 	Entity_manager(jgl::Widget* p_parent = nullptr);
 	//void receive_entity_data(Message& p_msg);

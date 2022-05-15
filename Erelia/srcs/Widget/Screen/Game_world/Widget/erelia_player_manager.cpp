@@ -74,7 +74,10 @@ void Player_manager::_treat_player_motion(Connection* p_client, Message& p_msg)
 
 jgl::Bool Player_manager::_update()
 {
-	if (Engine::instance() == nullptr || Engine::instance()->player() == nullptr || Console_manager::instance()->console_active() == true)
+	if (Engine::instance() == nullptr ||
+		Engine::instance()->player() == nullptr ||
+		Console_manager::instance()->console_active() == true ||
+		NPC_creator_interface::instance()->entry_active() == true)
 		return false;
 
 	if (_motion_command_send == false)

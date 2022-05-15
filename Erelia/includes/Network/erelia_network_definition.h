@@ -33,6 +33,9 @@ enum Server_message
 	Remove_teleport_data_request,
 	Remove_teleport_data,
 	Remove_teleporter,
+	Entity_modification,
+	Entity_creation_confirmation,
+	Entity_suppression_request
 };
 
 #define SERVER_PORT 26500
