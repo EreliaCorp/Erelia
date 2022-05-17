@@ -41,7 +41,7 @@ void Entity_manager::_render_path(AI_controlled_entity* p_entity, jgl::Float p_d
 void Entity_manager::_render()
 {
 	Engine::instance()->lock_mutex();
-	for (auto tmp : Engine::instance()->entities())
+	for (std::pair<jgl::Long, Entity*> tmp : Engine::instance()->entities())
 	{
 		if (tmp.second != nullptr)
 		{
@@ -88,7 +88,7 @@ void Entity_manager::_send_entity_data()
 
 	msg.clear();
 
-	for (auto tmp : Engine::instance()->entities())
+	for (std::pair<jgl::Long, Entity*> tmp : Engine::instance()->entities())
 	{
 		msg << tmp.first;
 		msg << tmp.second->pos();
@@ -205,18 +205,75 @@ void Entity_manager::_receive_entity_suppression_command(Message& p_msg)
 	Engine::instance()->remove_entity(id);
 }
 
-void Entity_manager::_receive_client_entity_modification(Connection* p_client, Message& p_msg)
+void Entity_manager::_receive_npc_entity_data(Connection* p_client, Message& p_msg)
 {
 	jgl::Long id;
 	jgl::String name;
 	jgl::Vector2 pos;
-	Entity::Type type;
 	AI_controlled_entity::Movement_info movement_info;
 
 	p_msg >> id;
 	p_msg >> name;
 	p_msg >> pos;
-	p_msg >> type;
+	p_msg >> movement_info.pattern;
+
+	if (movement_info.pattern == AI_controlled_entity::Movement_info::Pattern::Wander)
+	{
+		p_msg >> movement_info.data.range;
+	}
+	else if (movement_info.pattern == AI_controlled_entity::Movement_info::Pattern::Path)
+	{
+		for (jgl::Size_t i = 0; i < movement_info.data.path.size(); i++)
+		{
+			p_msg >> movement_info.data.path[i];
+		}
+	}
+	
+	if (id == -1)
+	{
+		id = Engine::instance()->request_id();
+
+		jgl::cout << "Creating new NPC [" << id << "] - (" << name << ")" << jgl::endl;
+
+		Engine::instance()->add_entity(new NPC(name, id));
+
+		static Message result(Server_message::Entity_creation_confirmation);
+
+		result << id;
+
+		Server_manager::server()->send_to(p_client, result);
+	}
+	
+	NPC* tmp_entity = static_cast<NPC*>(Engine::instance()->entity(id));
+
+	if (tmp_entity != nullptr)
+	{
+		tmp_entity->set_name(name);
+		tmp_entity->set_type(Entity::Type::NPC);
+		tmp_entity->set_movement_info(movement_info);
+		tmp_entity->place(pos);
+
+		static Message result(Server_message::Entity_modification);
+		result.clear();
+
+		result << id;
+		result << name;
+		result << Entity::Type::NPC;
+
+		Server_manager::server()->send_to_all(result, nullptr);
+	}
+}
+
+void Entity_manager::_receive_enemy_entity_data(Connection* p_client, Message& p_msg)
+{
+	jgl::Long id;
+	jgl::String name;
+	jgl::Vector2 pos;
+	AI_controlled_entity::Movement_info movement_info;
+
+	p_msg >> id;
+	p_msg >> name;
+	p_msg >> pos;
 	p_msg >> movement_info.pattern;
 
 	if (movement_info.pattern == AI_controlled_entity::Movement_info::Pattern::Wander)
@@ -233,49 +290,100 @@ void Entity_manager::_receive_client_entity_modification(Connection* p_client, M
 
 	if (id == -1)
 	{
-		AI_controlled_entity* tmp_entity = nullptr;
+		id = Engine::instance()->request_id();
 
-		if (type == Entity::Type::NPC)
-			tmp_entity = new NPC(name, Engine::instance()->request_id());
-		else if (type == Entity::Type::Spawner)
-			tmp_entity = new AI_controlled_entity(name, type, movement_info.pattern, Engine::instance()->request_id());
-		else if (type == Entity::Type::Enemy)
-			tmp_entity = new AI_controlled_entity(name, type, movement_info.pattern, Engine::instance()->request_id());
+		jgl::cout << "Creating new Enemy [" << id << "] - (" << name << ")" << jgl::endl;
 
-		if (tmp_entity != nullptr)
-		{
-			tmp_entity->place(pos);
+		Engine::instance()->add_entity(new Enemy(name, id));
 
-			jgl::cout << "Creating new entity [" << tmp_entity->id() << "] - (" << tmp_entity->name() << ")" << jgl::endl;
-			Engine::instance()->add_entity(tmp_entity);
+		static Message result(Server_message::Entity_creation_confirmation);
 
-			static Message result(Server_message::Entity_creation_confirmation);
+		result << id;
 
-			result << tmp_entity->id();
-
-			Server_manager::server()->send_to(p_client, result);
-		}
+		Server_manager::server()->send_to(p_client, result);
 	}
-	else
+
+	Enemy* tmp_entity = static_cast<Enemy*>(Engine::instance()->entity(id));
+
+	if (tmp_entity != nullptr)
 	{
-		AI_controlled_entity* tmp_entity = static_cast<AI_controlled_entity *>(Engine::instance()->entity(id));
+		tmp_entity->set_name(name);
+		tmp_entity->set_type(Entity::Type::Enemy);
+		tmp_entity->set_movement_info(movement_info);
+		tmp_entity->place(pos);
 
-		if (tmp_entity != nullptr)
-		{
-			tmp_entity->set_name(name);
-			tmp_entity->set_type(type);
-			tmp_entity->set_movement_info(movement_info);
-			tmp_entity->place(pos);
+		static Message result(Server_message::Entity_modification);
+		result.clear();
 
-			static Message result(Server_message::Entity_modification);
-			result.clear();
+		result << id;
+		result << name;
+		result << Entity::Type::Enemy;
 
-			result << id;
-			result << name;
-			result << type;
+		Server_manager::server()->send_to_all(result, nullptr);
+	}
+}
 
-			Server_manager::server()->send_to_all(result, nullptr);
-		}
+void Entity_manager::_receive_spawner_entity_data(Connection* p_client, Message& p_msg)
+{
+	jgl::Long id;
+	jgl::String name;
+	jgl::Vector2 pos;
+
+	p_msg >> id;
+	p_msg >> name;
+	p_msg >> pos;
+
+	if (id == -1)
+	{
+		id = Engine::instance()->request_id();
+
+		jgl::cout << "Creating new Spawner [" << id << "] - (" << name << ")" << jgl::endl;
+
+		Engine::instance()->add_entity(new Spawner(name, id));
+
+		static Message result(Server_message::Entity_creation_confirmation);
+
+		result << id;
+
+		Server_manager::server()->send_to(p_client, result);
+	}
+
+	Spawner* tmp_entity = static_cast<Spawner*>(Engine::instance()->entity(id));
+
+	if (tmp_entity != nullptr)
+	{
+		tmp_entity->set_name(name);
+		tmp_entity->set_type(Entity::Type::Spawner);
+		tmp_entity->place(pos);
+
+		static Message result(Server_message::Entity_modification);
+		result.clear();
+
+		result << id;
+		result << name;
+		result << Entity::Type::Spawner;
+
+		Server_manager::server()->send_to_all(result, nullptr);
+	}
+}
+
+void Entity_manager::_receive_client_entity_modification(Connection* p_client, Message& p_msg)
+{
+	Entity::Type type;
+
+	p_msg >> type;
+
+	if (type == Entity::Type::Enemy)
+	{
+		_receive_enemy_entity_data(p_client, p_msg);
+	}
+	else if (type == Entity::Type::NPC)
+	{
+		_receive_npc_entity_data(p_client, p_msg);
+	}
+	else if (type == Entity::Type::Spawner)
+	{
+		_receive_spawner_entity_data(p_client, p_msg);
 	}
 }
 
@@ -283,14 +391,13 @@ void Entity_manager::_receive_entity_modification(Message& p_msg)
 {
 	jgl::Long id;
 	jgl::String name;
-	jgl::Vector2 pos;
 	Entity::Type type;
 
 	p_msg >> id;
 
 	if (id != -1)
 	{
-		AI_controlled_entity* tmp_entity = static_cast<AI_controlled_entity*>(Engine::instance()->entity(id));
+		Entity* tmp_entity = Engine::instance()->entity(id);
 
 		p_msg >> name;
 		p_msg >> type;

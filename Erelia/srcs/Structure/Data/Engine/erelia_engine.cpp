@@ -38,10 +38,21 @@ void Engine::_update_NPC()
 	}
 }
 
+void Engine::_update_spawner()
+{
+	for (jgl::Size_t i = 0; i < _spawner_entities.size(); i++)
+	{
+		_spawner_entities[i]->update();
+	}
+}
+
 void Engine::update()
 {
 	if (Server_manager::server() != nullptr)
+	{
 		_update_NPC();
+		_update_spawner();
+	}
 	_update_entity();
 }
 
@@ -82,7 +93,7 @@ void Engine::add_entity(Entity* p_entity)
 	if (p_entity->type() == Entity::Type::NPC || p_entity->type() == Entity::Type::Enemy)
 		_NPC_entities.push_back(static_cast<AI_controlled_entity*>(p_entity));
 	if (p_entity->type() == Entity::Type::Spawner)
-		_spawner_entities.push_back(static_cast<Spawner_entity*>(p_entity));
+		_spawner_entities.push_back(static_cast<Spawner*>(p_entity));
 }
 
 void Engine::remove_entity(jgl::Long p_id)
@@ -99,7 +110,7 @@ void Engine::remove_entity(jgl::Long p_id)
 		}
 		if (tmp_base_entity->type() == Entity::Type::Spawner)
 		{
-			auto tmp_entity = _spawner_entities.find(static_cast<Spawner_entity*>(tmp_base_entity));
+			auto tmp_entity = _spawner_entities.find(static_cast<Spawner*>(tmp_base_entity));
 			if (tmp_entity != _spawner_entities.end())
 				_spawner_entities.erase(tmp_entity);
 		}
@@ -272,7 +283,7 @@ void Engine::load_entity()
 
 		while (file.peek() != EOF)
 		{
-			Spawner_entity* new_entity = Spawner_entity::load(file);
+			Spawner* new_entity = Spawner::load(file);
 			new_entity->set_id(request_id());
 			add_entity(new_entity);
 		}

@@ -36,6 +36,9 @@ private:
 	void _initialize_server();
 	void _initialize_client();
 
+	void _receive_npc_entity_data(Connection* p_client, Message& p_msg);
+	void _receive_enemy_entity_data(Connection* p_client, Message& p_msg);
+	void _receive_spawner_entity_data(Connection* p_client, Message& p_msg);
 	void _receive_client_entity_modification(Connection* p_client, Message& p_msg);
 	void _receive_entity_modification(Message& p_msg);
 	void _receive_entity_creation_confirmation(Message& p_msg);

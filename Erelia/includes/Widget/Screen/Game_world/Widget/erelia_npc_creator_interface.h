@@ -5,7 +5,7 @@
 #include "widget/abstract_widget/erelia_overworld_widget.h"
 #include "widget/Commun/erelia_slider_widget.h"
 #include "structure/data/Entity/erelia_AI_controlled_entity.h"
-#include "structure/data/Entity/erelia_spawner_entity.h"
+#include "structure/data/Entity/erelia_Spawner.h"
 #include "network/erelia_client_manager.h"
 
 class NPC_creator_interface : public Overworld_widget, public jgl::Singleton_widget<NPC_creator_interface>
@@ -194,7 +194,7 @@ private:
 	NPC_creator_interface(jgl::Widget* p_parent);
 
 	void _send_entity_modification_AI_controlled_entity(Message& p_msg, AI_controlled_entity* p_entity);
-	void _send_entity_modification_spawner_entity(Message& p_msg, Spawner_entity* p_entity);
+	void _send_entity_modification_Spawner(Message& p_msg, Spawner* p_entity);
 	void _send_entity_modification(Entity* p_entity);
 	void _send_entity_suppression_request(jgl::Long p_id);
 

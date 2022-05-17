@@ -58,7 +58,7 @@ public:
 
 	void set_movement_info(Movement_info p_movement_info);
 	void place(jgl::Vector2 p_pos);
-	void update();
+	virtual void update();
 
 	Movement_info& movement_info() { return (_movement_info); }
 

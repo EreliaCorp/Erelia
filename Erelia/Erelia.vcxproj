@@ -223,10 +223,11 @@
     <ClInclude Include="includes\Structure\Data\Engine\erelia_engine.h" />
     <ClInclude Include="includes\Structure\Data\Engine\erelia_item.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_AI_controlled_entity.h" />
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_enemy.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_entity.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_NPC.h" />
     <ClInclude Include="includes\Structure\Data\Entity\erelia_player.h" />
-    <ClInclude Include="includes\Structure\Data\Entity\erelia_spawner_entity.h" />
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_spawner.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_chunk.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_map.h" />
     <ClInclude Include="includes\Structure\Data\Map\erelia_node.h" />
@@ -272,10 +273,11 @@
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_engine.cpp" />
     <ClCompile Include="srcs\Structure\Data\Engine\erelia_item.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_AI_controlled_entity.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_enemy_entity.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_entity.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_NPC.cpp" />
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_player.cpp" />
-    <ClCompile Include="srcs\Structure\Data\Entity\erelia_spawner_entity.cpp" />
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_spawner.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake.cpp" />
     <ClCompile Include="srcs\Structure\Data\Map\erelia_chunk_bake_data.cpp" />

@@ -344,7 +344,10 @@
     <ClInclude Include="includes\Widget\Screen\Game_world\Widget\erelia_npc_creator_interface.h">
       <Filter>Header Files\Widget\Screen\Game_world\Widget\NPC_creator</Filter>
     </ClInclude>
-    <ClInclude Include="includes\Structure\Data\Entity\erelia_spawner_entity.h">
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_spawner.h">
+      <Filter>Header Files\Structure\Data\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Structure\Data\Entity\erelia_enemy.h">
       <Filter>Header Files\Structure\Data\Entity</Filter>
     </ClInclude>
   </ItemGroup>
@@ -532,7 +535,10 @@
     <ClCompile Include="srcs\Widget\Screen\Game_world\Widget\erelia_npc_creator_removing_activity.cpp">
       <Filter>Source Files\Widget\Screen\Game_world\Widget\NPC_creator\Activity</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Structure\Data\Entity\erelia_spawner_entity.cpp">
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_spawner.cpp">
+      <Filter>Source Files\Structure\Data\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Structure\Data\Entity\erelia_enemy_entity.cpp">
       <Filter>Source Files\Structure\Data\Entity</Filter>
     </ClCompile>
   </ItemGroup>

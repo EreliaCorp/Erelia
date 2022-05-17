@@ -4,8 +4,9 @@
 
 #include "Structure/Data/Map/erelia_map.h"
 #include "Structure/Data/Entity/erelia_AI_controlled_entity.h"
-#include "structure/data/entity/erelia_spawner_entity.h"
+#include "structure/data/entity/erelia_spawner.h"
 #include "Structure/Data/Entity/erelia_player.h"
+#include "Structure/Data/Entity/erelia_enemy.h"
 #include "Structure/Data/Entity/erelia_NPC.h"
 
 class Engine : public jgl::Singleton<Engine>
@@ -21,7 +22,7 @@ private:
 
 	jgl::Map<jgl::Long, Entity*> _entities;
 	jgl::Array<AI_controlled_entity*> _NPC_entities;
-	jgl::Array<Spawner_entity*> _spawner_entities;
+	jgl::Array<Spawner*> _spawner_entities;
 
 	jgl::Map<jgl::Long, jgl::Vector2Int> _teleporter_destination;
 
@@ -29,6 +30,7 @@ private:
 
 	void _update_entity();
 	void _update_NPC();
+	void _update_spawner();
 
 	jgl::String _load_entity_name(jgl::File& p_file);
 	Entity::Type _load_entity_type(jgl::File& p_file);

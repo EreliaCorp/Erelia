@@ -260,7 +260,7 @@ void NPC_creator_interface::_send_entity_modification_AI_controlled_entity(Messa
 	}
 }
 
-void NPC_creator_interface::_send_entity_modification_spawner_entity(Message& p_msg, Spawner_entity* p_entity)
+void NPC_creator_interface::_send_entity_modification_Spawner(Message& p_msg, Spawner* p_entity)
 {
 
 }
@@ -274,10 +274,10 @@ void NPC_creator_interface::_send_entity_modification(Entity* p_entity)
 
 	result.clear();
 
+	result << p_entity->type();
 	result << p_entity->id();
 	result << p_entity->name();
 	result << p_entity->pos();
-	result << p_entity->type();
 
 	if (p_entity->type() == Entity::Type::NPC || p_entity->type() == Entity::Type::Enemy)
 	{
@@ -285,7 +285,7 @@ void NPC_creator_interface::_send_entity_modification(Entity* p_entity)
 	}
 	else if (p_entity->type() == Entity::Type::Spawner)
 	{
-		_send_entity_modification_spawner_entity(result, reinterpret_cast<Spawner_entity*> (p_entity));
+		_send_entity_modification_Spawner(result, reinterpret_cast<Spawner*> (p_entity));
 	}
 
 	Client_manager::instance()->client()->send(result);
