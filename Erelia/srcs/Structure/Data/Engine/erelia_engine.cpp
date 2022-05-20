@@ -98,7 +98,7 @@ void Engine::add_entity(Entity* p_entity)
 
 void Engine::remove_entity(jgl::Long p_id)
 {
-	lock_mutex();
+	lock_entities();
 	if (_entities.count(p_id) != 0)
 	{
 		Entity* tmp_base_entity = _entities[p_id];
@@ -119,7 +119,7 @@ void Engine::remove_entity(jgl::Long p_id)
 		_player = nullptr;
 	delete _entities[p_id];
 	_entities.erase(p_id);
-	unlock_mutex();
+	unlock_entities();
 }
 
 jgl::Vector2Int Engine::teleporter(jgl::Long p_id)

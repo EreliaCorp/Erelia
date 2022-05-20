@@ -51,6 +51,7 @@ jgl::Bool NPC_creator_interface::_update()
 		last_state = _slider->is_opened();
 	}
 
+	Engine::instance()->lock_entities();
 	if (_entity == nullptr)
 	{
 		if (_menu->entry_name_text() != "No Entity")
@@ -60,6 +61,7 @@ jgl::Bool NPC_creator_interface::_update()
 	{
 		set_entity_name(_menu->entry_name_text());
 	}
+	Engine::instance()->unlock_entities();
 
 	State_machine::instance()->update();
 
@@ -226,6 +228,8 @@ void NPC_creator_interface::remove_entity()
 
 	if (tmp_entity != nullptr)
 	{
+		if (_entity != nullptr && _entity->id() == tmp_entity->id())
+			_entity = nullptr;
 		_send_entity_suppression_request(tmp_entity->id());
 	}
 }

@@ -49,11 +49,11 @@ private:
 public:
 	void update();
 
-	void lock_mutex()
+	void lock_entities()
 	{
 		_entities_mutex.lock();
 	}
-	void unlock_mutex()
+	void unlock_entities()
 	{
 		_entities_mutex.unlock();
 	}

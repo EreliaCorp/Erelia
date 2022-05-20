@@ -22,6 +22,7 @@ void AI_controlled_entity::set_movement_info(Movement_info p_movement_info)
 void AI_controlled_entity::place(jgl::Vector2 p_pos)
 {
 	Entity::place(p_pos);
+	_movement_info.data.base = p_pos;
 	_movement_info.data.destination = p_pos;
 	_movement_info.data.path.clear();
 }
@@ -39,7 +40,7 @@ void AI_controlled_entity::update()
 		{
 			jgl::Vector2 new_destination = _movement_info.data.generate_destination();
 
-			Engine::instance()->map()->find_path(_movement_info.data.path, _pos, new_destination, _movement_info.data.range * 2);
+			Engine::instance()->map()->find_path(_movement_info.data.path, _pos, new_destination, _movement_info.data.range * 4);
 			_movement_info.data.path_index = 0;
 		}
 	}

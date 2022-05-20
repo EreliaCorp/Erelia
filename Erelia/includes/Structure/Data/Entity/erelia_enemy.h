@@ -4,9 +4,11 @@
 
 class Enemy : public AI_controlled_entity
 {
-public:
+private:
+	class Spawner* _owner;
 
-
 public:
-	Enemy(jgl::String p_name, jgl::Long p_id);
+	Enemy(class Spawner* p_owner, jgl::String p_name, jgl::Long p_id);
+
+	void update();
 };

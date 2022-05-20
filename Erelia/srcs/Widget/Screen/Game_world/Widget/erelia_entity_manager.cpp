@@ -40,7 +40,7 @@ void Entity_manager::_render_path(AI_controlled_entity* p_entity, jgl::Float p_d
 
 void Entity_manager::_render()
 {
-	Engine::instance()->lock_mutex();
+	Engine::instance()->lock_entities();
 	for (std::pair<jgl::Long, Entity*> tmp : Engine::instance()->entities())
 	{
 		if (tmp.second != nullptr)
@@ -56,7 +56,7 @@ void Entity_manager::_render()
 				_render_path(reinterpret_cast<AI_controlled_entity*>(tmp.second), depth);
 		}
 	}
-	Engine::instance()->unlock_mutex();
+	Engine::instance()->unlock_entities();
 	nb_render++;
 }
 
@@ -294,7 +294,7 @@ void Entity_manager::_receive_enemy_entity_data(Connection* p_client, Message& p
 
 		jgl::cout << "Creating new Enemy [" << id << "] - (" << name << ")" << jgl::endl;
 
-		Engine::instance()->add_entity(new Enemy(name, id));
+		Engine::instance()->add_entity(new Enemy(nullptr, name, id));
 
 		static Message result(Server_message::Entity_creation_confirmation);
 

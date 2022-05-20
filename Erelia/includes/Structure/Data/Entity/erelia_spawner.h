@@ -2,10 +2,13 @@
 
 #include "jgl.h"
 #include "structure/Data/Entity/erelia_entity.h"
+#include "structure/Data/Entity/erelia_enemy.h"
 
 class Spawner : public Entity
 {
 protected:
+	jgl::Array<Enemy*> _childrens;
+	jgl::Size_t _max_children;
 
 public:
 	Spawner(jgl::String p_name, jgl::Long p_id);

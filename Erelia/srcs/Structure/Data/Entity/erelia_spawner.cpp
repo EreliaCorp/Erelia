@@ -1,6 +1,8 @@
 #include "structure/data/entity/erelia_Spawner.h"
 
-Spawner::Spawner(jgl::String p_name, jgl::Long p_id) : Entity(p_name, Entity::Type::Spawner, p_id)
+Spawner::Spawner(jgl::String p_name, jgl::Long p_id) :
+	Entity(p_name, Entity::Type::Spawner, p_id),
+	_max_children(4)
 {
 
 }
@@ -33,6 +35,7 @@ void Spawner::save(jgl::File& p_file)
 	write_data(p_file, _type);
 	write_data(p_file, _sprite);
 	write_data(p_file, _pos);
+	write_data(p_file, _max_children);
 }
 
 Spawner* Spawner::load(jgl::File& p_file)
@@ -41,6 +44,7 @@ Spawner* Spawner::load(jgl::File& p_file)
 	Entity::Type type;
 	jgl::Vector2Int sprite;
 	jgl::Vector2 pos;
+	jgl::Size_t max_children;
 	jgl::Size_t len;
 
 	read_data(p_file, len);
@@ -55,6 +59,7 @@ Spawner* Spawner::load(jgl::File& p_file)
 	read_data(p_file, type);
 	read_data(p_file, sprite);
 	read_data(p_file, pos);
+	read_data(p_file, max_children);
 
 	Spawner* new_entity = new Spawner(name, -1);
 	new_entity->place(pos);
