@@ -46,5 +46,31 @@ const jgl::String Path_atlas::prefab_sprite_sheet_path = "ressource/texture/pref
 const jgl::String Path_atlas::UI_sprite_sheet_name = "UI_sprite_sheet";
 const jgl::String Path_atlas::UI_sprite_sheet_path = "ressource/texture/UI_sprite_sheet.png";
 
-const jgl::String Path_atlas::monster_area_sprite_sheet_name = "monster_area_sprite_sheet";
-const jgl::String Path_atlas::monster_area_sprite_sheet_path = "ressource/texture/monster_area_sprite_sheet.png";
+const jgl::Array<jgl::String> Path_atlas::player_body_sprite_sheet_name = {
+	"charset_body_black",
+	"charset_body_grey",
+	"charset_body_red",
+	"charset_body_blue",
+	"charset_body_green"
+};
+const jgl::Array<jgl::String> Path_atlas::player_body_sprite_sheet_path = {
+	"ressource/texture/charset/charset_body_black.png",
+	"ressource/texture/charset/charset_body_grey.png",
+	"ressource/texture/charset/charset_body_red.png",
+	"ressource/texture/charset/charset_body_blue.png",
+	"ressource/texture/charset/charset_body_green.png"
+};
+const jgl::Array<jgl::String> Path_atlas::player_item1_sprite_sheet_name = {
+	"charset_item1_black",
+	"charset_item1_white",
+	"charset_item1_red",
+	"charset_item1_blue",
+	"charset_item1_green"
+};
+const jgl::Array<jgl::String> Path_atlas::player_item1_sprite_sheet_path = {
+	"ressource/texture/charset/charset_item1_black.png",
+	"ressource/texture/charset/charset_item1_white.png",
+	"ressource/texture/charset/charset_item1_red.png",
+	"ressource/texture/charset/charset_item1_blue.png",
+	"ressource/texture/charset/charset_item1_green.png"
+};

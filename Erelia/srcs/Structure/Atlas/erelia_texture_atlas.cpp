@@ -13,7 +13,15 @@ void Texture_atlas::load()
 	add_texture(Path_atlas::chunk_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::chunk_sprite_sheet_path, jgl::Vector2Int(32, 66)));
 	add_texture(Path_atlas::prefab_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::prefab_sprite_sheet_path, jgl::Vector2Int(8, 44)));
 	add_texture(Path_atlas::UI_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::UI_sprite_sheet_path, jgl::Vector2Int(10, 10)));
-	add_texture(Path_atlas::monster_area_sprite_sheet_name, new jgl::Sprite_sheet(Path_atlas::monster_area_sprite_sheet_path, jgl::Vector2Int(16, 12)));
+
+	for (jgl::Size_t i = 0; i < Path_atlas::player_body_sprite_sheet_path.size(); i++)
+	{
+		add_texture(Path_atlas::player_body_sprite_sheet_name[i], new jgl::Sprite_sheet(Path_atlas::player_body_sprite_sheet_path[i], jgl::Vector2Int(8, 4)));
+	}
+	for (jgl::Size_t i = 0; i < Path_atlas::player_item1_sprite_sheet_path.size(); i++)
+	{
+		add_texture(Path_atlas::player_item1_sprite_sheet_name[i], new jgl::Sprite_sheet(Path_atlas::player_item1_sprite_sheet_path[i], jgl::Vector2Int(8, 4)));
+	}
 }
 void Texture_atlas::add_texture(jgl::String p_name, jgl::Image_handler* p_image_handler)
 {
@@ -39,10 +47,6 @@ void Texture_atlas::add_texture(jgl::String p_name, jgl::Image_handler* p_image_
 	else if (p_name == Path_atlas::UI_sprite_sheet_name)
 	{
 		_UI_sprite_sheet = static_cast<jgl::Sprite_sheet*>(p_image_handler);
-	}
-	else if (p_name == Path_atlas::monster_area_sprite_sheet_name)
-	{
-		_monster_area_sheet = static_cast<jgl::Sprite_sheet*>(p_image_handler);
 	}
 }
 

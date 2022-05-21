@@ -13,7 +13,8 @@ private:
 	jgl::Sprite_sheet* _node_sprite_sheet = nullptr;
 	jgl::Sprite_sheet* _prefab_sprite_sheet = nullptr;
 	jgl::Sprite_sheet* _UI_sprite_sheet = nullptr;
-	jgl::Sprite_sheet* _monster_area_sheet = nullptr;
+	jgl::Array<jgl::Sprite_sheet*> _charset_sheet_body;
+	jgl::Array<jgl::Sprite_sheet*> _charset_sheet_item1;
 
 	Texture_atlas();
 
@@ -28,5 +29,6 @@ public:
 	jgl::Sprite_sheet* node_sprite_sheet() { return (_node_sprite_sheet); }
 	jgl::Sprite_sheet* prefab_sprite_sheet() { return (_prefab_sprite_sheet); }
 	jgl::Sprite_sheet* UI_sprite_sheet() { return (_UI_sprite_sheet); }
-	jgl::Sprite_sheet* monster_area_sheet() { return (_monster_area_sheet); }
+	jgl::Array<jgl::Sprite_sheet*>& charset_sheet_body() { return (_charset_sheet_body); }
+	jgl::Array<jgl::Sprite_sheet*>& charset_sheet_item1() { return (_charset_sheet_item1); }
 };

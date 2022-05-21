@@ -54,6 +54,9 @@ public:
 	static const jgl::String UI_sprite_sheet_name;
 	static const jgl::String UI_sprite_sheet_path;
 
-	static const jgl::String monster_area_sprite_sheet_name;
-	static const jgl::String monster_area_sprite_sheet_path;
+	static const jgl::Array<jgl::String> player_body_sprite_sheet_name;
+	static const jgl::Array<jgl::String> player_body_sprite_sheet_path;
+
+	static const jgl::Array<jgl::String> player_item1_sprite_sheet_name;
+	static const jgl::Array<jgl::String> player_item1_sprite_sheet_path;
 };
