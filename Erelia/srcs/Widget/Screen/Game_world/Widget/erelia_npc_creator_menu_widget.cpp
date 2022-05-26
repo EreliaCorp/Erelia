@@ -47,7 +47,7 @@ void NPC_creator_interface::Menu::import_entity(Entity* p_entity)
 	}
 }
 
-const jgl::String& NPC_creator_interface::Menu::entry_name_text()
+const jgl::String NPC_creator_interface::Menu::entry_name_text()
 {
 	return (_entity_name_entry->text());
 }

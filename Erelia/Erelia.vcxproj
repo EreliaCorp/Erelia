@@ -212,6 +212,7 @@
   <ItemGroup>
     <ClInclude Include="includes\Enum\erelia_enum.h" />
     <ClInclude Include="includes\erelia.h" />
+    <ClInclude Include="includes\Generator\erelia_map_generator.h" />
     <ClInclude Include="includes\Network\erelia_client_manager.h" />
     <ClInclude Include="includes\Network\erelia_network_definition.h" />
     <ClInclude Include="includes\Network\erelia_server_manager.h" />
@@ -262,6 +263,7 @@
     <ClInclude Include="includes\Widget\Screen\Loading\erelia_loading_screen.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="srcs\Generator\erelia_map_generator.cpp" />
     <ClCompile Include="srcs\main.cpp" />
     <ClCompile Include="srcs\Network\erelia_client_manager.cpp" />
     <ClCompile Include="srcs\Network\erelia_server_manager.cpp" />

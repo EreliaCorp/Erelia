@@ -1,6 +1,6 @@
 #include "Structure/Data/Map/erelia_node.h"
 
-jgl::Size_t Node::size = 48;
+jgl::Size_t Node::size = 32;
 
 jgl::Array<Node*> g_node_array =
 {	
@@ -17,8 +17,8 @@ jgl::Array<Node*> g_node_array =
 	new Node(            "Tiled stone", jgl::Vector2Int( 8,  6),  true,  Node::WALKABLE,  0u), //   10
 	new Node(          "Wall interior", jgl::Vector2Int(12,  6),  true,  Node::OBSTACLE,  0u), //   11
 	new Node(                   "Lava", jgl::Vector2Int(16,  6),  true,  Node::OBSTACLE,  4u), //   12
-	new Node(                  "Water", jgl::Vector2Int( 0, 12),  true,  Node::WALKABLE,  4u), //   13
-	new Node(             "Deep water", jgl::Vector2Int(16, 12),  true,  Node::OBSTACLE,  4u), //   14
+	new Node(                  "Water", jgl::Vector2Int( 0, 12),  true,  Node::WALKABLE | Node::SWIMABLE,  4u), //   13
+	new Node(             "Deep water", jgl::Vector2Int(16, 12),  true,  Node::OBSTACLE | Node::SWIMABLE,  4u), //   14
 	new Node(       "Dungeon - Purple", jgl::Vector2Int( 0, 18),  true,  Node::WALKABLE,  0u), //   15
 	new Node(          "Dungeon - Red", jgl::Vector2Int( 4, 18),  true,  Node::WALKABLE,  0u), //   16
 	new Node(         "Dungeon - Blue", jgl::Vector2Int( 8, 18),  true,  Node::WALKABLE,  0u), //   17

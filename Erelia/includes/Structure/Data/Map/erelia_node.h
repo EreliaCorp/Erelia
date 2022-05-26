@@ -11,6 +11,7 @@ struct Node
 	static const jgl::Short WEST_WALKABLE		= 0b0000000000001000;
 	static const jgl::Short WALKABLE			= 0b0000000000001111;
 	static const jgl::Short BUSH				= 0b0000000000010000;
+	static const jgl::Short SWIMABLE			= 0b0000000000100000;
 
 	static jgl::Size_t size;
 

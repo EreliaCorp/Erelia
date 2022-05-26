@@ -1,5 +1,6 @@
 #include "Widget/Main_application/erelia_main_application_debug_screen.h"
 #include "network/erelia_client_manager.h"
+#include "structure/Data/Engine/erelia_engine.h"
 #include "widget/Screen/Game_world/Widget/erelia_map_manager.h"
 #include "widget/Screen/Game_world/Widget/erelia_entity_manager.h"
 #include "widget/Screen/Game_world/erelia_game_world_screen.h"
@@ -49,6 +50,10 @@ jgl::Bool Debug_screen::_update()
 
 		_lines[0][2]->set_text("Render FPS : " + jgl::itoa(jgl::Application::active_application()->fps_render()));
 		_lines[0][3]->set_text("Update FPS : " + jgl::itoa(jgl::Application::active_application()->fps_update()));
+		if (Engine::instance() != nullptr && Engine::instance()->player() != nullptr)
+			_lines[0][4]->set_text("Pos : " + Engine::instance()->player()->pos().text());
+		else
+			_lines[0][4]->set_text("Pos : No player");
 
 		message_timer.start();
 	}

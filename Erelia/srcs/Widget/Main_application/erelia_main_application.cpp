@@ -62,7 +62,9 @@ void Main_application::_initiate_singleton()
 void Main_application::_initiate_network() 
 {
 	if (UI_configuration_file::server_mode() == true)
+	{
 		Server_manager::instantiate(this);
+	}
 	Client_manager::instantiate(this);
 	_initiate();
 }

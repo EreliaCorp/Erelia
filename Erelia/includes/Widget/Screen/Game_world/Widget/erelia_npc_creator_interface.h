@@ -113,7 +113,7 @@ private:
 
 		jgl::Text_entry* entity_name_entry() { return(_entity_name_entry); }
 
-		const jgl::String& entry_name_text();
+		const jgl::String entry_name_text();
 		
 		jgl::Bool entry_active()
 		{

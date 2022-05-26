@@ -75,18 +75,6 @@ unsigned char reverse(unsigned char b) {
 	return b;
 }
 
-struct Place_wall_data
-{
-	jgl::Vector3Int pos;
-	jgl::Short value;
-
-	Place_wall_data(jgl::Vector3Int p_pos = 0, jgl::Short p_value = 0)
-	{
-		pos = p_pos;
-		value = p_value;
-	}
-};
-
 static jgl::Map<jgl::Uchar, jgl::Short> delta_map_bit_value_result = {
 	{0, -1},
 	{1, 33},
@@ -346,13 +334,10 @@ static jgl::Map<jgl::Uchar, jgl::Short> delta_map_bit_value_result = {
 	{255, -2}
 };
 
-void Map_operation::paint_wall_node(jgl::Vector3Int p_pos, jgl::Short p_value)
+void Map_operation::paint_wall_node_standalone(jgl::Array<Map_operation::Place_wall_data>& result, jgl::Vector3Int p_pos, jgl::Short p_value)
 {
-	_modification_message.clear();
-
 	static jgl::Array<jgl::Vector3Int> pos_array;
 	static jgl::Map<jgl::Vector3Int, jgl::Bool> pos_array_found;
-	static jgl::Array<Place_wall_data> result;
 	static jgl::Vector3Int delta[8] = {
 		jgl::Vector3Int(-1, -1, 0),
 		jgl::Vector3Int(0, -1, 0),
@@ -423,6 +408,15 @@ void Map_operation::paint_wall_node(jgl::Vector3Int p_pos, jgl::Short p_value)
 			jgl::cout << jgl::endl;
 		}
 	}
+}
+
+void Map_operation::paint_wall_node(jgl::Vector3Int p_pos, jgl::Short p_value)
+{
+	_modification_message.clear();
+
+	static jgl::Array<Place_wall_data> result;
+
+	paint_wall_node_standalone(result, p_pos, p_value);
 
 	for (jgl::Size_t i = 0; i < result.size(); i++)
 	{

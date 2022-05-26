@@ -62,7 +62,21 @@ jgl::Vector2Int Chunk::_calc_sub_part_sprite(jgl::Int p_x, jgl::Int p_y, jgl::In
 		{
 			next_value = _neightbour_chunks[chunk_x][chunk_y]->content(next_pos, p_z);
 		}
-		values[j] = (next_value == first_value ? false : true);
+		if (next_value == -1)
+		{
+
+		}
+		else
+		{
+			if (next_value == first_value || 
+				((g_node_array[next_value]->obstacle & Node::SWIMABLE) == Node::SWIMABLE &&
+				 (g_node_array[first_value]->obstacle & Node::SWIMABLE) == Node::SWIMABLE))
+			{
+				values[j] = false;
+			}
+			else
+				values[j] = true;
+		}
 	}
 
 	return (_baking_delta_node_sprite[p_sub_part][values[0]][values[1]][values[2]]);

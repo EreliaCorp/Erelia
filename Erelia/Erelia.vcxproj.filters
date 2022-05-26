@@ -67,9 +67,6 @@
     <Filter Include="Header Files\Network">
       <UniqueIdentifier>{d735d408-c1b6-45c0-b5e8-75059fc199bf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Subscriber">
-      <UniqueIdentifier>{dcba1e6f-8c96-4b78-b472-1cf8b798573e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Widget\Screen">
       <UniqueIdentifier>{cd1c3d3b-2e47-4d19-b2a1-bdc8eca706c6}</UniqueIdentifier>
     </Filter>
@@ -186,6 +183,12 @@
     </Filter>
     <Filter Include="Source Files\Widget\Screen\Game_world\Widget\NPC_creator\Activity">
       <UniqueIdentifier>{ce1a617b-4256-456a-ae4b-66b0b55b12f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generator">
+      <UniqueIdentifier>{6386e282-e522-4613-8378-b1eb3a739e3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generator">
+      <UniqueIdentifier>{c3f6b5c5-bfeb-46dd-ab6c-0369e0ee2372}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -349,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="includes\Structure\Data\Entity\erelia_enemy.h">
       <Filter>Header Files\Structure\Data\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Generator\erelia_map_generator.h">
+      <Filter>Header Files\Generator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -540,6 +546,9 @@
     </ClCompile>
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_enemy_entity.cpp">
       <Filter>Source Files\Structure\Data\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Generator\erelia_map_generator.cpp">
+      <Filter>Source Files\Generator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
