@@ -263,7 +263,9 @@
     <ClInclude Include="includes\Widget\Screen\Loading\erelia_loading_screen.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="srcs\Generator\erelia_map_generator.cpp" />
+    <ClCompile Include="srcs\Generator\erelia_generate_heigth.cpp" />
+    <ClCompile Include="srcs\Generator\erelia_generate_node.cpp" />
+    <ClCompile Include="srcs\Generator\erelia_generate_biome.cpp" />
     <ClCompile Include="srcs\main.cpp" />
     <ClCompile Include="srcs\Network\erelia_client_manager.cpp" />
     <ClCompile Include="srcs\Network\erelia_server_manager.cpp" />

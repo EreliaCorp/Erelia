@@ -104,7 +104,7 @@ jgl::Bool Player_manager::_update()
 	if (jgl::Application::active_application()->keyboard().get_key(jgl::Key::Key_2) == jgl::Input_status::Release &&
 		Node::size <= 32)
 	{
-		Engine::instance()->map()->set_node_size(32);
+		Engine::instance()->map()->set_node_size(Node::size * 2);
 	}
 
 	return (false);

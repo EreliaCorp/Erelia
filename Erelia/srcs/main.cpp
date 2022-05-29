@@ -13,12 +13,5 @@ int main(int argc, char **argv)
 	win_app.set_geometry(0, app.size());
 	win_app.activate();
 
-	if (true)
-	{
-		Map_generator::generate_node_tiles("map_generator_nodes.png");
-		Map_generator::generate_wall_tiles("map_generator_layers.png");
-		Map_generator::generate_biome_scenery("map_generator_biomes.png");
-	}
-
 	return (app.run());
 }

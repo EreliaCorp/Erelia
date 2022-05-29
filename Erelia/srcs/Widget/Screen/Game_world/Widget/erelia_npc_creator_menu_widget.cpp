@@ -17,6 +17,8 @@ void NPC_creator_interface::Menu::_on_geometry_change()
 	pos.y += line_size + space;
 
 	_npc_movement_pattern_selecter->set_geometry(pos, entry_size);
+
+	_select_entity_spawner_units->set_geometry(pos, entry_size);
 }
 
 void NPC_creator_interface::Menu::_render()
@@ -52,6 +54,20 @@ const jgl::String NPC_creator_interface::Menu::entry_name_text()
 	return (_entity_name_entry->text());
 }
 
+void NPC_creator_interface::Menu::_change_npc_type(Entity::Type& p_type)
+{
+	if (p_type == Entity::Type::Spawner)
+	{
+		_npc_movement_pattern_selecter->desactivate();
+		_select_entity_spawner_units->activate();
+	}
+	else
+	{
+		_npc_movement_pattern_selecter->activate();
+		_select_entity_spawner_units->desactivate();
+	}
+}
+
 NPC_creator_interface::Menu::Menu(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 {
 	_entity_name_entry = new jgl::Text_entry("New entity", this);
@@ -62,7 +78,30 @@ NPC_creator_interface::Menu::Menu(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 	_entity_position_entry->label().set_vertical_align(jgl::Vertical_alignment::Centred);
 	_entity_position_entry->activate();
 
+	_npc_movement_pattern_selecter = new jgl::Selecter<AI_controlled_entity::Movement_info::Pattern>([&](AI_controlled_entity::Movement_info::Pattern& p_type) {
+		NPC_creator_interface::instance()->set_movement_pattern(p_type);
+		if (p_type == AI_controlled_entity::Movement_info::Pattern::Static)
+			return ("Static");
+		else if (p_type == AI_controlled_entity::Movement_info::Pattern::Wander)
+			return ("Wander");
+		else if (p_type == AI_controlled_entity::Movement_info::Pattern::Path)
+			return ("Path");
+		else
+			return ("Undefined");
+		}, this);
+	_npc_movement_pattern_selecter->add_value(AI_controlled_entity::Movement_info::Pattern::Static);
+	_npc_movement_pattern_selecter->add_value(AI_controlled_entity::Movement_info::Pattern::Wander);
+	_npc_movement_pattern_selecter->add_value(AI_controlled_entity::Movement_info::Pattern::Path);
+	_npc_movement_pattern_selecter->activate();
+
+
+	_select_entity_spawner_units = new jgl::Button([&](jgl::Data_contener& p_param) {
+
+		}, this);
+	_select_entity_spawner_units->label().set_text("Set entity spawnable");
+
 	_npc_type_selecter = new jgl::Selecter<Entity::Type>([&](Entity::Type& p_type) {
+		_change_npc_type(p_type);
 		NPC_creator_interface::instance()->set_entity_type(p_type);
 			if (p_type == Entity::Type::NPC)
 				return ("NPC");
@@ -77,20 +116,4 @@ NPC_creator_interface::Menu::Menu(jgl::Widget* p_parent) : jgl::Widget(p_parent)
 	_npc_type_selecter->add_value(Entity::Type::Spawner);
 	_npc_type_selecter->add_value(Entity::Type::Enemy);
 	_npc_type_selecter->activate();
-
-	_npc_movement_pattern_selecter = new jgl::Selecter<AI_controlled_entity::Movement_info::Pattern>([&](AI_controlled_entity::Movement_info::Pattern& p_type) {
-			NPC_creator_interface::instance()->set_movement_pattern(p_type);
-			if (p_type == AI_controlled_entity::Movement_info::Pattern::Static)
-				return ("Static");
-			else if (p_type == AI_controlled_entity::Movement_info::Pattern::Wander)
-				return ("Wander");
-			else if (p_type == AI_controlled_entity::Movement_info::Pattern::Path)
-				return ("Path");
-			else
-				return ("Undefined");
-		}, this);
-	_npc_movement_pattern_selecter->add_value(AI_controlled_entity::Movement_info::Pattern::Static);
-	_npc_movement_pattern_selecter->add_value(AI_controlled_entity::Movement_info::Pattern::Wander);
-	_npc_movement_pattern_selecter->add_value(AI_controlled_entity::Movement_info::Pattern::Path);
-	_npc_movement_pattern_selecter->activate();
 }

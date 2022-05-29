@@ -547,7 +547,13 @@
     <ClCompile Include="srcs\Structure\Data\Entity\erelia_enemy_entity.cpp">
       <Filter>Source Files\Structure\Data\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="srcs\Generator\erelia_map_generator.cpp">
+    <ClCompile Include="srcs\Generator\erelia_generate_biome.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Generator\erelia_generate_node.cpp">
+      <Filter>Source Files\Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="srcs\Generator\erelia_generate_heigth.cpp">
       <Filter>Source Files\Generator</Filter>
     </ClCompile>
   </ItemGroup>

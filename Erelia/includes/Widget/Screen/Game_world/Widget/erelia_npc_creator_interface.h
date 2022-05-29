@@ -102,6 +102,9 @@ private:
 		jgl::Text_label* _entity_position_entry;
 		jgl::Selecter<Entity::Type>* _npc_type_selecter;
 		jgl::Selecter<AI_controlled_entity::Movement_info::Pattern>* _npc_movement_pattern_selecter;
+		jgl::Button* _select_entity_spawner_units;
+
+		void _change_npc_type(Entity::Type& p_type);
 
 	public:
 		Menu(jgl::Widget* p_parent);
